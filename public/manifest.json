@@ -1,0 +1,23 @@
+{
+  "short_name": "SepsisDose",
+  "name": "Antibiotic Renal Dosing & TDM Planner",
+  "description": "Renális antibiotikum dózistervező és TDM kalkulátor",
+  "icons": [
+    {
+      "src": "/pwa_icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa_icon.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "display": "standalone",
+  "orientation": "portrait"
+}

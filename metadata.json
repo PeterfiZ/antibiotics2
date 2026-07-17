@@ -1,0 +1,6 @@
+{
+  "name": "Antibiotikum Oktató",
+  "description": "Interaktív farmakológiai, klinikai és mikrobiológiai oktatóalkalmazás orvostanhallgatóknak és gyakorló orvosoknak.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
