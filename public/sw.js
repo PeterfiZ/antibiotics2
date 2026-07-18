@@ -1,4 +1,4 @@
-const CACHE_NAME = 'antibiotic-dosing-v1';
+const CACHE_NAME = 'antibiotic-dosing-v2';
 const ASSETS = [
   '/',
   '/index.html',
@@ -42,23 +42,21 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Network-First strategy: safe for medical updates, fall back to cache when offline
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
         return response;
-      }).catch(() => {
-        // Fallback silently if offline and resource not cached
-      });
-    })
+      })
+      .catch(() => {
+        // Fallback to cache when offline
+        return caches.match(event.request);
+      })
   );
 });
