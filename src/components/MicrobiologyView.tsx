@@ -29,6 +29,7 @@ export default function MicrobiologyView() {
       { id: 'cefepime', shortName: 'FEP' },
       { id: 'ceftolozane_tazobactam', shortName: 'C/T' },
       { id: 'meropenem', shortName: 'MEM' },
+      { id: 'imipenem_cilastatin', shortName: 'IPM' },
       { id: 'gentamicin', shortName: 'GEN' },
       { id: 'vancomycin', shortName: 'VAN' },
       { id: 'clindamycin', shortName: 'CLI' },
@@ -44,6 +45,17 @@ export default function MicrobiologyView() {
   const getCellData = (microbe: Microbe, abId: string): MicrobeResistance | null => {
     const res = microbe.resistances.find(r => r.antibioticId === abId);
     if (res) return res;
+
+    if (abId === 'imipenem_cilastatin') {
+      const meroRes = microbe.resistances.find(r => r.antibioticId === 'meropenem');
+      if (meroRes) {
+        return {
+          ...meroRes,
+          antibioticId: 'imipenem_cilastatin',
+          antibioticName: language === 'hu' ? 'Imipenem/cilasztatin' : language === 'de' ? 'Imipenem/Cilastatin' : 'Imipenem/cilastatin'
+        };
+      }
+    }
 
     // Check if antibiotic is in our global list to make an intelligent guess if missing from local resistances
     const globalAb = antibioticsData.find(a => a.id === abId);
