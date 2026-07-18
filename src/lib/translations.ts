@@ -60,6 +60,37 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "On iOS: Tap the Share [ ]↗ button in Safari, then select 'Add to Home Screen'.",
     de: "Auf iOS: Tippen Sie in Safari auf Teilen [ ]↗ und wählen Sie 'Zum Home-Bildschirm'."
   },
+  "STATS_VISITS": {
+    hu: "Látogatottság",
+    en: "Visits",
+    de: "Besuche"
+  },
+  "STATS_DOWNLOADS": {
+    hu: "Letöltések",
+    en: "Downloads",
+    de: "Downloads"
+  },
+  "POCKET_GUIDE_TITLE": {
+    hu: "Zsebkalauz letöltése",
+    en: "Download Pocket Guide",
+    de: "Taschenkarte herunterladen"
+  },
+  "POCKET_GUIDE_DESC": {
+    hu: "Töltse le a tömör összefoglalót offline zsebkalauzként (TXT formátum).",
+    en: "Download the concise clinical summary as an offline pocket guide (TXT format).",
+    de: "Laden Sie die klinische Zusammenfassung als Offline-Taschenkarte herunter (TXT-Format)."
+  },
+  "DOWNLOAD_BTN": {
+    hu: "Zsebkalauz (TXT)",
+    en: "Pocket Guide (TXT)",
+    de: "Taschenkarte (TXT)"
+  },
+  "STATS_PANEL_TITLE": {
+    hu: "Rendszer Statisztikák",
+    en: "System Statistics",
+    de: "Systemstatistiken"
+  },
+
   "FEEDBACK_BTN": {
     hu: "Kapcsolat / Visszajelzés",
     en: "Contact / Feedback",

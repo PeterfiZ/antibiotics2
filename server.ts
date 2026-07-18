@@ -39,6 +39,29 @@ function saveTranslationCache() {
   }
 }
 
+// Stats persistence for visits and downloads
+const STATS_FILE_PATH = path.join(__dirname, "stats.json");
+
+function getStats() {
+  try {
+    if (fs.existsSync(STATS_FILE_PATH)) {
+      const data = fs.readFileSync(STATS_FILE_PATH, "utf-8");
+      return JSON.parse(data);
+    }
+  } catch (err) {
+    console.warn("Failed to load stats file, using fresh defaults:", err);
+  }
+  return { visits: 0, downloads: 0 };
+}
+
+function saveStats(stats: { visits: number; downloads: number }) {
+  try {
+    fs.writeFileSync(STATS_FILE_PATH, JSON.stringify(stats, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("Failed to save stats to file:", err);
+  }
+}
+
 const app = express();
 const PORT = 3000;
 
@@ -296,6 +319,26 @@ app.post("/api/feedback", async (req, res) => {
     console.error("Error saving feedback:", error);
     res.status(500).json({ error: "Hiba történt a visszajelzés mentése során: " + (error.message || error) });
   }
+});
+
+// 6. Stats & Counters API
+app.get("/api/stats", (req, res) => {
+  const stats = getStats();
+  res.json(stats);
+});
+
+app.post("/api/stats/visit", (req, res) => {
+  const stats = getStats();
+  stats.visits = (stats.visits || 0) + 1;
+  saveStats(stats);
+  res.json(stats);
+});
+
+app.post("/api/stats/download", (req, res) => {
+  const stats = getStats();
+  stats.downloads = (stats.downloads || 0) + 1;
+  saveStats(stats);
+  res.json(stats);
 });
 
 // Configure Vite or Static Asset Serving
