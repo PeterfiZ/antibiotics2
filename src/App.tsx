@@ -11,6 +11,7 @@ import PracticeView from './components/PracticeView';
 import AiConsultantView from './components/AiConsultantView';
 import TdmCalculatorView from './components/TdmCalculatorView';
 import RenalDosingView from './components/RenalDosingView';
+import { motion, AnimatePresence } from 'motion/react';
 
 import { Antibiotic, ClinicalInfection } from './types';
 import { useLanguage } from './lib/LanguageContext';
@@ -45,11 +46,16 @@ export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallBtn, setShowInstallBtn] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [showAutoPwaPrompt, setShowAutoPwaPrompt] = useState(false);
 
   useEffect(() => {
     // Detect iOS
     const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
     setIsIOS(ios);
+
+    const standalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone === true;
+    setIsStandalone(standalone);
 
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
@@ -60,8 +66,20 @@ export default function App() {
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
     // If already running in standalone PWA mode
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (standalone) {
       setShowInstallBtn(false);
+    } else {
+      // Auto-recommend after 2 seconds if not dismissed yet
+      const dismissed = sessionStorage.getItem('pwa_prompt_dismissed');
+      if (!dismissed) {
+        const timer = setTimeout(() => {
+          setShowAutoPwaPrompt(true);
+        }, 2000);
+        return () => {
+          clearTimeout(timer);
+          window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        };
+      }
     }
 
     return () => {
@@ -357,27 +375,52 @@ ${feedbackMessage}`;
         {/* Navigation Tabs and Left Bookmarks (3 cols on XL) */}
         <div className="xl:col-span-3 space-y-6">
           {/* PWA Install Promo Box */}
-          {(showInstallBtn || (isIOS && !window.matchMedia('(display-mode: standalone)').matches)) && (
-            <div className="bg-slate-900 border border-slate-800 text-white rounded-2xl p-4 shadow-lg space-y-3 relative overflow-hidden">
+          {!isStandalone && (
+            <div className="bg-slate-950 border border-slate-800 text-white rounded-2xl p-4 shadow-lg space-y-3 relative overflow-hidden">
               <div className="absolute right-[-10px] bottom-[-15px] opacity-10">
                 <Download className="w-20 h-20 rotate-12 text-slate-400" />
               </div>
-              <div className="relative z-10">
-                <h4 className="font-extrabold text-xs uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                  {t('PWA_INSTALL')}
-                </h4>
-                <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+              <div className="relative z-10 space-y-3">
+                {/* Visual Icon Header */}
+                <div className="flex items-center gap-3">
+                  <img 
+                    src="/pwa_icon.png" 
+                    alt="SepsisDose App Icon" 
+                    className="w-12 h-12 rounded-xl border border-slate-700 shadow bg-slate-900 object-cover shrink-0"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <h4 className="font-extrabold text-sm text-white leading-tight">SepsisDose</h4>
+                    <p className="text-[10px] text-blue-400 font-extrabold uppercase tracking-wider">{t('PWA_INSTALL')}</p>
+                  </div>
+                </div>
+
+                <p className="text-[11px] text-slate-300 leading-relaxed">
                   {isIOS ? t('PWA_IOS_INSTRUCTION') : t('PWA_INSTALL_DESC')}
                 </p>
-                {!isIOS && showInstallBtn && (
+
+                {/* Direct Action Button */}
+                {!isIOS && showInstallBtn ? (
                   <button
                     onClick={handleInstallClick}
-                    className="mt-3 w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs py-2 px-3 rounded-xl shadow-sm transition-all duration-150 flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs py-2 px-3 rounded-xl shadow transition-all duration-150 flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Download className="w-3.5 h-3.5" />
                     {t('PWA_INSTALL')}
                   </button>
+                ) : (
+                  !isIOS && (
+                    <div className="text-[10px] text-slate-400 leading-relaxed bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 space-y-1">
+                      <p className="font-bold text-slate-300">
+                        {language === 'hu' ? 'Telepítés a böngészőből:' : 'Install from Browser:'}
+                      </p>
+                      <p>
+                        {language === 'hu' 
+                          ? 'Kattintson a menügombra (⋮ vagy megosztás), majd a „Telepítés” vagy „Hozzáadás a kezdőképernyőhöz” opcióra.' 
+                          : 'Click your browser menu (⋮ or share icon), then select "Install" or "Add to Home Screen".'}
+                      </p>
+                    </div>
+                  )
                 )}
               </div>
             </div>
@@ -708,6 +751,84 @@ ${feedbackMessage}`;
           </div>
         </div>
       )}
+
+      {/* Automatic slide-in PWA recommendation prompt with the medicine and infusion icon */}
+      <AnimatePresence>
+        {showAutoPwaPrompt && !isStandalone && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-slate-905 border border-slate-800 text-white rounded-2xl p-5 shadow-2xl space-y-4"
+          >
+            <div className="flex items-start gap-3">
+              <img 
+                src="/pwa_icon.png" 
+                alt="SepsisDose App Icon" 
+                className="w-14 h-14 rounded-2xl border border-slate-700 shadow-lg bg-slate-950 shrink-0 object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-extrabold text-sm text-white">SepsisDose App</h4>
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-300 font-medium leading-relaxed">
+                  {language === 'hu' 
+                    ? 'Telepítse az alkalmazást közvetlenül az asztalra vagy telefon kezdőképernyőjére a gyógyszer és infúziós ikonnal!' 
+                    : 'Install the app directly to your desktop or phone home screen with the medicine and infusion icon!'}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-2.5">
+              <button
+                onClick={() => {
+                  sessionStorage.setItem('pwa_prompt_dismissed', 'true');
+                  setShowAutoPwaPrompt(false);
+                }}
+                className="flex-1 bg-slate-800 hover:bg-slate-750 text-slate-300 font-extrabold text-xs py-2 px-3 rounded-xl transition-all duration-150 cursor-pointer"
+              >
+                {language === 'hu' ? 'Mégse' : 'Dismiss'}
+              </button>
+              
+              {isIOS ? (
+                <div className="flex-1 text-[10px] text-slate-400 font-bold flex items-center justify-center bg-slate-950/60 rounded-xl px-2 text-center">
+                  {language === 'hu' ? 'Safari megosztás ↗' : 'Safari share ↗'}
+                </div>
+              ) : showInstallBtn ? (
+                <button
+                  onClick={() => {
+                    handleInstallClick();
+                    setShowAutoPwaPrompt(false);
+                  }}
+                  className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs py-2 px-3 rounded-xl shadow-md transition-all duration-150 flex items-center justify-center gap-1 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  {t('PWA_INSTALL')}
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    alert(language === 'hu' 
+                      ? 'Koppintson a böngésző menüpontjára (három pont a sarokban) és válassza az "Alkalmazás telepítése" / "Hozzáadás a kezdőképernyőhöz" lehetőséget!' 
+                      : 'Tap on your browser menu (three dots in the corner) and select "Install app" / "Add to Home Screen"!');
+                    sessionStorage.setItem('pwa_prompt_dismissed', 'true');
+                    setShowAutoPwaPrompt(false);
+                  }}
+                  className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs py-2 px-3 rounded-xl shadow-md transition-all duration-150 flex items-center justify-center gap-1 cursor-pointer"
+                >
+                  {language === 'hu' ? 'Hogyan?' : 'How?'}
+                </button>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
