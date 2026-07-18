@@ -149,7 +149,7 @@ Formulieren Sie alles ausschließlich auf Deutsch. Der Fall muss klinisch realis
       throw new Error("Hiányzó API kulcs. Kérjük, állítsa be a saját Gemini API kulcsát a fenti panelen.");
     }
 
-    const modelName = "gemini-1.5-flash";
+    const modelName = "gemini-3.5-flash";
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
     const payload = {
