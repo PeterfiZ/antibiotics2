@@ -52,6 +52,14 @@ interface LocalizedAntibioticRenalDose {
 
 const normalizeName = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '');
 
+const removeAccents = (str: string) => {
+  if (!str) return '';
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+};
+
 const defaultGroups: Record<string, { hu: string; en: string; de: string }> = {
   "penicillin g": { hu: "Természetes penicillinek", en: "Natural penicillins", de: "Natürliche Penicilline" },
   "amoxicillin": { hu: "Aminopenicillinek", en: "Aminopenicillins", de: "Aminopenicilline" },
@@ -509,24 +517,66 @@ export default function RenalDosingView() {
 
   // Dynamically combine static renal database with all other pharmacology antibiotics
   const renalDosingDatabase = useMemo(() => {
+    const usedPharmIds = new Set<string>();
+    const usedElementIds = new Set<string>();
+
     return renalDoseData_HU.map((huEntry, index) => {
       const enEntry = renalDoseData_EN[index] || renalDoseData_EN.find(en => normalizeName(en.antibiotic_name) === normalizeName(huEntry.antibiotic_name)) || huEntry;
       const deEntry = renalDoseData_DE[index] || renalDoseData_DE.find(de => normalizeName(de.antibiotic_name) === normalizeName(huEntry.antibiotic_name)) || huEntry;
       
       const normHuName = normalizeName(huEntry.antibiotic_name);
       
-      const pharmHU = antibioticsData_HU.find(p => {
+      // Pass 1: Try exact match first
+      let pharmHU = antibioticsData_HU.find(p => {
         const normPName = normalizeName(p.name);
         const normPId = normalizeName(p.id);
         const normPAbbr = p.abbreviation ? normalizeName(p.abbreviation) : '';
-        return normPName === normHuName || normPId === normHuName || normPAbbr === normHuName ||
-               normPName.includes(normHuName) || normHuName.includes(normPName);
+        return normPName === normHuName || normPId === normHuName || normPAbbr === normHuName;
       });
+
+      // Pass 2: Try specific synonyms
+      if (!pharmHU) {
+        pharmHU = antibioticsData_HU.find(p => {
+          const normPId = p.id.toLowerCase();
+          if (normHuName === 'trimetoprimsulfamethoxazoletmpsmx' && normPId === 'cotrimoxazole') {
+            return true;
+          }
+          if (normHuName === 'metronidazol' && normPId === 'metronidazole') {
+            return true;
+          }
+          if (normHuName === 'cefuroxim' && normPId === 'cefuroxime') {
+            return true;
+          }
+          return false;
+        });
+      }
+
+      // Pass 3: Try soft substring match, but only if the candidate ID hasn't been claimed yet
+      if (!pharmHU) {
+        pharmHU = antibioticsData_HU.find(p => {
+          if (usedPharmIds.has(p.id)) return false; // Already matched to a more precise drug
+          const normPName = normalizeName(p.name);
+          return normPName.includes(normHuName) || normHuName.includes(normPName);
+        });
+      }
+
+      if (pharmHU) {
+        usedPharmIds.add(pharmHU.id);
+      }
       
       const pharmEN = pharmHU ? antibioticsData_EN.find(p => p.id === pharmHU.id) : null;
       const pharmDE = pharmHU ? antibioticsData_DE.find(p => p.id === pharmHU.id) : null;
 
-      const id = pharmHU?.id || huEntry.antibiotic_name.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+      let id = pharmHU?.id || huEntry.antibiotic_name.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+      if (usedElementIds.has(id)) {
+        let suffix = 1;
+        while (usedElementIds.has(`${id}_${suffix}`)) {
+          suffix++;
+        }
+        id = `${id}_${suffix}`;
+      }
+      usedElementIds.add(id);
+
       const name = currentLang === 'en' ? enEntry.antibiotic_name : (currentLang === 'de' ? deEntry.antibiotic_name : huEntry.antibiotic_name);
       const brandNames = pharmHU?.brandNames || '';
       
@@ -671,11 +721,17 @@ export default function RenalDosingView() {
 
   // Handle Search & Filter
   const filteredAntibiotics = useMemo(() => {
+    const searchTerms = removeAccents(searchQuery)
+      .split(/\s+/)
+      .filter(Boolean);
+
     const filtered = renalDosingDatabase.filter(item => {
-      const matchesSearch =
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (item.brandNames && item.brandNames.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        item.group[currentLang].toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = searchTerms.every(term => {
+        const nameMatch = removeAccents(item.name).includes(term);
+        const brandMatch = item.brandNames ? removeAccents(item.brandNames).includes(term) : false;
+        const groupMatch = removeAccents(item.group[currentLang]).includes(term);
+        return nameMatch || brandMatch || groupMatch;
+      });
 
       const matchesGroup = selectedGroup === 'all' || item.group[currentLang] === selectedGroup;
 

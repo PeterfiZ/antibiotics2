@@ -151,174 +151,7 @@ export default function App() {
     });
   };
 
-  // Compile offline pocket guide and trigger browser download
-  const downloadPocketGuide = () => {
-    fetch('/api/stats/download', { method: 'POST' })
-      .then(res => res.json())
-      .then(data => data && typeof data.downloads === 'number' && setStats(data))
-      .catch(err => console.warn('Failed to track pocket guide download:', err));
 
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'download_pocket_guide', {
-        event_category: 'resources',
-        event_label: language
-      });
-    }
-
-    let content = "";
-    if (language === 'hu') {
-      content = `===========================================================
-SEPSISDOSE KLINIKAI ANTIBIOTIKUM ZSEBKALAUZ (2026-os IRÁNYELVEK)
-===========================================================
-Szakmai vezető: Dr. Péterfi Zoltán
-Pécsi Tudományegyetem, I. sz. Belgyógyászati Klinika, Infektológia Tanszék
-Verzió: v5.0.0 (EUCAST 2026 standardok alapján)
-
-Ez a dokumentum egy gyors, zsebben hordható emlékeztető
-a legfontosabb empirikus terápiákhoz, veseelégtelenség melletti
-dozírozáshoz és TDM elvekhez sepsis kezelése során.
-
------------------------------------------------------------
-1. GYAKORI SZISZTÉMÁS EMPIRIKUS ANTIBIOTIKUM ADAGOK (Felnőtt, ép veseműködés):
------------------------------------------------------------
-- Piperacillin/tazobactam: 4.5 g 6-8 óránként (lassú infúzióban)
-- Imipenem/cilasztatin: 1.0 g 6-8 óránként (P. aeruginosa esetén q6h)
-- Ceftazidim: 2.0 g 8 óránként
-- Ceftriaxon: 2.0 g 24 óránként (gyors bólus vagy infúzió)
-- Meropenem: 1.0 - 2.0 g 8 óránként
-- Vancomycin: 25-30 mg/kg telítő dózis, majd 15-20 mg/kg 12 óránként iv. (TDM javasolt)
-- Gentamicin: 5-7 mg/kg 24 óránként (TDM és veseellenőrzés javasolt)
-
------------------------------------------------------------
-2. EMPIRIKUS REKOMSZTRAKCIÓS STRATÉGIÁK:
------------------------------------------------------------
-- Sepsis (ismeretlen fókusz / súlyos állapot):
-  * Piperacillin/tazobactam (4.5g q6h vagy q8h) + Gentamicin (5-7 mg/kg q24h)
-  * Súlyos penicillin allergia esetén: Levofloxacin (500mg q12h) + Amikacin + Metronidazol
-- Urosepsis (Húgyúti fókusz):
-  * Ceftriaxon (2g q24h) VAGY Ciprofloxacin (400mg q12h)
-- Intraabdominális fertőzés (peritonitis, cholangitis):
-  * Ceftriaxon (2g q24h) + Metronidazol (500mg q8h) VAGY Piperacillin/tazobactam (4.5g q8h)
-
------------------------------------------------------------
-3. VESEELÉGTELENSÉG ÉS DOZÍROZÁS (Rövid összefoglaló):
------------------------------------------------------------
-A veseelégtelenségben szenvedő betegeknél a vese clearance csökkenése miatt
-az antibiotikum felhalmozódhat, ami toxicitáshoz vezet (pl. Vancomycin nephrotoxicitás,
-béta-laktám encephalopathia és görcsök).
-* Mindig határozza meg a Cockcroft-Gault képlettel számított kreatinin-clearance-t!
-* Az első (telítő) dózist soha ne csökkentse! (Sepsisben a megoszlási térfogat nagy).
-* Fenntartó dózis csökkentése szükséges: GFR < 50, < 30 és < 15 ml/perc esetén.
-
------------------------------------------------------------
-4. TERÁPIÁS GYÓGYSZERSZINT-MONITOROZÁS (TDM) IRÁNYELVEK:
------------------------------------------------------------
-- VANCOMYCIN:
-  * Cél völgykoncentráció (trough): 15 - 20 ug/ml (mg/L) súlyos sepsisben.
-  * Mintavétel: a 4. vagy 5. dózis előtt közvetlenül (steady-state).
-- GENTAMICIN (Napi egyszeri adagolás):
-  * Cél csúcskoncentráció (peak): > 16-20 ug/ml.
-  * Cél völgykoncentráció (trough): < 1.0 ug/ml (a felhalmozódás és nephrotoxicitás elkerülésére).
-
-===========================================================
-További interaktív kalkulátorokért és részletes mikrobiológiai
-érzékenységi mátrixokért látogassa meg az online felületet:
-\${window.location.origin}
-===========================================================`;
-    } else if (language === 'de') {
-      content = `===========================================================
-SEPSISDOSE KLINISCHE ANTIBIOTIKA-TASCHENKARTE (RICHTLINIEN 2026)
-===========================================================
-Wissenschaftliche Leitung: Dr. Zoltán Péterfi
-Universität Pécs, I. Medizinische Klinik, Lehrstuhl für Infektiologie
-Version: v5.0.0 (Basierend auf EUCAST 2026 Standards)
-
-Dieses Dokument dient als schnelle Gedächtnisstütze für empirische
-Therapien, Antibiotikadosierung bei Niereninsuffizienz und TDM-Prinzipien.
-
------------------------------------------------------------
-1. DOSIERUNGEN FÜR ERWACHSENE (Bei normaler Nierenfunktion):
------------------------------------------------------------
-- Piperacillin/Tazobactam: 4,5 g alle 6-8 Std. (langsame Infusion)
-- Imipenem/Cilastatin: 1,0 g alle 6-8 Std. (P. aeruginosa: alle 6 Std.)
-- Ceftazidim: 2,0 g alle 8 Std.
-- Ceftriaxon: 2,0 g alle 24 Std.
-- Meropenem: 1,0 - 2,0 g alle 8 Std.
-- Vancomycin: Ladedosis 25-30 mg/kg, gefolgt von 15-20 mg/kg alle 12 Std. (TDM empfohlen)
-- Gentamicin: 5-7 mg/kg alle 24 Std. (TDM und Nierenüberwachung dringend empfohlen)
-
------------------------------------------------------------
-2. EMPIRISCHE THERAPIEMEMPFEHLUNGEN:
------------------------------------------------------------
-- Sepsis (Unbekannter Fokus):
-  * Piperacillin/Tazobactam (4,5g q6h/q8h) + Gentamicin (5-7 mg/kg q24h)
-  * Bei Penicillinallergie: Levofloxacin (500mg q12h) + Amikacin + Metronidazol
-- Urosepsis (Urogenitaler Fokus):
-  * Ceftriaxon (2g q24h) ODER Ciprofloxacin (400mg q12h iv)
-
------------------------------------------------------------
-3. NIERENINSUFFIZIENZ UND ANPASSUNG:
------------------------------------------------------------
-* Berechnen Sie immer die Kreatinin-Clearance nach Cockcroft-Gault!
-* Die erste (Sättigungs-/Ladedosis) darf bei Sepsis NIE reduziert werden!
-* Reduzieren Sie die Erhaltungsdosis bei GFR < 50, < 30 und < 15 ml/Min.
-
-===========================================================
-Für interaktive Rechner besuchen Sie bitte:
-\${window.location.origin}
-===========================================================`;
-    } else {
-      content = `===========================================================
-SEPSISDOSE CLINICAL ANTIBIOTIC POCKET GUIDE (2026 GUIDELINES)
-===========================================================
-Director: Dr. Zoltán Péterfi
-University of Pécs, Department of Infectious Diseases
-Version: v5.0.0 (Based on EUCAST 2026 Standards)
-
-This pocket guide serves as a quick, offline-ready reference for empirical
-regimens, renal dosing adjustments, and TDM monitoring in sepsis.
-
------------------------------------------------------------
-1. STANDARD ADULT DOSES (Normal Renal Function):
------------------------------------------------------------
-- Piperacillin/tazobactam: 4.5 g q6h or q8h (extended infusion)
-- Imipenem/cilastatin: 1.0 g q6h or q8h (q6h for P. aeruginosa)
-- Ceftazidim: 2.0 g q8h
-- Ceftriaxone: 2.0 g q24h
-- Meropenem: 1.0 - 2.0 g q8h
-- Vancomycin: Loading 25-30 mg/kg, then 15-20 mg/kg q12h (TDM required)
-- Gentamicin: 5-7 mg/kg q24h (TDM required)
-
------------------------------------------------------------
-2. EMPIRICAL REGIMENS:
------------------------------------------------------------
-- Sepsis (Unknown Source):
-  * Piperacillin/tazobactam (4.5g q6h/q8h) + Gentamicin (5-7 mg/kg q24h)
-- Urosepsis:
-  * Ceftriaxone (2g q24h) OR Ciprofloxacin (400mg q12h iv)
-
------------------------------------------------------------
-3. RENAL DOSING PRINCIPLES:
------------------------------------------------------------
-* Always calculate Creatinine Clearance via Cockcroft-Gault.
-* NEVER reduce the loading dose in sepsis (large volume of distribution).
-* Adjust maintenance doses when CrCl < 50, < 30, or < 15 mL/min.
-
-===========================================================
-For interactive calculators and charts, visit:
-\${window.location.origin}
-===========================================================`;
-    }
-
-    const filename = language === 'hu' ? 'sepsisdose_zsebkalauz.txt' : 'sepsisdose_pocket_guide.txt';
-    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   // Feedback Form State
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
@@ -582,47 +415,7 @@ ${feedbackMessage}`;
             })}
           </nav>
 
-          {/* Statistics & Download Pocket Guide box */}
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-2xl border border-slate-200/80 p-4 shadow-sm space-y-4 hidden xl:block">
-            <div className="flex items-center gap-1.5 border-b border-slate-200 pb-2.5 text-slate-800">
-              <BarChart3 className="w-4.5 h-4.5 text-blue-600" />
-              <h3 className="font-extrabold text-xs uppercase tracking-wider">{t('STATS_PANEL_TITLE')}</h3>
-            </div>
-            
-            {/* Real Stats */}
-            <div className="grid grid-cols-2 gap-2 text-center">
-              <div className="bg-white border border-slate-200/60 p-2.5 rounded-xl shadow-xs">
-                <div className="flex justify-center mb-1 text-slate-400">
-                  <Eye className="w-4 h-4 text-slate-400" />
-                </div>
-                <span className="block text-lg font-black text-slate-800 leading-tight">{stats.visits || 1}</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{t('STATS_VISITS')}</span>
-              </div>
-              
-              <div className="bg-white border border-slate-200/60 p-2.5 rounded-xl shadow-xs">
-                <div className="flex justify-center mb-1 text-slate-400">
-                  <Download className="w-4 h-4 text-slate-400" />
-                </div>
-                <span className="block text-lg font-black text-slate-800 leading-tight">{stats.downloads || 0}</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{t('STATS_DOWNLOADS')}</span>
-              </div>
-            </div>
 
-            {/* Zsebkalauz letöltése */}
-            <div className="border-t border-slate-200/60 pt-3 space-y-2">
-              <div>
-                <h4 className="font-extrabold text-xs text-slate-700">{t('POCKET_GUIDE_TITLE')}</h4>
-                <p className="text-[10px] text-slate-400 mt-0.5 leading-relaxed">{t('POCKET_GUIDE_DESC')}</p>
-              </div>
-              <button
-                onClick={downloadPocketGuide}
-                className="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] py-2 px-3 rounded-xl transition-all duration-150 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
-              >
-                <Download className="w-3.5 h-3.5" />
-                {t('DOWNLOAD_BTN')}
-              </button>
-            </div>
-          </div>
 
           {/* Bookmarks Quick Drawer */}
           <div className="bg-white rounded-2xl border border-slate-200/75 p-4 shadow-sm space-y-4 hidden xl:block">
@@ -722,7 +515,7 @@ ${feedbackMessage}`;
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p>{t('FOOTER_COPYRIGHT')}</p>
           
-          {/* Mini mobile-friendly stats & zsebkalauz download */}
+          {/* Mini mobile-friendly stats */}
           <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-slate-400 font-bold">
             <span className="flex items-center gap-1 bg-slate-50 border border-slate-200/80 px-2.5 py-1.5 rounded-xl shadow-xs">
               <Eye className="w-3.5 h-3.5 text-slate-400 shrink-0" />
@@ -732,13 +525,6 @@ ${feedbackMessage}`;
               <Download className="w-3.5 h-3.5 text-slate-400 shrink-0" />
               <span>{stats.downloads || 0} {t('STATS_DOWNLOADS').toLowerCase()}</span>
             </span>
-            <button
-              onClick={downloadPocketGuide}
-              className="flex items-center gap-1 bg-blue-50 hover:bg-blue-100/80 text-blue-600 hover:text-blue-700 border border-blue-200/60 px-3 py-1.5 rounded-xl transition-all font-extrabold cursor-pointer shadow-xs active:scale-95"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>{t('DOWNLOAD_BTN')}</span>
-            </button>
           </div>
           
           <p className="italic text-[10px] text-slate-400">{t('SHARED_FOOTER_DISCLAIMER')}</p>

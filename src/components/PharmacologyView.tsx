@@ -9,6 +9,14 @@ import { Search, Info, CheckCircle2, AlertTriangle, XCircle, Layers, ArrowLeftRi
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage, TransText } from '../lib/LanguageContext';
 
+const removeAccents = (str: string) => {
+  if (!str) return '';
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+};
+
 export function getGroupOrderWeight(group: string): number {
   if (!group) return 999;
   const g = group.toLowerCase().trim();
@@ -214,11 +222,18 @@ export default function PharmacologyView() {
 
   // Filtered antibiotics sorted logically
   const filteredAntibiotics = useMemo(() => {
+    const searchTerms = removeAccents(searchTerm)
+      .split(/\s+/)
+      .filter(Boolean);
+
     return sortedAntibiotics.filter(ab => {
-      const matchesSearch = ab.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                            (ab.abbreviation && ab.abbreviation.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                            (ab.brandNames && ab.brandNames.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                            ab.mechanismOfAction.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = searchTerms.every(term => {
+        const nameMatch = removeAccents(ab.name).includes(term);
+        const abbrMatch = ab.abbreviation ? removeAccents(ab.abbreviation).includes(term) : false;
+        const brandMatch = ab.brandNames ? removeAccents(ab.brandNames).includes(term) : false;
+        const moaMatch = removeAccents(ab.mechanismOfAction).includes(term);
+        return nameMatch || abbrMatch || brandMatch || moaMatch;
+      });
       const matchesGroup = selectedGroup === 'all' || ab.group === selectedGroup;
       return matchesSearch && matchesGroup;
     });
