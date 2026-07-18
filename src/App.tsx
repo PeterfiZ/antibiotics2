@@ -385,12 +385,12 @@ ${feedbackMessage}`;
                 <div className="flex items-center gap-3">
                   <img 
                     src="/pwa_icon.png" 
-                    alt="SepsisDose App Icon" 
+                    alt="Antibiotics App Icon" 
                     className="w-12 h-12 rounded-xl border border-slate-700 shadow bg-slate-900 object-cover shrink-0"
                     referrerPolicy="no-referrer"
                   />
                   <div>
-                    <h4 className="font-extrabold text-sm text-white leading-tight">SepsisDose</h4>
+                    <h4 className="font-extrabold text-sm text-white leading-tight">Antibiotics</h4>
                     <p className="text-[10px] text-blue-400 font-extrabold uppercase tracking-wider">{t('PWA_INSTALL')}</p>
                   </div>
                 </div>
@@ -765,13 +765,13 @@ ${feedbackMessage}`;
             <div className="flex items-start gap-3">
               <img 
                 src="/pwa_icon.png" 
-                alt="SepsisDose App Icon" 
+                alt="Antibiotics App Icon" 
                 className="w-14 h-14 rounded-2xl border border-slate-700 shadow-lg bg-slate-950 shrink-0 object-cover"
                 referrerPolicy="no-referrer"
               />
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-extrabold text-sm text-white">SepsisDose App</h4>
+                  <h4 className="font-extrabold text-sm text-white">Antibiotics App</h4>
                   <span className="flex h-2 w-2 relative">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
