@@ -110,7 +110,7 @@ export default function App() {
 
   // Dynamic Google Analytics Setup
   useEffect(() => {
-    const measurementId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-26E0EYZZQ8';
+    const measurementId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-4NVS2LTF0W';
     if (measurementId) {
       if (!document.getElementById('google-analytics-script')) {
         const script = document.createElement('script');
@@ -138,7 +138,7 @@ export default function App() {
   // Track virtual pageviews on tab changes in GA
   useEffect(() => {
     if ((window as any).gtag) {
-      const measurementId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-26E0EYZZQ8';
+      const measurementId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-4NVS2LTF0W';
       (window as any).gtag('config', measurementId, {
         page_path: `/${activeTab}`,
         page_title: `SepsisDose - ${activeTab}`
