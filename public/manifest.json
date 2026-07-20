@@ -4,13 +4,25 @@
   "description": "Renális antibiotikum dózistervező és TDM kalkulátor",
   "icons": [
     {
-      "src": "/pwa_icon.png",
+      "src": "pwa_icon_192.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
-      "src": "/pwa_icon.jpg",
+      "src": "pwa_icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa_icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa_icon.jpg",
       "type": "image/jpeg",
       "sizes": "512x512"
     }
