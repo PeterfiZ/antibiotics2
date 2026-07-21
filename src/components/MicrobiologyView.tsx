@@ -11,10 +11,47 @@ import { useLanguage, TransText } from '../lib/LanguageContext';
 
 export default function MicrobiologyView() {
   const { t, tg, language, microbesData, antibioticsData } = useLanguage();
+
+  const getTypeLabel = (type: string) => {
+    switch (type) {
+      case 'gram-positive': return t('GRAM_POSITIVE_SHORT');
+      case 'gram-negative': return t('GRAM_NEGATIVE_SHORT');
+      case 'atypical': return t('ATYPICAL_SHORT');
+      case 'anaerobe': return t('ANAEROBE_SHORT');
+      default: return type;
+    }
+  };
+
+  const getFullTypeLabel = (type: string) => {
+    switch (type) {
+      case 'gram-positive': return t('GRAM_POSITIVE_BACTERIUM');
+      case 'gram-negative': return t('GRAM_NEGATIVE_BACTERIUM');
+      case 'atypical': return t('ATYPICAL_BACTERIUM');
+      case 'anaerobe': return t('ANAEROBE_BACTERIUM');
+      default: return type;
+    }
+  };
+
   const [selectedMicrobe, setSelectedMicrobe] = useState<Microbe | null>(null);
   const [viewMode, setViewMode] = useState<'cards' | 'matrix'>('matrix');
   const [hoveredCell, setHoveredCell] = useState<{ microbeId: string; abId: string } | null>(null);
   const [clickedCell, setClickedCell] = useState<{ microbe: Microbe; res: MicrobeResistance } | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Filtered microbes list based on search term
+  const filteredMicrobes = useMemo(() => {
+    const term = searchTerm.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (!term) return microbesData;
+    return microbesData.filter(microbe => {
+      const localizedName = tg(microbe.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const typeLabel = getTypeLabel(microbe.type).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return (
+        localizedName.includes(term) ||
+        microbe.id.toLowerCase().includes(term) ||
+        typeLabel.includes(term)
+      );
+    });
+  }, [microbesData, searchTerm, tg]);
 
   // List of antibiotics to show in the matrix
   const matrixAntibiotics = useMemo(() => {
@@ -411,26 +448,6 @@ export default function MicrobiologyView() {
     }
   };
 
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'gram-positive': return t('GRAM_POSITIVE_SHORT');
-      case 'gram-negative': return t('GRAM_NEGATIVE_SHORT');
-      case 'atypical': return t('ATYPICAL_SHORT');
-      case 'anaerobe': return t('ANAEROBE_SHORT');
-      default: return type;
-    }
-  };
-
-  const getFullTypeLabel = (type: string) => {
-    switch (type) {
-      case 'gram-positive': return t('GRAM_POSITIVE_BACTERIUM');
-      case 'gram-negative': return t('GRAM_NEGATIVE_BACTERIUM');
-      case 'atypical': return t('ATYPICAL_BACTERIUM');
-      case 'anaerobe': return t('ANAEROBE_BACTERIUM');
-      default: return type;
-    }
-  };
-
   return (
     <div id="microbiology-view" className="space-y-6">
       {/* View Header */}
@@ -610,21 +627,73 @@ export default function MicrobiologyView() {
           {/* Microbe select list - 4 cols */}
           <div className="lg:col-span-4 space-y-2">
             <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">{t('CHOOSE_PATHOGEN')}</span>
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden divide-y divide-slate-100">
-              {microbesData.map(microbe => (
+            
+            {/* Search Input */}
+            <div className="relative mb-3">
+              <input
+                type="text"
+                placeholder={language === 'hu' ? "Keresés (szótöredékre is)..." : language === 'de' ? "Suchen..." : "Search..."}
+                value={searchTerm}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSearchTerm(val);
+                  // Auto-select first match if current selection is not in the new results
+                  const term = val.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                  const nextFiltered = microbesData.filter(microbe => {
+                    const localizedName = tg(microbe.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const typeLabel = getTypeLabel(microbe.type).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    return localizedName.includes(term) || microbe.id.toLowerCase().includes(term) || typeLabel.includes(term);
+                  });
+                  if (nextFiltered.length > 0) {
+                    const isStillPresent = nextFiltered.some(m => m.id === selectedMicrobe?.id);
+                    if (!isStillPresent) {
+                      setSelectedMicrobe(nextFiltered[0]);
+                    }
+                  } else {
+                    setSelectedMicrobe(null);
+                  }
+                }}
+                className="w-full pl-9 pr-8 py-2 text-sm bg-white border border-slate-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-slate-400 font-medium"
+              />
+              <span className="absolute left-3 top-2.5 text-slate-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+              {searchTerm && (
                 <button
-                  key={microbe.id}
-                  onClick={() => setSelectedMicrobe(microbe)}
-                  className={`w-full text-left p-4 transition-all duration-150 hover:bg-slate-50 block ${
-                    selectedMicrobe?.id === microbe.id ? 'bg-blue-50/50 border-r-4 border-blue-600' : ''
-                  }`}
+                  onClick={() => {
+                    setSearchTerm('');
+                    if (microbesData.length > 0) setSelectedMicrobe(microbesData[0]);
+                  }}
+                  className="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none"
                 >
-                  <h4 className="font-bold text-slate-800 text-sm italic">{tg(microbe.name)}</h4>
-                  <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-bold uppercase mt-1 inline-block">
-                    {getTypeLabel(microbe.type)}
-                  </span>
+                  <X className="w-4 h-4" />
                 </button>
-              ))}
+              )}
+            </div>
+
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden divide-y divide-slate-100 max-h-[500px] overflow-y-auto">
+              {filteredMicrobes.length > 0 ? (
+                filteredMicrobes.map(microbe => (
+                  <button
+                    key={microbe.id}
+                    onClick={() => setSelectedMicrobe(microbe)}
+                    className={`w-full text-left p-4 transition-all duration-150 hover:bg-slate-50 block ${
+                      selectedMicrobe?.id === microbe.id ? 'bg-blue-50/50 border-r-4 border-blue-600' : ''
+                    }`}
+                  >
+                    <h4 className="font-bold text-slate-800 text-sm italic">{tg(microbe.name)}</h4>
+                    <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-bold uppercase mt-1 inline-block">
+                      {getTypeLabel(microbe.type)}
+                    </span>
+                  </button>
+                ))
+              ) : (
+                <div className="p-8 text-center text-slate-400 text-xs">
+                  {language === 'hu' ? 'Nincs találat' : language === 'de' ? 'Keine Ergebnisse' : 'No results found'}
+                </div>
+              )}
             </div>
           </div>
 

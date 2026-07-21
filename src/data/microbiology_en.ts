@@ -486,5 +486,250 @@ export const microbesData: Microbe[] = [
       { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R", mechanismNotes: "Only effective against anaerobes." },
       { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I" }
     ]
+  },
+  {
+    id: "b_pertussis",
+    name: "Bordetella pertussis",
+    type: "atypical",
+    clinicalImportance: "The causative agent of whooping cough (pertussis). Causes severe, paroxysmal coughing fits (with an inspiratory 'whoop'), especially dangerous for infants. Produces toxins (e.g., pertussis toxin, tracheal cytotoxin).",
+    resistanceMechanisms: "No significant acquired resistance to macrolides, but due to its intracellular presence and niche, beta-lactams are clinically ineffective.",
+    firstLineDrugs: ["clarithromycin", "azithromycin"],
+    resistances: [
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "S" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S" },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Clinically ineffective beta-lactam." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "b_burgdorferi",
+    name: "Borrelia burgdorferi",
+    type: "atypical",
+    clinicalImportance: "Causative agent of Lyme disease transmitted by ticks. Characterized by a bull's-eye rash (erythema migrans), later causing neurological (neuroborreliosis), joint (Lyme arthritis), and cardiac complications.",
+    resistanceMechanisms: "Spirochetes have an atypical structure, lacking classic Gram staining. In vitro susceptible to certain beta-lactams (ceftriaxone, amoxicillin) and tetracyclines, but macrolides are less reliable in vivo.",
+    firstLineDrugs: ["doxycycline", "amoxicillin", "ceftriaxone"],
+    resistances: [
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "S", mechanismNotes: "First-line oral treatment." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "First-line intravenous choice for neuroborreliosis or severe complications." },
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "I", mechanismNotes: "Macrolides are less reliable in vivo." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_jejuni",
+    name: "Campylobacter jejuni",
+    type: "gram-negative",
+    clinicalImportance: "One of the most common causes of bacterial gastroenteritis worldwide (zoonosis transmitted via poultry). Causes bloody, mucoid diarrhea, fever, abdominal cramps. Key post-infectious complications include Guillain-Barré syndrome and reactive arthritis.",
+    resistanceMechanisms: "Extremely high resistance to fluoroquinolones (ciprofloxacin) (often >50-70% due to agricultural use) via mutations in the gyrA gene. Macrolides (azithromycin, clarithromycin) represent the first-line therapy.",
+    firstLineDrugs: ["azithromycin", "clarithromycin"],
+    resistances: [
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S", mechanismNotes: "First-line treatment when clinically indicated." },
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R", mechanismNotes: "Extremely high resistance rate due to gyrA mutations." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_perfringens",
+    name: "Clostridium perfringens",
+    type: "anaerobe",
+    clinicalImportance: "Causes gas gangrene (clostridial myonecrosis) and food poisoning. Leads to rapidly progressive wound infections with tissue necrosis and gas production, mediated by alpha-toxin.",
+    resistanceMechanisms: "Remains highly susceptible to penicillin and other beta-lactams. Combined with clindamycin in severe myonecrosis to inhibit toxin synthesis.",
+    firstLineDrugs: ["penicillin_g", "clindamycin", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Excellent efficacy." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanate", susceptibility: "S" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Essential combination partner in gas gangrene to halt toxin production." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Natural anaerobic resistance to aminoglycosides." }
+    ]
+  },
+  {
+    id: "c_botulinum",
+    name: "Clostridium botulinum",
+    type: "anaerobe",
+    clinicalImportance: "Causes botulism. Botulinum toxin (an extremely potent neurotoxin) blocks acetylcholine release at neuromuscular junctions, causing flaccid paralysis, diplopia, and respiratory failure. Most commonly transmitted via poorly sterilized canned foods.",
+    resistanceMechanisms: "Symptoms are caused by preformed toxin, making antitoxin (serum) the cornerstone of therapy, not antibiotics. Penicillin is used in wound botulism to eradicate the vegetative bacteria.",
+    firstLineDrugs: ["penicillin_g", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S" },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_tetani",
+    name: "Clostridium tetani",
+    type: "anaerobe",
+    clinicalImportance: "Causes tetanus (lockjaw). Tetanospasmin toxin blocks the release of inhibitory neurotransmitters (GABA, glycine) in the spinal cord, causing spastic paralysis, lockjaw (trismus), 'risus sardonicus', and opisthotonus. Transmitted via deep, soil-contaminated wounds.",
+    resistanceMechanisms: "Treatment centers on surgical debridement, tetanus immunoglobulin (antitoxin), and supportive care. Metronidazole or penicillin is used to eliminate vegetative cells. Metronidazole is preferred over penicillin because penicillin has weak GABA-antagonist activity.",
+    firstLineDrugs: ["metronidazole", "penicillin_g"],
+    resistances: [
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S", mechanismNotes: "Preferred over penicillin due to penicillin's weak GABA-antagonistic effects." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_difficile",
+    name: "Clostridioides difficile (formerly Clostridium)",
+    type: "anaerobe",
+    clinicalImportance: "Major cause of antibiotic-associated pseudomembranous colitis (especially after use of clindamycin, cephalosporins, or fluoroquinolones). Produces Toxin A and B, causing severe watery diarrhea, fever, and toxic megacolon.",
+    resistanceMechanisms: "Spore-former, highly resistant to standard disinfectants and environmental conditions. Oral vancomycin or fidaxomicin is effective as they are not absorbed from the gut, concentrating locally.",
+    firstLineDrugs: ["vancomycin", "metronidazole"],
+    resistances: [
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "S", mechanismNotes: "ONLY effective when given orally (p.o.) for CDI! Intravenous (i.v.) vancomycin is not excreted into the bowel." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S", mechanismNotes: "Used orally as an alternative for mild or initial cases." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Common precipitating agent (resistant)." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R", mechanismNotes: "Intrinsic cephalosporin resistance." }
+    ]
+  },
+  {
+    id: "f_tularensis",
+    name: "Francisella tularensis",
+    type: "gram-negative",
+    clinicalImportance: "Causative agent of tularemia (rabbit fever). Zoonosis transmitted by rodents/rabbits via ticks, flies, direct contact, or inhalation. Presents as ulceroglandular, pneumonic, or typhoidal forms. Highly infectious (classified as a potential bioweapon).",
+    resistanceMechanisms: "Produces beta-lactamases, rendering penicillins and cephalosporins ineffective. Aminoglycosides (streptomycin, gentamicin), tetracyclines (doxycycline), or quinolones are the preferred agents.",
+    firstLineDrugs: ["gentamicin", "doxycycline", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Drug of choice for severe systemic infections." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "S", mechanismNotes: "Oral alternative for mild cases." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Natural beta-lactamase production." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "h_influenzae",
+    name: "Haemophilus influenzae",
+    type: "gram-negative",
+    clinicalImportance: "Gram-negative coccobacillus causing meningitis, epiglottitis, pneumonia, otitis media, and sinusitis. Encapsulated strains (type b, Hib) are especially invasive in children (less common since vaccine introduction).",
+    resistanceMechanisms: "About 15-30% of strains produce plasmid-encoded TEM-1 or ROB-1 beta-lactamases, causing ampicillin/amoxicillin resistance. Additionally, beta-lactamase-negative ampicillin-resistant (BLNAR) strains exist due to mutations in PBP-3. Second- and third-generation cephalosporins remain highly effective.",
+    firstLineDrugs: ["amoxicillin_clavulanate", "ceftriaxone", "cefuroxime"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Frequently resistant due to beta-lactamase production or BLNAR phenotype." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanate", susceptibility: "S", mechanismNotes: "Beta-lactamase inhibitor successfully restores activity, but less effective against BLNAR." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "First-line drug of choice for meningitis and invasive infections." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "n_meningitidis",
+    name: "Neisseria meningitidis (Meningococcus)",
+    type: "gram-negative",
+    clinicalImportance: "Causes epidemic bacterial meningitis and fulminant sepsis (Waterhouse-Friderichsen syndrome). Key signs include fever, neck stiffness, and petechiae/purpura on the skin. Encapsulated Gram-negative diplococcus.",
+    resistanceMechanisms: "Most strains remain highly susceptible to penicillin and ceftriaxone. Low-level penicillin resistance can occur due to mutations in the penA gene (altered PBP-2).",
+    firstLineDrugs: ["ceftriaxone", "penicillin_g"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "Cornerstone of empiric and targeted treatment for bacterial meningitis." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Remains excellent for susceptible strains in high intravenous doses." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Used as a single oral dose for chemoprophylaxis of close contacts." }
+    ]
+  },
+  {
+    id: "n_gonorrhoeae",
+    name: "Neisseria gonorrhoeae (Gonococcus)",
+    type: "gram-negative",
+    clinicalImportance: "Causative agent of gonorrhea (sexually transmitted infection). Causes urethritis in men (purulent discharge) and cervicitis/PID in women (risk of infertility). Can cause ophthalmia neonatorum in newborns.",
+    resistanceMechanisms: "Marked by extensive multidrug resistance. Plasmid-mediated beta-lactamases have long rendered penicillin obsolete. Fluoroquinolone resistance is also widespread. Ceftriaxone i.m. is the current gold standard, often combined with azithromycin to also cover co-infecting Chlamydia.",
+    firstLineDrugs: ["ceftriaxone", "azithromycin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "First-line treatment as a single i.m. dose (1g or 500mg) per guidelines." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Resistant due to penicillinase production (PPNG)." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R", mechanismNotes: "Chromosomal mutation-mediated resistance is highly prevalent." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S", mechanismNotes: "Recommended combination partner to cover potential Chlamydia co-infection." }
+    ]
+  },
+  {
+    id: "s_enteritidis",
+    name: "Salmonella enteritidis",
+    type: "gram-negative",
+    clinicalImportance: "Most common cause of non-typhoidal salmonellosis (bacterial food poisoning). Causes fever, watery (rarely bloody) diarrhea, vomiting, abdominal cramps, usually after consuming contaminated poultry or eggs. Antibiotic therapy is not indicated in healthy individuals (prolongs shedding) but is required in infants, the elderly, and the immunocompromised to prevent systemic spread.",
+    resistanceMechanisms: "Most strains remain susceptible to ceftriaxone and ciprofloxacin when treatment is required, though fluoroquinolone resistance is on the rise globally.",
+    firstLineDrugs: ["ceftriaxone", "ciprofloxacin", "azithromycin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "Indicated for systemic infections." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "s_typhi",
+    name: "Salmonella Typhi",
+    type: "gram-negative",
+    clinicalImportance: "The causative agent of typhoid fever. Causes a systemic, life-threatening infection with high step-ladder fever, relative bradycardia, rose spots on the abdomen, splenomegaly, and constipation or 'pea-soup' diarrhea. Intestinal perforation is a severe complication.",
+    resistanceMechanisms: "Multidrug-resistant (MDR) strains (resistant to ampicillin, co-trimoxazole, chloramphenicol) are common. Extensively drug-resistant (XDR) strains resistant to fluoroquinolones have emerged in parts of Asia. Ceftriaxone or azithromycin is the treatment of choice.",
+    firstLineDrugs: ["ceftriaxone", "azithromycin", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "First-line intravenous drug of choice." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I", mechanismNotes: "Fluoroquinolone resistance rate is high in endemic regions." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Ineffective against MDR strains." }
+    ]
+  },
+  {
+    id: "m_morganii",
+    name: "Morganella morganii",
+    type: "gram-negative",
+    clinicalImportance: "Opportunistic pathogen causing urinary tract infections, urosepsis, wound infections, and post-operative abdominal infections in hospital settings. Often isolated in catheterized patients.",
+    resistanceMechanisms: "Possesses chromosomally encoded AmpC beta-lactamase, conferring intrinsic resistance to aminopenicillins, 1st, and partly 2nd generation cephalosporins. Intrinsically resistant to colistin and polymyxin B! Carbapenems and cefepime are highly effective.",
+    firstLineDrugs: ["cefepime", "meropenem", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Chromosomal AmpC beta-lactamase production." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanate", susceptibility: "R", mechanismNotes: "Clavulanate does not protect against AmpC degradation." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R" },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "I", mechanismNotes: "Risk of AmpC derepression." },
+      { antibioticId: "cefepime", antibioticName: "Cefepime", susceptibility: "S", mechanismNotes: "Stable against AmpC." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilastatin", susceptibility: "I", mechanismNotes: "According to EUCAST guidelines, members of the Proteae tribe (Morganella, Proteus, Providencia) show reduced susceptibility to imipenem (categorized as I by default)." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "p_jirovecii",
+    name: "Pneumocystis jirovecii (formerly P. carinii)",
+    type: "atypical",
+    clinicalImportance: "An atypical unicellular fungus that causes severe, life-threatening interstitial pneumonia (PCP) in severely immunocompromised patients (especially untreated HIV/AIDS patients, organ transplant recipients, chemotherapy patients). Characterized by progressive dyspnea, dry cough, hypoxia, and bilateral diffuse interstitial infiltrates.",
+    resistanceMechanisms: "As a fungus, all standard antibacterial agents and classic antifungals (such as azoles) are completely ineffective. First-line therapy is high-dose co-trimoxazole (sulfamethoxazole-trimethoprim) which inhibits folic acid synthesis.",
+    firstLineDrugs: ["cotrimoxazole"],
+    resistances: [
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S", mechanismNotes: "High-dose therapy (15-20 mg/kg/day of trimethoprim component) is the absolute first-line standard." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Fungus is naturally resistant to antibacterial agents." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R" },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "s_maltophilia",
+    name: "Stenotrophomonas maltophilia",
+    type: "gram-negative",
+    clinicalImportance: "Nosocomial, opportunistic pathogen causing severe pneumonia (particularly in ventilated patients previously treated with broad-spectrum carbapenems) and sepsis. Capable of biofilm formation on plastic devices.",
+    resistanceMechanisms: "Remarkable high intrinsic resistance to almost all beta-lactams, including all carbapenems! Produces two chromosomal beta-lactamases: L1 (metallo-beta-lactamase, degrades carbapenems) and L2 (cephalosporinase). First-line treatment is co-trimoxazole.",
+    firstLineDrugs: ["cotrimoxazole", "levofloxacin"],
+    resistances: [
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R", mechanismNotes: "Highly and intrinsically resistant to all carbapenems due to the L1 metallo-beta-lactamase! Frequently selected during carbapenem therapy." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanate", susceptibility: "R" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S", mechanismNotes: "Gold-standard first-line drug of choice." },
+      { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Respiratory fluoroquinolones are highly useful alternatives." }
+    ]
   }
 ];

@@ -486,6 +486,251 @@ export const microbesData: Microbe[] = [
       { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R", mechanismNotes: "Csak anaerobokra hatékony." },
       { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I" }
     ]
+  },
+  {
+    id: "b_pertussis",
+    name: "Bordetella pertussis",
+    type: "atypical",
+    clinicalImportance: "A szamárköhögés (pertussis) kórokozója. Súlyos, paroxizmális köhögési rohamokat (húzásos belégzéssel) okoz, különösen veszélyes csecsemőkre. Toxinokat (pl. pertussis toxin, trachealis citotoxin) termel.",
+    resistanceMechanisms: "Nincs jelentős szerzett rezisztenciája a makrolidokkal szemben, de intracelluláris elhelyezkedése miatt a béta-laktámok klinikailag kevéssé hatékonyak.",
+    firstLineDrugs: ["clarithromycin", "azithromycin"],
+    resistances: [
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "S" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S" },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Klinikailag hatástalan béta-laktám." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "b_burgdorferi",
+    name: "Borrelia burgdorferi",
+    type: "atypical",
+    clinicalImportance: "A kullancsok által terjesztett Lyme-kór kórokozója. Jellegzetes tünete a kokárda-szerű bőrkiütés (erythema migrans), később idegrendszeri (neuroborreliosis), ízületi (Lyme-arthritis) és szívizom-szövődményeket okozhat.",
+    resistanceMechanisms: "A spirochéták atípusos szerkezetűek, nincs klasszikus Gram-szerinti festődésük. In vitro érzékenyek bizonyos béta-laktámokra (ceftriaxon, amoxicillin) és tetracyclinekre, de a makrolidok in vivo kevésbé megbízhatóak.",
+    firstLineDrugs: ["doxycycline", "amoxicillin", "ceftriaxone"],
+    resistances: [
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "S", mechanismNotes: "Az elsővonalbeli szájon át adható kezelés." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Neuroborreliosis vagy súlyos szövődmények esetén az elsővonalbeli intravénás választás." },
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "I", mechanismNotes: "Makrolidok in vivo kevésbé megbízhatóak." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_jejuni",
+    name: "Campylobacter jejuni",
+    type: "gram-negative",
+    clinicalImportance: "A bakteriális gastroenteritisek egyik leggyakoribb okozója világszerte (baromfi közvetítette zoonózis). Véres, nyákos hasmenést, lázat, hasi görcsöket okoz. Fontos post-infectiosus szövődménye a Guillain-Barré szindróma és a reaktív arthritis.",
+    resistanceMechanisms: "A fluorokinolonokkal (ciprofloxacin) szembeni rezisztencia rendkívül magas (gyakran >50-70% a mezőgazdasági használat miatt) a gyrA gén mutációja révén. A makrolidok (clarithromycin, azithromycin) jelentik az elsővonalbeli terápiát.",
+    firstLineDrugs: ["azithromycin", "clarithromycin"],
+    resistances: [
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S", mechanismNotes: "Elsővonalbeli kezelés szükség esetén." },
+      { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R", mechanismNotes: "Magyarországon is rendkívül magas rezisztencia-arány (gyrA mutáció)." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_perfringens",
+    name: "Clostridium perfringens",
+    type: "anaerobe",
+    clinicalImportance: "Gázgangréna (clostridialis myonecrosis) és ételmérgezés okozója. Gyorsan progresszív, szövetelhalással és gázképződéssel járó sebfertőzést okoz, melyet alfa-toxin termelése kísér.",
+    resistanceMechanisms: "A penicillinre és más béta-laktámokra kiválóan érzékeny marad. Súlyos myonecrosisban clindamycinnel kombinálják a toxin-szintézis gátlása céljából.",
+    firstLineDrugs: ["penicillin_g", "clindamycin", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Kiváló hatékonyság." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "A toxin termelés gátlására kötelező kombinációs partner gázgangrénában." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Természetes anaerob rezisztencia aminoglikozidokra." }
+    ]
+  },
+  {
+    id: "c_botulinum",
+    name: "Clostridium botulinum",
+    type: "anaerobe",
+    clinicalImportance: "A botulizmus (kolbászmérgezés) okozója. A botulinum toxin (egy rendkívül erős neurotoxin) gátolja az acetilkolin felszabadulását a neuromuscularis synapsisokban, petyhüdt bénulást, kettőslátást, légzésbénulást okozva. Leggyakrabban nem megfelelően sterilizált konzervek közvetítik.",
+    resistanceMechanisms: "A betegség tüneteit a preformált toxin okozza, így a kezelés alapja az antitoxin (savó) adása, nem az antibiotikum. Seb-botulizmusban penicillint használnak a baktériumok elpusztítására.",
+    firstLineDrugs: ["penicillin_g", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S" },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_tetani",
+    name: "Clostridium tetani",
+    type: "anaerobe",
+    clinicalImportance: "A tetanusz (merevgörcs) okozója. A tetanospasmin toxin gátolja a gátló neurotranszmitterek (GABA, glicin) felszabadulását a gerincvelőben, spasticus bénulást, szájzárat (trismus), 'risus sardonicust' és opisthotonust okozva. Mély, földdel szennyezett sebek útján fertőz.",
+    resistanceMechanisms: "A kezelés lényege a sebészi tisztítás, tetanusz immunglobulin (antitoxin) és szupportív terápia. A baktérium elpusztítására metronidazol v. penicillin javasolt. Nincs ismert rezisztencia metronidazolra.",
+    firstLineDrugs: ["metronidazole", "penicillin_g"],
+    resistances: [
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Metronidazol preferált a penicillinhez képest, mert a penicillin gyenge GABA-antagonista hatással bír." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "c_difficile",
+    name: "Clostridioides difficile (korábban Clostridium)",
+    type: "anaerobe",
+    clinicalImportance: "Az antibiotikum-asszociált pseudomembranosus colitis legfőbb okozója (különösen clindamycin, cephalosporinok vagy fluorokinolonok használata után). Toxint (A és B toxin) termel, súlyos vizes hasmenést, lázat és toxicus megacolon-t okozva.",
+    resistanceMechanisms: "Spóraképző, így rendkívül ellenálló a fertőtlenítőszerekkel és a környezeti hatásokkal szemben. A szájon át adott vancomycin vagy fidaxomicin hatásos, mert ezek nem szívódnak fel a bélből és lokálisan koncentrálódnak.",
+    firstLineDrugs: ["vancomycin", "metronidazole"],
+    resistances: [
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "S", mechanismNotes: "KIZÁRÓLAG szájon át (p.o.) adva hatásos CDI-ben! Szisztémásan (i.v.) adva nem választódik ki a bélbe." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Enyhe vagy első esetekben alternatívaként p.o. adható." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Gyakori kiváltó ágens (rezisztens)." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R", mechanismNotes: "Természetes cephalosporin rezisztencia." }
+    ]
+  },
+  {
+    id: "f_tularensis",
+    name: "Francisella tularensis",
+    type: "gram-negative",
+    clinicalImportance: "A tularémia (nyúlpestis) kórokozója. Zoonózis, rágcsálók, nyulak közvetítik kullancsok, legyek útján vagy direkt kontaktussal, belégzéssel. Ulceroglandularis (fekélyes seb és duzzadt nyirokcsomók), pneumoniás és typhoid formái vannak. Rendkívül fertőző (biológiai fegyverként is számontartják).",
+    resistanceMechanisms: "Béta-laktamázokat termel, így az összes penicillin és cephalosporin hatástalan ellene. Elsőként választandók az aminoglikozidok (streptomycin, gentamicin), tetracyclinek (doxycyclin) vagy kinolonok.",
+    firstLineDrugs: ["gentamicin", "doxycycline", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Súlyos szisztémás fertőzésben az elsőként választandó szer." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "S", mechanismNotes: "Enyhe esetekben orális alternatíva." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Természetes béta-laktamáz termelés." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "h_influenzae",
+    name: "Haemophilus influenzae",
+    type: "gram-negative",
+    clinicalImportance: "Meningitist, epiglottitist, pneumoniát, otitis mediát és sinusitist okozó Gram-negatív pálca. Különösen a tokos (b-típus, Hib) törzsek okoznak invazív betegséget gyermekeknél (a vakcina bevezetése óta ritkább).",
+    resistanceMechanisms: "A törzsek kb. 15-30%-a plazmid-kódolt TEM-1 vagy ROB-1 béta-laktamázt termel, ami ampicillin/amoxicillin rezisztenciát okoz. Emellett léteznek béta-laktamáz negatív ampicillin-rezisztens (BLNAR) törzsek is a PBP-3 mutációja miatt. Másod- és harmadgenerációs cephalosporinok jól hatnak.",
+    firstLineDrugs: ["amoxicillin_clavulanate", "ceftriaxone", "cefuroxime"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Béta-laktamáz termelés vagy BLNAR fenotípus miatt gyakran rezisztens." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S", mechanismNotes: "A béta-laktamáz gátló kiválóan kivédi a béta-laktamázokat, de BLNAR ellen kevésbé hatásos." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Meningitis és invazív fertőzés esetén az elsőként választandó szer." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "n_meningitidis",
+    name: "Neisseria meningitidis (Meningococcus)",
+    type: "gram-negative",
+    clinicalImportance: "Járványos agyhártyagyulladás (meningitis purulenta) és fulmináns sepsis (Waterhouse-Friderichsen szindróma) kórokozója. Jellegzetes tünete a láz, tarkómerevség mellett a bőrön megjelenő petechiák/purpurák. Tokos Gram-negatív diplococcus.",
+    resistanceMechanisms: "A legtöbb törzs még mindig nagyon érzékeny a penicillinre és a ceftriaxonra. Alacsony szintű penicillin rezisztencia előfordulhat a penA gén mutációja (módosult PBP-2) miatt.",
+    firstLineDrugs: ["ceftriaxone", "penicillin_g"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "A bakteriális meningitis empirikus és célzott kezelésének alapköve." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Magas dózisban i.v. érzékeny törzsekre továbbra is kiváló." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Egyetlen 500 mg-os orális adag ciprofloxacin a kontakt személyek kemoprofilaxisára alkalmas." }
+    ]
+  },
+  {
+    id: "n_gonorrhoeae",
+    name: "Neisseria gonorrhoeae (Gonococcus)",
+    type: "gram-negative",
+    clinicalImportance: "A gonorrhoea (kankó, tripper) nevű nemi betegség okozója. Férfiakban urethritist (bőséges sárgás folyás), nőkben cervicitist, kismedencei gyulladást (PID, meddőség) okoz. Újszülöttekben ophthalmia neonatorumot (vakságot) idézhet elő.",
+    resistanceMechanisms: "Kiemelkedő multirezisztencia jellemzi. Plazmid-mediált béta-laktázok miatt a penicillin már régen hatástalan. A fluorokinolon-rezisztencia is elterjedt. Jelenleg a Ceftriaxon i.m. az elsővonalbeli kezelés, gyakran Azithromycinnel kombinálva az atípusos kísérőfertőzések (Chlamydia) lefedésére.",
+    firstLineDrugs: ["ceftriaxone", "azithromycin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Az EUCAST ajánlása szerint az elsővonalbeli kezelés 1x 1g vagy 500 mg i.m. egyszeri adagban." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "PPNG (penicillinase-producing N. gonorrhoeae) miatt rezisztens." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R", mechanismNotes: "Gyakori a kromoszómális mutáció miatti rezisztencia." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S", mechanismNotes: "Kombinációs partnerként javasolt a kísérő Chlamydia fertőzések lefedésére." }
+    ]
+  },
+  {
+    id: "s_enteritidis",
+    name: "Salmonella enteritidis",
+    type: "gram-negative",
+    clinicalImportance: "A salmonellosis (bakteriális ételmérgezés) leggyakoribb okozója. Lázat, vizes (ritkán véres) hasmenést, hányást, hasi fájdalmat okoz, általában fertőzött tojás vagy baromfihús fogyasztása után. Egészségesekben antibiotikus kezelést nem igényel (nyújtja a hordozást), de csecsemőkben, idősekben és immunszupprimáltakban szisztémás fertőzést/sepsist okozhat.",
+    resistanceMechanisms: "A legtöbb törzs jól reagál ceftriaxonra vagy ciprofloxacinra szisztémás fertőzés esetén, de a fluorokinolon rezisztencia világszerte emelkedik.",
+    firstLineDrugs: ["ceftriaxone", "ciprofloxacin", "azithromycin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Szisztémás fertőzések esetén választandó." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "s_typhi",
+    name: "Salmonella Typhi",
+    type: "gram-negative",
+    clinicalImportance: "A hastífusz (typhus abdominalis) kórokozója. Szisztémás, életveszélyes fertőzést okoz magas, lépcsőzetesen emelkedő lázzal, bradycardiával, rózsahimlővel (roseola) a hason, splenomegaliával, leukopeniával és székrekedéssel vagy borsópüré-szerű hasmenéssel. Súlyos szövődménye a bélperforáció.",
+    resistanceMechanisms: "Gyakoriak a multirezisztens (MDR) törzsek, amelyek rezisztensek ampicillinre, trimetoprim-szulfametoxazolra és kloramfenikolra. Egyes területeken (pl. Pakisztán) kiterjedten rezisztens (XDR) törzsek is megjelentek. A ceftriaxon vagy azithromycin az elsővonalbeli szer.",
+    firstLineDrugs: ["ceftriaxone", "azithromycin", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Szisztémás fertőzés elsővonalbeli i.v. kezelése." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "S" },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I", mechanismNotes: "Endémiás területeken magas a fluorokinolon rezisztencia aránya." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "MDR törzseknél hatástalan." }
+    ]
+  },
+  {
+    id: "m_morganii",
+    name: "Morganella morganii",
+    type: "gram-negative",
+    clinicalImportance: "Húgyúti fertőzések, urosepsis, sebfertőzések és postoperatív hasi fertőzések opportunista kórokozója kórházi környezetben. Gyakran érintett katéterezett betegekben.",
+    resistanceMechanisms: "Kromoszómálisan kódolt AmpC béta-laktamázzal rendelkezik, ezért természetes módon rezisztens az aminopenicillinekre, az 1. és részben a 2. generációs cephalosporinokra. Intrinsic (természetes) módon rezisztens colistinre és polymyxin B-re is! Carbapenemek és cefepim hatásosak.",
+    firstLineDrugs: ["cefepime", "meropenem", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Kromoszómális AmpC béta-laktamáz miatt." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "R", mechanismNotes: "A klavulánsav nem védi meg az AmpC lebontástól." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R" },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "I", mechanismNotes: "AmpC derepresszió veszélye áll fenn." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "Stabil az AmpC-vel szemben." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilasztatin", susceptibility: "I", mechanismNotes: "Az EUCAST irányelvek alapján a Proteae tribus tagjai (Morganella, Proteus, Providencia) csökkent érzékenységet mutatnak imipenemre (alapértelmezetten I kategória)." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S" }
+    ]
+  },
+  {
+    id: "p_jirovecii",
+    name: "Pneumocystis jirovecii (korábban P. carinii)",
+    type: "atypical",
+    clinicalImportance: "Egy atípusos unicelluláris gomba, amely súlyos, életveszélyes interstitialis tüdőgyulladást (PCP - Pneumocystis pneumonia) okoz súlyosan immunszupprimáltakban (különösen kezeletlen HIV/AIDS betegekben, szervtranszplantáltakban, kemoterápiában részesülőkben). Jellegzetes tünete a progresszív nehézlégzés, száraz köhögés, hipoxia és a kétoldali finom interstitialis infiltrátum a röntgenen.",
+    resistanceMechanisms: "Mivel gomba, az összes hagyományos antibakteriális szer és a klasszikus gombaellenes szerek (pl. azolok) is teljesen hatástalanok ellene. Az elsővonalbeli kezelése a folsavszintézist gátló nagy dózisú Co-trimoxazol (szulfametoxazol-trimetoprim).",
+    firstLineDrugs: ["cotrimoxazole"],
+    resistances: [
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Nagy dózisban (15-20 mg/ttkg/nap trimetoprim komponensre számolva) az abszolút elsővonalbeli kezelés." },
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Gomba ellen hatástalan." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R" },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R" }
+    ]
+  },
+  {
+    id: "s_maltophilia",
+    name: "Stenotrophomonas maltophilia",
+    type: "gram-negative",
+    clinicalImportance: "Kórházi, opportunista kórokozó, amely súlyos pneumoniát (különösen lélegeztetett, korábban széles spektrumú carbapenem kezelésben részesült betegekben) és sepsist okoz. Képes műanyag felszíneken biofilmet képezni.",
+    resistanceMechanisms: "Rendkívül magas belső (intrinsic) rezisztencia jellemzi szinte az összes béta-laktámmal, köztük az összes carbapenemmel szemben! Két kromoszómális béta-laktamázzal rendelkezik: L1 (metallo-béta-laktamáz, lebontja a carbapenemeket) és L2 (cephalosporináz). Az elsővonalbeli kezelés a Co-trimoxazol.",
+    firstLineDrugs: ["cotrimoxazole", "levofloxacin"],
+    resistances: [
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R", mechanismNotes: "Kifejezetten és belsőleg rezisztens minden carbapenemre az L1 metallo-béta-laktamáz miatt! Carbapenem kezelés alatt szelektálódik." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "R" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Az elsőként választandó arany standard kezelés." },
+      { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Légúti kinolonok alternatívaként használhatók." }
+    ]
   }
 ];
 

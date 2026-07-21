@@ -1197,6 +1197,44 @@ export const antibioticsData_DE: any[] = [
     notes: "Ähnlich wie Nafcillin und Cloxacillin. Oxacillin-Empfindlichkeit wird in MRSA-Resistenzstudien getestet."
   },
   {
+    id: "temocillin",
+    name: "Temocillin",
+    abbreviation: "TEM",
+    brandNames: "Negaban",
+    group: "Beta-Laktamase-stabile Penicilline (Gram-negatives Spektrum)",
+    halfLife: "4,5 - 5 Stunden (bei Niereninsuffizienz deutlich verlängert)",
+    pae: "Moderat bei gramnegativen Erregern (z. B. Enterobacteriaceae, ca. 1-2 Stunden)",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "4 g i.v. täglich (z. B. 2x 2 g oder als kontinuierliche Infusion); bei schweren Infektionen 6 g täglich (3x 2 g)",
+      pediatric: "100-150 mg/kg/Tag i.v., aufgeteilt in 2-3 Einzeldosen",
+      renalAdjustment: "GFR 30-60 ml/min: 2 g einmal täglich; GFR 10-30 ml/min: 1 g einmal täglich; GFR < 10 ml/min: 1 g alle 48 Stunden"
+    },
+    mechanismOfAction: "Bakterizid. Hemmt die bakterielle Zellwandsynthese durch selektive Bindung an Penicillin-Bindeproteine (hauptsächlich PBP-3). Die 6-Alpha-Methoxy-Gruppe schützt den Wirkstoff vor der Hydrolyse durch die meisten Beta-Laktamasen, was ihn außergewöhnlich stabil gegenüber ESBL (Extended-Spectrum Beta-Laktamase) und AmpC-Enzymen macht. Er ist auch resistent gegen klassische Penicillinasen, wird jedoch von Carbapenemasen (KPC, Metallo-Beta-Laktamasen) abgebaut.",
+    sideEffects: [
+      "Überempfindlichkeitsreaktionen (Hautausschlag, Anaphylaxie)",
+      "Lokale Reaktionen (Phlebitis an der Infusionsstelle)",
+      "Gastrointestinale Beschwerden (Durchfall, Übelkeit)",
+      "Neurotoxizität bei hohen Dosen (Krampfanfälle, insbesondere bei Niereninsuffizienz)",
+      "Natriumüberladung (jedes Gramm Temocillin enthält ca. 4,5 mmol Natrium!)"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Unwirksam gegen grampositive Bakterien, Anaerobier, Pseudomonas aeruginosa und Acinetobacter spp. Wird selektiv zur Behandlung von Beta-Laktamase-produzierenden (ESBL, AmpC) Enterobacteriaceae im Rahmen einer Carbapenem-sparenden Strategie eingesetzt."
+    },
+    indications: [
+      "Komplizierte Harnwegsinfektionen (cUTI, Pyelonephritis)",
+      "Harnwegsbedingte Sepsis (Urosepsis)",
+      "Untere Atemwegsinfektionen (wenn nachweislich durch gramnegative Erreger verursacht)",
+      "Haut- und Weichteilinfektionen, Wundinfektionen (bei Vorliegen gramnegativer Erreger)"
+    ],
+    notes: "Eine hervorragende 'Carbapenem-sparende' Alternative bei schweren systemischen Infektionen durch ESBL- und AmpC-produzierende Enterobacteriaceae, sofern Pseudomonas aeruginosa ausgeschlossen ist."
+  },
+  {
     id: "pivmecillinam",
     name: "Pivmecillinam",
     abbreviation: "PIV",
@@ -2088,5 +2126,360 @@ export const antibioticsData_DE: any[] = [
       "Komplizierte Harnwegsinfektionen und Urosepsis durch multiresistente gramnegative Erreger (z. B. NDM-bildende Klebsiella oder Pseudomonas)"
     ],
     notes: "Einer der größten Durchbrüche der modernen klinischen Medizin in der Behandlung multiresistenter gramnegativer Infektionen; das einzige Beta-Laktam, das zuverlässig gegen 'Superbakterien' mit Metallo-Beta-Laktamasen (z. B. NDM-1) wirkt."
+  },
+  {
+    id: "plazomicin",
+    name: "Plazomicin",
+    abbreviation: "PLZ",
+    brandNames: "Zemdri",
+    group: "Aminoglykoside (Neue Generation)",
+    halfLife: "4 Stunden (bei Niereninsuffizienz deutlich verlängert)",
+    pae: "Ausgeprägt bei Gram-negativen Erregern (2-4 Stunden)",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "15 mg/kg einmal täglich als i.v. Infusion (über 30 Minuten)",
+      pediatric: "Sicherheit und Wirksamkeit bei Kindern sind noch nicht vollständig etabliert",
+      renalAdjustment: "ClCr 60-90 ml/min: 10 mg/kg q24h; ClCr 30-60 ml/min: 10 mg/kg q24h-q48h; ClCr 15-30 ml/min: 10 mg/kg q48h. Dosisanpassung und TDM werden dringend empfohlen."
+    },
+    mechanismOfAction: "Bakterizid. Ein Aminoglykosid der nächsten Generation (abgeleitet von Sisomicin). Bindet an die bakterielle 30S-Ribosomenuntereinheit, was die Proteinsynthese hemmt und die Fehlerrate bei der Translation erhöht. Speziell entwickelt, um den meisten Aminoglykosid-modifizierenden Enzymen (AME) zu widerstehen, wodurch es auch gegen viele MDR-Gram-negative Stämme wirksam ist, die gegen andere Aminoglykoside resistent sind.",
+    sideEffects: [
+      "Nephrotoxizität (Nierenschädigung)",
+      "Ototoxizität (cochleär und vestibulär, potenziell irreversibel)",
+      "Neuromuskuläre Blockade (kann Atemdepression verursachen)",
+      "Überempfindlichkeitsreaktionen"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 1,
+      other: "Speziell gegen multiresistente Enterobacteriaceae (CRE, ESBL-Bildner) entwickelt. Weniger wirksam gegen Pseudomonas als Amikacin."
+    },
+    indications: [
+      "Komplizierte Harnwegsinfektionen und Pyelonephritis durch multiresistente Erreger",
+      "Alternative Behandlung für systemische Infektionen mit Carbapenem-resistenten Enterobacteriaceae (CRE) (meist in Kombination)"
+    ],
+    notes: "Erfordert ein strenges therapeutisches Drug Monitoring (TDM), insbesondere bei eingeschränkter Nierenfunktion. Das Risiko von Oto- und Nephrotoxizität ist geringer als bei älteren Aminoglykosiden, aber immer noch vorhanden."
+  },
+  {
+    id: "tobramycin",
+    name: "Tobramycin",
+    abbreviation: "TOB",
+    brandNames: "Bramitob, Tobi, Tobradex, Brulamycin",
+    group: "Aminoglykoside",
+    halfLife: "2 - 2,5 Stunden (kann sich bei Niereninsuffizienz auf 50-100 Stunden verlängern)",
+    pae: "Ausgeprägt bei Gram-negativen Erregern (1,5-3 Stunden), postbiotischer Sub-MHK-Effekt",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "Einmal tägliche Dosierung: 5-7 mg/kg i.v. Infusion; herkömmliche Dosierung: 3x 1-1,7 mg/kg i.v. oder i.m.",
+      pediatric: "6-7,5 mg/kg täglich i.v. aufgeteilt in 3 gleiche Dosen, oder individuell bei Neugeborenen basierend auf Gewicht/Alter",
+      renalAdjustment: "Strenge Dosisanpassung erforderlich. Bei einmal täglicher Dosierung wird eine Verlängerung des Dosierungsintervalls (z. B. alle 36 oder 48 Stunden) basierend auf TDM empfohlen."
+    },
+    mechanismOfAction: "Schnell bakterizid. Gelangt über aktiven Transport (sauerstoffabhängiger Prozess) in bakterielle Zellen und bindet irreversibel an die 30S-Ribosomenuntereinheit. Hemmt die Proteinsynthese und stört die Integrität der Zellmembran.",
+    sideEffects: [
+      "Nierenschädigung (Nephrotoxizität - meist reversibel)",
+      "Gehörschädigung (Ototoxizität: cochleär und vestibulär, oft irreversibel)",
+      "Neuromuskuläre Blockade (kontraindiziert bei Myasthenia gravis!)",
+      "Elektrolytstörungen (Hypomagnesiämie, Hypokaliämie)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Weist in Kombination mit Beta-Laktamen eine starke synergistische Aktivität gegen Pseudomonas aeruginosa auf. Wird auch als Inhalationstherapie bei chronischen Pseudomonas-Infektionen (z. B. bei Mukoviszidose) eingesetzt."
+    },
+    indications: [
+      "Schwere Pseudomonas aeruginosa-Infektionen (Sepsis, Pneumonie, Endokarditis) in Kombination",
+      "Chronische Pseudomonas-Lungeninfektion bei Mukoviszidose-Patienten (Inhalationsform)",
+      "Komplizierte Harnwegs- und intraabdominelle Infektionen als Teil eines Kombinationsregimes"
+    ],
+    notes: "Ein strenges therapeutisches Drug Monitoring (TDM: Talspiegel < 1-2 mg/l, Spitzenkonzentration 20-30 mg/l bei einmal täglicher Dosierung) ist unerlässlich."
+  },
+  {
+    id: "minocycline",
+    name: "Minocyclin",
+    abbreviation: "MIN",
+    brandNames: "Minocin, Skid",
+    group: "Tetracycline",
+    halfLife: "11 - 22 Stunden (lang)",
+    pae: "Ausgeprägter bakteriostatischer PAE (1-3 Stunden)",
+    effectType: "bakteriostatisch",
+    dosage: {
+      adult: "Anfangsdosis: 200 mg p.o. oder i.v., gefolgt von 100 mg zweimal täglich",
+      pediatric: "Streng kontraindiziert unter 8 Jahren! Über 8 Jahre: Sättigung 4 mg/kg, gefolgt von 2 mg/kg zweimal täglich",
+      renalAdjustment: "Bei leichter bis mittelschwerer Niereninsuffizienz ist keine routinemäßige Dosisanpassung erforderlich, bei Niereninsuffizienz wird jedoch aufgrund der antianabolen Wirkung von Tetracyclinen erhöhte Vorsicht empfohlen."
+    },
+    mechanismOfAction: "Bakteriostatischer Proteinsynthesehemmer. Bindet an die BN-S-Ribosomenuntereinheit und blockiert den Zugang von Aminoacyl-tRNA zum mRNA-Ribosomen-Komplex. Hochgradig lipophil, bietet eine hervorragende Gewebepenetration und überwindet die Blut-Hirn-Schranke.",
+    sideEffects: [
+      "Zahnverfärbungen bei Kindern (kontraindiziert in der Schwangerschaft und unter 8 Jahren)",
+      "Vestibuläre Nebenwirkungen (Schwindel, Vertigo, Ataxie - tritt aufgrund der Lipophilie häufiger auf als bei anderen Tetracyclinen)",
+      "Hyperpigmentierung (graublaue Verfärbung von Haut, Nägeln, Zahnfleisch bei längerem Gebrauch)",
+      "Lupus-ähnliches Syndrom und Autoimmunhepatitis (bei chronischer Anwendung)",
+      "Lichtempfindlichkeit (Fotosensibilisierung)"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Hervorragende Aktivität gegen Stenotrophomonas maltophilia und Acinetobacter baumannii. Gute orale Option für MRSA (Methicillin-resistenter S. aureus)."
+    },
+    indications: [
+      "Schwere Formen der Acne vulgaris",
+      "Stenotrophomonas maltophilia- und Acinetobacter baumannii-Infektionen (meist in Kombination)",
+      "Haut- und Weichteilinfektionen durch MRSA (als orale Erhaltungstherapie)",
+      "Alternatives Arzneimittel bei atypischen Infektionen (Lyme-Borreliose, Chlamydien, Rickettsiosen)"
+    ],
+    notes: "Aufgrund der hohen Gewebepenetration und Fettlöslichkeit erreicht es hohe Konzentrationen im Zentralnervensystem, im Speichel und in den Tränendrüsen."
+  },
+  {
+    id: "dalbavancin",
+    name: "Dalbavancin",
+    abbreviation: "DAL",
+    brandNames: "Xydalba",
+    group: "Glycopeptide und Lipoglycopeptide",
+    halfLife: "Ca. 340 Stunden (extrem lang, ca. 14 Tage!)",
+    pae: "Extrem verlängert bei Gram-positiven Erregern",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "Einzeldosis: 1500 mg als i.v. Infusion (über 30 Minuten) oder ein Zwei-Dosen-Regime: 1000 mg an Tag 1, gefolgt von 500 mg an Tag 8",
+      pediatric: "Sicherheit und Dosierung bei Kindern sind noch nicht vollständig etabliert",
+      renalAdjustment: "Schwere Niereninsuffizienz (GFR < 30 ml/min, keine Dialyse): Einzeldosis 1125 mg oder Zwei-Dosen-Regime mit 750 mg an Tag 1 und 375 mg an Tag 8. Keine Anpassung bei Dialyse erforderlich."
+    },
+    mechanismOfAction: "Bakterizides Lipoglycopeptid der zweiten Generation. Hemmt die Zellwandsynthese durch Bindung an den D-Ala-D-Ala-Terminus des Peptidoglycans, wodurch Transpeptidierung und Transglykosylierung verhindert werden. Seine lipophile Seitenkette verankert das Medikament in der Zellmembran, was seine Wirksamkeit vervielfacht und eine extrem lange Halbwertszeit ermöglicht.",
+    sideEffects: [
+      "Kopfschmerzen, Schwindel",
+      "Übelkeit, Durchfall",
+      "Infusionsreaktionen (Rötung, Pruritus - muss langsam infundiert werden)",
+      "Moderater, vorübergehender Anstieg der Leberenzyme"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Ausschließlich gegen grampositive Bakterien wirksam, einschließlich MRSA und glycopeptid-intermediärer Stämme. Unwirksam gegen VanA-Typ-VRE!"
+    },
+    indications: [
+      "Akute bakterielle Haut- und Weichteilinfektionen (ABSSSI) durch grampositive Erreger (einschließlich MRSA)",
+      "Hervorragend geeignet für die ambulante parenterale Antibiotikatherapie (APAT), wodurch ein längerer Krankenhausaufenthalt vermieden wird"
+    ],
+    notes: "Die extrem lange Halbwertszeit ermöglicht es, mit einer einzigen Infusion eine komplette 10- bis 14-tägige herkömmliche i.v.-Behandlung zu ersetzen."
+  },
+  {
+    id: "oritavancin",
+    name: "Oritavancin",
+    abbreviation: "ORI",
+    brandNames: "Tenactiv, Orbactiv",
+    group: "Glycopeptide und Lipoglycopeptide",
+    halfLife: "Ca. 250 - 350 Stunden",
+    pae: "Extrem verlängertiger postbiotischer Effekt bei Gram-positiven Erregern",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "Einzelne i.v. Infusion von 1200 mg (über 3 Stunden verabreicht)",
+      pediatric: "Sicherheit und Wirksamkeit bei Kindern sind nicht etabliert",
+      renalAdjustment: "Bei leichter oder mittelschwerer Niereninsuffizienz ist keine Dosisanpassung erforderlich. Bei schwerer Niereninsuffizienz ist Vorsicht geboten (begrenzte Daten)."
+    },
+    mechanismOfAction: "Schnell bakterizides Lipoglycopeptid. Dreifacher Wirkmechanismus: (1) hemmt die Transglykosylierung durch Bindung an den D-Ala-D-Ala-Terminus des Peptidoglycans; (2) hemmt die Transpeptidierung durch Bindung an die hydrophoben Brücken der Zellwand; (3) stört die bakterielle Membranintegrität, was zu Depolarisation und schneller Zelllyse führt. Wirksam gegen VanA VRE!",
+    sideEffects: [
+      "Erhöhtes Risiko für Osteomyelitis (in klinischen Studien beobachtet)",
+      "Übelkeit, Durchfall, Kopfschmerzen",
+      "Infusionsassoziierte Reaktionen (Pruritus, Rötung)",
+      "Verlängert künstlich bestimmte Gerinnungstests (aPTT, PT), ohne echte Blutungen zu verursachen!"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Eines der breitesten grampositiven Spektren: wirksam gegen MRSA, VRSA und VRE (VanA- und VanB-Stämme)."
+    },
+    indications: [
+      "Akute bakterielle Haut- und Weichteilinfektionen (ABSSSI) durch schwer zu behandelnde grampositive Erreger",
+      "Einmalige ambulante Dosis, wodurch die Notwendigkeit eines Krankenhausaufenthalts minimiert wird"
+    ],
+    notes: "Streng kontraindiziert bei gleichzeitiger oder innerhalb von 120 Stunden (5 Tagen) erfolgter Anwendung von intravenösem unfraktioniertem Heparin, da es die aPTT-Testergebnisse künstlich verlängert!"
+  },
+  {
+    id: "telavancin",
+    name: "Telavancin",
+    abbreviation: "TLV",
+    brandNames: "Vibativ",
+    group: "Glycopeptide und Lipoglycopeptide",
+    halfLife: "Ca. 8 Stunden",
+    pae: "Ausgeprägt bei Gram-positiven Erregern (1-3 Stunden)",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "10 mg/kg i.v. einmal täglich, infundiert über 60 Minuten",
+      pediatric: "Sicherheit und Dosierung bei Kindern sind nicht etabliert",
+      renalAdjustment: "GFR 30-50 ml/min: 7,5 mg/kg q24h; GFR 10-30 ml/min: 10 mg/kg q48h; GFR < 10 ml/min: nicht empfohlen."
+    },
+    mechanismOfAction: "Schnell bakterizides Lipoglycopeptid. Dualer Wirkmechanismus: (1) hemmt die Peptidoglycan-Zellwandsynthese durch Bindung an D-Ala-D-Ala; (2) depolarisiert die Bakterienmembran über seine lipophile Seitenkette, wodurch die Membranbarrierefunktion zerstört wird.",
+    sideEffects: [
+      "Nephrotoxicity (häufiger und schwerer als bei Vancomycin)",
+      "Geschmacksstörungen (metallischer Geschmack im Mund)",
+      "Übelkeit, Erbrechen, Durchfall",
+      "QT-Intervall-Verlängerung (Arrhytmierisiko)",
+      "Red Man Syndrome bei zu schneller Infusion"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Hauptsächlich bei grampositiven Infektionen einschließlich MRSA und VISA (intermediären) Stämmen."
+    },
+    indications: [
+      "Nosokomiale Pneumonie (HAP/VAP), von der bekannt ist oder vermutet wird, dass sie durch MRSA verursacht wird, wenn andere Optionen ungeeignet sind",
+      "Komplizierte Haut- und Weichteilinfektionen"
+    ],
+    notes: "Aufgrund der erhöhten Nephrotoxizität sollte es nur angewendet werden, wenn keine andere Alternative verfügbar ist. Kontraindiziert während der Schwangerschaft (teratogenes Risiko in Tierstudien)."
+  },
+  {
+    id: "doripenem",
+    name: "Doripenem",
+    abbreviation: "DOR",
+    brandNames: "Doribax",
+    group: "Carbapeneme",
+    halfLife: "Ca. 1 Stunde",
+    pae: "Mäßiger postbiotischer Effekt bei Gram-negativen Erregern (insbesondere Pseudomonas)",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "500 mg i.v. alle 8 Stunden, üblicherweise als 1-stündige oder 4-stündige verlängerte Infusion verabreicht",
+      pediatric: "Sicherheit und Wirksamkeit bei Kindern sind nicht etabliert",
+      renalAdjustment: "GFR 30-50 ml/min: 250 mg q8h; GFR 10-30 ml/min: 250 mg q12h; GFR < 10 ml/min (unter Dialyse): 250 mg q24h (nach der Dialyse)."
+    },
+    mechanismOfAction: "Bakterizides Beta-Laktam (Carbapenem). Bindet an Penicillin-Bindeproteine (PBP-2, PBP-3, PBP-4) und verhindert die Zellwandsynthese. Hochgradig stabil gegen die meisten Beta-Laktamasen (ESBL, AmpC) außer Carbapenemasen. Weist eine überlegene In-vitro-Aktivität gegen Pseudomonas aeruginosa im Vergleich zu Imipenem oder Meropenem auf, mit langsamerer Resistenzentwicklung.",
+    sideEffects: [
+      "Übelkeit, Durchfall, Kopfschmerzen",
+      "Phlebitis an der Infusionsstelle",
+      "Überempfindlichkeitsreaktionen (Hautausschlag, selten Anaphylaxie)",
+      "Krampfanfallrisiko (deutlich geringer als bei Imipenem!)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Ähnlich wie Meropenem, zeigt jedoch eine hervorragende Stabilität und Wirksamkeit bei Pseudomonas aeruginosa-Infektionen."
+    },
+    indications: [
+      "Nosokomiale Pneumonie (HAP/VAP)",
+      "Komplizierte intraabdominelle Infektionen",
+      "Komplizierte Harnwegsinfektionen und Pyelonephritis"
+    ],
+    notes: "Für Pseudomonas aeruginosa wird die Technik der 4-stündigen verlängerten Infusion empfohlen, um die pharmakodynamischen Ziele (T > MHK) zu optimieren."
+  },
+  {
+    id: "omadacycline",
+    name: "Omadacyclin",
+    abbreviation: "OMC",
+    brandNames: "Nuzyra",
+    group: "Aminomethylcycline (Tetracyclinderivat der neuen Generation)",
+    halfLife: "Ca. 16 - 17 Stunden",
+    pae: "Ausgeprägter postbiotischer Effekt",
+    effectType: "bakteriostatisch",
+    dosage: {
+      adult: "Pneumonie: Tag 1 Sättigung 2x 100 mg i.v., dann qd 1x 100 mg i.v. oder qd 1x 300 mg p.o. Hautinfektionen: Sättigung 2x 100 mg i.v. oder 2x 450 mg p.o. (Tag 1 & 2), dann qd 1x 100 mg i.v. oder qd 1x 300 mg p.o.",
+      pediatric: "Streng kontraindiziert unter 8 Jahren!",
+      renalAdjustment: "Bei Niereninsuffizienz ist keine Dosisanpassung erforderlich."
+    },
+    mechanismOfAction: "Bakteriostatisch. Modernes Aminomethylcyclin (Tetracyclin-Klasse). Bindet an die bakterielle 30S-Ribosomenuntereinheit, um die Proteinsynthese zu hemmen. Entwickelt, um die beiden Hauptmechanismen der Tetracyclinresistenz (Effluxpumpen und Ribosomenschutzproteine) zu überwinden.",
+    sideEffects: [
+      "Übelkeit, Erbrechen (relativ häufig bei oraler Verabreichung)",
+      "Zahnverfärbungen bei Kindern (kontraindiziert unter 8 Jahren und während der Schwangerschaft)",
+      "Erhöhung der Leberenzyme",
+      "Infusionsstellenreaktionen"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Breitspektrum-Wirkstoff, der gegen resistente Gram-positive (MRSA, Penicillin-resistente S. pneumoniae, VRE) und atypische Erreger wirksam ist."
+    },
+    indications: [
+      "Ambulant erworbene Pneumonie (CAP)",
+      "Akute bakterielle Haut- und Weichteilinfektionen (ABSSSI)"
+    ],
+    notes: "Bietet aufgrund seiner oralen Formulierung eine hervorragende Option für eine i.v.-zu-p.o.-Umstellungstherapie (Switch-Therapie)."
+  },
+  {
+    id: "sarecycline",
+    name: "Sarecyclin",
+    abbreviation: "SAR",
+    brandNames: "Seysara",
+    group: "Tetracycline",
+    halfLife: "Ca. 21 - 22 Stunden",
+    pae: "Mäßiger postbiotischer Effekt",
+    effectType: "bakteriostatisch",
+    dosage: {
+      adult: "Basierend auf dem Körpergewicht: 33-54 kg: 60 mg p.o. qd; 55-84 kg: 100 mg p.o. qd; 85-136 kg: 150 mg p.o. qd",
+      pediatric: "Nicht empfohlen unter 9 Jahren (Risiko von Zahnverfärbungen)",
+      renalAdjustment: "Keine Dosisanpassung erforderlich."
+    },
+    mechanismOfAction: "Bakteriostatisch. Ein neuartiges, schmalspektriges Tetracyclinderivat. Bindet an das bakterielle 30S-Ribosom, um die Proteinsynthese zu hemmen. Aufgrund seiner spezifischen chemischen Struktur weist es eine deutlich geringere Aktivität gegen gramnegative Darmflora auf, wodurch Dysbiose reduziert wird.",
+    sideEffects: [
+      "Übelkeit, Kopfschmerzen",
+      "Theoretisches Risiko von Zahnverfärbungen (während der Zahnentwicklung)",
+      "Leichte Lichtempfindlichkeit (weniger häufig als bei anderen Tetracyclinen)",
+      "Vulvovaginale Candidose"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 0,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Ein hochgradig schmalspektriges Antibiotikum, das speziell gegen Cutibacterium acnes entwickelt wurde und die normale Darmflora schont."
+    },
+    indications: [
+      "Behandlung von mittelschwerer bis schwerer Acne vulgaris mit entzündlichen Läsionen bei Erwachsenen und Kindern über 9 Jahren"
+    ],
+    notes: "Das erste von der FDA zugelassene Tetracyclinderivat, das speziell für die gezielte Schmalspektrum-Behandlung von Akne entwickelt wurde."
+  },
+  {
+    id: "colistin",
+    name: "Colistin (Colistimethat-Natrium)",
+    abbreviation: "CST",
+    brandNames: "Colomycin, Tadim",
+    group: "Polymyxine",
+    halfLife: "3 - 5 Stunden (bei Niereninsuffizienz extrem verlängert)",
+    pae: "Mäßiger postbiotischer Effekt bei Gram-negativen Erregern",
+    effectType: "bakterizid",
+    dosage: {
+      adult: "Intravenös: Sättigungsdosis von 9 Mio. IE i.v., dann Erhaltung: 2x 4,5 Mio. IE i.v. täglich (angepasst an die Nierenfunktion). Inhalation: 2-3x 1-2 Mio. IE täglich.",
+      pediatric: "75.000 - 150.000 IE/kg täglich i.v. aufgeteilt in 3 Einzeldosen (max. 150.000 IE/kg täglich in schweren Fällen)",
+      renalAdjustment: "Strenge Dosierungsanpassung erforderlich! GFR 30-50 ml/min: 5,5 - 7,5 Mio. IE/Tag; GFR 10-30 ml/min: 4,5 - 5,5 Mio. IE/Tag; GFR < 10 ml/min: 2,25 - 4,5 Mio. IE/Tag. Zusätzliche Dosierung während der Dialyse erforderlich."
+    },
+    mechanismOfAction: "Schnell bakterizid. Wirkt als kationisches Tensid: Bindet an Lipopolysaccharide (LPS) und Phospholipide in der äußeren Membran gramnegativer Bakterien und verdrängt Calcium- und Magnesiumionen. Dies stört die Integrität der äußeren und inneren Membran, was zum Austritt von Zellinhalt und zum Zelltod führt.",
+    sideEffects: [
+      "Schwere Nephrotoxizität (Nierenschädigung, akute Tubulusnekrose - häufig, dosisabhängig)",
+      "Schwere Neurotoxizität (Parästhesie, Schwindel, Verwirrtheit, neuromuskuläre Blockade und Atemlähmung)",
+      "Bronchospasmus bei Inhalation",
+      "Überempfindlichkeitsreaktionen"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Nur gegen gramnegative Bakterien wirksam. Unwirksam gegen Proteus-, Providencia-, Serratia- und Burkholderia-Arten (intrinsische Resistenz!)."
+    },
+    indications: [
+      "Letzte Option bei schweren systemischen Infektionen durch multiresistente und panresistente gramnegative Erreger (CRE, MDR Pseudomonas, MDR Acinetobacter) in Kombination",
+      "Chronische Pseudomonas-Lungeninfektion bei Mukoviszidose-Patienten via Inhalation"
+    ],
+    notes: "Colistin wird als Prodrug, Colistimethat-Natrium (CMS), verabreicht. Es wurde früher wegen schwerer Toxizität aufgegeben, erlebt aber wegen der Verbreitung von MDR-Gram-negativen Erregern eine Renaissance als Lebensretter der letzten Instanz."
   }
 ];

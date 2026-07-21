@@ -1197,6 +1197,44 @@ export const antibioticsData_HU: any[] = [
     notes: "Hasonló a nafcillinhez és a cloxacillinhez. Az MRSA rezisztencia-vizsgálatok során az oxacillin-érzékenységet tesztelik."
   },
   {
+    id: "temocillin",
+    name: "Temocillin",
+    abbreviation: "TEM",
+    brandNames: "Negaban",
+    group: "Béta-laktamáz-stabil penicillinek (Gram-negatív spektrum)",
+    halfLife: "4.5 - 5 óra (veseelégtelenségben jelentősen megnyúlik)",
+    pae: "Gram-negatívaknál (pl. Enterobacteriaceae) mérsékelt (kb. 1-2 óra)",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Napi 4 g i.v. (pl. 2x 2 g vagy folyamatos infúzióban), súlyos fertőzésekben napi 6 g (3x 2 g)",
+      pediatric: "Napi 100-150 mg/ttkg i.v., 2-3 részre osztva",
+      renalAdjustment: "GFR 30-60 ml/perc: 2 g naponta egyszer; GFR 10-30 ml/perc: 1 g naponta egyszer; GFR < 10 ml/perc: 1 g 2 naponta"
+    },
+    mechanismOfAction: "Baktericid. Gátolja a bakteriális sejtfalszintézist a penicillin-kötő fehérjékhez (PBP-3) való szelektív kötődéssel. A 6-alfa-metoxi csoport megvédi a szert a legtöbb béta-laktamáz általi hidrolízistől, így kivételesen stabil az ESBL (Extended-Spectrum Beta-Lactamase) és az AmpC enzimekkel szemben. Nem hidrolizálják a klasszikus penicillinázok sem, de a karbapenemázok (KPC, metallo-béta-laktamázok) lebontják.",
+    sideEffects: [
+      "Túlérzékenységi reakciók (bőrkiütés, anaphylaxia)",
+      "Helyi reakciók (phlebitis az infúzió helyén)",
+      "Gastrointestinalis panaszok (hasmenés, hányinger)",
+      "Nagy dózisok esetén neurotoxicitás (görcsrohamok, különösen veseelégtelenségben)",
+      "Nátrium-terhelés (minden gramm temocillin kb. 4.5 mmol nátriumot tartalmaz!)"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Nem hatékony Gram-pozitív baktériumok, anaerobok, Pseudomonas aeruginosa és Acinetobacter spp. ellen. Szelektíven a béta-laktamáz-termelő (ESBL, AmpC) Enterobacteriaceae kezelésére való (carbapenem-spóroló stratégia)."
+    },
+    indications: [
+      "Szövődményes húgyúti fertőzések (cUTI, pyelonephritis)",
+      "Húgyúti eredetű szepszis (uroszepszis)",
+      "Alsó légúti fertőzések (ha igazoltan Gram-negatív kórokozó okozza)",
+      "Bőr- és lágyrészfertőzések, sebfertőzések (Gram-negatív kórokozók esetén)"
+    ],
+    notes: "Kiváló 'carbapenem-spóroló' alternatíva ESBL- és AmpC-termelő Enterobacteriaceae okozta súlyos szisztémás fertőzésekben, ha a Pseudomonas aeruginosa kizárható."
+  },
+  {
     id: "pivmecillinam",
     name: "Pivmecillinam",
     abbreviation: "PIV",
@@ -2088,6 +2126,361 @@ export const antibioticsData_HU: any[] = [
       "Szövődményes húgyúti fertőzések és uroszepszis multirezisztens Gram-negatív kórokozókkal (pl. NDM-termelő Klebsiella vagy Pseudomonas)"
     ],
     notes: "A jelenlegi klinikai orvoslás egyik legnagyobb áttörése a multirezisztens Gram-negatív fertőzések kezelésében, az egyetlen béta-laktám, amely megbízhatóan hat a metallo-béta-laktamázokat (pl. NDM-1) hordozó 'szuperbaktériumok' ellen is."
+  },
+  {
+    id: "plazomicin",
+    name: "Plazomicin",
+    abbreviation: "PLZ",
+    brandNames: "Zemdri",
+    group: "Aminoglikozidok (új generációs)",
+    halfLife: "4 óra (veseelégtelenségben jelentősen megnyúlik)",
+    pae: "Gram-negatívaknál kifejezett (2-4 óra)",
+    effectType: "bactericid",
+    dosage: {
+      adult: "15 mg/ttkg naponta egyszer i.v. infúzióban (30 perc alatt)",
+      pediatric: "Gyermekeknél a biztonságosság még nem teljes körűen megalapozott",
+      renalAdjustment: "ClCr 60-90 ml/perc: 10 mg/ttkg 24h; ClCr 30-60 ml/perc: 10 mg/ttkg 24h-48h; ClCr 15-30 ml/perc: 10 mg/ttkg 48h; dózismódosítás és TDM (szérumszint mérés) szigorúan ajánlott!"
+    },
+    mechanismOfAction: "Baktericid. Az aminoglikozidok új generációs képviselője (sisomicin származék). Kötődik a bakteriális 30S riboszomális alegységhez, ami gátolja a fehérjeszintézist és növeli a transzlációs hibaarányt. Kifejezetten ellenáll a legtöbb aminoglikozid-módosító enzimnek (AME), így hatékony sok olyan MDR Gram-negatív törzs ellen is, amelyek más aminoglikozidokra rezisztensek.",
+    sideEffects: [
+      "Nephrotoxicitás (vesekárosodás)",
+      "Ototoxicitás (hallás- és egyensúlyzavarok, akár irreverzibilis)",
+      "Neuromuscularis blokád (légzésdepressziót okozhat)",
+      "Túlérzékenységi reakciók"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 1,
+      other: "Kifejezetten multirezisztens Enterobacteriaceae (CRE, ESBL-termelők) ellen fejlesztették ki. Pseudomonas ellen kevésbé hatékony, mint az amikacin."
+    },
+    indications: [
+      "Szövődményes húgyúti fertőzések és pyelonephritis multirezisztens kórokozókkal",
+      "Karbapenem-rezisztens Enterobacteriaceae (CRE) okozta szisztémás fertőzések alternatív kezelése (gyakran kombinációban)"
+    ],
+    notes: "Szigorú gyógyszerszint-monitorozást (TDM) igényel, különösen beszűkült vesefunkció esetén. A fül- és vesetoxicitás kockázata alacsonyabb, mint a régebbi aminoglikozidoknál, de továbbra is fennáll."
+  },
+  {
+    id: "tobramycin",
+    name: "Tobramycin",
+    abbreviation: "TOB",
+    brandNames: "Bramitob, Tobi, Tobradex, Brulamycin",
+    group: "Aminoglikozidok",
+    halfLife: "2 - 2.5 óra (veseelégtelenségben akár 50-100 órára nyúlhat)",
+    pae: "Gram-negatívaknál kifejezett (1.5-3 óra), post-antibiotikus szub-MIC hatás",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Napi egyszeri adagolás: 5-7 mg/ttkg i.v. infúzióban; hagyományos adagolás: 3x 1-1.7 mg/ttkg i.v. vagy i.m.",
+      pediatric: "Napi 6-7.5 mg/ttkg i.v., 3 egyenlő részre osztva, vagy újszülötteknél súly/kor szerint egyénileg",
+      renalAdjustment: "Szigorú adagmódosítás szükséges. Napi egyszeri adagolás esetén az adagolási időköz nyújtása (pl. 36 vagy 48 óránként) javasolt TDM alapján."
+    },
+    mechanismOfAction: "Gyorsan ható baktericid. Aktív transzporttal jut át a bakteriális sejtmembránon (oxigén-dependens folyamat), majd irreverzibilisen kötődik a 30S riboszomális alegységhez. Gátolja a fehérjeszintézist és felborítja a sejtmembrán integritását.",
+    sideEffects: [
+      "Vesekárosodás (nephrotoxicitás - általában reverzibilis)",
+      "Fülkárosodás (ototoxicitás: cochlearis és vestibularis, gyakran irreverzibilis)",
+      "Neuromuscularis blokád (kontraindikált Myasthenia gravis esetén!)",
+      "Elektrolit-zavarok (hypomagnesaemia, hypokalaemia)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Kifejezetten erős szinergista hatást mutat Pseudomonas aeruginosa ellen béta-laktámokkal kombinálva. Inhalációs formában is használatos krónikus Pseudomonas fertőzésben (pl. cisztás fibrózis)."
+    },
+    indications: [
+      "Súlyos Pseudomonas aeruginosa fertőzések (szepszis, tüdőgyulladás, endocarditis) kombinációban",
+      "Cisztás fibrózisban szenvedő betegek krónikus Pseudomonas tüdőfertőzése (inhalációs formában)",
+      "Szövődményes húgyúti és intraabdominalis fertőzések kombináció részeként"
+    ],
+    notes: "Szigorú gyógyszerszint-monitorozás (TDM: völgykoncentráció < 1-2 mg/L, csúcskoncentráció 20-30 mg/L napi egyszeri adagolásnál) elengedhetetlen."
+  },
+  {
+    id: "minocycline",
+    name: "Minocyclin",
+    abbreviation: "MIN",
+    brandNames: "Minocin, Skid",
+    group: "Tetracyclinek",
+    halfLife: "11 - 22 óra (hosszú)",
+    pae: "Kifejezett bakteriosztatikus PAE (1-3 óra)",
+    effectType: "bacteriostaticus",
+    dosage: {
+      adult: "Kezdő dózis: 200 mg p.o. vagy i.v., majd 2x 100 mg naponta",
+      pediatric: "8 év alatt szigorúan kontraindikált! 8 év felett: kezdő 4 mg/ttkg, majd 2x 2 mg/ttkg naponta",
+      renalAdjustment: "Nem igényel rutinszerű adagmódosítást enyhe és mérsékelt veseelégtelenségben, de veseelégtelenségben a tetracyclinek antianabolikus hatása miatt fokozott óvatosság javasolt."
+    },
+    mechanismOfAction: "Bakteriosztatikus fehérjeszintézis-gátló. Kötődik a bakteriális 30S riboszóma alegységhez, blokkolja az aminoacil-tRNS hozzáférését a mRNS-riboszóma komplexhez. Lipofil tulajdonsága miatt rendkívül jól penetrál a szövetekbe és a vér-agy gáton is átjut.",
+    sideEffects: [
+      "Fogak elszíneződése gyermekeknél (kontraindikált terhességben és 8 év alatt)",
+      "Vestibularis mellékhatások (szédülés, vertigo, ataxia - lipofilitása miatt gyakrabban mint más tetracyclineknél)",
+      "Hiperpigmentáció (bőr, körmök, fogíny szürkés-kékes elszíneződése hosszas kezelésnél)",
+      "Lupus-szerű szindróma és autoimmun hepatitis (krónikus használat során)",
+      "Fotoszenzibilizáció"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Rendkívül jó hatás Stenotrophomonas maltophilia és Acinetobacter baumannii ellen. MRSA (meticillin-rezisztens S. aureus) ellen is jó orális opció."
+    },
+    indications: [
+      "Acne vulgaris (súlyos formái)",
+      "Stenotrophomonas maltophilia és Acinetobacter baumannii fertőzések (gyakran kombinációban)",
+      "MRSA okozta bőr- és lágyrészfertőzések (orális fenntartó kezelésként)",
+      "Atípusos fertőzések (Lyme-kór, chlamydia, rickettsiosis) alternatív szere"
+    ],
+    notes: "Kifejezett szöveti penetrációja és kiváló zsíroldékonysága miatt a központi idegrendszerbe, nyálba, könnymirigyekbe is magas koncentrációban jut be."
+  },
+  {
+    id: "dalbavancin",
+    name: "Dalbavancin",
+    abbreviation: "DAL",
+    brandNames: "Xydalba",
+    group: "Glikopeptidek és lipoglikopeptidek",
+    halfLife: "Kb. 340 óra (rendkívül hosszú, kb. 14 nap!)",
+    pae: "Gram-pozitívaknál rendkívül elnyújtott",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Egyszeri adag: 1500 mg i.v. infúzióban (30 perc alatt), vagy kétadagos kezelés: 1000 mg az 1. napon, majd 500 mg a 8. napon",
+      pediatric: "Biztonságossága és adagolása gyermekeknél még korlátozottan megalapozott",
+      renalAdjustment: "Súlyos veseelégtelenségben (GFR < 30 ml/perc, nem dializált): egyszeri adagban 1125 mg, vagy kétadagosban 750 mg az 1. napon és 375 mg a 8. napon. Dialízis esetén nem szükséges módosítani."
+    },
+    mechanismOfAction: "Baktericid. Második generációs lipoglikopeptid. Gátolja a bakteriális sejtfalszintézist a peptidoglikán D-Ala-D-Ala végéhez való kötődéssel, megakadályozva a transzpeptidációt és transzglikozilációt. Lipofil oldallánca lehorgonyozza a sejtmembránban, ami megsokszorozza a hatásfokát és rendkívül hosszú felezési időt biztosít.",
+    sideEffects: [
+      "Fejfájás, szédülés",
+      "Hányinger, hasmenés",
+      "Infúziós reakciók (bőrpír, viszketés - lassan kell beadni)",
+      "Májenzim-szintek mérsékelt, átmeneti emelkedése"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Kizárólag Gram-pozitív baktériumok ellen hatékony, beleértve az MRSA-t és a mérsékelten glycopeptid-rezisztens törzseket. VanA-típusú VRE ellen nem hatékony!"
+    },
+    indications: [
+      "Akut bakteriális bőr- és lágyrészfertőzések (ABSSSI) Gram-pozitív kórokozók (köztük MRSA) által okozva",
+      "Otthoni intravénás kezelésre kiválóan alkalmas, elkerülhetővé teszi a tartós kórházi ápolást"
+    ],
+    notes: "A rendkívül hosszú felezési idő lehetővé teszi, hogy egyetlen infúzióval kiváltsunk egy teljes 10-14 napos hagyományos i.v. kezelést."
+  },
+  {
+    id: "oritavancin",
+    name: "Oritavancin",
+    abbreviation: "ORI",
+    brandNames: "Tenactiv, Orbactiv",
+    group: "Glikopeptidek és lipoglikopeptidek",
+    halfLife: "Kb. 250 - 350 óra",
+    pae: "Rendkívül elnyújtott Gram-pozitív post-antibiotikus hatás",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Egyszeri 1200 mg i.v. infúzió formájában (3 óra alatt beadva)",
+      pediatric: "Biztonságossága és adagolása gyermekeknél még nem megalapozott",
+      renalAdjustment: "Enyhe vagy mérsékelt veseelégtelenségben nem szükséges adagmódosítás. Súlyos veseelégtelenségben óvatosság javasolt (kevés adat)."
+    },
+    mechanismOfAction: "Gyorsan ható baktericid. Hármas hatásmechanizmus: (1) gátolja a transzglikozilációt a peptidoglikán D-Ala-D-Ala végéhez kötődve; (2) gátolja a transzpeptidációt a sejtfal hidrofób hídjaihoz való kötődéssel; (3) megzavarja a bakteriális sejtmembrán integritását, depolarizációt és gyors sejtlízist okozva. Hatékony a VanA VRE ellen is!",
+    sideEffects: [
+      "Osteomyelitis kockázatának növekedése (klinikai vizsgálatokban megfigyelték)",
+      "Hányinger, hasmenés, fejfáj",
+      "Infúziós reakciók (viszketés, kipirulás)",
+      "Mesterségesen megnyújthatja bizonyos véralvadási tesztek (aPTT, PT) eredményét anélkül, hogy valódi vérzést okozna!"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Az egyik legszélesebb Gram-pozitív spektrumú szer: hatékony MRSA, VRSA, és VRE (VanA és VanB) törzsek ellen is."
+    },
+    indications: [
+      "Akut bakteriális bőr- és lágyrészfertőzések (ABSSSI) nehezen kezelhető Gram-pozitív kórokozókkal",
+      "Egyszeri adagos kezelés ambuláns betegeknek, minimalizálva a kórházi tartózkodást"
+    ],
+    notes: "Szigorúan kontraindikált intravénás nem-frakcionált heparin egyidejű vagy 120 órán (5 napon) belüli alkalmazásával, mivel mesterségesen megnyújtja az aPTT mérési eredményét!"
+  },
+  {
+    id: "telavancin",
+    name: "Telavancin",
+    abbreviation: "TLV",
+    brandNames: "Vibativ",
+    group: "Glikopeptidek és lipoglikopeptidek",
+    halfLife: "Kb. 8 óra",
+    pae: "Gram-pozitívaknál kifejezett (1-3 óra)",
+    effectType: "bactericid",
+    dosage: {
+      adult: "10 mg/ttkg i.v. naponta egyszer, 60 perc alatt beadott infúzióban",
+      pediatric: "Biztonságossága és adagolása gyermekeknél nem megalapozott",
+      renalAdjustment: "GFR 30-50 ml/perc: 7.5 mg/ttkg 24h; GFR 10-30 ml/perc: 10 mg/ttkg 48h; GFR < 10 ml/perc: nem javasolt."
+    },
+    mechanismOfAction: "Gyorsan ható baktericid lipoglikopeptid. Kettős hatásmechanizmus: (1) gátolja a peptidoglikán sejtfalszintézist a D-Ala-D-Ala-hoz kötődve; (2) lipofil oldalláncán keresztül depolarizálja a bakteriális membránt, tönkretéve a sejtmembrán gátfunkcióját.",
+    sideEffects: [
+      "Nephrotoxicitás (vesekárosodás megfigyelhető, gyakoribb mint a vancomycinnél)",
+      "Ízérzészavarok (fémes íz a szájban)",
+      "Hányinger, hányás, hasmenés",
+      "QT-távolság megnyúlása (szívritmuszavar kockázat)",
+      "Vörös ember szindróma (Red Man Syndrome) túl gyors infúzió esetén"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Főként Gram-pozitív fertőzések kezelésére, beleértve az MRSA és a VISA (mérsékelten érzékeny) törzseket."
+    },
+    indications: [
+      "Nosocomialis pneumonia (HAP/VAP), ha igazoltan vagy gyaníthatóan MRSA okozza és nincs más alkalmas szer",
+      "Szövődményes bőr- és lágyrészfertőzések"
+    ],
+    notes: "Fokozott vesetoxicitása miatt csak akkor alkalmazandó, ha más alternatíva nem áll rendelkezésre. Terhesség alatt kontraindikált (teratogén kockázat állatkísérletekben)."
+  },
+  {
+    id: "doripenem",
+    name: "Doripenem",
+    abbreviation: "DOR",
+    brandNames: "Doribax",
+    group: "Carbapenemek",
+    halfLife: "Kb. 1 óra",
+    pae: "Gram-negatívaknál (főleg Pseudomonas) mérsékelt post-antibiotikus hatás",
+    effectType: "bactericid",
+    dosage: {
+      adult: "500 mg i.v. 8 óránként, általában 1 vagy 4 órás nyújtott infúzióban beadva",
+      pediatric: "Biztonságossága és hatásossága gyermekeknél még nem igazolt",
+      renalAdjustment: "GFR 30-50 ml/perc: 250 mg 8h; GFR 10-30 ml/perc: 250 mg 12h; GFR < 10 ml/perc (dializált): 250 mg 24h (dialízis után)."
+    },
+    mechanismOfAction: "Baktericid béta-laktám (carbapenem). Kötődik a penicillin-kötő fehérjékhez (PBP-2, PBP-3, PBP-4), megakadályozva a sejtfal szintézist. Rendkívül stabil a legtöbb béta-laktamázzal (ESBL, AmpC) szemben, kivéve a karbapenemázokat. Pseudomonas aeruginosa ellen az imipenemnél és meropenemnél jobb in vitro aktivitással bír, lassabban alakul ki rá rezisztencia.",
+    sideEffects: [
+      "Hányinger, hasmenés, fejfájás",
+      "Phlebitis az infúzió helyén",
+      "Túlérzékenységi reakciók (bőrkiütés, ritkán anaphylaxia)",
+      "Görcsrohamok kockázata (jóval alacsonyabb, mint az imipenemnél!)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Hasonló a meropenemhez, de kiemelkedő stabilitást és hatékonyságot mutat Pseudomonas aeruginosa fertőzésekben."
+    },
+    indications: [
+      "Nosocomialis tüdőgyulladás (HAP/VAP)",
+      "Szövődményes intraabdominalis fertőzések",
+      "Szövődményes húgyúti fertőzések és pyelonephritis"
+    ],
+    notes: "Pseudomonas aeruginosa esetén a 4 órás nyújtott infúziós technika alkalmazása javasolt a farmakodinamikai célok (T > MIC) optimalizálására."
+  },
+  {
+    id: "omadacycline",
+    name: "Omadacyclin",
+    abbreviation: "OMC",
+    brandNames: "Nuzyra",
+    group: "Aminometilcyclinek (új generációs tetracyclin származék)",
+    halfLife: "Kb. 16 - 17 óra",
+    pae: "Kifejezett post-antibiotikus hatás",
+    effectType: "bacteriostaticus",
+    dosage: {
+      adult: "Tüdőgyulladásban: 1. nap 2x 100 mg i.v., majd napi 1x 100 mg i.v. vagy napi 1x 300 mg p.o. Bőrfertőzésben: 2x 100 mg i.v. vagy 2x 450 mg p.o. (1. és 2. nap), majd napi 1x 100 mg i.v. vagy 1x 300 mg p.o.",
+      pediatric: "8 év alatt szigorúan kontraindikált!",
+      renalAdjustment: "Nem szükséges adagmódosítás veseelégtelenségben."
+    },
+    mechanismOfAction: "Bakteriosztatikus. Modern aminometilcyclin (tetracyclin-osztály). Kötődik a bakteriális 30S riboszomális alegységhez, gátolva a fehérjeszintézist. Úgy tervezték, hogy legyőzze a két fő tetracyclin rezisztencia mechanizmust (efflux pumpák és riboszomális védőfehérjék).",
+    sideEffects: [
+      "Hányinger, hányás (orális adagolásnál viszonylag gyakori)",
+      "Fogak elszíneződése gyermekeknél (8 év alatt és terhességben ellenjavallt)",
+      "Májenzim-szintek emelkedése",
+      "Infúziós helyi reakciók"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Széles spektrumú szer, amely hatásos a rezisztens Gram-pozitívok (MRSA, penicillin-rezisztens S. pneumoniae, VRE) és atípusos kórokozók ellen."
+    },
+    indications: [
+      "Közösségben szerzett pneumonia (CAP)",
+      "Akut bakteriális bőr- és lágyrészfertőzések (ABSSSI)"
+    ],
+    notes: "Kiváló i.v.-ről p.o.-ra történő váltási (switch) terápiás lehetőséget nyújt orális formájának köszönhetően."
+  },
+  {
+    id: "sarecycline",
+    name: "Sarecyclin",
+    abbreviation: "SAR",
+    brandNames: "Seysara",
+    group: "Tetracyclinek",
+    halfLife: "Kb. 21 - 22 óra",
+    pae: "Mérsékelt post-antibiotikus hatás",
+    effectType: "bacteriostaticus",
+    dosage: {
+      adult: "Testsúly alapján: 33-54 kg: 60 mg p.o. naponta egyszer; 55-84 kg: 100 mg p.o. naponta egyszer; 85-136 kg: 150 mg p.o. naponta egyszer",
+      pediatric: "9 év alatt nem javasolt (fogak elszíneződésének kockázata)",
+      renalAdjustment: "Nem igényel adagmódosítást."
+    },
+    mechanismOfAction: "Bakteriosztatikus. Új, szűk spektrumú tetracyclin származék. Kötődik a bakteriális 30S riboszómához, gátolja a fehérjeszintézist. Specifikus kémiai szerkezete miatt lényegesen kisebb a hatása a bélflóra Gram-negatív baktériumaira, így kevésbé okoz dysbiosis-t.",
+    sideEffects: [
+      "Hányinger, fejfájás",
+      "Fogak elszíneződésének elméleti kockázata (fejlődő szervezetben)",
+      "Enyhe fotoszenzibilitás (ritkább, mint más tetracyclineknél)",
+      "Hüvelyi candidiasis"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 0,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Kifejezetten szűk spektrumú antibiotikum, amelyet célszerűen a Cutibacterium acnes ellen terveztek, megkímélve a normál bélflórát."
+    },
+    indications: [
+      "Közepesen súlyos és súlyos acne vulgaris (pattanásos bőr) kezelése gyulladásos léziókkal felnőtteknek és 9 év feletti gyermekeknek"
+    ],
+    notes: "Az első olyan FDA által jóváhagyott tetracyclin származék, amely kifejezetten az akne célzott, szűk spektrumú kezelésére szolgál."
+  },
+  {
+    id: "colistin",
+    name: "Colistin (Colistimethat-nátrium)",
+    abbreviation: "CST",
+    brandNames: "Colomycin, Tadim",
+    group: "Polymyxinek",
+    halfLife: "3 - 5 óra (veseelégtelenségben extrém módon megnyúlik)",
+    pae: "Gram-negatívaknál mérsékelt post-antibiotikus hatás",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Intravénásan: Telítő dózis: 9 millió NE i.v., majd fenntartó adag: 2x 4.5 millió NE i.v. naponta (vesefunkció alapján korrigálva). Inhalációban: 2-3x 1-2 millió NE naponta.",
+      pediatric: "Napi 75 000 - 150 000 NE/ttkg i.v., 3 részre osztva (max. napi 150 000 NE/ttkg súlyos esetben)",
+      renalAdjustment: "Szigorú adagmódosítás szükséges! GFR 30-50 ml/perc: 5.5 - 7.5 millió NE/nap; GFR 10-30 ml/perc: 4.5 - 5.5 millió NE/nap; GFR < 10 ml/perc: 2.25 - 4.5 millió NE/nap. Dialízis esetén kiegészítő adagolás szükséges."
+    },
+    mechanismOfAction: "Gyorsan ható baktericid. Felületaktív detergensként viselkedik: kötődik a Gram-negatív baktériumok külső membránjában lévő lipopoliszacharidokhoz (LPS) és foszfolipidekhez, kiszorítva a kalcium- és magnéziumionokat. Ez felborítja a külső és belső membrán integritását, ami a sejt tartalmának kiszivárgásához és sejthalálhoz vezet.",
+    sideEffects: [
+      "Súlyos nephrotoxicitás (vesekárosodás, akut tubuláris necrosis - gyakori, dózisfüggő)",
+      "Súlyos neurotoxicitás (paresthesia, szédülés, zavartság, neuromuscularis blokád és légzésbénulás)",
+      "Inhaláció esetén bronchospasmus (hörgőgörcs)",
+      "Túlérzékenységi reakciók"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Csak Gram-negatív baktériumok ellen hatásos. Nem hatékony a Proteus, Providencia, Serratia, és Burkholderia fajok ellen (belső rezisztencia!)."
+    },
+    indications: [
+      "Súlyos multirezisztens és pánrezisztens Gram-negatív (CRE, MDR Pseudomonas, MDR Acinetobacter) fertőzések végső alternatívája kombinációban",
+      "Cisztás fibrózisban szenvedő betegek krónikus Pseudomonas tüdőfertőzése inhalációs úton"
+    ],
+    notes: "A colistint pro-drug formájában, colistimethat-nátriumként (CMS) adagolják. Súlyos toxicitása miatt korábban elhagyták, de a multirezisztens Gram-negatív kórokozók elterjedése miatt reneszánszát éli mint végső mentőöv."
   }
 ];
 

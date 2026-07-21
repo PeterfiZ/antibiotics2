@@ -1197,6 +1197,44 @@ export const antibioticsData_EN: any[] = [
     notes: "Similar to nafcillin and cloxacillin. Oxacillin susceptibility is tested in MRSA resistance studies."
   },
   {
+    id: "temocillin",
+    name: "Temocillin",
+    abbreviation: "TEM",
+    brandNames: "Negaban",
+    group: "Beta-lactamase-stable penicillins (Gram-negative spectrum)",
+    halfLife: "4.5 - 5 hours (significantly prolonged in renal impairment)",
+    pae: "Moderate for Gram-negatives (e.g., Enterobacteriaceae, approx. 1-2 hours)",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "4 g i.v. daily (e.g., 2 g twice daily or as a continuous infusion); 6 g daily (2 g three times daily) in severe infections",
+      pediatric: "100-150 mg/kg/day i.v. in 2-3 divided doses",
+      renalAdjustment: "GFR 30-60 mL/min: 2 g once daily; GFR 10-30 mL/min: 1 g once daily; GFR < 10 mL/min: 1 g every 48 hours"
+    },
+    mechanismOfAction: "Bactericidal. Inhibits bacterial cell wall synthesis by selectively binding to penicillin-binding proteins (primarily PBP-3). The 6-alpha-methoxy group protects the drug from hydrolysis by most beta-lactamases, rendering it exceptionally stable against ESBL (Extended-Spectrum Beta-Lactamase) and AmpC enzymes. It is also resistant to classical penicillinases, but remains susceptible to carbapenemases (KPC, metallo-beta-lactamases).",
+    sideEffects: [
+      "Hypersensitivity reactions (rash, anaphylaxis)",
+      "Local reactions (phlebitis at the infusion site)",
+      "Gastrointestinal complaints (diarrhea, nausea)",
+      "Neurotoxicity at high doses (seizures, especially in renal impairment)",
+      "Sodium overload (each gram of temocillin contains approx. 4.5 mmol of sodium!)"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Inactive against Gram-positive bacteria, anaerobes, Pseudomonas aeruginosa, and Acinetobacter spp. Used selectively for treating beta-lactamase-producing (ESBL, AmpC) Enterobacteriaceae as part of a carbapenem-sparing strategy."
+    },
+    indications: [
+      "Complicated urinary tract infections (cUTI, pyelonephritis)",
+      "Urinary tract-related sepsis (urosepsis)",
+      "Lower respiratory tract infections (when confirmed to be caused by Gram-negative pathogens)",
+      "Skin and soft tissue infections, wound infections (in the presence of Gram-negative pathogens)"
+    ],
+    notes: "An excellent 'carbapenem-sparing' alternative for severe systemic infections caused by ESBL- and AmpC-producing Enterobacteriaceae, provided Pseudomonas aeruginosa is excluded."
+  },
+  {
     id: "pivmecillinam",
     name: "Pivmecillinam",
     abbreviation: "PIV",
@@ -2088,5 +2126,360 @@ export const antibioticsData_EN: any[] = [
       "Complicated urinary tract infections and urosepsis caused by multidrug-resistant Gram-negative pathogens (e.g. NDM-producing Klebsiella or Pseudomonas)"
     ],
     notes: "One of the greatest breakthroughs in modern clinical medicine for the treatment of multidrug-resistant Gram-negative infections; the only beta-lactam that reliably works against 'superbugs' carrying metallo-beta-lactamases (e.g. NDM-1)."
+  },
+  {
+    id: "plazomicin",
+    name: "Plazomicin",
+    abbreviation: "PLZ",
+    brandNames: "Zemdri",
+    group: "Aminoglycosides (New generation)",
+    halfLife: "4 hours (significantly prolonged in renal failure)",
+    pae: "Pronounced in Gram-negatives (2-4 hours)",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "15 mg/kg once daily i.v. infusion (over 30 minutes)",
+      pediatric: "Safety and efficacy in pediatric patients have not been fully established",
+      renalAdjustment: "ClCr 60-90 mL/min: 10 mg/kg q24h; ClCr 30-60 mL/min: 10 mg/kg q24h-q48h; ClCr 15-30 mL/min: 10 mg/kg q48h. Dose adjustment and TDM are strongly recommended."
+    },
+    mechanismOfAction: "Bactericidal. A next-generation aminoglycoside (derived from sisomicin). Binds to the bacterial 30S ribosomal subunit, which inhibits protein synthesis and increases translational error rates. Specifically engineered to resist most aminoglycoside-modifying enzymes (AMEs), making it active against many MDR Gram-negative strains that are resistant to other aminoglycosides.",
+    sideEffects: [
+      "Nephrotoxicity (renal impairment)",
+      "Ototoxicity (vestibular and cochlear, potentially irreversible)",
+      "Neuromuscular blockade (can cause respiratory depression)",
+      "Hypersensitivity reactions"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 1,
+      other: "Developed specifically against multidrug-resistant Enterobacteriaceae (CRE, ESBL producers). Less active against Pseudomonas than amikacin."
+    },
+    indications: [
+      "Complicated urinary tract infections and pyelonephritis caused by multidrug-resistant pathogens",
+      "Alternative treatment for carbapenem-resistant Enterobacteriaceae (CRE) systemic infections (usually in combination)"
+    ],
+    notes: "Requires strict therapeutic drug monitoring (TDM), especially in patients with impaired renal function. The risk of oto- and nephrotoxicity is lower than with older aminoglycosides, but still present."
+  },
+  {
+    id: "tobramycin",
+    name: "Tobramycin",
+    abbreviation: "TOB",
+    brandNames: "Bramitob, Tobi, Tobradex, Brulamycin",
+    group: "Aminoglycosides",
+    halfLife: "2 - 2.5 hours (can extend up to 50-100 hours in renal failure)",
+    pae: "Pronounced in Gram-negatives (1.5-3 hours), post-antibiotic sub-MIC effect",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Once-daily dosing: 5-7 mg/kg i.v. infusion; traditional dosing: 3x 1-1.7 mg/kg i.v. or i.m.",
+      pediatric: "6-7.5 mg/kg daily i.v. divided into 3 equal doses, or individualized in neonates based on weight/age",
+      renalAdjustment: "Strict dosage adjustment is required. For once-daily dosing, extending the dosing interval (e.g., every 36 or 48 hours) based on TDM is recommended."
+    },
+    mechanismOfAction: "Rapidly bactericidal. Enters bacterial cells via active transport (oxygen-dependent process) and irreversibly binds to the 30S ribosomal subunit. Inhibits protein synthesis and disrupts cell membrane integrity.",
+    sideEffects: [
+      "Renal impairment (nephrotoxicity - usually reversible)",
+      "Ear damage (ototoxicity: cochlear and vestibular, often irreversible)",
+      "Neuromuscular blockade (contraindicated in Myasthenia gravis!)",
+      "Electrolyte disturbances (hypomagnesemia, hypokalemia)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Exhibits strong synergistic activity against Pseudomonas aeruginosa when combined with beta-lactams. Also used as an inhalation therapy for chronic Pseudomonas infections (e.g., in cystic fibrosis)."
+    },
+    indications: [
+      "Severe Pseudomonas aeruginosa infections (sepsis, pneumonia, endocarditis) in combination",
+      "Chronic Pseudomonas lung infection in cystic fibrosis patients (inhalation form)",
+      "Complicated urinary tract and intra-abdominal infections as part of a combination regimen"
+    ],
+    notes: "Strict therapeutic drug monitoring (TDM: trough concentration < 1-2 mg/L, peak concentration 20-30 mg/L for once-daily dosing) is essential."
+  },
+  {
+    id: "minocycline",
+    name: "Minocycline",
+    abbreviation: "MIN",
+    brandNames: "Minocin, Skid",
+    group: "Tetracyclines",
+    halfLife: "11 - 22 hours (long)",
+    pae: "Pronounced bacteriostatic PAE (1-3 hours)",
+    effectType: "bacteriostatic",
+    dosage: {
+      adult: "Loading dose: 200 mg p.o. or i.v., followed by 100 mg twice daily",
+      pediatric: "Strictly contraindicated under 8 years! Above 8 years: loading 4 mg/kg, followed by 2 mg/kg twice daily",
+      renalAdjustment: "No routine dosage adjustment is required in mild to moderate renal failure, but caution is advised due to the antianabolic effect of tetracyclines in renal impairment."
+    },
+    mechanismOfAction: "Bacteriostatic protein synthesis inhibitor. Binds to the bacterial 30S ribosomal subunit, blocking the access of aminoacyl-tRNA to the mRNA-ribosome complex. Highly lipophilic, providing excellent tissue penetration and penetration across the blood-brain barrier.",
+    sideEffects: [
+      "Tooth discoloration in children (contraindicated in pregnancy and under 8 years)",
+      "Vestibular side effects (dizziness, vertigo, ataxia - occurs more frequently than with other tetracyclines due to lipophilicity)",
+      "Hyperpigmentation (greyish-blue discoloration of skin, nails, gums with prolonged use)",
+      "Lupus-like syndrome and autoimmune hepatitis (with chronic use)",
+      "Photosensitivity"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Excellent activity against Stenotrophomonas maltophilia and Acinetobacter baumannii. Good oral option for MRSA (methicillin-resistant S. aureus)."
+    },
+    indications: [
+      "Severe forms of Acne vulgaris",
+      "Stenotrophomonas maltophilia and Acinetobacter baumannii infections (usually in combination)",
+      "Skin and soft tissue infections caused by MRSA (as oral maintenance therapy)",
+      "Alternative drug for atypical infections (Lyme disease, chlamydia, rickettsiosis)"
+    ],
+    notes: "Due to high tissue penetration and lipid solubility, it reaches high concentrations in the central nervous system, saliva, and tear glands."
+  },
+  {
+    id: "dalbavancin",
+    name: "Dalbavancin",
+    abbreviation: "DAL",
+    brandNames: "Xydalba",
+    group: "Glycopeptides and lipoglycopeptides",
+    halfLife: "Approx. 340 hours (extremely long, approx. 14 days!)",
+    pae: "Extremely prolonged for Gram-positives",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Single dose: 1500 mg i.v. infusion (over 30 minutes), or a two-dose regimen: 1000 mg on day 1 followed by 500 mg on day 8",
+      pediatric: "Safety and dosing in children are not yet fully established",
+      renalAdjustment: "Severe renal impairment (GFR < 30 mL/min, not on dialysis): single dose 1125 mg, or two-dose regimen of 750 mg on day 1 and 375 mg on day 8. No adjustment required for dialysis."
+    },
+    mechanismOfAction: "Bactericidal second-generation lipoglycopeptide. Inhibits cell wall synthesis by binding to the D-Ala-D-Ala terminus of peptidoglikan, preventing transpeptidation and transglycosylation. Its lipophilic side chain anchors the drug into the cell membrane, multiplying its potency and providing an extremely long half-life.",
+    sideEffects: [
+      "Headache, dizziness",
+      "Nausea, diarrhea",
+      "Infusion reactions (flushing, pruritus - must be infused slowly)",
+      "Moderate, transient increase in liver enzymes"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Active exclusively against Gram-positive bacteria, including MRSA and glycopeptide-intermediate strains. Inactive against VanA-type VRE!"
+    },
+    indications: [
+      "Acute bacterial skin and skin structure infections (ABSSSI) caused by Gram-positive pathogens (including MRSA)",
+      "Highly suitable for outpatient parenteral antimicrobial therapy (OPAT), avoiding prolonged hospitalization"
+    ],
+    notes: "The extremely long half-life allows a single infusion to replace a complete 10-14 day course of conventional i.v. treatment."
+  },
+  {
+    id: "oritavancin",
+    name: "Oritavancin",
+    abbreviation: "ORI",
+    brandNames: "Tenactiv, Orbactiv",
+    group: "Glycopeptides and lipoglycopeptides",
+    halfLife: "Approx. 250 - 350 hours",
+    pae: "Extremely prolonged Gram-positive post-antibiotic effect",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Single 1200 mg i.v. infusion (administered over 3 hours)",
+      pediatric: "Safety and efficacy in children have not been established",
+      renalAdjustment: "No dose adjustment is required in mild or moderate renal failure. Use caution in severe renal impairment (limited data)."
+    },
+    mechanismOfAction: "Rapidly bactericidal lipoglycopeptide. Triple mechanism of action: (1) inhibits transglycosylation by binding to the D-Ala-D-Ala terminus of peptidoglycan; (2) inhibits transpeptidation by binding to the hydrophobic bridges of the cell wall; (3) disrupts bacterial membrane integrity, causing depolarization and rapid cell lysis. Active against VanA VRE!",
+    sideEffects: [
+      "Increased risk of osteomyelitis (observed in clinical trials)",
+      "Nausea, diarrhea, headache",
+      "Infusion-associated reactions (pruritus, flushing)",
+      "Artificially prolongs certain coagulation assays (aPTT, PT) without causing actual bleeding!"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "One of the broadest Gram-positive spectrums: active against MRSA, VRSA, and VRE (VanA and VanB strains)."
+    },
+    indications: [
+      "Acute bacterial skin and skin structure infections (ABSSSI) caused by difficult-to-treat Gram-positive pathogens",
+      "Single-dose outpatient regimen, minimizing the need for hospital stay"
+    ],
+    notes: "Strictly contraindicated with simultaneous or within 120 hours (5 days) use of intravenous unfractionated heparin, as it artificially prolongs aPTT assay results!"
+  },
+  {
+    id: "telavancin",
+    name: "Telavancin",
+    abbreviation: "TLV",
+    brandNames: "Vibativ",
+    group: "Glycopeptides and lipoglycopeptides",
+    halfLife: "Approx. 8 hours",
+    pae: "Pronounced in Gram-positives (1-3 hours)",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "10 mg/kg i.v. once daily, infused over 60 minutes",
+      pediatric: "Safety and dosing in children are not established",
+      renalAdjustment: "GFR 30-50 mL/min: 7.5 mg/kg q24h; GFR 10-30 mL/min: 10 mg/kg q48h; GFR < 10 mL/min: not recommended."
+    },
+    mechanismOfAction: "Rapidly bactericidal lipoglycopeptide. Dual mechanism of action: (1) inhibits peptidoglycan cell wall synthesis by binding to D-Ala-D-Ala; (2) depolarizes the bacterial membrane via its lipophilic side chain, destroying membrane barrier function.",
+    sideEffects: [
+      "Nephrotoxicity (more frequent and severe than with vancomycin)",
+      "Taste disturbances (metallic taste in the mouth)",
+      "Nausea, vomiting, diarrhea",
+      "QT interval prolongation (risk of arrhythmia)",
+      "Red Man Syndrome if infused too rapidly"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 0,
+      anaerobe: 1,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Primarily for Gram-positive infections including MRSA and VISA (intermediate) strains."
+    },
+    indications: [
+      "Hospital-acquired and ventilator-associated pneumonia (HAP/VAP) known or suspected to be caused by MRSA, when other options are unsuitable",
+      "Complicated skin and soft tissue infections"
+    ],
+    notes: "Due to increased nephrotoxicity, it should only be used when no other alternative is available. Contraindicated during pregnancy (teratogenic risk in animal studies)."
+  },
+  {
+    id: "doripenem",
+    name: "Doripenem",
+    abbreviation: "DOR",
+    brandNames: "Doribax",
+    group: "Carbapenems",
+    halfLife: "Approx. 1 hour",
+    pae: "Moderate post-antibiotic effect in Gram-negatives (especially Pseudomonas)",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "500 mg i.v. every 8 hours, usually administered as a 1-hour or 4-hour extended infusion",
+      pediatric: "Safety and efficacy in children have not been established",
+      renalAdjustment: "GFR 30-50 mL/min: 250 mg q8h; GFR 10-30 mL/min: 250 mg q12h; GFR < 10 mL/min (on dialysis): 250 mg q24h (after dialysis)."
+    },
+    mechanismOfAction: "Bactericidal beta-lactam (carbapenem). Binds to penicillin-binding proteins (PBP-2, PBP-3, PBP-4), preventing cell wall synthesis. Highly stable against most beta-lactamases (ESBL, AmpC) except carbapenemases. Possesses superior in vitro activity against Pseudomonas aeruginosa compared to imipenem or meropenem, with slower resistance development.",
+    sideEffects: [
+      "Nausea, diarrhea, headache",
+      "Phlebitis at the infusion site",
+      "Hypersensitivity reactions (rash, rarely anaphylaxis)",
+      "Seizure risk (significantly lower than with imipenem!)"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Similar to meropenem, but displays outstanding stability and efficacy in Pseudomonas aeruginosa infections."
+    },
+    indications: [
+      "Nosocomial pneumonia (HAP/VAP)",
+      "Complicated intra-abdominal infections",
+      "Complicated urinary tract infections and pyelonephritis"
+    ],
+    notes: "For Pseudomonas aeruginosa, the 4-hour extended infusion technique is recommended to optimize pharmacodynamic targets (T > MIC)."
+  },
+  {
+    id: "omadacycline",
+    name: "Omadacycline",
+    abbreviation: "OMC",
+    brandNames: "Nuzyra",
+    group: "Aminomethylcyclines (New generation tetracycline derivative)",
+    halfLife: "Approx. 16 - 17 hours",
+    pae: "Pronounced post-antibiotic effect",
+    effectType: "bacteriostatic",
+    dosage: {
+      adult: "Pneumonia: Day 1 loading 2x 100 mg i.v., then qd 1x 100 mg i.v. or qd 1x 300 mg p.o. Skin infections: Loading 2x 100 mg i.v. or 2x 450 mg p.o. (Days 1 & 2), then qd 1x 100 mg i.v. or qd 1x 300 mg p.o.",
+      pediatric: "Strictly contraindicated under 8 years!",
+      renalAdjustment: "No dose adjustment is required in renal impairment."
+    },
+    mechanismOfAction: "Bacteriostatic. Modern aminomethylcycline (tetracycline class). Binds to the bacterial 30S ribosomal subunit to inhibit protein synthesis. Designed to overcome the two main mechanisms of tetracycline resistance (efflux pumps and ribosomal protection proteins).",
+    sideEffects: [
+      "Nausea, vomiting (relatively common with oral administration)",
+      "Tooth discoloration in children (contraindicated under 8 years and during pregnancy)",
+      "Elevation of liver enzymes",
+      "Infusion site reactions"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Broad-spectrum agent active against resistant Gram-positives (MRSA, penicillin-resistant S. pneumoniae, VRE) and atypical pathogens."
+    },
+    indications: [
+      "Community-acquired pneumonia (CAP)",
+      "Acute bacterial skin and skin structure infections (ABSSSI)"
+    ],
+    notes: "Provides an excellent i.v.-to-p.o.-switch therapy option due to its oral formulation."
+  },
+  {
+    id: "sarecycline",
+    name: "Sarecycline",
+    abbreviation: "SAR",
+    brandNames: "Seysara",
+    group: "Tetracyclines",
+    halfLife: "Approx. 21 - 22 hours",
+    pae: "Moderate post-antibiotic effect",
+    effectType: "bacteriostatic",
+    dosage: {
+      adult: "Based on body weight: 33-54 kg: 60 mg p.o. qd; 55-84 kg: 100 mg p.o. qd; 85-136 kg: 150 mg p.o. qd",
+      pediatric: "Not recommended under 9 years of age (risk of tooth discoloration)",
+      renalAdjustment: "No dose adjustment is required."
+    },
+    mechanismOfAction: "Bacteriostatic. A novel, narrow-spectrum tetracycline derivative. Binds to the bacterial 30S ribosome to inhibit protein synthesis. Due to its specific chemical structure, it has significantly less activity against Gram-negative intestinal flora, thereby reducing dysbiosis.",
+    sideEffects: [
+      "Nausea, headache",
+      "Theoretical risk of tooth discoloration (during tooth development)",
+      "Mild photosensitivity (less common than with other tetracyclines)",
+      "Vulvovaginal candidiasis"
+    ],
+    spectrum: {
+      gramPositive: 1,
+      gramNegative: 0,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "A highly narrow-spectrum antibiotic specifically designed against Cutibacterium acnes, sparing the normal gut flora."
+    },
+    indications: [
+      "Treatment of moderate to severe acne vulgaris with inflammatory lesions in adults and children over 9 years"
+    ],
+    notes: "The first FDA-approved tetracycline derivative designed specifically for the targeted, narrow-spectrum treatment of acne."
+  },
+  {
+    id: "colistin",
+    name: "Colistin (Colistimethate sodium)",
+    abbreviation: "CST",
+    brandNames: "Colomycin, Tadim",
+    group: "Polymyxins",
+    halfLife: "3 - 5 hours (extremely prolonged in renal failure)",
+    pae: "Moderate post-antibiotic effect in Gram-negatives",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Intravenous: Loading dose of 9 million IU i.v., then maintenance: 2x 4.5 million IU i.v. daily (adjusted based on renal function). Inhalation: 2-3x 1-2 million IU daily.",
+      pediatric: "75,000 - 150,000 IU/kg daily i.v. in 3 divided doses (max 150,000 IU/kg daily in severe cases)",
+      renalAdjustment: "Strict dosage adjustment is required! GFR 30-50 mL/min: 5.5 - 7.5 million IU/day; GFR 10-30 mL/min: 4.5 - 5.5 million IU/day; GFR < 10 mL/min: 2.25 - 4.5 million IU/day. Supplemental dosing required during dialysis."
+    },
+    mechanismOfAction: "Rapidly bactericidal. Behaves as a cationic surfactant: binds to lipopolysaccharides (LPS) and phospholipids in the outer membrane of Gram-negative bacteria, displacing calcium and magnesium ions. This disrupts outer and inner membrane integrity, leading to leakage of cell contents and cell death.",
+    sideEffects: [
+      "Severe nephrotoxicity (renal impairment, acute tubular necrosis - common, dose-dependent)",
+      "Severe neurotoxicity (paresthesia, dizziness, confusion, neuromuscular blockade, and respiratory paralysis)",
+      "Bronchospasm with inhalation",
+      "Hypersensitivity reactions"
+    ],
+    spectrum: {
+      gramPositive: 0,
+      gramNegative: 2,
+      anaerobe: 0,
+      atypical: 0,
+      pseudomonas: 2,
+      other: "Active only against Gram-negative bacteria. Inactive against Proteus, Providencia, Serratia, and Burkholderia species (intrinsic resistance!)."
+    },
+    indications: [
+      "Last-resort option for severe systemic infections caused by multidrug-resistant and pandrug-resistant Gram-negative pathogens (CRE, MDR Pseudomonas, MDR Acinetobacter) in combination",
+      "Chronic Pseudomonas pulmonary infection in cystic fibrosis patients via inhalation"
+    ],
+    notes: "Colistin is administered as a prodrug, colistimethate sodium (CMS). It was previously abandoned due to severe toxicity but has seen a renaissance as a last-resort lifesaver due to the spread of MDR Gram-negative pathogens."
   }
 ];
