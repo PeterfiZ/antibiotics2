@@ -303,7 +303,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
-      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/Cilastatin", susceptibility: "R", mechanismNotes: "Intrinsische niedrige Empfindlichkeit/Resistenz gegenüber Imipenem aufgrund einer geringen Affinität seiner Penicillin-Bindeproteine (PBPs). Gemäß den EUCAST-Richtlinien muss Imipenem für Proteus-Spezies als resistent (R) gemeldet werden." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/Cilastatin", susceptibility: "I", mechanismNotes: "Nach EUCAST-Richtlinien weisen Mitglieder der Tribus Proteae (Morganella, Proteus, Providencia) eine verminderte Empfindlichkeit gegenüber Imipenem auf (standardmäßig als I eingestuft: Empfindlich bei erhöhter Exposition)." },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R" },

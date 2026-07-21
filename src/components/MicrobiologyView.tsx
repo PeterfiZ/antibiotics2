@@ -245,13 +245,13 @@ export default function MicrobiologyView() {
             : language === 'de'
             ? 'Wildtyp-Stämme können mäßig empfindlich sein, aber die Rate der erworbenen Resistenz ist hoch.'
             : 'Wild-type strains may be moderately susceptible, but acquired resistance rates are high.';
-        } else if (microbe.id === 'p_mirabilis') {
+        } else if (['p_mirabilis', 'm_morganii'].includes(microbe.id)) {
           susceptibility = 'R';
           mechanismNotes = language === 'hu'
-            ? 'A Proteus fajok természetes (intrinsic) módon teljesen ellenállnak a tetracyclineknek.'
+            ? 'A Proteae tribus tagjai (Proteus, Morganella) természetes (intrinsic) módon teljesen ellenállnak a tetracyclineknek.'
             : language === 'de'
-            ? 'Proteus-Spezies sind von Natur aus (intrinsisch) völlig resistent gegen Tetracycline.'
-            : 'Proteus species possess intrinsic (natural) resistance to all tetracyclines.';
+            ? 'Mitglieder der Tribus Proteae (Proteus, Morganella) sind von Natur aus (intrinsisch) völlig resistent gegen Tetracycline.'
+            : 'Members of the Proteae tribe (Proteus, Morganella) possess intrinsic (natural) resistance to all tetracyclines.';
         } else {
           susceptibility = 'R';
           mechanismNotes = language === 'hu'
