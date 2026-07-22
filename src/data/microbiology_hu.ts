@@ -731,6 +731,44 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Az elsőként választandó arany standard kezelés." },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Légúti kinolonok alternatívaként használhatók." }
     ]
+  },
+  {
+    id: "prevotella_spp",
+    name: "Prevotella spp. (pl. P. melaninogenica, P. bivia)",
+    type: "anaerobe",
+    clinicalImportance: "Gram-negatív anaerob pálcák, a szájüreg, a felső légutak és a női genitalis traktus normál flórájának tagjai. Kevert anaerob fertőzésekben játszanak kulcsszerepet: aspirációs pneumonia, tüdőtályog, empyema, periapicalis fogászati tályogok, kismedencei gyulladások (PID) és nőgyógyászati/postoperatív sebfertőzések.",
+    resistanceMechanisms: "A törzsek 30-80%-a plazmid- és kromoszóma-kódolt béta-laktamázokat (pl. CbxA, CfxA) termel, emiatt penicillinnel és amoxicillinnel szemben rezisztensek! Béta-laktamáz inhibitoros kombinációk (amoxicillin/klavulánsav, ampicillin/sulbactam), metronidazol, carbapenemek és clindamycin hatásosak (bár a clindamycin-rezisztencia emelkedő tendenciát mutat).",
+    firstLineDrugs: ["amoxicillin_clavulanate", "metronidazole", "meropenem"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Gyakori béta-laktamáz termelés (CbxA, CfxA) miatti rezisztencia." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S", mechanismNotes: "A klavulánsav hatékonyan gátolja a Prevotella béta-laktamázokat." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Kiváló anaerob aktivitás, az elsővonalbeli kezelés része." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Súlyos, kevert anaerob/aerob kismedencei vagy thoracalis fertőzésekben elsőként választandó." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Használható, de az emelkedő rezisztencia miatt megfontolás tárgya." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "I", mechanismNotes: "Ingadozó béta-laktamáz érzékenység." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Belső anaerob rezisztencia aminoglikozidokra." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Gram-negatív sejtfal-struktúra miatt hatástalan." }
+    ]
+  },
+  {
+    id: "veillonella_spp",
+    name: "Veillonella spp. (pl. V. parvula)",
+    type: "anaerobe",
+    clinicalImportance: "Gram-negatív anaerob coccusok, a szájüreg, a tápcsatorna és a felső légutak normál flórájának kommenzális tagjai. Általában polimikrobás kevert fertőzésekben (fogászati és periapicalis tályogok, aspirációs pneumonia, sinusitis, osteomyelitis, ritkán endocarditis vagy sepsis) vesznek részt.",
+    resistanceMechanisms: "A legtöbb Veillonella törzs továbbra is érzékeny penicillinre, amoxicillin/klavulánsavra, metronidazolra, clindamycinre és carbapenemekre. Béta-laktamáz termelés ritkább, mint a Prevotella vagy Bacteroides fajoknál. Belsőleg (intrinsic) rezisztensek vancomycinre és aminoglikozidokra.",
+    firstLineDrugs: ["penicillin_g", "amoxicillin_clavulanate", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "A legtöbb törzs jól reagál penicillinre." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S", mechanismNotes: "Kevert szájüregi/anaerob fertőzésekben kiváló választás." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Alapvető anaerob szer, kiváló hatásosság." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Jól alkalmazható szájüregi és lágyrész-eredetű fertőzésekben." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Belső anaerob rezisztencia aminoglikozidokra." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Gram-negatív sejtfal miatt hatástalan." }
+    ]
   }
 ];
 

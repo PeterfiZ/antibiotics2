@@ -731,5 +731,43 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Goldstandard und Mittel der ersten Wahl." },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Fluorchinolone der Atemwege sind hochwirksame Alternativen." }
     ]
+  },
+  {
+    id: "prevotella_spp",
+    name: "Prevotella spp. (z. B. P. melaninogenica, P. bivia)",
+    type: "anaerobe",
+    clinicalImportance: "Gramnegative anaerobe Stäbchen, Bestandteil der Normalflora von Mundhöhle, oberen Atemwegen und weiblichem Genitaltrakt. Schlüsselpathogene bei gemischten anaeroben Infektionen: Aspirationspneumonie, Lungenabszess, Empyem, periapikale Zahnabszesse, entzündliche Beckenerkrankungen (PID) und gynäkologische/postoperative Wundinfektionen.",
+    resistanceMechanisms: "30-80 % der Stämme produzieren plasmid- und chromosomal kodierte Beta-Laktamasen (z. B. CbxA, CfxA) und sind daher resistent gegen Penicillin G und Amoxicillin! Beta-Laktamase-Inhibitor-Kombinationen (Amoxicillin/Clavulansäure, Ampicillin/Sulbactam), Metronidazol, Carbapeneme und Clindamycin sind wirksam (wobei die Clindamycin-Resistenz zunimmt).",
+    firstLineDrugs: ["amoxicillin_clavulanate", "metronidazole", "meropenem"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Resistenz durch häufige Beta-Laktamase-Produktion (CbxA, CfxA)." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "S", mechanismNotes: "Clavulansäure hemmt Prevotella-Beta-Laktamasen effektiv." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Hervorragende anaerobe Aktivität, Teil der Erstlinientherapie." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Erste Wahl bei schweren gemischten anaeroben/aeroben Becken- oder Thoraxinfektionen." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Wirksam, wegen steigender Resistenzen wird jedoch eine Testung empfohlen." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "I", mechanismNotes: "Variable Empfindlichkeit aufgrund von Beta-Laktamase-Inaktivierung." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz obligater Anaerobier gegen Aminoglykoside." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Unwirksam aufgrund der äußeren Membran gramnegativer Bakterien." }
+    ]
+  },
+  {
+    id: "veillonella_spp",
+    name: "Veillonella spp. (z. B. V. parvula)",
+    type: "anaerobe",
+    clinicalImportance: "Gramnegative anaerobe Kokken, Kommensalen der Mundhöhlen-, Magen-Darm- und oberen Atemwegsflora. Typischerweise beteiligt an polymikrobiellen Mischinfektionen (Zahn- und Periapikalabszesse, Aspirationspneumonie, Sinusitis, Osteomyelitis, selten Endokarditis oder Sepsis).",
+    resistanceMechanisms: "Die meisten Veillonella-Stämme bleiben empfindlich gegenüber Penicillin, Amoxicillin/Clavulansäure, Metronidazol, Clindamycin und Carbapenemen. Beta-Laktamase-Produktion ist seltener als bei Prevotella- oder Bacteroides-Arten. Intrinsisch resistent gegen Vancomycin und Aminoglykoside.",
+    firstLineDrugs: ["penicillin_g", "amoxicillin_clavulanate", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Die meisten Stämme bleiben gut empfindlich gegenüber Penicillin." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "S", mechanismNotes: "Hervorragende Option bei gemischten oralen/anaeroben Infektionen." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "S", mechanismNotes: "Grundlegendes anaerobes Mittel mit ausgezeichneter Wirksamkeit." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Gut geeignet für orale und Weichteilinfektionen." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsische anaerobe Resistenz gegen Aminoglykoside." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Unwirksam aufgrund der gramnegativen Zellwandstruktur." }
+    ]
   }
 ];

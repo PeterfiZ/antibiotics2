@@ -731,5 +731,43 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S", mechanismNotes: "Gold-standard first-line drug of choice." },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Respiratory fluoroquinolones are highly useful alternatives." }
     ]
+  },
+  {
+    id: "prevotella_spp",
+    name: "Prevotella spp. (e.g., P. melaninogenica, P. bivia)",
+    type: "anaerobe",
+    clinicalImportance: "Gram-negative anaerobic bacilli, part of the normal flora of the oral cavity, upper respiratory tract, and female genital tract. Key pathogens in mixed anaerobic infections: aspiration pneumonia, lung abscess, empyema, periapical dental abscesses, pelvic inflammatory disease (PID), and gynecological or postoperative wound infections.",
+    resistanceMechanisms: "30-80% of strains produce plasmid- and chromosomally encoded beta-lactamases (e.g., CbxA, CfxA), making them resistant to penicillin G and amoxicillin! Beta-lactamase inhibitor combinations (amoxicillin/clavulanate, ampicillin/sulbactam), metronidazole, carbapenems, and clindamycin are effective (although clindamycin resistance is increasing).",
+    firstLineDrugs: ["amoxicillin_clavulanate", "metronidazole", "meropenem"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Resistance due to prevalent beta-lactamase production (CbxA, CfxA)." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "S", mechanismNotes: "Clavulanate effectively restores activity by inhibiting Prevotella beta-lactamases." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S", mechanismNotes: "Excellent anaerobic activity, part of first-line therapy." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "First-line choice in severe mixed anaerobic/aerobic pelvic or thoracic infections." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Effective, but local susceptibility testing is recommended due to rising resistance." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "I", mechanismNotes: "Variable susceptibility due to beta-lactamase inactivation." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsic resistance to aminoglycosides in obligate anaerobes." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Inactive due to Gram-negative outer membrane." }
+    ]
+  },
+  {
+    id: "veillonella_spp",
+    name: "Veillonella spp. (e.g., V. parvula)",
+    type: "anaerobe",
+    clinicalImportance: "Gram-negative anaerobic cocci, commensal members of the oral, gastrointestinal, and upper respiratory tract flora. Typically involved in polymicrobial mixed infections (dental and periapical abscesses, aspiration pneumonia, sinusitis, osteomyelitis, rarely endocarditis or sepsis).",
+    resistanceMechanisms: "Most Veillonella strains remain susceptible to penicillin, amoxicillin/clavulanate, metronidazole, clindamycin, and carbapenems. Beta-lactamase production is less frequent than in Prevotella or Bacteroides species. Intrinsically resistant to vancomycin and aminoglycosides.",
+    firstLineDrugs: ["penicillin_g", "amoxicillin_clavulanate", "metronidazole"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "S", mechanismNotes: "Most strains remain susceptible to penicillin." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "S" },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "S", mechanismNotes: "Excellent option for mixed oral/anaerobic infections." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "S", mechanismNotes: "Core anaerobic agent with excellent efficacy." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Well suited for oral and soft tissue infections." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsic anaerobic resistance to aminoglycosides." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Inactive due to Gram-negative cell wall structure." }
+    ]
   }
 ];
