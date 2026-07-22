@@ -178,6 +178,16 @@ export const uiTranslations: Record<string, Record<string, string>> = {
   },
 
   // Tabs
+  "tab_mdr_label": {
+    hu: "MDR Kórokozók",
+    en: "MDR Pathogens",
+    de: "MDR-Erreger"
+  },
+  "tab_mdr_desc": {
+    hu: "Kezelési Lehetőségek & Gének",
+    en: "Treatment Options & Genes",
+    de: "Therapieoptionen & Gene"
+  },
   "tab_pharma_label": {
     hu: "Farmakológia",
     en: "Pharmacology",

@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import PharmacologyView from './components/PharmacologyView';
 import ClinicalView from './components/ClinicalView';
 import MicrobiologyView from './components/MicrobiologyView';
+import MdrView from './components/MdrView';
 import PracticeView from './components/PracticeView';
 import AiConsultantView from './components/AiConsultantView';
 import TdmCalculatorView from './components/TdmCalculatorView';
@@ -20,6 +21,7 @@ import {
   Layers, 
   Stethoscope, 
   Bug, 
+  ShieldAlert,
   GraduationCap, 
   Brain, 
   Bookmark, 
@@ -39,7 +41,7 @@ import {
 
 export default function App() {
   const { language, setLanguage, t, tg, antibioticsData, clinicalInfectionsData } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'quiz' | 'ai' | 'tdm' | 'renal'>('pharma');
+  const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'mdr' | 'quiz' | 'ai' | 'tdm' | 'renal'>('pharma');
   const [utcTime, setUtcTime] = useState('');
 
   // PWA Install Prompt State
@@ -283,6 +285,7 @@ ${feedbackMessage}`;
     { id: 'pharma', labelKey: 'tab_pharma_label', icon: Layers, descKey: 'tab_pharma_desc' },
     { id: 'clinical', labelKey: 'tab_clinical_label', icon: Stethoscope, descKey: 'tab_clinical_desc' },
     { id: 'micro', labelKey: 'tab_micro_label', icon: Bug, descKey: 'tab_micro_desc' },
+    { id: 'mdr', labelKey: 'tab_mdr_label', icon: ShieldAlert, descKey: 'tab_mdr_desc' },
     { id: 'tdm', labelKey: 'tab_tdm_label', icon: Calculator, descKey: 'tab_tdm_desc' },
     { id: 'renal', labelKey: 'tab_renal_label', icon: TrendingDown, descKey: 'tab_renal_desc' },
     { id: 'quiz', labelKey: 'tab_quiz_label', icon: GraduationCap, descKey: 'tab_quiz_desc' },
@@ -494,6 +497,7 @@ ${feedbackMessage}`;
           {activeTab === 'pharma' && <PharmacologyView />}
           {activeTab === 'clinical' && <ClinicalView />}
           {activeTab === 'micro' && <MicrobiologyView />}
+          {activeTab === 'mdr' && <MdrView />}
           {activeTab === 'tdm' && <TdmCalculatorView />}
           {activeTab === 'renal' && <RenalDosingView />}
           {activeTab === 'quiz' && <PracticeView />}
