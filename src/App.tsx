@@ -129,7 +129,7 @@ export default function App() {
           gtag('js', new Date());
           gtag('config', '${measurementId}', {
             page_path: window.location.pathname,
-            page_title: 'SepsisDose'
+            page_title: 'Antibiotikum Oktató Program'
           });
         `;
         document.head.appendChild(initScript);
@@ -143,7 +143,7 @@ export default function App() {
       const measurementId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-4NVS2LTF0W';
       (window as any).gtag('config', measurementId, {
         page_path: `/${activeTab}`,
-        page_title: `SepsisDose - ${activeTab}`
+        page_title: `Antibiotikum Oktató Program - ${activeTab}`
       });
     }
   }, [activeTab]);
@@ -177,7 +177,7 @@ export default function App() {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackName, setFeedbackName] = useState('');
   const [feedbackEmail, setFeedbackEmail] = useState('');
-  const [feedbackSubject, setFeedbackSubject] = useState('SepsisDose Visszajelzés');
+  const [feedbackSubject, setFeedbackSubject] = useState('Antibiotikum Oktató Program Visszajelzés');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [feedbackRating, setFeedbackRating] = useState(5);
   const [feedbackStatus, setFeedbackStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -213,7 +213,7 @@ export default function App() {
 
   const getMailtoLink = () => {
     const recipient = 'peterfi.zoltan@pte.hu';
-    const subject = encodeURIComponent(feedbackSubject || 'SepsisDose Visszajelzés');
+    const subject = encodeURIComponent(feedbackSubject || 'Antibiotikum Oktató Program Visszajelzés');
     const bodyText = `Név: ${feedbackName || 'Névtelen látogató'}
 E-mail: ${feedbackEmail}
 Értékelés: ${feedbackRating}/5 csillag
@@ -227,7 +227,7 @@ ${feedbackMessage}`;
   const resetFeedbackForm = () => {
     setFeedbackName('');
     setFeedbackEmail('');
-    setFeedbackSubject('SepsisDose Visszajelzés');
+    setFeedbackSubject('Antibiotikum Oktató Program Visszajelzés');
     setFeedbackMessage('');
     setFeedbackRating(5);
     setFeedbackStatus('idle');
