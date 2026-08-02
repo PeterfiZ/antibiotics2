@@ -769,5 +769,28 @@ export const microbesData: Microbe[] = [
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsic anaerobic resistance to aminoglycosides." },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Inactive due to Gram-negative cell wall structure." }
     ]
+  },
+  {
+    id: "providencia_spp",
+    name: "Providencia spp. (e.g., P. stuartii, P. rettgeri)",
+    type: "gram-negative",
+    clinicalImportance: "Nosocomial opportunistic Gram-negative bacilli (Enterobacterales) causing complicated urinary tract infections (cUTI), catheter-associated UTIs (CAUTI, e.g., purple urine bag syndrome / PUBS), wound and burn infections, and urosepsis, particularly in catheterized, elderly, or long-term care facility patients.",
+    resistanceMechanisms: "Characterized by intrinsic resistance to colistin (polymyxins), tigecycline, nitrofurantoin, ampicillin/amoxicillin, and 1st generation cephalosporins (cefazolin). Many strains express inducible or derepressed chromosomal AmpC beta-lactamases, plasmid-mediated ESBLs, and aminoglycoside-modifying enzymes (AMEs).",
+    firstLineDrugs: ["ceftriaxone", "cefepime", "meropenem", "cotrimoxazole"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsic resistance." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "R", mechanismNotes: "Inactive due to AmpC production and intrinsic insusceptibility." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsic resistance to 1st generation cephalosporins." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "I", mechanismNotes: "Frequently resistant or intermediate due to AmpC expression." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "Susceptible unless AmpC derepressed or ESBL producing." },
+      { antibioticId: "cefepime", antibioticName: "Cefepime", susceptibility: "S", mechanismNotes: "4th generation cephalosporin, stable against AmpC beta-lactamases." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Carbapenems are highly effective even against AmpC/ESBL producers." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Effective, but acquired fluoroquinolone resistance is common." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "I", mechanismNotes: "Variable or resistant due to aminoglycoside-modifying enzymes (AMEs)." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole", susceptibility: "S", mechanismNotes: "Excellent option for UTIs if susceptible." },
+      { antibioticId: "colistin", antibioticName: "Colistin", susceptibility: "R", mechanismNotes: "CRITICAL: Intrinsic resistance! Colistin is strictly inactive against Providencia species." },
+      { antibioticId: "nitrofurantoin", antibioticName: "Nitrofurantoin", susceptibility: "R", mechanismNotes: "Intrinsic resistance, inactive in urine." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "R", mechanismNotes: "Intrinsic resistance to tetracyclines and tigecycline via efflux pumps." }
+    ]
   }
 ];

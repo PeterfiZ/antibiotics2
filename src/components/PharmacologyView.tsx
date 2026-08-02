@@ -536,12 +536,22 @@ export default function PharmacologyView() {
                     )}
                     {/* Micro spectrum preview bar */}
                     <div className="flex gap-1 mt-2.5">
-                      <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden flex">
-                        <div className={`h-full ${getSpectrumBadge(ab.spectrum.gramPositive)}`} style={{ width: '20%' }} title={t('GRAM_POSITIVE')} />
-                        <div className={`h-full ${getSpectrumBadge(ab.spectrum.gramNegative)}`} style={{ width: '20%' }} title={t('GRAM_NEGATIVE')} />
-                        <div className={`h-full ${getSpectrumBadge(ab.spectrum.anaerobe)}`} style={{ width: '20%' }} title={t('ANAEROBE')} />
-                        <div className={`h-full ${getSpectrumBadge(ab.spectrum.atypical)}`} style={{ width: '20%' }} title={t('ATYPICAL')} />
-                        <div className={`h-full ${getSpectrumBadge(ab.spectrum.pseudomonas)}`} style={{ width: '20%' }} title={t('PSEUDOMONAS')} />
+                      <div className="w-full h-[18px] rounded bg-slate-100 overflow-hidden flex text-[9px] font-bold">
+                        <div className={`h-full flex items-center justify-center tracking-wider ${getSpectrumBadge(ab.spectrum.gramPositive)}`} style={{ width: '20%' }} title={t('GRAM_POSITIVE')}>
+                          G+
+                        </div>
+                        <div className={`h-full flex items-center justify-center tracking-wider ${getSpectrumBadge(ab.spectrum.gramNegative)}`} style={{ width: '20%' }} title={t('GRAM_NEGATIVE')}>
+                          G-
+                        </div>
+                        <div className={`h-full flex items-center justify-center tracking-wider ${getSpectrumBadge(ab.spectrum.anaerobe)}`} style={{ width: '20%' }} title={t('ANAEROBE')}>
+                          Anae
+                        </div>
+                        <div className={`h-full flex items-center justify-center tracking-wider ${getSpectrumBadge(ab.spectrum.atypical)}`} style={{ width: '20%' }} title={t('ATYPICAL')}>
+                          Atyp
+                        </div>
+                        <div className={`h-full flex items-center justify-center tracking-wider ${getSpectrumBadge(ab.spectrum.pseudomonas)}`} style={{ width: '20%' }} title={t('PSEUDOMONAS')}>
+                          Ps
+                        </div>
                       </div>
                     </div>
                   </button>

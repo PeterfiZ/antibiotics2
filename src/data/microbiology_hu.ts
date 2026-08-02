@@ -769,6 +769,29 @@ export const microbesData: Microbe[] = [
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Belső anaerob rezisztencia aminoglikozidokra." },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Gram-negatív sejtfal miatt hatástalan." }
     ]
+  },
+  {
+    id: "providencia_spp",
+    name: "Providencia spp. (pl. P. stuartii, P. rettgeri)",
+    type: "gram-negative",
+    clinicalImportance: "Nosocomialis, opportunista Gram-negatív pálca (Enterobacterales), amely különösen tartós hólyagkatéterrel rendelkező, idős vagy krónikus ápolásra szoruló betegekben okoz szövődményes húgyúti fertőzéseket (cUTI), katéterrel összefüggő húgyúti fertőzéseket (CAUTI, pl. lila vizeletgyűjtő zsák szindróma / PUBS), seb- és égési fertőzéseket, valamint urosepsist.",
+    resistanceMechanisms: "Jellemző a belső (intrinsic) rezisztencia colistinre (polymyxinekre), tigecyclinre, nitrofurantoinra, ampicillinre/amoxicillinre és 1. generációs cephalosporinokra (cefazolin). Sok törzsnél indokolt a kromoszómális AmpC béta-laktamáz és plazmid-mediált ESBL jelenléte, valamint gyakori az aminoglikozid-módosító enzimek (AME) miatti rezisztencia is.",
+    firstLineDrugs: ["ceftriaxone", "cefepime", "meropenem", "cotrimoxazole"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Belső (intrinsic) rezisztencia." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "R", mechanismNotes: "AmpC béta-laktamáz és belső insusceptibilitás miatt hatástalan." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Belső rezisztencia az 1. generációs cephalosporinokra." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Gyakran rezisztens vagy mérsékelten érzékeny AmpC kifejeződés miatt." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Érzékeny lehet, kivéve ha AmpC-derepresszált vagy ESBL-termelő törzsről van szó." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "4. generációs cephalosporin, stabil az AmpC béta-laktamázokkal szemben." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "A carbapenemek megbízhatóan hatékonyak AmpC és ESBL törzsek ellen is." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Használható, de a szerzett fluorokinolon-rezisztencia gyakori." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "I", mechanismNotes: "Aminoglikozid-módosító enzimek (AME) miatt ingadozó válasz." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Húgyúti fertőzésekben kiváló orális/parenterális opció, ha érzékeny." },
+      { antibioticId: "colistin", antibioticName: "Colistin", susceptibility: "R", mechanismNotes: "FONTOS: Belső (intrinsic) rezisztencia! A colistin szigorúan hatástalan valamennyi Providencia fajra!" },
+      { antibioticId: "nitrofurantoin", antibioticName: "Nitrofurantoin", susceptibility: "R", mechanismNotes: "Belső (intrinsic) rezisztencia, vizeletben hatástalan." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "R", mechanismNotes: "Tetracyclinekre és tigecyclinre belső efflux-mediált rezisztencia." }
+    ]
   }
 ];
 

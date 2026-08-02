@@ -769,5 +769,28 @@ export const microbesData: Microbe[] = [
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R", mechanismNotes: "Intrinsische anaerobe Resistenz gegen Aminoglykoside." },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Unwirksam aufgrund der gramnegativen Zellwandstruktur." }
     ]
+  },
+  {
+    id: "providencia_spp",
+    name: "Providencia spp. (z. B. P. stuartii, P. rettgeri)",
+    type: "gram-negative",
+    clinicalImportance: "Nosokomiales opportunistisches gramnegatives Stäbchen (Enterobacterales), das komplizierte Harnwegsinfektionen (cUTI), Katheter-assoziierte HWI (CAUTI, z. B. Purple-Urine-Bag-Syndrom / PUBS), Wund- und Brandwundeninfektionen sowie Urosepsis verursacht, insbesondere bei katheterisierten, älteren oder langzeitgepflegten Patienten.",
+    resistanceMechanisms: "Charakterisiert durch intrinsische Resistenz gegen Colistin (Polymyxine), Tigecyclin, Nitrofurantoin, Ampicillin/Amoxicillin und Cephalosporine der 1. Generation (Cefazolin). Viele Stämme exprimieren chromosomale AmpC-Beta-Laktamasen, plasmidvermittelte ESBLs und Aminoglykosid-modifizierende Enzyme (AMEs).",
+    firstLineDrugs: ["ceftriaxone", "cefepime", "meropenem", "cotrimoxazole"],
+    resistances: [
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "R", mechanismNotes: "Unwirksam aufgrund von AmpC-Produktion und intrinsischer Unempfindlichkeit." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz gegen Cephalosporine der 1. Generation." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Häufig resistent oder intermediär durch AmpC-Expression." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Empfindlich, außer bei AmpC-dereprimierten oder ESBL-bildenden Stämmen." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "4. Generation, stabil gegenüber AmpC-Beta-Laktamasen." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Carbapeneme sind auch gegen AmpC- und ESBL-Bildner zuverlässig wirksam." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Wirksam, erworbene Fluorchinolon-Resistenz ist jedoch häufig." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "I", mechanismNotes: "Variabel oder resistent aufgrund Aminoglykosid-modifizierender Enzyme (AMEs)." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol", susceptibility: "S", mechanismNotes: "Hervorragende Option bei HWI, sofern empfindlich." },
+      { antibioticId: "colistin", antibioticName: "Colistin", susceptibility: "R", mechanismNotes: "WICHTIG: Intrinsische Resistenz! Colistin ist streng unwirksam gegen Providencia-Arten." },
+      { antibioticId: "nitrofurantoin", antibioticName: "Nitrofurantoin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz, im Urin unwirksam." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz gegen Tetracycline und Tigecyclin durch Efflux-Pumpen." }
+    ]
   }
 ];
