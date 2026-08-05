@@ -198,6 +198,16 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "Agents & Spectrum",
     de: "Wirkstoffe & Spektrum"
   },
+  "tab_antifungal_label": {
+    hu: "Gombaellenes kezelés",
+    en: "Antifungal therapy",
+    de: "Antimykotische Therapie"
+  },
+  "tab_antifungal_desc": {
+    hu: "Antifungális szerek",
+    en: "Antifungal agents",
+    de: "Antimyko-Wirkstoffe"
+  },
   "tab_clinical_label": {
     hu: "Klinikum",
     en: "Clinical Practice",

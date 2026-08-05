@@ -12,6 +12,7 @@ import PracticeView from './components/PracticeView';
 import AiConsultantView from './components/AiConsultantView';
 import TdmCalculatorView from './components/TdmCalculatorView';
 import RenalDosingView from './components/RenalDosingView';
+import AntifungalView from './components/AntifungalView';
 import { motion, AnimatePresence } from 'motion/react';
 
 import { Antibiotic, ClinicalInfection } from './types';
@@ -36,12 +37,13 @@ import {
   MessageSquare,
   Star,
   Eye,
-  BarChart3
+  BarChart3,
+  Flame
 } from 'lucide-react';
 
 export default function App() {
   const { language, setLanguage, t, tg, antibioticsData, clinicalInfectionsData } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'mdr' | 'quiz' | 'ai' | 'tdm' | 'renal'>('pharma');
+  const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'mdr' | 'quiz' | 'ai' | 'tdm' | 'renal' | 'antifungal'>('pharma');
   const [utcTime, setUtcTime] = useState('');
 
   // PWA Install Prompt State
@@ -283,6 +285,7 @@ ${feedbackMessage}`;
 
   const tabs = [
     { id: 'pharma', labelKey: 'tab_pharma_label', icon: Layers, descKey: 'tab_pharma_desc' },
+    { id: 'antifungal', labelKey: 'tab_antifungal_label', icon: Flame, descKey: 'tab_antifungal_desc' },
     { id: 'clinical', labelKey: 'tab_clinical_label', icon: Stethoscope, descKey: 'tab_clinical_desc' },
     { id: 'micro', labelKey: 'tab_micro_label', icon: Bug, descKey: 'tab_micro_desc' },
     { id: 'mdr', labelKey: 'tab_mdr_label', icon: ShieldAlert, descKey: 'tab_mdr_desc' },
@@ -495,6 +498,7 @@ ${feedbackMessage}`;
           )}
 
           {activeTab === 'pharma' && <PharmacologyView />}
+          {activeTab === 'antifungal' && <AntifungalView />}
           {activeTab === 'clinical' && <ClinicalView />}
           {activeTab === 'micro' && <MicrobiologyView />}
           {activeTab === 'mdr' && <MdrView />}
