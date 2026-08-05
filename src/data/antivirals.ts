@@ -1050,5 +1050,571 @@ export const antiviralsData: AntiviralData[] = [
         'Möglichst strikte Adhärenz (>95%) einhalten, um Resistenzentwicklungen zu verhindern.'
       ]
     }
+  },
+  {
+    id: 'baloxavir',
+    name: 'Baloxavir marboxil',
+    group: {
+      hu: 'Influenza-ellenes szerek (Cap-dependens endonukleáz gátló)',
+      en: 'Anti-influenza agents (Cap-dependent endonuclease inhibitor)',
+      de: 'Anti-Influenza-Wirkstoffe (Cap-abhängiger Endonuklease-Hemmer)'
+    },
+    targetViruses: {
+      hu: 'Influenza A és Influenza B vírusok (beleértve az Oseltamivir-rezisztens törzseket is)',
+      en: 'Influenza A and Influenza B viruses (including oseltamivir-resistant strains)',
+      de: 'Influenza-A- und Influenza-B-Viren (inkl. Oseltamivir-resistenter Stämme)'
+    },
+    halfLife: {
+      hu: 'Plazma felezési idő: kb. 79 - 96 óra (rendkívül hosszú, egyetlen dózis elegendő)',
+      en: 'Plasma half-life: approx. 79 - 96 hours (supports single-dose regimen)',
+      de: 'Plasmahalbwertszeit: ca. 79 - 96 Stunden (Einzeldosis-Therapie)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Újszerű vírusi mRNS transzkripció gátló)',
+      en: 'Virostatic (Novel viral mRNA transcription inhibitor)',
+      de: 'Virostatisch (Hemmt virale mRNA-Transkription)'
+    },
+    specialFeature: {
+      hu: 'Egyetlen orális adagból (single dose) álló teljes kezelési kúra! A vírusi replikáció korábbi fázisában hat, mint a neuraminidáz-gátlók, így gyorsabb vírus-címke csökkenést ér el.',
+      en: 'Complete course delivered as a single oral dose! Acts at an earlier stage of viral replication than neuraminidase inhibitors, leading to faster decline in viral titers.',
+      de: 'Vollständige Therapie als orale Einzeldosis! Wirkt in einer früheren Phase der Virusreplikation als Neuraminidase-Hemmer.'
+    },
+    mechanismOfAction: {
+      hu: 'Szelektíven gátolja az Influenza A és B polimeráz komplexének PA alegységében lévő cap-dependens endonukleáz enzimet. Ez blokkolja a gazdasejt mRNS cap-szerkezetének kihasítását (cap-snatching) és a vírusi RNS transzkripcióját.',
+      en: 'Inhibits cap-dependent endonuclease activity of viral RNA polymerase PA subunit, blocking host pre-mRNA cap-snatching and preventing viral mRNA synthesis.',
+      de: 'Hemmt selektiv die Cap-abhängige Endonuklease der PA-Subeinheit der viralen RNA-Polymerase und blockiert das Cap-Snatching.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Egyszeri orális adag (single dose): <80 kg testsúly esetén 1x 40 mg p.o.; ≥80 kg testsúly esetén 1x 80 mg p.o.',
+        en: 'Single oral dose: <80 kg body weight: 40 mg once p.o.; ≥80 kg body weight: 80 mg once p.o.',
+        de: 'Einzeldosis oral: <80 kg Körpergewicht: 1x 40 mg p.o.; ≥80 kg Körpergewicht: 1x 80 mg p.o.'
+      },
+      pediatric: {
+        hu: '≥12 év felett a felnőtt adagolás szerint (<80 kg: 40 mg, ≥80 kg: 80 mg). 1-12 év között testsúlyalapú egyszeri adag: <20 kg: 10 mg; 20-40 kg: 20 mg; ≥40 kg: 40 mg.',
+        en: 'Ages ≥12 years: adult dosing (<80 kg: 40 mg, ≥80 kg: 80 mg). Ages 1-12 years single dose: <20 kg: 10 mg; 20-40 kg: 20 mg; ≥40 kg: 40 mg.',
+        de: 'Ab 12 Jahren: Erwachsenendosis. 1-12 Jahre Einzeldosis: <20 kg: 10 mg; 20-40 kg: 20 mg; ≥40 kg: 40 mg.'
+      },
+      prophylaxis: {
+        hu: 'Post-expozíciós profilaxis: megegyezik a kezelési adaggal (egyszeri orális dózis a fertőzött személlyel való érintkezést követően 48 órán belül).',
+        en: 'Post-exposure prophylaxis: Same as treatment dose (single oral dose within 48 hours of exposure).',
+        de: 'Postexpositionsprophylaxe: Gleiche Dosis wie bei Behandlung (Einzeldosis innerhalb von 48 Stunden).'
+      },
+      renal: {
+        hu: 'Enyhe és középsúlyos vesekárosodásban (eGFR ≥50 ml/perc) nem igényel adagmódosítást. Súlyos vesekárosodásban klinikai adatok korlátozottak.',
+        en: 'No dose adjustment needed for mild or moderate renal impairment. Limited data in severe renal failure.',
+        de: 'Keine Dosisanpassung bei leichter oder mäßiger Niereninsuffizienz.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májelégtelenségben (Child-Pugh A, B) nem igényel adagmódosítást.',
+        en: 'No dose adjustment required in mild-to-moderate hepatic impairment (Child-Pugh A or B).',
+        de: 'Keine Dosisanpassung bei leichter/mäßiger Leberinsuffizienz.'
+      }
+    },
+    indications: {
+      hu: [
+        'Akut szövődménymentes Influenza A és B fertőzés kezelése 1 éves vagy annál idősebb betegekben (a tünetek megjelenésétől számított 48 órán belül)',
+        'Post-expozíciós influenza profilaxis igazolt influenzás beteggel való szoros érintkezést követően'
+      ],
+      en: [
+        'Treatment of acute uncomplicated Influenza A and B in patients aged ≥1 year within 48 hours of symptom onset',
+        'Post-exposure prophylaxis of influenza following close contact with an infected individual'
+      ],
+      de: [
+        'Behandlung von akuter unkomplizierter Influenza A und B ab 1 Jahr innerhalb von 48 Stunden nach Symptombeginn',
+        'Postexpositionsprophylaxe nach engem Kontakt mit einem Influenza-Patienten'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Hasmenés, bronchitis, nasopharyngitis, hányinger',
+        'Fejfájás, szédülés',
+        'Túlérzékenységi reakciók (urticaria, rash, angioedema, anaphylaxia - ritkán)',
+        'Májenzim-szint emelkedése (ALT, AST transzaminázok átmeneti növekedése)'
+      ],
+      en: [
+        'Diarrhea, bronchitis, nasopharyngitis, nausea',
+        'Headache, dizziness',
+        'Hypersensitivity reactions (urticaria, rash, angioedema, anaphylaxis)',
+        'Transaminase elevations (ALT, AST)'
+      ],
+      de: [
+        'Durchfall, Bronchitis, Nasopharyngitis, Übelkeit',
+        'Kopfschmerzen, Schwindel',
+        'Überempfindlichkeitsreaktionen (Urtikaria, Angioödem, Anaphylaxie)',
+        'Transaminasenanstieg'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'A Baloxavirt SOHA ne adjuk polivalens kationokat tartalmazó készítményekkel (kalcium, vas, magnézium, alumínium tartalmú antacidok, laxatívumok, tejtermékek/kalk-dús italok) egyidejűleg, mert ezek komplexet képeznek a gyógyszerrel és drasztikusan lecsökkentik annak felszívódását!',
+        'Legfőbb klinikai előnye az Oseltamivirrel szemben az egyetlen adagból álló kezelés, ami garantálja a 100%-os beteg-együttműködést (adherence).',
+        'A kezelést az influenza tüneteinek megjelenésétől számított 48 órán belül el KELL indítani a maximális klinikai hatékonyság érdekében.'
+      ],
+      en: [
+        'DO NOT co-administer with polyvalent cation-containing products (calcium, iron, magnesium, aluminum antacids, dairy products/calcium-fortified beverages) as chelation markedly reduces baloxavir absorption!',
+        'Major clinical advantage over Oseltamivir is single-dose convenience, eliminating adherence failure.',
+        'Must be administered within 48 hours of symptom onset for optimal clinical benefit.'
+      ],
+      de: [
+        'NIEMALS zusammen mit kationenhaltigen Produkten (Calcium, Eisen, Magnesium, Antazida, Milchprodukte) einnehmen wegen Chelatbildung!',
+        'Großer klinischer Vorteil gegenüber Oseltamivir: Einzeldosis sichert 100% Adhärenz.',
+        'Einnahme innerhalb von 48 Stunden nach Symptombeginn erforderlich.'
+      ]
+    }
+  },
+  {
+    id: 'abacavir_lamivudine_emtricitabine',
+    name: 'Abacavir / Lamivudin / Emtricitabin (NRTI-k)',
+    group: {
+      hu: 'HIV / Retrovírus-ellenes szerek (Nukleozid reverz transzkriptáz gátlók - NRTI-k)',
+      en: 'Anti-HIV agents (Nucleoside reverse transcriptase inhibitors - NRTIs)',
+      de: 'Anti-HIV-Wirkstoffe (Nukleosidische Reverse-Transkriptase-Inhibitoren - NRTIs)'
+    },
+    targetViruses: {
+      hu: 'Human Immunodeficientia Vírus 1 és 2 (HIV-1, HIV-2), Lamivudin/Emtricitabin esetén HBV is',
+      en: 'Human Immunodeficiency Virus 1 and 2 (HIV-1, HIV-2), also HBV for Lamivudine/Emtricitabine',
+      de: 'Humanes Immundefizienzvirus 1 und 2 (HIV-1, HIV-2), bei Lamivudin/Emtricitabin auch HBV'
+    },
+    halfLife: {
+      hu: 'Plazma felezési idő: 1.5 - 3 óra; Intracelluláris aktív trifoszfát felezési idő: 12 - 20 óra (napi 1x adagolást tesz lehetővé)',
+      en: 'Plasma half-life: 1.5 - 3 hours; Intracellular active triphosphate half-life: 12 - 20 hours (supports q.d. dosing)',
+      de: 'Plasmahalbwertszeit: 1,5 - 3 Stunden; Intrazelluläres Triphosphat: 12 - 20 Stunden (1x täglich)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Vírusi lánczáró NRTI alapelemek)',
+      en: 'Virostatic (Obligate chain-terminating NRTI backbone)',
+      de: 'Virostatisch (Kettenabbrechende NRTI-Rückgratkomponenten)'
+    },
+    specialFeature: {
+      hu: 'A kombinált antiretrovirális terápia (ART) klasszikus gerince ("backbone"). Az Abacavir adása előtt KÖTELEZŐ a HLA-B*5701 genetikai szűrés az életveszélyes túlérzékenységi reakció (HSR) megelőzésére! Kettős kombinációk: Dovato (DTG/3TC), Truvada (TDF/FTC), Descovy (TAF/FTC), Kivexa (ABC/3TC).',
+      en: 'Essential nucleoside backbone of combination ART. MANDATORY HLA-B*5701 genetic screening prior to initiating Abacavir to prevent fatal hypersensitivity reaction (HSR)! Common fixed-dose duos: Dovato (DTG/3TC), Descovy (TAF/FTC).',
+      de: 'Essentielles NRTI-Rückgrat der ART. ZWINGENDE HLA-B*5701-Testung vor Abacavir-Gabe zur Vermeidung lebensbedrohlicher Überempfindlichkeitsreaktionen (HSR)!'
+    },
+    mechanismOfAction: {
+      hu: 'Intracellulárisan aktív trifoszfáttá foszforilálódnak, kompetitíven gátolják a vírusi reverz transzkriptáz (RT) enzimet, és minthogy hiányzik róluk a 3\'-OH csoport, lánczáróként beépülve leállítják a vírusi DNS-lánc nyúlását.',
+      en: 'Phosphorylated intracellularly to active triphosphates, competing with natural dNTPs for HIV reverse transcriptase (RT) and causing obligate chain termination.',
+      de: 'Werden intrazellulär zu Triphosphaten phosphoryliert, hemmend kompetitiv die HIV-Reverse-Transkriptase und bewirken einen Kettenabbruch.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Dovato (Dolutegravir 50 mg / Lamivudin 300 mg): 1x 1 tbl/nap p.o. Descovy (Emtricitabin 200 mg / TAF 25 mg): 1x 1 tbl/nap p.o. Kivexa (Abacavir 600 mg / Lamivudin 300 mg): 1x 1 tbl/nap p.o.',
+        en: 'Dovato (Dolutegravir 50 mg / Lamivudine 300 mg): 1 tab q.d. Descovy (FTC 200 mg / TAF 25 mg): 1 tab q.d. Kivexa (Abacavir 600 mg / Lamivudine 300 mg): 1 tab q.d.',
+        de: 'Dovato (Dolutegravir 50 mg / Lamivudin 300 mg): 1x 1 Tabl/Tag. Descovy (FTC 200 mg / TAF 25 mg): 1x 1 Tabl/Tag.'
+      },
+      pediatric: {
+        hu: 'Testsúly szerint adagolandó orális oldat vagy csökkentett dózisú kombinált tabletták formájában (pl. Abacavir/Lamivudine ≥3 hónapos kortól).',
+        en: 'Weight-based dosing utilizing oral solution or pediatric fixed-dose combination tablets (e.g., Abacavir/Lamivudine from ≥3 months).',
+        de: 'Gewichtsadaptierte Dosierung mit Lösung oder Kinder-Kombinationstabletten.'
+      },
+      prophylaxis: {
+        hu: 'PrEP (Pre-expozíciós profilaxis): Truvada vagy Descovy (TDF/FTC vagy TAF/FTC) napi 1x 1 tabletta folyamatosan a HIV fertőzés megelőzésére magas kockázatú egyénekben.',
+        en: 'PrEP (Pre-exposure prophylaxis): Truvada or Descovy 1 tab q.d. continuously to prevent HIV acquisition in high-risk individuals.',
+        de: 'PrEP (Präexpositionsprophylaxe): Truvada oder Descovy 1x 1 Tabl/Tag kontinuierlich zur Verhinderung einer HIV-Infektion.'
+      },
+      renal: {
+        hu: 'Lamivudin és Emtricitabin vesén át ürül: eGFR <50 ml/perc alatt dózisszűkítés szükséges. Abacavir májban metabolizálódik, vesekárosodásban nem igényel módosítást.',
+        en: 'Lamivudine and Emtricitabine require dose reduction if CrCl <50 mL/min due to renal excretion. Abacavir is hepatically metabolized, no renal dose adjustment needed.',
+        de: 'Lamivudin und Emtricitabin erfordern Dosisanpassung bei CrCl <50 ml/min. Abacavir wird hepatisch metabolisiert.'
+      },
+      hepatic: {
+        hu: 'Abacavir: enyhe májelégtelenségben (Child-Pugh A) csökkentett adag (2x 200 mg orális oldat); középsúlyos és súlyos májkárosodásban ELLENJAVALLT!',
+        en: 'Abacavir: reduced dose in mild hepatic impairment (Child-Pugh A); CONTRAINDICATED in moderate-to-severe hepatic impairment.',
+        de: 'Abacavir: reduzierte Dosis bei Child-Pugh A; KONTRAINDIZIERT bei mäßiger/schwerer Leberinsuffizienz.'
+      }
+    },
+    indications: {
+      hu: [
+        'HIV-1 fertőzés antiretrovirális kombinált kezelése (ART) felnőttekben és gyermekekben',
+        'HIV Pre-expozíciós profilaxis (PrEP) nem fertőzött, de magas kockázatú személyeknél (TDF/FTC vagy TAF/FTC)',
+        'HIV Post-expozíciós profilaxis (PEP) 28 napos kombinált sémák része'
+      ],
+      en: [
+        'Combination antiretroviral therapy (ART) of HIV-1 infection in adults and pediatrics',
+        'HIV Pre-exposure prophylaxis (PrEP) in uninfected individuals at high risk (TDF/FTC or TAF/FTC)',
+        'HIV Post-exposure prophylaxis (PEP) as part of 28-day combination regimens'
+      ],
+      de: [
+        'Antiretrovirale Kombinationstherapie (ART) der HIV-1-Infektion bei Erwachsenen und Kindern',
+        'HIV-Präexpositionsprophylaxe (PrEP) bei Personen mit hohem Infektionsrisiko',
+        'HIV-Postexpositionsprophylaxe (PEP) als Teil von 28-Tage-Regimen'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Abacavir Túlérzékenységi Reakció (HSR): láz, kiütés, gastrointestinalis tünetek, nehézlégzés, lethargia – HLA-B*5701 pozitívakban életveszélyes, re-challenge HALÁLOS lehet!',
+        'Laktát-acidózis és máj-steatosis (a mitochondriális DNS-polimeráz gamma gátlása miatt - ritkább az újabb NRTI-knél)',
+        'Fejfájás, émelygés, hasmenés, alvászavarok',
+        'Bőrpigmentáció (hiperpigmentáció a tenyereken/talpakon Emtricitabin esetén)'
+      ],
+      en: [
+        'Abacavir Hypersensitivity Reaction (HSR): fever, rash, GI distress, dyspnea, fatigue – potentially fatal upon re-challenge in HLA-B*5701+ patients!',
+        'Lactic acidosis and severe hepatomegaly with steatosis (mitochondrial toxicity due to DNA pol-gamma inhibition)',
+        'Headache, nausea, diarrhea, insomnia',
+        'Skin hyperpigmentation (palms/soles reported with Emtricitabine)'
+      ],
+      de: [
+        'Abacavir-Überempfindlichkeitsreaktion (HSR): Fieber, Exanthem, Dyspnoe – bei HLA-B*5701+ potenziell tödlich bei Re-Exposition!',
+        'Laktatazidose und Hepatomegalie mit Steatose (Mitochondriale Toxizität)',
+        'Kopfschmerzen, Übelkeit, Durchfall',
+        'Hauthyperpigmentierung unter Emtricitabin'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'ABACAVIR KEZDÉSE ELŐTT KÖTELEZŐ A HLA-B*5701 GENETIKAI TESZT! Pozitív eredmény esetén az Abacavir örökre ellenjavallt. Ha Abacavir HSR gyanúja miatt leállítják, SOHA nem szabad újrakezdeni!',
+        'Lamivudint és Emtricitabint tartalmazó sémák hirtelen leállítása HBV ko-fertőzött betegekben súlyos Hepatitis B fellángolást (flare) okozhat.',
+        'A Dovato (Dolutegravir/Lamivudin) 2-gyógyszeres séma (2-drug regimen) kiváló hatékonyságú elsővonalbeli lehetőség, ami megkíméli a beteget a 3. gyógyszer toxicitásától.'
+      ],
+      en: [
+        'MANDATORY HLA-B*5701 screening prior to starting Abacavir! If positive, Abacavir is strictly contraindicated forever. NEVER re-challenge if HSR is suspected!',
+        'Abrupt discontinuation of Lamivudine or Emtricitabine in HBV co-infected patients can precipitate severe acute hepatitis B flare.',
+        'Dovato (DTG/3TC) is a highly potent 2-drug regimen for initial therapy, sparing patients third-agent long-term toxicity.'
+      ],
+      de: [
+        'ZWINGENDER HLA-B*5701-Test vor Abacavir-Start! Bei positivem Testergebnis Abacavir lebenslang kontraindiziert. Bei HSR-Verdacht NIEMALS erneut anwenden!',
+        'Abruptes Absetzen bei HBV-Koinfektion kann schwere Hepatitis-B-Flares auslösen.',
+        'Dovato (DTG/3TC) ist ein hochwirksames 2-Medikamente-Regimen der Erstlinie.'
+      ]
+    }
+  },
+  {
+    id: 'darunavir_cobicistat',
+    name: 'Darunavir / Cobicistat (vagy Ritonavir)',
+    group: {
+      hu: 'HIV / Retrovírus-ellenes szerek (Proteáz gátlók - PI)',
+      en: 'Anti-HIV agents (Protease inhibitors - PI)',
+      de: 'Anti-HIV-Wirkstoffe (Protease-Inhibitoren - PI)'
+    },
+    targetViruses: {
+      hu: 'Human Immunodeficientia Vírus 1 és 2 (HIV-1, HIV-2)',
+      en: 'Human Immunodeficiency Virus 1 and 2 (HIV-1, HIV-2)',
+      de: 'Humanes Immundefizienzvirus 1 und 2 (HIV-1, HIV-2)'
+    },
+    halfLife: {
+      hu: 'Darunavir (cobicistattal/ritonavirrel boostolva): ~15 óra (napi 1x orális adagolást biztosít)',
+      en: 'Darunavir (boosted with cobicistat or ritonavir): ~15 hours (supports q.d. dosing)',
+      de: 'Darunavir (mit Cobicistat/Ritonavir geboostet): ~15 Stunden (1x täglich)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Érett, fertőző virionok képződését gátló PI)',
+      en: 'Virostatic (Inhibits maturation into infectious virions)',
+      de: 'Virostatisch (Hemmt die Ausreifung zu infektiösen Virionen)'
+    },
+    specialFeature: {
+      hu: 'A legmagasabb genetikai barrierrel rendelkező antiretrovirális szer, rezisztencia kialakulása rendkívül ritka. A Cobicistat vagy Ritonavir mint PK-booster gátolja a Darunavir CYP3A általi lebomlását. Elérhető fix dózisú 1-tablettás kombinációban is: Symtuza (DRV/c/FTC/TAF).',
+      en: 'Highest genetic barrier to resistance among all antiretrovirals. Requires a PK booster (cobicistat or ritonavir) to inhibit CYP3A metabolism. Available in single-tablet regimen Symtuza (DRV/c/FTC/TAF).',
+      de: 'Höchste genetische Barriere gegen Resistenzen unter allen Antiretroviralia. Benötigt PK-Booster (Cobicistat oder Ritonavir).'
+    },
+    mechanismOfAction: {
+      hu: 'Kompakt molekulaszerkezetével rugalmasan és szelektíven kötődik a HIV-1 proteáz enzim aktív helyéhez, meggátolva a gag-pol poliprotein hasítását. Ez megakadályozza a nem-fertőző éretlen virionok érett, fertőző vírusrészecskévé alakulását.',
+      en: 'Reversibly inhibits HIV-1 protease, preventing cleavage of gag-pol polyproteins, resulting in the formation of immature, non-infectious viral particles.',
+      de: 'Hemmt selektiv die HIV-1-Protease und blockiert die Spaltung viraler Polyproteine, wodurch unreife, nicht-infektiöse Partikel entstehen.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Kezelés-náív vagy rezisztencia-mentes betegekben: 1x 800 mg Darunavir + 1x 150 mg Cobicistat (Rezolsta) vagy 1x 100 mg Ritonavir naponta 1x étkezés közben. Symtuza: 1x 1 tbl/nap. PI-rezisztens betegekben: 2x 600 mg DRV + 2x 100 mg Ritonavir/nap!',
+        en: 'Treatment-naïve or PI-unexposed: Darunavir 800 mg + Cobicistat 150 mg (Rezolsta) q.d. with food, or Symtuza 1 tab q.d. PI-resistant cases: Darunavir 600 mg + Ritonavir 100 mg b.i.d.!',
+        de: 'Therapienaiv: Darunavir 800 mg + Cobicistat 150 mg 1x/Tag mit Nahrung. Bei PI-Resistenz: Darunavir 600 mg + Ritonavir 100 mg 2x/Tag!'
+      },
+      pediatric: {
+        hu: '≥3 éves és ≥10 kg gyermekeknél adható (ritonavirrel boostolva, testsúlyalapú adagolással). Cobicistat boostolással ≥12 éves kor és ≥35 kg felett engedélyezett.',
+        en: 'Approved for children ≥3 years weighing ≥10 kg (boosted with ritonavir, weight-based). Boosted with cobicistat approved for ages ≥12 years and ≥35 kg.',
+        de: 'Ab 3 Jahren und ≥10 kg (mit Ritonavir gewichtsadaptiert). Mit Cobicistat ab 12 Jahren und ≥35 kg.'
+      },
+      prophylaxis: {
+        hu: 'PEP (Post-expozíciós profilaxis): alternatív harmadik szerként adható Dolutegravir intolerancia esetén (DRV/c + TDF/FTC 28 napig).',
+        en: 'PEP: Alternative third agent in post-exposure prophylaxis if INSTI-based regimens are not tolerated (DRV/c + TDF/FTC for 28 days).',
+        de: 'PEP: Alternativer dritter Wirkstoff bei INSTI-Unverträglichkeit (DRV/c + TDF/FTC für 28 Tage).'
+      },
+      renal: {
+        hu: 'Darunavir önmagában nem igényel adagmódosítást. Cobicistat jelenlétében eGFR <30 ml/perc alatt a kombináció elindítása nem javasolt (a Cobicistat gátolja a kreatinin tubuláris szekrécióját).',
+        en: 'Darunavir alone requires no renal adjustment. Cobicistat-boosted combinations should not be initiated if eGFR <30 mL/min.',
+        de: 'Darunavir allein erfordert keine Dosisanpassung. Cobicistat-Kombinationen bei eGFR <30 ml/min nicht neu ansetzen.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májkárosodásban (Child-Pugh A, B) nem igényel adagmódosítást. Súlyos májelégtelenségben (Child-Pugh C) ELLENJAVALLT.',
+        en: 'No dose adjustment for mild-to-moderate hepatic impairment (Child-Pugh A/B). CONTRAINDICATED in severe hepatic impairment (Child-Pugh C).',
+        de: 'Keine Dosisanpassung bei Child-Pugh A/B. KONTRAINDIZIERT bei schwerer Leberinsuffizienz (Child-Pugh C).'
+      }
+    },
+    indications: {
+      hu: [
+        'HIV-1 fertőzés antiretrovirális kezelése (ART) felnőttekben és gyermekekben, különösen többszörösen kezelt, gyógyszer-rezisztens törzsek esetén',
+        'Elsővonalbeli opció olyan betegeknél, akiknél a terápia-hűség (adherence) ingadozó, mivel a magas genetikai gát véd a rezisztencia ellen'
+      ],
+      en: [
+        'Antiretroviral therapy (ART) for HIV-1 infection in treatment-naïve and heavily treatment-experienced patients with drug-resistant strains',
+        'Preferred choice for patients with erratic adherence owing to its exceptionally high barrier to resistance'
+      ],
+      de: [
+        'Antiretrovirale Therapie (ART) der HIV-1-Infektion bei therapienaiven und stark vorbehandelten Patienten',
+        'Bevorzugte Wahl bei schwankender Adhärenz aufgrund der sehr hohen Resistenzbarriere'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Szulfonamid túlérzékenység! A Darunavir szulfonamid szerkezetű: kiütések (rash), Stevens-Johnson szindróma előfordulhat szulfonamid-allergiás betegekben',
+        'Metabolikus zavarok: dyslipidemia (triglicerid- és koleszterinszint-emelkedés), lipodystrophia, inzulinrezisztencia / hyperglicemia',
+        'Gastrointestinalis panaszok (hasmenés, hányinger, hányás, flatulentia)',
+        'Számos gyógyszerinterakció a Cobicistat / Ritonavir erős CYP3A4 és P-gp gátlása miatt!'
+      ],
+      en: [
+        'Sulfa allergy risk! Darunavir contains a sulfonamide moiety: rash, Stevens-Johnson syndrome reported in sulfa-allergic individuals',
+        'Metabolic complications: dyslipidemia (elevated triglycerides and LDL), lipodystrophy, insulin resistance/hyperglycemia',
+        'Gastrointestinal distress (diarrhea, nausea, vomiting, flatulence)',
+        'Extensive drug-drug interactions due to potent CYP3A4/P-gp inhibition by Cobicistat/Ritonavir booster'
+      ],
+      de: [
+        'Sulfonamid-Allergierisiko! Darunavir enthält eine Sulfonamid-Gruppe: Exanthem, Stevens-Johnson-Syndrom möglich',
+        'Metabolische Störungen: Dyslipidämie, Lipodystrophie, Insulinresistenz',
+        'Gastrointestinale Beschwerden (Durchfall, Übelkeit)',
+        'Zahlreiche Wechselwirkungen durch CYP3A-Hemmung des Boosters'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'A Darunavirt MINDIG ÉTKEZÉS KÖZBEN kell bevenni a plazmaszint és a biohasznosulás maximalizálása érdekében!',
+        'A boosterelt Darunavir terápia megkezdése előtt kötelező ellenőrizni a beteg összes gyógyszerét gyógyszerinterakciókra (pl. simvastatin, lovastatin, alfuzosin, dronedaron, rifampicin egyidejű adása ELLENJAVALLT)!',
+        'Szulfonamid-érzékeny betegekben fokozott óvatossággal adható; kiütések megjelenésekor a terápiát fel kell függeszteni.'
+      ],
+      en: [
+        'ALWAYS take Darunavir WITH FOOD to ensure optimal absorption and systemic exposure!',
+        'Comprehensive drug-drug interaction check mandatory before prescribing boosted DRV (contraindicated with simvastatin, alfuzosin, dronedarone, rifampin, etc.)!',
+        'Use with caution in patients with known sulfonamide allergy; discontinue immediately if severe rash develops.'
+      ],
+      de: [
+        'Darunavir IMMER ZUSAMMEN MIT MAHLZEITEN einnehmen zur Optimierung der Bioverfügbarkeit!',
+        'Zwingende Interaktionsprüfung aller Medikamente vor Verschreibung (kontraindiziert mit Simvastatin, Alfuzosin, Rifampicin etc.)!',
+        'Vorsicht bei bekannter Sulfonamid-Allergie; bei schwerem Exanthem absetzen.'
+      ]
+    }
+  },
+  {
+    id: 'nnrti_doravirine_rilpivirine',
+    name: 'Doravirin / Rilpivirin (NNRTI-k)',
+    group: {
+      hu: 'HIV / Retrovírus-ellenes szerek (Nem-nukleozid reverz transzkriptáz gátlók - NNRTI-k)',
+      en: 'Anti-HIV agents (Non-nucleoside reverse transcriptase inhibitors - NNRTIs)',
+      de: 'Anti-HIV-Wirkstoffe (Nicht-nukleosidische Reverse-Transkriptase-Inhibitoren - NNRTIs)'
+    },
+    targetViruses: {
+      hu: 'Human Immunodeficientia Vírus 1 (HIV-1)',
+      en: 'Human Immunodeficiency Virus 1 (HIV-1)',
+      de: 'Humanes Immundefizienzvirus 1 (HIV-1)'
+    },
+    halfLife: {
+      hu: 'Doravirin: ~15 óra; Rilpivirin: ~45 óra (napi 1x orális adagolás)',
+      en: 'Doravirine: ~15 hours; Rilpivirine: ~45 hours (supports q.d. dosing)',
+      de: 'Doravirin: ~15 Stunden; Rilpivirin: ~45 Stunden (1x täglich)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Alloszterikus HIV-1 reverz transzkriptáz gátlók)',
+      en: 'Virostatic (Allosteric HIV-1 reverse transcriptase inhibitors)',
+      de: 'Virostatisch (Allosterische HIV-1-Reverse-Transkriptase-Hemmer)'
+    },
+    specialFeature: {
+      hu: 'Második és harmadik generációs NNRTI-k. A Doravirin kedvező lipidprofilú, nem igényel étkezési megkötést, és ritkán okoz CNS mellékhatásokat. Fix dózisú 1-tablettás kombinációk: Delstrigo (DOR/TDF/3TC), Juluca (DTG/RPV), Odefsey (RPV/TAF/FTC).',
+      en: 'Modern 2nd/3rd generation NNRTIs with improved tolerability. Doravirine has a neutral lipid profile and low CNS toxicity. Available in single-tablet regimens Delstrigo (DOR/TDF/3TC) and Juluca (DTG/RPV).',
+      de: 'Moderne NNRTIs der 2./3. Generation mit verbesserter Verträglichkeit. Doravirin ist neutral bezüglich Lipidprofil und zeigt geringe ZNS-Toxizität.'
+    },
+    mechanismOfAction: {
+      hu: 'Nem-kompetitív módon kötődnek a HIV-1 reverz transzkriptáz (RT) enzim alloszterikus, nem-katalitikus kötőhelyéhez ("NNRTI pocket"), ami konformációváltozást idéz elő és gátolja a vírusi RNS/DNS szintézist.',
+      en: 'Binds non-competitively to an allosteric hydrophobic pocket near the active site of HIV-1 reverse transcriptase, inducing a conformational change that halts DNA synthesis.',
+      de: 'Bindet nicht-kompetitiv an eine allosterische Tasche der HIV-1-Reversen-Transkriptase und blockiert die DNA-Synthese durch Konformationsänderung.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Doravirin (Pifeltro / Delstrigo): 1x 100 mg/nap p.o. étkezéstől függetlenül. Rilpivirin (Edurant / Odefsey / Juluca): 1x 25 mg/nap p.o. KÖTELEZŐEN kiadós, kalóriadús étkezéssel bevenni!',
+        en: 'Doravirine (Pifeltro / Delstrigo): 100 mg q.d. p.o. with or without food. Rilpivirine (Edurant / Odefsey / Juluca): 25 mg q.d. p.o. MUST be taken with a heavy meal!',
+        de: 'Doravirin (Pifeltro / Delstrigo): 1x 100 mg/Tag p.o. unabhängig von Mahlzeiten. Rilpivirin: 1x 25 mg/Tag p.o. ZWINGEND mit einer reichhaltigen Mahlzeit einnehmen!'
+      },
+      pediatric: {
+        hu: 'Doravirin: ≥35 kg serdülőkben és felnőttekben engedélyezett. Rilpivirin: ≥12 éves kor felett és ≥35 kg testsúly esetén adható.',
+        en: 'Doravirine: Approved for adolescents weighing ≥35 kg. Rilpivirine: Approved for ages ≥12 years weighing ≥35 kg.',
+        de: 'Doravirin: Zugelassen ab 35 kg. Rilpivirin: Zugelassen ab 12 Jahren und ≥35 kg.'
+      },
+      prophylaxis: {
+        hu: 'Profilaxisra (PrEP/PEP) nem elsővonalbeli szer alacsonyabb genetikai gátjuk miatt; elsősorban krónikus ART fenntartó terápiában alkalmazzák őket.',
+        en: 'Not routinely used for PrEP or PEP due to lower genetic barrier compared to INSTIs or PIs; strictly utilized in chronic ART.',
+        de: 'Nicht für PrEP oder PEP empfohlen; Anwendung in der chronischen ART.'
+      },
+      renal: {
+        hu: 'Doravirin és Rilpivirin önmagában nem igényel adagmódosítást bármilyen fokú vesekárosodás esetén.',
+        en: 'No dose adjustment required for Doravirine or Rilpivirine alone in renal impairment.',
+        de: 'Keine Dosisanpassung bei Niereninsuffizienz für Doravirin oder Rilpivirin allein.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májelégtelenségben (Child-Pugh A, B) nem igényel módosítást. Súlyos májkárosodásban (Child-Pugh C) nem tanulmányozták.',
+        en: 'No dose adjustment needed for mild-to-moderate hepatic impairment (Child-Pugh A/B). Not studied in severe hepatic impairment.',
+        de: 'Keine Dosisanpassung bei Child-Pugh A/B. Bei schwerer Leberinsuffizienz nicht untersucht.'
+      }
+    },
+    indications: {
+      hu: [
+        'HIV-1 fertőzés kezelése felnőttekben és serdülőkben kombinált antiretrovirális terápia (ART) keretében',
+        'Viroilag szupprimált HIV fertőzött betegek terápia-egyszerűsítése (simplification, pl. Juluca 2-drug regimen)'
+      ],
+      en: [
+        'Treatment of HIV-1 infection in adults and adolescents as part of combination antiretroviral therapy (ART)',
+        'Regimen simplification in virologically suppressed HIV patients (e.g. Juluca 2-drug regimen)'
+      ],
+      de: [
+        'Behandlung der HIV-1-Infektion bei Erwachsenen und Jugendlichen im Rahmen einer kombinierten ART',
+        'Therapievereinfachung bei virologisch supprimierten HIV-Patienten (z. B. Juluca)'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Depresszió, hangulatzavarok, szorongás, alvászavarok (a régebbi Efavirenznél jóval ritkábbak)',
+        'Fejfájás, szédülés, fáradékonyság',
+        'Gastrointestinalis panaszok (háborult gyomor, hányinger)',
+        'QTo-megnyúlás magasabb Rilpivirin dózisoknál'
+      ],
+      en: [
+        'Depression, mood changes, anxiety, sleep disturbances (significantly less frequent than with older Efavirenz)',
+        'Headache, dizziness, fatigue',
+        'Gastrointestinal upset (nausea, abdominal pain)',
+        'QTc prolongation with supratherapeutic Rilpivirine doses'
+      ],
+      de: [
+        'Depression, Stimmungsschwankungen, Schlafstörungen (deutlich seltener als unter Efavirenz)',
+        'Kopfschmerzen, Schwindel, Müdigkeit',
+        'Gastrointestinale Beschwerden',
+        'QTc-Verlängerung bei höheren Rilpivirin-Dosen'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'A Rilpivirt KÖTELEZŐ normál, kalóriadús étkezéssel bevenni (nem elegendő egy könnyű snack vagy proteinturmix), különben a felszívódása 50%-kal csökken és terápia-elégtelenség lép fel!',
+        'Protonpumpa-gátlók (PPI) adása Rilpivirinnel SZIGORÚAN ELLENJAVALLT a gyomornedv pH-emelkedése miatti felszívódási elégtelenség miatt.',
+        'A Doravirin étkezéstől függetlenül bevehető, PPI-kel nem lép interakcióba, és kedvező metabolikus/lipid profilt mutat.'
+      ],
+      en: [
+        'Rilpivirine MUST be taken with a meal containing sufficient calories (not just a snack or protein shake), otherwise oral absorption drops by 50% causing virological failure!',
+        'Co-administration of Proton Pump Inhibitors (PPIs) with Rilpivirine is STRICTLY CONTRAINDICATED due to pH-dependent bioavailability loss.',
+        'Doravirine can be taken with or without food, does not interact with PPIs, and exhibits an excellent lipid profile.'
+      ],
+      de: [
+        'Rilpivirin ZWINGEND mit einer vollständigen kalorienreichen Mahlzeit einnehmen, sonst sinkt die Resorption um 50%!',
+        'Protonenpumpenhemmer (PPI) zusammen mit Rilpivirin STRENG KONTRAINDIZIERT wegen pH-abhängiger Resorptionseinbuße.',
+        'Doravirin kann unabhängig von Mahlzeiten und PPIs eingenommen werden.'
+      ]
+    }
+  },
+  {
+    id: 'long_acting_hiv_cabotegravir_lenacapavir',
+    name: 'Cabotegravir / Lenacapavir (Hosszú hatású ART)',
+    group: {
+      hu: 'HIV / Retrovírus-ellenes szerek (Hosszú hatású injekciós INSTI & Capsid gátlók)',
+      en: 'Anti-HIV agents (Long-acting injectable INSTI & Capsid inhibitors)',
+      de: 'Anti-HIV-Wirkstoffe (Langwirksame injizierbare INSTIs & Capsid-Hemmer)'
+    },
+    targetViruses: {
+      hu: 'Human Immunodeficientia Vírus 1 (HIV-1, beleértve a multirezisztens törzseket is)',
+      en: 'Human Immunodeficiency Virus 1 (HIV-1, including multi-drug resistant strains)',
+      de: 'Humanes Immundefizienzvirus 1 (HIV-1, inkl. multiresistenter Stämme)'
+    },
+    halfLife: {
+      hu: 'Cabotegravir (intramuscularis depot): ~5.6 - 11.5 hét; Lenacapavir (subcutan depot): ~8 - 12 hét (2 havonta ill. 6 havonta adandó!)',
+      en: 'Cabotegravir LA (i.m. depot): ~5.6 - 11.5 weeks; Lenacapavir (s.c. depot): ~8 - 12 weeks (supports q2m or q6m dosing!)',
+      de: 'Cabotegravir LA (i.m. Depot): ~5,6 - 11,5 Wochen; Lenacapavir (s.c. Depot): ~8 - 12 Wochen (alle 2 bzw. 6 Monate!)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Ultralong-acting orális tabletta-mentes HIV elnyomás)',
+      en: 'Virostatic (Ultra long-acting pill-free viral suppression)',
+      de: 'Virostatisch (Ultralange tablettenfreie HIV-Suppression)'
+    },
+    specialFeature: {
+      hu: 'Forradalmi tabletta-mentes HIV kezelés! Cabotegravir + Rilpivirin (Vocabria + Rekambys / Cabenuva): 2 havonta adandó i.m. glutealis injekció. Lenacapavir (Sunlenca): az első félévente (6 havonta!) subcutan adandó kapszid gátló multirezisztens HIV-re és PrEP-re.',
+      en: 'Revolutionary long-acting pill-free therapy! Cabotegravir + Rilpivirine (Cabenuva): intramuscular injections administered every 2 months. Lenacapavir (Sunlenca): first-in-class capsid inhibitor given subQ every 6 months!',
+      de: 'Revolutionäre tablettenfreie Langzeittherapie! Cabotegravir + Rilpivirin (Cabenuva): i.m. Injektion alle 2 Monate. Lenacapavir (Sunlenca): s.c. Injektion alle 6 Monate!'
+    },
+    mechanismOfAction: {
+      hu: 'Cabotegravir: másodgenerációs INSTI, megakadályozza a vírusi DNS beépülését. Lenacapavir: többfunkciós kapszid gátló, ami blokkolja a HIV kapszid összeépülését, a magi transzportot és a virionok felszabadulását.',
+      en: 'Cabotegravir: 2nd-gen INSTI blocking viral DNA integration. Lenacapavir: multistage capsid inhibitor disrupting capsid assembly, nuclear transport, and viral release.',
+      de: 'Cabotegravir: 2. Gen. INSTI. Lenacapavir: Multistage Capsid-Inhibitor, der Assembly, Kerntransport und Freisetzung blockiert.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Cabenuva (Cabotegravir 600 mg + Rilpivirin 900 mg i.m.): 2 havonta 1-1 glutealis injekció (2 mL). Lenacapavir (Sunlenca): orális feltöltés után 927 mg (2x 1.5 mL) subcutan injekció 6 havonta (26 hetente egyszer)!',
+        en: 'Cabenuva (Cabotegravir 600 mg + Rilpivirine 900 mg i.m.): 2 gluteal injections every 2 months. Lenacapavir (Sunlenca): after oral lead-in, 927 mg s.c. every 6 months (26 weeks)!',
+        de: 'Cabenuva: 2 i.m.-Glutealinjektionen alle 2 Monate. Lenacapavir (Sunlenca): nach oraler Einleitung 927 mg s.c. alle 6 Monate (26 Wochen)!'
+      },
+      pediatric: {
+        hu: 'Cabotegravir/Rilpivirine LA: ≥12 éves kor felett és ≥35 kg testsúly esetén adható. Lenacapavir: jelenleg ≥35 kg felnőtt és serdülőkben javallt.',
+        en: 'Cabotegravir/Rilpivirine LA: Approved for ages ≥12 years weighing ≥35 kg. Lenacapavir: Approved for adults and adolescents ≥35 kg.',
+        de: 'Cabotegravir/Rilpivirin LA: Ab 12 Jahren und ≥35 kg. Lenacapavir: Ab 35 kg zugelassen.'
+      },
+      prophylaxis: {
+        hu: 'PrEP (Pre-expozíciós profilaxis): Cabotegravir LA (Apretude) 2 havonta 1 i.m. injekció; Lenacapavir 6 havonta 1 s.c. injekció (100%-os védelmet mutató klinikai vizsgálatokkal).',
+        en: 'PrEP: Cabotegravir LA (Apretude) 1 i.m. injection every 2 months; Lenacapavir s.c. every 6 months (showing near 100% efficacy in phase 3 trials).',
+        de: 'PrEP: Cabotegravir LA (Apretude) 1 i.m. Injektion alle 2 Monate; Lenacapavir s.c. alle 6 Monate.'
+      },
+      renal: {
+        hu: 'Enyhe, mérsékelt és súlyos vesekárosodásban nem igényel adagmódosítást (dializált betegekben gondos monitorozás).',
+        en: 'No dose adjustment required for mild, moderate, or severe renal impairment.',
+        de: 'Keine Dosisanpassung bei leichten, mäßigen oder schweren Nierenschäden.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májelégtelenségben (Child-Pugh A, B) nem igényel adagmódosítást.',
+        en: 'No dose adjustment needed for mild-to-moderate hepatic impairment (Child-Pugh A/B).',
+        de: 'Keine Dosisanpassung bei Child-Pugh A/B.'
+      }
+    },
+    indications: {
+      hu: [
+        'Virológiailag szupprimált HIV-1 fertőzött felnőttek és serdülők (≥35 kg) terápia-váltása orális tablettákról hosszú hatású injekcióra',
+        'Lenacapavir: Többszörösen kezelt, multirezisztens (MDR) HIV-1 fertőzött felnőttek kezelése kombinált ART részeként',
+        'HIV Pre-expozíciós profilaxis (PrEP) hosszú hatású injekció formájában'
+      ],
+      en: [
+        'Maintenance treatment of virologically suppressed HIV-1 infection in adults and adolescents (≥35 kg) switching from oral ART',
+        'Lenacapavir: Heavily treatment-experienced adults with multidrug-resistant (MDR) HIV-1 infection',
+        'Long-acting HIV Pre-exposure prophylaxis (PrEP)'
+      ],
+      de: [
+        'Erhaltungstherapie der virologisch supprimierten HIV-1-Infektion bei Umstellung von oraler ART auf Langzeit-Injektionen',
+        'Lenacapavir: Stark vorbehandelte Erwachsene mit multiresistentem (MDR) HIV-1',
+        'Langwirksame HIV-Präexpositionsprophylaxe (PrEP)'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Injekciós helyi reakciók (ISR - fájdalom, duzzanat, erythema, induráció a glutealis/abdominalis szúrás helyén az esetek >70-80%-ában, de átmeneti)',
+        'Láz, fáradékonyság, fejfájás, myalgia',
+        'Súlygyarapodás és alvászavarok',
+        'A hosszú elnyújtott plazma-felezési idő ("pharmacokinetic tail") miatt az injekciók elmaradása esetén rezisztencia alakulhat ki!'
+      ],
+      en: [
+        'Injection site reactions (ISR: pain, swelling, erythema, nodule/induration in >70-80%, mostly mild/transient)',
+        'Pyrexia, fatigue, headache, myalgia',
+        'Weight gain and sleep disturbances',
+        'Risk of viral resistance during the prolonged sub-therapeutic pharmacokinetic tail if scheduled doses are missed!'
+      ],
+      de: [
+        'Reaktionen an der Injektionsstelle (Schmerzen, Schwellung, Rötung bei >70-80%, meist vorübergehend)',
+        'Fieber, Müdigkeit, Kopfschmerzen, Myalgie',
+        'Gewichtszunahme und Schlafstörungen',
+        'Resistenzrisiko im "PK-Tail" bei versäumten Injektionsterminen!'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'Szigorúan be kell tartani az injekciós időpontokat (±7 napos ablak az injekciók között)! Az injekció elmaradása esetén az elhúzódó szubterápiás plazmaszint ("PK tail") rezisztens törzsek kiszelektálódásához vezet.',
+        'Ha az injekció beadása elmarad vagy késik, orális áthidaló terápiát (oral lead-in/bridging) kell kezdeni!',
+        'Az injekciókat gluteálisan (Cabotegravir/Rilpivirine) vagy abdominálisan subcutan (Lenacapavir) kell szakképzett egészségügyi személyzetnek beadnia.'
+      ],
+      en: [
+        'Strict adherence to injection windows (±7 days) is mandatory! Missed doses leave a prolonged sub-therapeutic "PK tail" leading to resistance selection.',
+        'If an injection appointment is missed or delayed, oral bridging therapy MUST be initiated immediately!',
+        'Injections must be administered by healthcare professionals via deep i.m. gluteal injection (Cabenuva) or s.c. abdominal injection (Lenacapavir).'
+      ],
+      de: [
+        'Strikte Einhaltung des Injektionsfensters (±7 Tage) zwingend! Versäumte Dosen führen im "PK-Tail" zu Resistenzen.',
+        'Bei Terminversäumnis orale Überbrückungstherapie (Oral Bridging) einleiten!',
+        'Injektionen müssen durch medizinisches Fachpersonal verabreicht werden.'
+      ]
+    }
   }
 ];

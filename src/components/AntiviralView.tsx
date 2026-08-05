@@ -92,10 +92,10 @@ export default function AntiviralView() {
       // Group matching
       if (selectedGroup === 'all') return true;
       if (selectedGroup === 'bookmarks') return bookmarkedIds.includes(item.id);
-      if (selectedGroup === 'herpes') return item.id.includes('aciclovir') || item.id.includes('ganciclovir') || item.id.includes('letermovir');
-      if (selectedGroup === 'respiratory') return item.id.includes('oseltamivir') || item.id.includes('remdesivir') || item.id.includes('paxlovid');
-      if (selectedGroup === 'hepatitis') return item.id.includes('tenofovir') || item.id.includes('sofosbuvir');
-      if (selectedGroup === 'hiv') return item.id.includes('biktarvy') || item.id.includes('tenofovir');
+      if (selectedGroup === 'herpes') return item.id.includes('aciclovir') || item.id.includes('ganciclovir') || item.id.includes('letermovir') || item.group.en.toLowerCase().includes('herpes') || item.group.en.toLowerCase().includes('cmv');
+      if (selectedGroup === 'respiratory') return item.id.includes('oseltamivir') || item.id.includes('remdesivir') || item.id.includes('paxlovid') || item.id.includes('baloxavir') || item.group.hu.toLowerCase().includes('influenza') || item.group.en.toLowerCase().includes('influenza') || item.group.hu.toLowerCase().includes('légúti');
+      if (selectedGroup === 'hepatitis') return item.id.includes('tenofovir') || item.id.includes('sofosbuvir') || item.group.hu.toLowerCase().includes('hepatitis') || item.group.en.toLowerCase().includes('hepatitis');
+      if (selectedGroup === 'hiv') return item.id.includes('biktarvy') || item.id.includes('tenofovir') || item.id.includes('abacavir') || item.id.includes('darunavir') || item.id.includes('doravirine') || item.id.includes('cabotegravir') || item.id.includes('hiv') || item.group.hu.toLowerCase().includes('hiv') || item.group.en.toLowerCase().includes('hiv');
 
       return true;
     });
