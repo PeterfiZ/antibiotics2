@@ -208,6 +208,16 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "Antifungal agents",
     de: "Antimyko-Wirkstoffe"
   },
+  "tab_antiviral_label": {
+    hu: "Antivirális szerek",
+    en: "Antiviral therapy",
+    de: "Antivirotische Therapie"
+  },
+  "tab_antiviral_desc": {
+    hu: "Vírusellenes szerek",
+    en: "Antiviral agents",
+    de: "Antivirotika"
+  },
   "tab_clinical_label": {
     hu: "Klinikum",
     en: "Clinical Practice",
