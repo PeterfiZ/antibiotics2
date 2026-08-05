@@ -299,27 +299,27 @@ export default function AntiviralView() {
                 </div>
 
                 {/* Quick Key Specs Bar (always visible) */}
-                <div className="px-4 sm:px-5 py-2.5 bg-slate-50/80 border-t border-b border-slate-100 text-xs text-slate-600 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
-                    <span className="truncate">
+                <div className="px-4 sm:px-5 py-3 bg-slate-50/80 border-t border-b border-slate-100 text-xs text-slate-600 grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <div className="flex items-start gap-2">
+                    <Clock className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
+                    <div className="leading-relaxed break-words">
                       <strong className="text-slate-800">{lang === 'hu' ? 'Felezési idő:' : lang === 'de' ? 'Halbwertszeit:' : 'Half-life:'}</strong>{' '}
                       {item.halfLife[lang]}
-                    </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                    <span className="truncate">
+                  <div className="flex items-start gap-2">
+                    <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                    <div className="leading-relaxed break-words">
                       <strong className="text-slate-800">{lang === 'hu' ? 'Hatás típusa:' : lang === 'de' ? 'Wirktyp:' : 'Effect type:'}</strong>{' '}
                       {item.effectType[lang]}
-                    </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 sm:col-span-2 md:col-span-1">
-                    <Sparkles className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                    <span className="truncate">
+                  <div className="flex items-start gap-2 md:col-span-1">
+                    <Sparkles className="w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" />
+                    <div className="leading-relaxed break-words">
                       <strong className="text-slate-800">{lang === 'hu' ? 'Sajátosság:' : lang === 'de' ? 'Besonderheit:' : 'Feature:'}</strong>{' '}
                       {item.specialFeature[lang]}
-                    </span>
+                    </div>
                   </div>
                 </div>
 
