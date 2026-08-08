@@ -496,5 +496,468 @@ export const antifungalsData: AntifungalData[] = [
         'In der Infusionsflasche NIEMALS mit Kochsalzlösung auflösen oder verdünnen, da der Wirkstoff sofort ausfällt! Auflösung und Verdünnung dürfen nur mit 5%iger Glucose-Lösung erfolgen. (Die Spülung/Hydratation des Patienten vor und nachher sollte jedoch mit Kochsalzlösung erfolgen!)'
       ]
     }
+  },
+  {
+    id: 'itraconazole',
+    name: 'Itraconazol',
+    group: {
+      hu: 'Azolok (Első generációs lipofil triazol)',
+      en: 'Azoles (First-generation lipophilic triazole)',
+      de: 'Azole (Lipophiles Triazol der ersten Generation)'
+    },
+    halfLife: {
+      hu: 'kb. 20–30 óra (egyszeri dózis után), de ismételt adagolásnál 30–40 órára nő (akkumuláció).',
+      en: 'approx. 20–30 hours (single dose), increases to 30–40 hours upon repeated dosing (accumulation).',
+      de: 'ca. 20–30 Stunden (Einzeldosis), steigt bei wiederholter Gabe auf 30–40 Stunden (Akkumulation).'
+    },
+    effectType: {
+      hu: 'Fungisztatikus (Candida és Aspergillus fajok ellen)',
+      en: 'Fungistatic (against Candida and Aspergillus species)',
+      de: 'Fungistatisch (gegen Candida- und Aspergillus-Spezies)'
+    },
+    pae: {
+      hu: 'Kifejezett és tartós a szöveti akkumuláció miatt.',
+      en: 'Pronounced and prolonged due to high tissue accumulation.',
+      de: 'Ausgeprägt und langanhaltend aufgrund hoher Gewebeanreicherung.'
+    },
+    spectrum: {
+      hu: 'Dermatophyták (Trichophyton, Microsporum, Epidermophyton), Histoplasma, Blastomyces, Coccidioides, Aspergillus spp., Candida spp. (nem első vonal C. glabrata/krusei ellen).',
+      en: 'Dermatophytes (Trichophyton, Microsporum, Epidermophyton), Histoplasma, Blastomyces, Coccidioides, Aspergillus spp., Candida spp. (not first-line for C. glabrata/krusei).',
+      de: 'Dermatophyten, Histoplasma, Blastomyces, Coccidioides, Aspergillus spp., Candida spp. (nicht First-Line bei C. glabrata/krusei).'
+    },
+    specialFeature: {
+      hu: 'Extrém lipofil, szöveti koncentrációja a bőrben és körömágyban sokszorosa a plazmaszintnek. Negatív inotrop hatása miatt szívelégtelenségben ELLENJAVALLT!',
+      en: 'Extremely lipophilic; tissue concentrations in skin and nails far exceed plasma levels. CONTRAINDICATED in heart failure due to negative inotropic effects!',
+      de: 'Extrem lipophil; Gewebekonzentrationen in Haut und Nägeln um ein Vielfaches höher als im Plasma. KONTRAINDIZIERT bei Herzinsuffizienz wegen negativer Inotropie!'
+    },
+    mechanismOfAction: {
+      hu: 'Gátolja a gomba lanoszterol 14-alfa-demetiláz enzimét (CYP450), blokkolva az ergoszterol szintézisét és károsítva a sejtmembránt.',
+      en: 'Inhibits fungal lanosterol 14-alpha-demethylase (CYP450), disrupting ergosterol synthesis and cell membrane integrity.',
+      de: 'Hemmt die pilzliche Lanosterol-14-alpha-Demethylase (CYP450), blockiert die Ergosterolsynthese und schädigt die Zellmembran.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Kapszula: 200–400 mg naponta p.o. (1-2 részletben, kiadós étkezéssel). Belsőleges oldat: 200 mg/nap éhgyomorra.',
+        en: 'Capsules: 200–400 mg daily p.o. (in 1–2 doses with a full meal). Oral solution: 200 mg daily on an empty stomach.',
+        de: 'Kapseln: 200–400 mg täglich p.o. (mit einer vollen Mahlzeit). Orale Lösung: 200 mg täglich nüchtern.'
+      },
+      pediatric: {
+        hu: '5 mg/ttkg/nap p.o. (csak határozott javallat esetén, korlátozott adatok).',
+        en: '5 mg/kg/day p.o. (limited pediatric safety data, use only if strongly indicated).',
+        de: '5 mg/kg/Tag p.o. (begrenzte Daten, nur bei strenger Indikation).'
+      },
+      renal: {
+        hu: 'Orális formáknál nem igényel adagmódosítást veseelégtelenségben. (Az i.v. hordozóanyag ciklodextrin felhalmozódhat gFR < 50 ml/perc esetén).',
+        en: 'No dose adjustment needed for oral formulations in renal impairment. (Avoid IV formulation if gFR < 50 mL/min due to cyclodextrin).',
+        de: 'Keine Dosisanpassung für orale Formen bei Niereninsuffizienz.'
+      },
+      hepatic: {
+        hu: 'Májfunkciós zavarok esetén szoros monitorozás szükséges; súlyos májkárosodásban az adag csökkentése mérlegelendő.',
+        en: 'Monitor liver enzymes closely; dose reduction should be considered in severe hepatic impairment.',
+        de: 'Engmaschige Überwachung der Leberwerte; Dosisreduktion bei schwerer Leberinsuffizienz zu erwägen.'
+      }
+    },
+    indications: {
+      hu: [
+        'Onychomycosis és dermatophytosis (köröm- és bőrgombásodás)',
+        'Endémiás mycosisok (Histoplasmosis, Blastomycosis, Coccidioidomycosis)',
+        'Oropharyngealis / oesophagealis candidiasis (főleg belsőleges oldat)',
+        'Aspergillosis alternatív kezelése (ha Voriconazol nem adható)'
+      ],
+      en: [
+        'Onychomycosis and dermatophytosis (nail and skin fungal infections)',
+        'Endemic mycoses (Histoplasmosis, Blastomycosis, Coccidioidomycosis)',
+        'Oropharyngeal / esophageal candidiasis (especially oral solution)',
+        'Alternative treatment for Aspergillosis'
+      ],
+      de: [
+        'Onychomykose und Dermatophytose',
+        'Endemische Mykosen (Histoplasmose, Blastomykose, Coccidioidomykose)',
+        'Oropharyngeale / ösophageale Candidose',
+        'Alternative Behandlung der Aspergillose'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Gastrointestinalis panaszok (hányinger, hasi fájdalom, hasmenés)',
+        'Hepatotoxicitás (transzamináz-emelkedés, ritkán súlyos májelégtelenség)',
+        'Szívelégtelenség súlyosbodása (negatív inotrop hatás)',
+        'Hypokalaemia, hypomagnesaemia, edema',
+        'Sokfele kiterjedő gyógyszerinterakciók (erős CYP3A4 gátló!)'
+      ],
+      en: [
+        'Gastrointestinal upset (nausea, abdominal pain, diarrhea)',
+        'Hepatotoxicity (elevated transaminases, rarely acute liver failure)',
+        'Exacerbation of heart failure (negative inotropic effect)',
+        'Hypokalemia, hypomagnesemia, edema',
+        'Extensive drug-drug interactions (strong CYP3A4 inhibitor!)'
+      ],
+      de: [
+        'Gastrointestinale Beschwerden (Übelkeit, Bauchschmerzen)',
+        'Hepatotoxizität (Transaminasenanstieg, selten Leberversagen)',
+        'Verschlechterung einer Herzinsuffizienz (negative Inotropie)',
+        'Hypokaliämie, Ödeme',
+        'Zahlreiche Wechselwirkungen (starker CYP3A4-Hemmer!)'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'A KAPSZULÁT KIADÓS, ZSÍROS ÉTKEZÉSSEL (vagy savas itallal) kell bevenni, míg az ORÁLIS OLDATOT ÉHGYOMORRA kell bevenni a megfelelő felszívódáshoz!',
+        'Pangásos szívelégtelenségben (NYHA II-IV) vagy balkamra-diszfunkcióban adása ELLENJAVALLT a negatív inotrop hatás miatt!',
+        'Nagyon erős CYP3A4 gátló és P-glikoprotein gátló – ellenőrizzünk minden egyidejű gyógyszert!'
+      ],
+      en: [
+        'Take CAPSULES WITH A FULL MEAL for optimal absorption, but take ORAL SOLUTION ON AN EMPTY STOMACH!',
+        'CONTRAINDICATED in patients with congestive heart failure (NYHA II-IV) due to negative inotropic effects!',
+        'Potent CYP3A4 and P-glycoprotein inhibitor – carefully verify all co-administered medications!'
+      ],
+      de: [
+        'KAPSELN MIT MAHLZEIT einnehmen, ORALE LÖSUNG NÜCHTERN einnehmen!',
+        'KONTRAINDIZIERT bei congestiver Herzinsuffizienz (NYHA II-IV)!',
+        'Starker CYP3A4- und P-gp-Hemmer – Wechselwirkungen gründlich prüfen!'
+      ]
+    }
+  },
+  {
+    id: 'isavuconazole',
+    name: 'Isavuconazol',
+    group: {
+      hu: 'Azolok (Legújabb másodgenerációs széles spektrumú triazol)',
+      en: 'Azoles (Latest second-generation broad-spectrum triazole)',
+      de: 'Azole (Neuestes Breitspektrum-Triazol der zweiten Generation)'
+    },
+    halfLife: {
+      hu: 'Rendkívül hosszú, átlagosan 100–130 óra (napi 1x adagolást tesz lehetővé fenntartásban).',
+      en: 'Extremely long, average 100–130 hours (supports once-daily maintenance dosing).',
+      de: 'Extrem lang, durchschnittlich 100–130 Stunden (ermöglicht 1x tägliche Erhaltungsdosis).'
+    },
+    effectType: {
+      hu: 'Fungicid (Aspergillus és Mucorales ellen); Fungisztatikus (Candida ellen)',
+      en: 'Fungicidal (against Aspergillus and Mucorales); Fungistatic (against Candida)',
+      de: 'Fungizid (gegen Aspergillus und Mucorales); Fungistatisch (gegen Candida)'
+    },
+    pae: {
+      hu: 'Kifejezett és tartós Aspergillus és Mucorales gombafajok esetén.',
+      en: 'Pronounced and prolonged against Aspergillus and Mucorales species.',
+      de: 'Ausgeprägt und langanhaltend gegen Aspergillus und Mucorales.'
+    },
+    spectrum: {
+      hu: 'Aspergillus species (A. fumigatus, A. flavus, A. niger, A. terreus), Mucorales (Rhizopus, Mucor, Lichtheimia), Candida spp., Cryptococcus neoformans.',
+      en: 'Aspergillus species (A. fumigatus, A. flavus, A. niger, A. terreus), Mucorales (Rhizopus, Mucor, Lichtheimia), Candida spp., Cryptococcus neoformans.',
+      de: 'Aspergillus-Spezies (inkl. A. terreus), Mucorales (Rhizopus, Mucor, Lichtheimia), Candida spp., Cryptococcus neoformans.'
+    },
+    specialFeature: {
+      hu: 'Az EGYETLEN orális és i.v. triazol, amely mind az invazív Aspergillosis, mind a Mucormycosis kezelésére törzskönyvezett! Nem okoz QTc-megnyúlást (sőt QTc-rövidülést vált ki). Ciklodextrin-mentes i.v. kiszerelés.',
+      en: 'The ONLY triazole approved for BOTH invasive Aspergillosis and Mucormycosis! Does NOT cause QTc prolongation (causes QTc shortening). Cyclodextrin-free IV formulation.',
+      de: 'Das EINZIGE Triazol für invasive Aspergillose UND Mukormykose! Verursacht keine QTc-Verlängerung (sondern QTc-Verkürzung). Cyclodextrin-frei bei IV-Gabe.'
+    },
+    mechanismOfAction: {
+      hu: 'Prodrug (isavuconazonium sulfate), amely plazma észterázok hatására aktív isavuconazollá alakul. Gátolja a 14-alfa-lanoszterol-demetilázt, felborítva a gomba sejtmembrán felépítését.',
+      en: 'Water-soluble prodrug (isavuconazonium sulfate) rapidly cleaved by plasma esterases to active isavuconazole. Inhibits 14-alpha-lanosterol demethylase.',
+      de: 'Wasserlösliches Prodrug (Isavuconazoniumsulfat), wird durch Esterasen rasch zum aktiven Isavuconazol gespalten. Hemmt die 14-alpha-Lanosterol-Demethylase.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Telítő dózis: 200 mg isavuconazole (372 mg prodrug) 8 óránként i.v. vagy p.o. az első 48 órában (6 adag). Fenntartó: 200 mg naponta 1x i.v. vagy p.o.',
+        en: 'Loading dose: 200 mg isavuconazole (372 mg prodrug) q8h i.v. or p.o. for first 48 hours (6 doses). Maintenance: 200 mg once daily i.v. or p.o.',
+        de: 'Sättigungsdosis: 200 mg Isavuconazol alle 8 Std. i.v. oder p.o. in den ersten 48 Std. (6 Dosen). Erhaltung: 200 mg 1x täglich i.v. oder p.o.'
+      },
+      pediatric: {
+        hu: '1 éves kortól engedélyezett (testsúlyalapú adagolás: <16 kg: 10 mg/kg q8h loading, utána 10 mg/kg q.d.; ≥16 kg felnőtt dózisséma).',
+        en: 'Approved from 1 year of age (weight-based: <16 kg: 10 mg/kg q8h loading, then 10 mg/kg q.d.; ≥16 kg adult dosing).',
+        de: 'Ab 1 Jahr zugelassen (gewichtsadaptiert: <16 kg: 10 mg/kg alle 8 Std., dann 10 mg/kg 1x täglich).'
+      },
+      renal: {
+        hu: 'Semmilyen fokú veseelégtelenségben nem igényel adagmódosítást (az i.v. formában sincs ciklodextrin!).',
+        en: 'No dose adjustment needed in any degree of renal impairment (IV formulation is cyclodextrin-free!).',
+        de: 'Keine Dosisanpassung bei Niereninsuffizienz (keine Cyclodextrin-Anreicherung bei IV-Gabe!).'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májkárosodásban (Child-Pugh A, B) nem szükséges adagmódosítás.',
+        en: 'No dose adjustment required in mild-to-moderate hepatic impairment (Child-Pugh A/B).',
+        de: 'Keine Dosisanpassung bei Child-Pugh A/B.'
+      }
+    },
+    indications: {
+      hu: [
+        'Invazív aspergillosis kezelése felnőttekben és gyermekekben',
+        'Mucormycosis kezelése olyan betegeknél, akiknél az amphotericin B nem alkalmazható',
+        'Gomba-profilaxis nagy kockázatú hematológiai betegeknél'
+      ],
+      en: [
+        'Treatment of invasive aspergillosis in adults and pediatrics',
+        'Treatment of mucormycosis when amphotericin B is inappropriate',
+        'Fungal prophylaxis in high-risk hematologic patients'
+      ],
+      de: [
+        'Behandlung der invasiven Aspergillose bei Erwachsenen und Kindern',
+        'Behandlung der Mukormykose, wenn Amphotericin B ungeeignet ist',
+        'Pilzprophylaxe bei hämatologischen Risikopatienten'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'QTc-intervallum RÖVIDÜLÉS (egyedülálló az azolok között!)',
+        'Gastrointestinalis panaszok (hányinger, hányás, hasmenés)',
+        'Enyhe májenzim-emelkedés (jobban tolerálható, mint a Voriconazol)',
+        'Hypokalaemia, perifériás ödéma, fejfájás'
+      ],
+      en: [
+        'QTc interval SHORTENING (unique among azoles!)',
+        'Gastrointestinal complaints (nausea, vomiting, diarrhea)',
+        'Mild liver enzyme elevation (better tolerated than Voriconazole)',
+        'Hypokalemia, peripheral edema, headache'
+      ],
+      de: [
+        'QTc-Intervall-VERKÜRZUNG (einzigartig unter den Azolen!)',
+        'Gastrointestinale Beschwerden (Übelkeit, Erbrechen)',
+        'Leichter Transaminasenanstieg (besser verträglich als Voriconazol)',
+        'Hypokaliämie, periphere Ödeme'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'Kiváló alternatívája a Voriconazolnak invazív Aspergillosisban: kevesebb máj- és látástoxicitás, és nincs ciklodextrin az i.v. kiszerelésben!',
+        'A többi azollal ellentétben nem megnyújtja, hanem RÖVIDÍTI a QTc szakaszt – familiáris rövid QT szindrómában ELLENJAVALLT!',
+        'Közepes erősségű CYP3A4 gátló, kevesebb interakcióval bír, mint a Voriconazol vagy Posaconazol.'
+      ],
+      en: [
+        'Excellent alternative to Voriconazole for invasive Aspergillosis: lower hepatic and visual toxicity, and no cyclodextrin in IV form!',
+        'Unlike other azoles, it SHORTENS QTc – CONTRAINDICATED in familial short QT syndrome!',
+        'Moderate CYP3A4 inhibitor with fewer drug interaction liabilities than Voriconazole.'
+      ],
+      de: [
+        'Hervorragende Alternative zu Voriconazol bei Aspergillose: weniger Leber- und Sehtoxizität, kein Cyclodextrin!',
+        'VERKÜRZT das QTc-Intervall – KONTRAINDIZIERT bei familiärem kurzem QT-Syndrom!',
+        'Mäßiger CYP3A4-Hemmer mit weniger Wechselwirkungen als Voriconazol.'
+      ]
+    }
+  },
+  {
+    id: 'anidulafungin',
+    name: 'Anidulafungin',
+    group: {
+      hu: 'Echinokandinok (Félszintetikus lipopeptid származék)',
+      en: 'Echinocandins (Semi-synthetic lipopeptide derivative)',
+      de: 'Echinocandine (Semisynthetisches Lipopeptid-Derivat)'
+    },
+    halfLife: {
+      hu: 'Eliminációs felezési idő: kb. 24–26 óra; terminális: ~40–50 óra (napi 1x i.v. adagolás).',
+      en: 'Elimination half-life: approx. 24–26 hours; terminal: ~40–50 hours (once-daily i.v. dosing).',
+      de: 'Eliminationshalbwertszeit: ca. 24–26 Stunden; terminal: ~40–50 Stunden (1x täglich i.v.).'
+    },
+    effectType: {
+      hu: 'Fungicid (Candida fajok ellen); Fungisztatikus (Aspergillus ellen)',
+      en: 'Fungicidal (against Candida species); Fungistatic (against Aspergillus)',
+      de: 'Fungizid (gegen Candida-Spezies); Fungistatisch (gegen Aspergillus)'
+    },
+    pae: {
+      hu: 'Kifejezett és hosszan tartó poszt-antifungális effektus Candida fajok ellen.',
+      en: 'Pronounced and prolonged post-antifungal effect against Candida species.',
+      de: 'Ausgeprägter und langanhaltender post-antimykotischer Effekt gegen Candida.'
+    },
+    spectrum: {
+      hu: 'Candida fajok (C. albicans, C. glabrata, C. krusei, C. tropicalis, C. parapsilosis, C. auris), Aspergillus spp. (Cryptococcus, Mucorales ellen hatástalan!).',
+      en: 'Candida species (C. albicans, C. glabrata, C. krusei, C. tropicalis, C. parapsilosis, C. auris), Aspergillus spp. (Inactive against Cryptococcus, Mucorales!).',
+      de: 'Candida-Spezies (inkl. C. glabrata, C. krusei, C. auris), Aspergillus spp. (Unwirksam gegen Kryptokokken, Mucorales!).'
+    },
+    specialFeature: {
+      hu: 'Spontán Kémiai Lebomlással bomlik le a szervezetben! Nem a máj metabolizálja, nem a vese üríti – ZÉRÓ máj- vagy vese-specifikus dózismódosítás!',
+      en: 'Undergoes spontaneous chemical degradation at body temperature and pH! Zero hepatic or renal dose adjustments required!',
+      de: 'Unterliegt dem spontanen chemischen Abbau bei Körpertemperatur und pH-Wert! KEINE Dosisanpassung bei Leber- oder Niereninsuffizienz nötig!'
+    },
+    mechanismOfAction: {
+      hu: 'Szelektíven gátolja a gombák béta-(1,3)-D-glükán-szintetáz enzimét, leállítva a sejtfal építőelemének szintézisét, ami ozmotikus líziséhez vezet.',
+      en: 'Selectively inhibits beta-(1,3)-D-glucan synthase, halting cell wall glucan synthesis and triggering osmotic cell lysis.',
+      de: 'Hemmt selektiv die Beta-(1,3)-D-Glucan-Synthase, unterbricht den Zellwandaufbau und führt zur osmotischen Lyse.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Candidemia / Invazív candidiasis: 1. nap 200 mg i.v. telítő dózis, majd naponta 1x 100 mg i.v. fenntartó adag.',
+        en: 'Candidemia / Invasive candidiasis: Loading dose of 200 mg i.v. on day 1, followed by 100 mg i.v. once daily.',
+        de: 'Candidämie / Invasive Candidose: Sättigungsdosis 200 mg i.v. am 1. Tag, danach 100 mg i.v. 1x täglich.'
+      },
+      pediatric: {
+        hu: '1 hónapos kortól 18 éves korig: 1. nap 3.0 mg/ttkg i.v. telítő adag (max 200 mg), majd naponta 1.5 mg/ttkg i.v. (max 100 mg/nap).',
+        en: 'Ages 1 month to 18 years: Loading dose of 3.0 mg/kg i.v. on day 1 (max 200 mg), then 1.5 mg/kg i.v. once daily (max 100 mg/day).',
+        de: 'Alter 1 Monat bis 18 Jahre: Sättigung 3,0 mg/kg i.v. am 1. Tag (max 200 mg), danach 1,5 mg/kg i.v. 1x täglich (max 100 mg/Tag).'
+      },
+      renal: {
+        hu: 'Semmilyen fokú veseelégtelenségben vagy dialízis esetén NEM igényel adagmódosítást.',
+        en: 'NO dose adjustment required in any degree of renal impairment or dialysis.',
+        de: 'KEINE Dosisanpassung bei Niereninsuffizienz jeglichen Grades oder Dialyse.'
+      },
+      hepatic: {
+        hu: 'Májelégtelenségben (Child-Pugh A, B, C) sem igényel adagmódosítást (spontán lebomlás miatt).',
+        en: 'NO dose adjustment needed in mild, moderate, or severe hepatic impairment.',
+        de: 'KEINE Dosisanpassung bei Leberinsuffizienz (wegen spontanem Abbau!).'
+      }
+    },
+    indications: {
+      hu: [
+        'Invazív candidiasis és candidemia kezelése nem-neutropéniás és neutropéniás betegekben',
+        'Oesophagealis candidiasis súlyos esetei'
+      ],
+      en: [
+        'Treatment of invasive candidiasis and candidemia in non-neutropenic and neutropenic patients',
+        'Severe esophageal candidiasis'
+      ],
+      de: [
+        'Behandlung der invasiven Candidose und Candidämie bei erwachsenen und pädiatrischen Patienten',
+        'Schwere ösophageale Candidose'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Hisztamin-felszabadulás miatti infúziós reakciók (kipirulás, dyspnoe, hypotensio – gyors infúzió esetén)',
+        'Hasmenés, hányinger',
+        'Enyhe, átmeneti hypokalaemia, hypomagnesaemia',
+        'Phlebitis az infúzió beadási helyén'
+      ],
+      en: [
+        'Infusion reactions via histamine release (flushing, dyspnea, hypotension – if infused too rapidly)',
+        'Diarrhea, nausea',
+        'Mild transient hypokalemia, hypomagnesemia',
+        'Phlebitis at infusion site'
+      ],
+      de: [
+        'Infusionsreaktionen durch Histaminfreisetzung (Flushing, Hypotonie bei zu rascher Infusion)',
+        'Durchfall, Übelkeit',
+        'Leichte Hypokaliämie',
+        'Phlebitis an der Infusionsstelle'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'A legbiztonságosabb echinokandin súlyos máj- és vesebetegekben, mivel spontán bomlással ürül ki a szervezetből – se CYP450 interakciója, se szervszpecifikus akkumulációja nincs!',
+        'Az infúzió beadási sebessége ne haladja meg az 1.1 mg/perc értéket a hisztaminoid reakciók elkerülésére (a 100 mg-os adagot legalább 90 perc alatt kell beadni).',
+        'Ciklodextrint vagy cukor-hordozót nem tartalmaz.'
+      ],
+      en: [
+        'Safest echinocandin in severe hepatic or renal failure owing to its unique spontaneous degradation route – zero CYP450 interactions!',
+        'Infusion rate must not exceed 1.1 mg/min to avoid histamine-like infusion reactions (infuse 100 mg over at least 90 minutes).',
+        'Contains no cyclodextrin or sugar carriers.'
+      ],
+      de: [
+        'Sicherstes Echinocandin bei schwerer Leber- oder Niereninsuffizienz wegen spontanem Abbau – keine CYP450-Wechselwirkungen!',
+        'Infusionsgeschwindigkeit maximal 1,1 mg/Min (100 mg über mindestens 90 Min. infundieren).',
+        'Enthält kein Cyclodextrin.'
+      ]
+    }
+  },
+  {
+    id: 'micafungin',
+    name: 'Micafungin',
+    group: {
+      hu: 'Echinokandinok (Félszintetikus lipopeptid származék)',
+      en: 'Echinocandins (Semi-synthetic lipopeptide derivative)',
+      de: 'Echinocandine (Semisynthetisches Lipopeptid-Derivat)'
+    },
+    halfLife: {
+      hu: 'kb. 14–17 óra (stabil lineáris kinetika, napi 1x i.v. adagolást tesz lehetővé).',
+      en: 'approx. 14–17 hours (stable linear kinetics, supports once-daily i.v. dosing).',
+      de: 'ca. 14–17 Stunden (stabile lineare Kinetik, 1x täglich i.v.).'
+    },
+    effectType: {
+      hu: 'Fungicid (Candida fajok ellen); Fungisztatikus (Aspergillus ellen)',
+      en: 'Fungicidal (against Candida species); Fungistatic (against Aspergillus)',
+      de: 'Fungizid (gegen Candida-Spezies); Fungistatisch (gegen Aspergillus)'
+    },
+    pae: {
+      hu: 'Kifejezett és tartós poszt-antifungális hatás Candida és Aspergillus törzseknél.',
+      en: 'Pronounced and prolonged post-antifungal effect against Candida and Aspergillus.',
+      de: 'Ausgeprägter und langanhaltender PAE gegen Candida und Aspergillus.'
+    },
+    spectrum: {
+      hu: 'Candida fajok (beleértve a Fluconazol-rezisztens C. glabrata, C. krusei és C. auris törzseket is), Aspergillus spp. (Cryptococcus neoformans és Mucorales ellen hatástalan!).',
+      en: 'Candida species (including Fluconazole-resistant C. glabrata, C. krusei, and C. auris), Aspergillus spp. (Inactive against Cryptococcus or Mucorales!).',
+      de: 'Candida-Spezies (inkl. C. glabrata, C. krusei, C. auris), Aspergillus spp. (Unwirksam gegen Kryptokokken und Mucorales!).'
+    },
+    specialFeature: {
+      hu: 'Az EGYETLEN echinokandin, amely újszülöttekben és koraszülöttekben is törzskönyvezett! Nem igényel kezdeti telítő dózist (loading dose nélkül indítható candidemiában).',
+      en: 'The ONLY echinocandin approved for neonates and premature infants! Does NOT require a loading dose for candidemia.',
+      de: 'Das EINZIGE Echinocandin, das auch für Neugeborene und Frühgeborene zugelassen ist! Erfordert KEINE Sättigungsdosis bei Candidämie.'
+    },
+    mechanismOfAction: {
+      hu: 'A béta-(1,3)-D-glükán-szintetáz enzim nem-kompetitív gátlásával leállítja a gomba sejtfalának szintézisét, ami felborítja az ozmotikus egyensúlyt és gombatagok elhalásához vezet.',
+      en: 'Non-competitively inhibits beta-(1,3)-D-glucan synthase, halting fungal cell wall construction and causing cell lysis.',
+      de: 'Hemmt nicht-kompetitiv die Beta-(1,3)-D-Glucan-Synthase, unterbricht den Zellwandaufbau und führt zur Lyse.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Invazív candidiasis / Candidemia: 100 mg/nap i.v. (loading dose NEM szükséges!). Oesophagealis candidiasis: 150 mg/nap i.v. Profilaxis HSCT után: 50 mg/nap i.v.',
+        en: 'Invasive candidiasis / Candidemia: 100 mg daily i.v. (NO loading dose required!). Esophageal candidiasis: 150 mg daily i.v. HSCT prophylaxis: 50 mg daily i.v.',
+        de: 'Invasive Candidose / Candidämie: 100 mg täglich i.v. (KEINE Sättigungsdosis nötig!). Ösophageale Candidose: 150 mg/Tag i.v. Prophylaxe nach KMT: 50 mg/Tag i.v.'
+      },
+      pediatric: {
+        hu: 'Újszülöttek és csecsemők (<4 hónap): 4–10 mg/ttkg/nap i.v. Gyermekek (≥4 hónap): 1–2 mg/ttkg/nap i.v. (max 100 mg/nap).',
+        en: 'Neonates and infants (<4 months): 4–10 mg/kg daily i.v. Children (≥4 months): 1–2 mg/kg daily i.v. (max 100 mg/day).',
+        de: 'Neugeborene und Säuglinge (<4 Monate): 4–10 mg/kg täglich i.v. Kinder (≥4 Monate): 1–2 mg/kg täglich i.v. (max 100 mg/Tag).'
+      },
+      renal: {
+        hu: 'Semmilyen fokú veseelégtelenségben nem igényel adagmódosítást.',
+        en: 'No dose adjustment required in renal impairment.',
+        de: 'Keine Dosisanpassung bei Niereninsuffizienz.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májkárosodásban nem igényel adagmódosítást. Súlyos májelégtelenségben klinikai mérlegelés javasolt.',
+        en: 'No dose adjustment needed in mild-to-moderate hepatic impairment. Use with caution in severe impairment.',
+        de: 'Keine Dosisanpassung bei leichter bis mäßiger Leberinsuffizienz.'
+      }
+    },
+    indications: {
+      hu: [
+        'Invazív candidiasis és candidemia kezelése felnőttekben, gyermekekben és újszülöttekben',
+        'Oesophagealis candidiasis kezelése',
+        'Candida-fertőzés megelőzése allogén őssejt-transzplantált (HSCT) betegekben'
+      ],
+      en: [
+        'Treatment of invasive candidiasis and candidemia in adults, children, and neonates',
+        'Treatment of esophageal candidiasis',
+        'Prophylaxis of Candida infection in allogeneic HSCT patients'
+      ],
+      de: [
+        'Behandlung der invasiven Candidose und Candidämie bei Erwachsenen, Kindern und Neugeborenen',
+        'Behandlung der ösophagealen Candidose',
+        'Candida-Prophylaxe bei allogener KMT'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Gastrointestinalis panaszok (hányinger, hányás, hasmenés)',
+        'Májenzim-szint emelkedése (ALT, AST, bilirubin)',
+        'Transient hypokalemia, hypomagnesaemia, hypocalcemia',
+        'Phlebitis, fejfájás, pyrexia'
+      ],
+      en: [
+        'Gastrointestinal symptoms (nausea, vomiting, diarrhea)',
+        'Elevated liver enzymes (ALT, AST, bilirubin)',
+        'Transient hypokalemia, hypomagnesemia, hypocalcemia',
+        'Phlebitis, headache, pyrexia'
+      ],
+      de: [
+        'Gastrointestinale Beschwerden (Übelkeit, Erbrechen)',
+        'Anstieg der Leberenzyme (ALT, AST, Bilirubin)',
+        'Hypokaliämie, Hypomagnesiämie',
+        'Phlebitis, Fieber, Kopfschmerzen'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'Egyedülállóan jó választás újszülöttkori és csecsemőkori invazív candidiasisban, ahol a magasabb dózis (4-10 mg/kg) kiváló szervi penetrációt biztosít.',
+        'Nincs szükség telítő dózisra (loading dose-ra), az első naptól kezdve a megszokott fenntartó dózissal (100 mg/nap) indítható.',
+        'Fényérzékeny oldat – az infúziós üveget/zsákot védeni kell a közvetlen napfénytől!'
+      ],
+      en: [
+        'First-choice echinocandin in neonatal and pediatric invasive candidiasis, where higher mg/kg dosing ensures excellent organ clearance.',
+        'No loading dose required; start with standard daily maintenance dose (100 mg/day) on day 1.',
+        'Light sensitive solution – protect infusion bag from direct sunlight!'
+      ],
+      de: [
+        'Mittel der Wahl bei neonataler Candidose.',
+        'Keine Sättigungsdosis erforderlich (ab Tag 1 mit 100 mg/Tag starten).',
+        'Lichtempfindlich – Infusionsbeutel vor direktem Sonnenlicht schützen!'
+      ]
+    }
   }
 ];

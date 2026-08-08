@@ -167,7 +167,7 @@ export const clinicalInfectionsData: ClinicalInfection[] = [
       { condition: "Streptococcus pneumoniae (PRSP)", treatment: "Vancomycin i.v. + Ceftriaxon 2x 2g i.v. VAGY Meropenem 3x 2g i.v." },
       { condition: "Listeria monocytogenes", treatment: "Ampicillin 6x 2g i.v. + Gentamicin 3x 1-1.5 mg/ttkg i.v. szinergizmus céljából! (Cephalosporinok hatástalanok!)." }
     ],
-    guidelines: "ESC (Európai Klinikai Mikrobiológiai és Infektológiai Társaság) Meningitis Guideline, IDSA Meningitis Guidelines",
+    guidelines: "ESCMID (Európai Klinikai Mikrobiológiai és Infektológiai Társaság) Meningitis Guideline, IDSA Meningitis Guidelines",
     diagnosticsNotes: "Klinikai triász: láz, tarkómerevség (meningizmus), tudatzavar. Sürgős lumbálpunkció (LP) elvégzése szükséges a liquor vizsgálatára (sejtszám, fehérje, cukor, Gram-festés, tenyésztés, PCR, latex agglutináció). HA koponyaűri nyomásfokozódásra utaló tünet van (pl. papilledema, gócos neurológiai deficit, görcsroham, mély kóma), LP előtt koponya CT végzendő. CT miatt az antibiotikum beadása nem késhet: előtte hemokultúrát kell venni, beadni az empirikus antibiotikumot + dexamethasont, majd elküldeni CT-re, és utána LP!"
   },
   {
