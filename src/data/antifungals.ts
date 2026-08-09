@@ -6,6 +6,8 @@
 export interface AntifungalData {
   id: string;
   name: string;
+  abbreviation?: string;
+  brandNames?: string;
   group: { hu: string; en: string; de: string };
   halfLife: { hu: string; en: string; de: string };
   effectType: { hu: string; en: string; de: string };
@@ -28,6 +30,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'fluconazole',
     name: 'Fluconazol',
+    abbreviation: 'FLU',
+    brandNames: 'Diflucan, Mycosyst, Flucohexal, Fungolon',
     group: {
       hu: 'Azolok (Első generációs triazol)',
       en: 'Azoles (First-generation triazole)',
@@ -146,6 +150,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'voriconazole',
     name: 'Voriconazol',
+    abbreviation: 'VRC',
+    brandNames: 'Vfend',
     group: {
       hu: 'Azolok (Második generációs széles spektrumú triazol)',
       en: 'Azoles (Second-generation broad-spectrum triazole)',
@@ -267,6 +273,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'caspofungin',
     name: 'Caspofungin',
+    abbreviation: 'CAS',
+    brandNames: 'Cancidas',
     group: {
       hu: 'Echinokandinok (Lipopeptid származék)',
       en: 'Echinocandins (Lipopeptide derivative)',
@@ -382,6 +390,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'amphotericin_b',
     name: 'Liposomalis Amphotericin B',
+    abbreviation: 'L-AmB / AMB',
+    brandNames: 'AmBiSome, Fungizone, Abelcet',
     group: {
       hu: 'Polienek (Természetes makrolid polien antibiotikum)',
       en: 'Polyenes (Natural macrolide polyene antibiotic)',
@@ -500,6 +510,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'itraconazole',
     name: 'Itraconazol',
+    abbreviation: 'ITC',
+    brandNames: 'Sporanox, Orungal',
     group: {
       hu: 'Azolok (Első generációs lipofil triazol)',
       en: 'Azoles (First-generation lipophilic triazole)',
@@ -621,6 +633,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'isavuconazole',
     name: 'Isavuconazol',
+    abbreviation: 'ISA',
+    brandNames: 'Cresemba',
     group: {
       hu: 'Azolok (Legújabb másodgenerációs széles spektrumú triazol)',
       en: 'Azoles (Latest second-generation broad-spectrum triazole)',
@@ -736,6 +750,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'anidulafungin',
     name: 'Anidulafungin',
+    abbreviation: 'ANI',
+    brandNames: 'Ecalta, Eraxis',
     group: {
       hu: 'Echinokandinok (Félszintetikus lipopeptid származék)',
       en: 'Echinocandins (Semi-synthetic lipopeptide derivative)',
@@ -848,6 +864,8 @@ export const antifungalsData: AntifungalData[] = [
   {
     id: 'micafungin',
     name: 'Micafungin',
+    abbreviation: 'MCF',
+    brandNames: 'Mycamine',
     group: {
       hu: 'Echinokandinok (Félszintetikus lipopeptid származék)',
       en: 'Echinocandins (Semi-synthetic lipopeptide derivative)',

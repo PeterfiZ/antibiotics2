@@ -6,6 +6,8 @@
 export interface AntiviralData {
   id: string;
   name: string;
+  abbreviation?: string;
+  brandNames?: string;
   group: { hu: string; en: string; de: string };
   targetViruses: { hu: string; en: string; de: string };
   halfLife: { hu: string; en: string; de: string };
@@ -28,6 +30,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'aciclovir_valaciclovir',
     name: 'Aciclovir / Valaciclovir',
+    abbreviation: 'ACV / VACV',
+    brandNames: 'Zovirax, Telviran, Valtrex, Herpesin',
     group: {
       hu: 'Herpesvírus-ellenes szerek (Nukleozid analógok)',
       en: 'Anti-herpesvirus agents (Nucleoside analogues)',
@@ -146,6 +150,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'ganciclovir_valganciclovir',
     name: 'Ganciclovir / Valganciclovir',
+    abbreviation: 'GCV / VGCV',
+    brandNames: 'Cymmevene, Valcyte',
     group: {
       hu: 'Cytomegalovírus (CMV) ellenes szerek (Nukleozid analógok)',
       en: 'Anti-CMV agents (Nucleoside analogues)',
@@ -261,6 +267,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'oseltamivir',
     name: 'Oseltamivir',
+    abbreviation: 'OSE',
+    brandNames: 'Tamiflu, Ebilfumin',
     group: {
       hu: 'Influenza-ellenes szerek (Neuraminidáz gátlók)',
       en: 'Anti-influenza agents (Neuraminidase inhibitors)',
@@ -376,6 +384,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'remdesivir',
     name: 'Remdesivir',
+    abbreviation: 'RDV',
+    brandNames: 'Veklury',
     group: {
       hu: 'RNS-vírus ellenes szerek (Nukleotid analóg RNS-polimeráz gátló)',
       en: 'Anti-RNA virus agents (Nucleotide analogue RdRp inhibitor)',
@@ -488,6 +498,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'paxlovid',
     name: 'Paxlovid (Nirmatrelvir / Ritonavir)',
+    abbreviation: 'NMV/r',
+    brandNames: 'Paxlovid',
     group: {
       hu: 'COVID-19 ellenes szerek (Proteáz gátló + CYP3A4 inhibitor booster)',
       en: 'Anti-COVID-19 agents (Protease inhibitor + CYP3A4 booster)',
@@ -600,6 +612,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'tenofovir_entecavir',
     name: 'Tenofovir (TDF / TAF) / Entecavir',
+    abbreviation: 'TDF / TAF / ETV',
+    brandNames: 'Viread, Vemlidy, Baraclude',
     group: {
       hu: 'Hepatitis B ellenes szerek (Nukleotid / Nukleozid analógok - NRTIs)',
       en: 'Anti-Hepatitis B agents (Nucleotide / Nucleoside analogues - NRTIs)',
@@ -715,6 +729,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'sofosbuvir_velpatasvir',
     name: 'Sofosbuvir / Velpatasvir',
+    abbreviation: 'SOF / VEL',
+    brandNames: 'Epclusa',
     group: {
       hu: 'Hepatitis C ellenes szerek (Közvetlen hatású antivirális szerek - DAA)',
       en: 'Anti-Hepatitis C agents (Direct-acting antivirals - DAA)',
@@ -827,6 +843,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'letermovir',
     name: 'Letermovir',
+    abbreviation: 'LTM',
+    brandNames: 'Prevymis',
     group: {
       hu: 'CMV profilaktikus szerek (Vírusi termináz komplex gátló)',
       en: 'CMV prophylactic agents (Viral terminase complex inhibitor)',
@@ -939,6 +957,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'biktarvy_dolutegravir',
     name: 'Biktarvy / Dolutegravir (INSTI)',
+    abbreviation: 'BIC / DTG',
+    brandNames: 'Biktarvy, Tivicay, Triumeq, Dovato',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Integráz szálátviteli gátlók - INSTI)',
       en: 'Anti-HIV agents (Integrase strand transfer inhibitors - INSTI)',
@@ -1054,6 +1074,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'baloxavir',
     name: 'Baloxavir marboxil',
+    abbreviation: 'BXM',
+    brandNames: 'Xofluza',
     group: {
       hu: 'Influenza-ellenes szerek (Cap-dependens endonukleáz gátló)',
       en: 'Anti-influenza agents (Cap-dependent endonuclease inhibitor)',
@@ -1166,6 +1188,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'abacavir_lamivudine_emtricitabine',
     name: 'Abacavir / Lamivudin / Emtricitabin (NRTI-k)',
+    abbreviation: 'ABC / 3TC / FTC',
+    brandNames: 'Kivexa, Ziagen, Epivir, Emtriva, Dovato, Truvada, Descovy',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Nukleozid reverz transzkriptáz gátlók - NRTI-k)',
       en: 'Anti-HIV agents (Nucleoside reverse transcriptase inhibitors - NRTIs)',
@@ -1281,6 +1305,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'darunavir_cobicistat',
     name: 'Darunavir / Cobicistat (vagy Ritonavir)',
+    abbreviation: 'DRV/c (DRV/r)',
+    brandNames: 'Prezista, Rezolsta, Symtuza',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Proteáz gátlók - PI)',
       en: 'Anti-HIV agents (Protease inhibitors - PI)',
@@ -1393,6 +1419,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'nnrti_doravirine_rilpivirine',
     name: 'Doravirin / Rilpivirin (NNRTI-k)',
+    abbreviation: 'DOR / RPV',
+    brandNames: 'Pifeltro, Delstrigo, Edurant, Juluca, Odefsey',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Nem-nukleozid reverz transzkriptáz gátlók - NNRTI-k)',
       en: 'Anti-HIV agents (Non-nucleoside reverse transcriptase inhibitors - NNRTIs)',
@@ -1505,6 +1533,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'long_acting_hiv_cabotegravir_lenacapavir',
     name: 'Cabotegravir / Lenacapavir (Hosszú hatású ART)',
+    abbreviation: 'CAB LA / LEN',
+    brandNames: 'Cabenuva, Vocabria, Sunlenca, Apretude',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Hosszú hatású injekciós INSTI & Capsid gátlók)',
       en: 'Anti-HIV agents (Long-acting injectable INSTI & Capsid inhibitors)',
@@ -1620,6 +1650,8 @@ export const antiviralsData: AntiviralData[] = [
   {
     id: 'fostemsavir_ibalizumab',
     name: 'Fostemsavir / Ibalizumab (Belépés- & Kötődésgátlók)',
+    abbreviation: 'FTR / IBA',
+    brandNames: 'Rukobia, Trogarzo',
     group: {
       hu: 'HIV / Retrovírus-ellenes szerek (Belépés- és attachment-gátlók - MDR HIV-re)',
       en: 'Anti-HIV agents (Entry & attachment inhibitors for MDR HIV)',

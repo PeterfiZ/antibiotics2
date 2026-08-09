@@ -26,7 +26,7 @@ const labels = {
   hu: {
     title: 'Antivirális Kezelés (Antivirális szerek)',
     subtitle: 'Szisztémás antivirális szerek farmakológiai tulajdonságai, célvírusai, adagolása és klinikai alkalmazása',
-    searchPlaceholder: 'Keresés hatóanyag, csoport, vírus vagy javallat szerint...',
+    searchPlaceholder: 'Keresés hatóanyag, gyári név, rövidítés, csoport vagy javallat szerint...',
     allGroups: 'Összes csoport',
     groupHerpes: 'Herpes & CMV',
     groupRespiratory: 'Légúti & COVID',
@@ -38,6 +38,8 @@ const labels = {
     targetViruses: 'Célvírusok / Spektrum',
     specialFeature: 'Különleges tulajdonság',
     mechanismOfAction: 'Hatásmechanizmus',
+    brandNames: 'Gyári készítmények',
+    abbreviation: 'Nemzetközi rövidítés',
     dosageAdult: 'Felnőtt adagolás',
     dosagePediatric: 'Gyermek adagolás',
     dosageProphylaxis: 'Profilaxis adagolás',
@@ -64,7 +66,7 @@ const labels = {
   en: {
     title: 'Antiviral Treatment (Antiviral Agents)',
     subtitle: 'Pharmacological properties, target viruses, dosing, and clinical application of systemic antivirals',
-    searchPlaceholder: 'Search by agent, group, virus, or indication...',
+    searchPlaceholder: 'Search by agent, brand name, abbreviation, group, virus, or indication...',
     allGroups: 'All Groups',
     groupHerpes: 'Herpes & CMV',
     groupRespiratory: 'Respiratory & COVID',
@@ -76,6 +78,8 @@ const labels = {
     targetViruses: 'Target Viruses / Spectrum',
     specialFeature: 'Special Feature',
     mechanismOfAction: 'Mechanism of Action',
+    brandNames: 'Brand Names',
+    abbreviation: 'International Abbreviation',
     dosageAdult: 'Adult Dosing',
     dosagePediatric: 'Pediatric Dosing',
     dosageProphylaxis: 'Prophylaxis Dosing',
@@ -102,7 +106,7 @@ const labels = {
   de: {
     title: 'Antivirale Behandlung (Antivirale Wirkstoffe)',
     subtitle: 'Pharmakologische Eigenschaften, Zielviren, Dosierung und klinische Anwendung systemischer Antiviralia',
-    searchPlaceholder: 'Suche nach Wirkstoff, Gruppe, Virus oder Indikation...',
+    searchPlaceholder: 'Suche nach Wirkstoff, Handelsname, Abkürzung, Gruppe oder Indikation...',
     allGroups: 'Alle Gruppen',
     groupHerpes: 'Herpes & CMV',
     groupRespiratory: 'Atemwege & COVID',
@@ -114,6 +118,8 @@ const labels = {
     targetViruses: 'Zielviren / Spektrum',
     specialFeature: 'Besondere Eigenschaft',
     mechanismOfAction: 'Wirkungsmechanismus',
+    brandNames: 'Handelsnamen',
+    abbreviation: 'Internationale Abkürzung',
     dosageAdult: 'Dosierung Erwachsene',
     dosagePediatric: 'Dosierung Kinder',
     dosageProphylaxis: 'Prophylaxe-Dosierung',
@@ -208,12 +214,14 @@ export default function AntiviralView() {
 
     const lang = language as 'hu' | 'en' | 'de';
     const nameMatch = drug.name.toLowerCase().includes(query);
+    const abbrMatch = drug.abbreviation ? drug.abbreviation.toLowerCase().includes(query) : false;
+    const brandMatch = drug.brandNames ? drug.brandNames.toLowerCase().includes(query) : false;
     const groupNameMatch = (drug.group[lang] || '').toLowerCase().includes(query);
     const virusMatch = (drug.targetViruses[lang] || '').toLowerCase().includes(query);
     const indicationsMatch = drug.indications[lang]?.some(ind => ind.toLowerCase().includes(query)) || false;
     const mechanismMatch = (drug.mechanismOfAction[lang] || '').toLowerCase().includes(query);
 
-    return groupMatch && (nameMatch || groupNameMatch || virusMatch || indicationsMatch || mechanismMatch);
+    return groupMatch && (nameMatch || abbrMatch || brandMatch || groupNameMatch || virusMatch || indicationsMatch || mechanismMatch);
   });
 
   // Get active effect type details
@@ -340,19 +348,29 @@ export default function AntiviralView() {
                 {/* Drug Header */}
                 <div className="p-4 md:p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
                         <Pill className="w-4.5 h-4.5" />
                       </span>
-                      <h3 className="text-lg font-black text-slate-900 tracking-tight">
+                      <h3 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2 flex-wrap">
                         {drug.name}
+                        {drug.abbreviation && (
+                          <span className="bg-blue-100 text-blue-700 font-mono text-xs px-2 py-0.5 rounded border border-blue-200 uppercase font-extrabold">
+                            {drug.abbreviation}
+                          </span>
+                        )}
                       </h3>
                       {/* Effect Type Badge */}
                       <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider border ${effectInfo.className}`}>
                         {effectInfo.label}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 font-bold tracking-wide">
+                    {drug.brandNames && (
+                      <p className="text-xs text-slate-500 font-medium italic pl-8">
+                        {currentLabels.brandNames}: <span className="font-semibold text-slate-700">{drug.brandNames}</span>
+                      </p>
+                    )}
+                    <p className="text-xs text-slate-400 font-bold tracking-wide pl-8">
                       {drug.group[lang]}
                     </p>
                   </div>
@@ -406,6 +424,17 @@ export default function AntiviralView() {
                   {currentTab === 'general' && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
                       <div className="space-y-4">
+                        {drug.brandNames && (
+                          <div className="space-y-1">
+                            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
+                              {currentLabels.brandNames}
+                            </span>
+                            <p className="font-bold text-slate-800 italic">
+                              {drug.brandNames}
+                            </p>
+                          </div>
+                        )}
+
                         <div className="space-y-1">
                           <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
                             {currentLabels.halfLife}

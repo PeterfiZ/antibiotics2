@@ -32,7 +32,7 @@ const labels = {
   hu: {
     title: 'Gombaellenes Kezelés (Antifungális szerek)',
     subtitle: 'Szisztémás antimykotikumok farmakológiai tulajdonságai, spektruma és klinikai alkalmazása',
-    searchPlaceholder: 'Keresés hatóanyag, csoport vagy gomba szerint...',
+    searchPlaceholder: 'Keresés hatóanyag, gyári név, rövidítés, csoport vagy gomba szerint...',
     allGroups: 'Összes csoport',
     groupAzoles: 'Azolok',
     groupEchinocandins: 'Echinokandinok',
@@ -43,6 +43,8 @@ const labels = {
     spectrum: 'Hatásspektrum (Érzékeny gombák)',
     specialFeature: 'Különleges tulajdonság',
     mechanismOfAction: 'Hatásmechanizmus',
+    brandNames: 'Gyári készítmények',
+    abbreviation: 'Nemzetközi rövidítés',
     dosageAdult: 'Felnőtt adagolás',
     dosagePediatric: 'Gyermek adagolás',
     dosageRenal: 'Veseelégtelenségben',
@@ -102,7 +104,7 @@ const labels = {
   en: {
     title: 'Antifungal Treatment',
     subtitle: 'Pharmacological properties, spectrum, and clinical application of systemic antifungals',
-    searchPlaceholder: 'Search by agent, group, or pathogen...',
+    searchPlaceholder: 'Search by agent, brand name, abbreviation, group, or pathogen...',
     allGroups: 'All Groups',
     groupAzoles: 'Azoles',
     groupEchinocandins: 'Echinocandins',
@@ -113,6 +115,8 @@ const labels = {
     spectrum: 'Antifungal Spectrum',
     specialFeature: 'Special Feature',
     mechanismOfAction: 'Mechanism of Action',
+    brandNames: 'Brand Names',
+    abbreviation: 'International Abbreviation',
     dosageAdult: 'Adult Dosing',
     dosagePediatric: 'Pediatric Dosing',
     dosageRenal: 'Renal Impairment',
@@ -172,7 +176,7 @@ const labels = {
   de: {
     title: 'Antimykotische Behandlung',
     subtitle: 'Pharmakologische Eigenschaften, Spektrum und klinische Anwendung systemischer Antimykotika',
-    searchPlaceholder: 'Suche nach Wirkstoff, Gruppe oder Erreger...',
+    searchPlaceholder: 'Suche nach Wirkstoff, Handelsname, Abkürzung, Gruppe oder Erreger...',
     allGroups: 'Alle Gruppen',
     groupAzoles: 'Azole',
     groupEchinocandins: 'Echinocandine',
@@ -183,6 +187,8 @@ const labels = {
     spectrum: 'Antimykotisches Spektrum',
     specialFeature: 'Besondere Eigenschaft',
     mechanismOfAction: 'Wirkungsmechanismus',
+    brandNames: 'Handelsnamen',
+    abbreviation: 'Internationale Abkürzung',
     dosageAdult: 'Dosierung Erwachsene',
     dosagePediatric: 'Dosierung Kinder',
     dosageRenal: 'Niereninsuffizienz',
@@ -475,12 +481,14 @@ export default function AntifungalView() {
     if (!query) return groupMatch;
 
     const nameMatch = drug.name.toLowerCase().includes(query);
+    const abbrMatch = drug.abbreviation ? drug.abbreviation.toLowerCase().includes(query) : false;
+    const brandMatch = drug.brandNames ? drug.brandNames.toLowerCase().includes(query) : false;
     const groupNameMatch = (drug.group[language] || '').toLowerCase().includes(query);
     const spectrumMatch = (drug.spectrum[language] || '').toLowerCase().includes(query);
     const indicationsMatch = drug.indications[language]?.some(ind => ind.toLowerCase().includes(query)) || false;
     const mechanismMatch = (drug.mechanismOfAction[language] || '').toLowerCase().includes(query);
 
-    return groupMatch && (nameMatch || groupNameMatch || spectrumMatch || indicationsMatch || mechanismMatch);
+    return groupMatch && (nameMatch || abbrMatch || brandMatch || groupNameMatch || spectrumMatch || indicationsMatch || mechanismMatch);
   });
 
   // Filter matrix pathogens based on search and type
@@ -670,19 +678,29 @@ export default function AntifungalView() {
                     {/* Drug Header */}
                     <div className="p-4 md:p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
                             <Pill className="w-4.5 h-4.5" />
                           </span>
-                          <h3 className="text-lg font-black text-slate-900 tracking-tight">
+                          <h3 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2 flex-wrap">
                             {drug.name}
+                            {drug.abbreviation && (
+                              <span className="bg-blue-100 text-blue-700 font-mono text-xs px-2 py-0.5 rounded border border-blue-200 uppercase font-extrabold">
+                                {drug.abbreviation}
+                              </span>
+                            )}
                           </h3>
                           {/* Effect Type Badge */}
                           <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider border ${effectInfo.className}`}>
                             {effectInfo.label}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-400 font-bold tracking-wide">
+                        {drug.brandNames && (
+                          <p className="text-xs text-slate-500 font-medium italic pl-8">
+                            {currentLabels.brandNames}: <span className="font-semibold text-slate-700">{drug.brandNames}</span>
+                          </p>
+                        )}
+                        <p className="text-xs text-slate-400 font-bold tracking-wide pl-8">
                           {drug.group[language]}
                         </p>
                       </div>
@@ -736,6 +754,17 @@ export default function AntifungalView() {
                       {currentTab === 'general' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
                           <div className="space-y-4">
+                            {drug.brandNames && (
+                              <div className="space-y-1">
+                                <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
+                                  {currentLabels.brandNames}
+                                </span>
+                                <p className="font-bold text-slate-800 italic">
+                                  {drug.brandNames}
+                                </p>
+                              </div>
+                            )}
+
                             <div className="space-y-1">
                               <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
                                 {currentLabels.halfLife}

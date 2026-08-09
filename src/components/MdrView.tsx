@@ -73,21 +73,24 @@ export default function MdrView() {
 
   return (
     <div className="space-y-6 text-slate-800">
-      {/* Module Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-5 md:p-6 text-white shadow-md border border-slate-800">
+      {/* View Header */}
+      <div className="border-b border-slate-100 pb-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <span className="bg-rose-500/20 text-rose-300 text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-rose-500/30 flex items-center gap-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="bg-rose-50 text-rose-700 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-rose-100 flex items-center gap-1 uppercase tracking-wider">
                 <ShieldAlert className="w-3.5 h-3.5" />
-                {language === 'hu' ? 'ÚJ KLINIKAI MODUL' : language === 'de' ? 'NEUES KLINISCHES MODUL' : 'NEW CLINICAL MODULE'}
+                {language === 'hu' ? 'MDR Kórokozók' : language === 'de' ? 'MDR-Erreger' : 'MDR Pathogens'}
               </span>
-              <span className="text-slate-400 text-xs font-semibold">ECDC / WHO / IDSA 2024/2025</span>
+              <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">ECDC / WHO / IDSA 2024/2025</span>
             </div>
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+            <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="p-1.5 bg-rose-50 text-rose-600 rounded-lg border border-rose-100 inline-block">
+                <ShieldAlert className="w-5.5 h-5.5 text-rose-600" />
+              </span>
               {language === 'hu' ? 'MDR Kórokozók Kezelési Lehetőségei' : language === 'de' ? 'Behandlung von MDR-Erregern' : 'Management of MDR Pathogens'}
             </h2>
-            <p className="text-xs md:text-sm text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-3xl">
               {language === 'hu' 
                 ? 'Rezisztencia gének (blaKPC, blaNDM, blaOXA, mecA, vanA), béta-laktamáz gátló kombinációk (SUL-DUR, CAZ-AVI, MEV, IMI-REL, ATM-AVI), sziderofórok (Cefiderokol) és klinikai algoritmusok.'
                 : language === 'de'
@@ -96,42 +99,42 @@ export default function MdrView() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 self-start md:self-center shrink-0">
-            <div className="bg-slate-800/80 border border-slate-700/80 p-3 rounded-xl text-center">
-              <span className="text-[10px] text-slate-400 font-bold uppercase block">{language === 'hu' ? 'FDA 2023 Áttörés' : 'FDA 2023 Breakthrough'}</span>
-              <span className="text-xs font-extrabold text-amber-300 block mt-0.5">XACDURO® (SUL-DUR)</span>
+          <div className="flex items-center gap-2 shrink-0 self-start md:self-center">
+            <div className="bg-amber-50 border border-amber-200/60 p-3 rounded-xl text-center shadow-xs">
+              <span className="text-[10px] text-amber-800 font-extrabold uppercase block tracking-wider">{language === 'hu' ? 'FDA Újdonság' : 'FDA Breakthrough'}</span>
+              <span className="text-xs font-black text-amber-950 block mt-0.5">XACDURO® (SUL-DUR)</span>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Sub-navigation Tabs */}
-        <div className="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
-          {[
-            { id: 'eskape', label: language === 'hu' ? '1. ESKAPE & Definíciók' : language === 'de' ? '1. ESKAPE & Definitionen' : '1. ESKAPE & Definitions', icon: ShieldAlert },
-            { id: 'mechanisms', label: language === 'hu' ? '2. Rezisztencia Mechanizmusok' : language === 'de' ? '2. Resistenzmechanismen' : '2. Resistance Mechanisms', icon: Dna },
-            { id: 'pathogens', label: language === 'hu' ? '3. Kórokozó-specifikus Terápia' : language === 'de' ? '3. Erregerspezifische Therapie' : '3. Pathogen-Specific Therapy', icon: Microscope },
-            { id: 'matrix', label: language === 'hu' ? '4. Karbapenemáz Mátrix' : language === 'de' ? '4. Carbapenemase-Matrix' : '4. Carbapenemase Matrix', icon: Zap },
-            { id: 'crab_algo', label: language === 'hu' ? '5. CRAB Algoritmus (WHO/IDSA)' : language === 'de' ? '5. CRAB-Algorithmus' : '5. CRAB Algorithm', icon: Activity },
-            { id: 'stewardship', label: language === 'hu' ? '6. PK/PD & Stewardship' : language === 'de' ? '6. PK/PD & Stewardship' : '6. PK/PD & Stewardship', icon: Clock }
-          ].map((tab) => {
-            const IconComp = tab.icon;
-            const isActive = activeSubTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveSubTab(tab.id as any)}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-150 ${
-                  isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 ring-1 ring-blue-400'
-                    : 'bg-slate-800/70 text-slate-300 hover:bg-slate-800 hover:text-white'
-                }`}
-              >
-                <IconComp className="w-3.5 h-3.5" />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
+      {/* Control Panel: Sub-navigation Tabs */}
+      <div className="bg-slate-50/60 p-4 rounded-2xl border border-slate-200/60 flex flex-wrap gap-1.5 shadow-xs">
+        {[
+          { id: 'eskape', label: language === 'hu' ? '1. ESKAPE & Definíciók' : language === 'de' ? '1. ESKAPE & Definitionen' : '1. ESKAPE & Definitions', icon: ShieldAlert },
+          { id: 'mechanisms', label: language === 'hu' ? '2. Rezisztencia Mechanizmusok' : language === 'de' ? '2. Resistenzmechanismen' : '2. Resistance Mechanisms', icon: Dna },
+          { id: 'pathogens', label: language === 'hu' ? '3. Kórokozó-specifikus Terápia' : language === 'de' ? '3. Erregerspezifische Therapie' : '3. Pathogen-Specific Therapy', icon: Microscope },
+          { id: 'matrix', label: language === 'hu' ? '4. Karbapenemáz Mátrix' : language === 'de' ? '4. Carbapenemase-Matrix' : '4. Carbapenemase Matrix', icon: Zap },
+          { id: 'crab_algo', label: language === 'hu' ? '5. CRAB Algoritmus (WHO/IDSA)' : language === 'de' ? '5. CRAB-Algorithmus' : '5. CRAB Algorithm', icon: Activity },
+          { id: 'stewardship', label: language === 'hu' ? '6. PK/PD & Stewardship' : language === 'de' ? '6. PK/PD & Stewardship' : '6. PK/PD & Stewardship', icon: Clock }
+        ].map((tab) => {
+          const IconComp = tab.icon;
+          const isActive = activeSubTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveSubTab(tab.id as any)}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all duration-150 cursor-pointer ${
+                isActive
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              <IconComp className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* SUB-VIEW 1: ESKAPE & DEFINITIONS */}
@@ -173,28 +176,28 @@ export default function MdrView() {
               </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-hidden border border-slate-200/80 rounded-xl shadow-xs">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-100/80 text-slate-700 font-extrabold uppercase text-[10px] tracking-wider border-b border-slate-200">
+                  <tr className="bg-slate-50 text-slate-500 font-extrabold uppercase text-[10px] tracking-wider border-b border-slate-200">
                     <th className="p-3">{language === 'hu' ? 'Kórokozó' : 'Pathogen'}</th>
                     <th className="p-3">{language === 'hu' ? 'MDR Definíció' : 'MDR Definition'}</th>
                     <th className="p-3">{language === 'hu' ? 'Főbb Rezisztencia Gének / Mechanizmusok' : 'Major Resistance Genes / Mechanisms'}</th>
                     <th className="p-3">{language === 'hu' ? 'Elsővonalbeli Kezelés' : 'First-line Treatment'}</th>
-                    <th className="p-3 text-right">{language === 'hu' ? 'Részletek' : 'Details'}</th>
+                    <th className="p-3 text-right">{language === 'hu' ? 'Művelet' : 'Action'}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {eskapePathogens.map((path) => (
-                    <tr key={path.id} className="hover:bg-blue-50/40 transition-colors">
+                    <tr key={path.id} className="hover:bg-blue-50/20 transition-colors">
                       <td className="p-3 font-bold text-slate-900">
-                        <div className="flex items-center gap-2">
-                          <span className="w-6 h-6 rounded-lg bg-slate-900 text-white flex items-center justify-center font-extrabold text-xs">
+                        <div className="flex items-center gap-2.5">
+                          <span className="w-6.5 h-6.5 rounded-lg bg-slate-900 text-white flex items-center justify-center font-extrabold text-xs">
                             {path.letter}
                           </span>
                           <div>
                             <span className="italic block font-serif text-sm">{path.name}</span>
-                            <span className="text-[10px] text-blue-600 font-bold">{path.code}</span>
+                            <span className="text-[10px] text-blue-600 font-bold tracking-wide uppercase">{path.code}</span>
                           </div>
                         </div>
                       </td>
@@ -211,10 +214,10 @@ export default function MdrView() {
                             setSelectedPathogenId(path.detailsKey);
                             setActiveSubTab('pathogens');
                           }}
-                          className="inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl transition-all shadow-xs cursor-pointer"
                         >
                           <span>{language === 'hu' ? 'Modul' : 'Module'}</span>
-                          <ChevronRight className="w-3 h-3" />
+                          <ChevronRight className="w-3.5 h-3.5" />
                         </button>
                       </td>
                     </tr>
@@ -312,7 +315,7 @@ export default function MdrView() {
       {activeSubTab === 'pathogens' && (
         <div className="space-y-5">
           {/* Pathogen Switcher Pills */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 bg-slate-50/60 p-3.5 rounded-2xl border border-slate-200/60 shadow-xs">
             {[
               { id: 'crab', label: 'CRAB (Acinetobacter)', badge: 'WHO #1' },
               { id: 'cre', label: 'CRE (KPC / MBL / OXA-48)', badge: 'Kritikus' },
@@ -320,47 +323,54 @@ export default function MdrView() {
               { id: 'mrsa', label: 'MRSA (S. aureus)', badge: 'Gram+' },
               { id: 'vre', label: 'VRE (Enterococcus)', badge: 'Gram+' },
               { id: 'esbl', label: 'ESBL (Enterobacterales)', badge: 'Gram-' }
-            ].map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setSelectedPathogenId(p.id)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  selectedPathogenId === p.id
-                    ? 'bg-slate-900 text-white shadow-md ring-2 ring-blue-500'
-                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
-                }`}
-              >
-                <span>{p.label}</span>
-                <span className="text-[9px] bg-blue-500/20 text-blue-800 px-1.5 py-0.5 rounded font-black">
-                  {p.badge}
-                </span>
-              </button>
-            ))}
+            ].map((p) => {
+              const isSelected = selectedPathogenId === p.id;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedPathogenId(p.id)}
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all duration-150 cursor-pointer ${
+                    isSelected
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                      : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                  }`}
+                >
+                  <span>{p.label}</span>
+                  <span className={`text-[9px] px-1.5 py-0.5 rounded font-extrabold ${
+                    isSelected
+                      ? 'bg-blue-700 text-blue-100'
+                      : 'bg-rose-50 text-rose-700 border border-rose-100'
+                  }`}>
+                    {p.badge}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Selected Pathogen Detailed Card */}
           <div className="bg-white rounded-2xl border border-slate-200/80 p-5 md:p-6 shadow-xs space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-4">
-              <div>
-                <span className="bg-rose-100 text-rose-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-rose-200">
+              <div className="space-y-1">
+                <span className="bg-rose-50 text-rose-700 text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-rose-100 inline-block uppercase tracking-wider">
                   {currentPathogen.badge}
                 </span>
-                <h3 className="text-lg md:text-xl font-black text-slate-900 mt-1">
+                <h3 className="text-xl font-black text-slate-900 tracking-tight">
                   {currentPathogen.title}
                 </h3>
-                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                <p className="text-xs text-slate-500 font-medium">
                   {currentPathogen.subtitle}
                 </p>
               </div>
             </div>
 
             {/* Mechanisms List */}
-            <div className="space-y-2 bg-slate-50/80 p-4 rounded-xl border border-slate-200/60">
+            <div className="space-y-2.5 bg-slate-50/50 p-4 rounded-xl border border-slate-200/50">
               <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Dna className="w-4 h-4 text-indigo-600" />
                 {language === 'hu' ? 'Rezisztencia Gének és Mechanizmusok' : 'Resistance Genes and Mechanisms'}
               </h4>
-              <ul className="list-disc list-inside text-xs text-slate-700 space-y-1.5 leading-relaxed font-medium">
+              <ul className="list-disc list-inside text-xs text-slate-700 space-y-1.5 leading-relaxed font-medium pl-1">
                 {getLangArray(currentPathogen.mechanisms).map((m, idx) => (
                   <li key={idx}>{m}</li>
                 ))}
@@ -374,10 +384,10 @@ export default function MdrView() {
                 {language === 'hu' ? 'Terápiás Opciók, Dózis és Indikációk' : 'Therapeutic Options, Dosage, and Indications'}
               </h4>
 
-              <div className="overflow-x-auto">
+              <div className="overflow-hidden border border-slate-200/80 rounded-xl shadow-xs">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-100/90 text-slate-700 font-extrabold uppercase text-[10px] tracking-wider border-b border-slate-200">
+                    <tr className="bg-slate-50 text-slate-500 font-extrabold uppercase text-[10px] tracking-wider border-b border-slate-200">
                       <th className="p-3">{language === 'hu' ? 'Gyógyszer / Kombináció' : 'Drug / Combination'}</th>
                       <th className="p-3">{language === 'hu' ? 'Dózis (Felnőtt)' : 'Dosage (Adult)'}</th>
                       <th className="p-3">{language === 'hu' ? 'Indikáció / Spektrum' : 'Indication / Spectrum'}</th>
@@ -386,11 +396,11 @@ export default function MdrView() {
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {currentPathogen.drugOptions.map((opt, idx) => (
-                      <tr key={idx} className="hover:bg-blue-50/30 transition-colors">
-                        <td className="p-3 font-bold text-slate-900 bg-slate-50/40">{opt.drug}</td>
-                        <td className="p-3 font-mono text-[11px] text-blue-900 bg-blue-50/20 font-bold">{opt.dose}</td>
+                      <tr key={idx} className="hover:bg-blue-50/20 transition-colors">
+                        <td className="p-3 font-bold text-slate-900">{opt.drug}</td>
+                        <td className="p-3 font-mono text-[11px] text-blue-900 font-bold bg-blue-50/10">{opt.dose}</td>
                         <td className="p-3 text-slate-700 font-medium">{getLangProp(opt, 'indication')}</td>
-                        <td className="p-3 text-rose-900 bg-rose-50/30 font-semibold">{getLangProp(opt, 'sideEffectsOrWarnings')}</td>
+                        <td className="p-3 text-rose-900 font-semibold bg-rose-50/10">{getLangProp(opt, 'sideEffectsOrWarnings')}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -400,12 +410,12 @@ export default function MdrView() {
 
             {/* Clinical Alerts / Special Notes */}
             {getLangArray(currentPathogen.clinicalAlerts).length > 0 && (
-              <div className="bg-amber-50 border border-amber-200/90 p-4 rounded-xl space-y-2">
+              <div className="bg-amber-50/50 border border-amber-200/60 p-4 rounded-xl space-y-2 shadow-xs">
                 <h4 className="text-xs font-extrabold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4 text-amber-600" />
                   {language === 'hu' ? 'Klinikai Kulcsszabályok és Figyelmeztetések' : 'Key Clinical Rules and Alerts'}
                 </h4>
-                <ul className="list-disc list-inside text-xs text-amber-900 space-y-1 font-semibold">
+                <ul className="list-disc list-inside text-xs text-amber-950 space-y-1.5 font-semibold pl-1">
                   {getLangArray(currentPathogen.clinicalAlerts).map((alert, idx) => (
                     <li key={idx}>{alert}</li>
                   ))}
