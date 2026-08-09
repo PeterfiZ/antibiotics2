@@ -1616,5 +1616,117 @@ export const antiviralsData: AntiviralData[] = [
         'Injektionen müssen durch medizinisches Fachpersonal verabreicht werden.'
       ]
     }
+  },
+  {
+    id: 'fostemsavir_ibalizumab',
+    name: 'Fostemsavir / Ibalizumab (Belépés- & Kötődésgátlók)',
+    group: {
+      hu: 'HIV / Retrovírus-ellenes szerek (Belépés- és attachment-gátlók - MDR HIV-re)',
+      en: 'Anti-HIV agents (Entry & attachment inhibitors for MDR HIV)',
+      de: 'Anti-HIV-Wirkstoffe (Eintritts- & Attachment-Hemmer für MDR-HIV)'
+    },
+    targetViruses: {
+      hu: 'Multirezisztens (MDR) Human Immunodeficientia Vírus 1 (HIV-1)',
+      en: 'Multidrug-resistant (MDR) Human Immunodeficiency Virus 1 (HIV-1)',
+      de: 'Multiresistentes (MDR) Humanes Immundefizienzvirus 1 (HIV-1)'
+    },
+    halfLife: {
+      hu: 'Fostemsavir (prodrug -> Temsavir): ~11 óra (napi 2x p.o.); Ibalizumab (mAB i.v.): ~3 - 3.5 hét (2 hetente infúzió)',
+      en: 'Fostemsavir (prodrug -> Temsavir): ~11 hours (b.i.d. p.o.); Ibalizumab (i.v. mAb): ~3 - 3.5 weeks (q2w IV infusion)',
+      de: 'Fostemsavir (Temsavir): ~11 Stunden (2x täglich p.o.); Ibalizumab (AK i.v.): ~3 - 3,5 Wochen (alle 2 Wochen)'
+    },
+    effectType: {
+      hu: 'Virosztatikus (Újszerű mentő-terápiás belépésgátlók heavy treatment-experienced betegeknek)',
+      en: 'Virostatic (Novel salvage entry inhibitors for heavily treatment-experienced patients)',
+      de: 'Virostatisch (Neuartige Eintrittsinhibitoren für stark vorbehandelte Patienten)'
+    },
+    specialFeature: {
+      hu: 'Legújabb guideline mentőterápiák (salvage therapy) többszörösen kezelt, multirezisztens HIV fertőzötteknek! Fostemsavir (Rukobia): az első gp120 attachment gátló pro-drug. Ibalizumab (Trogarzo): humán monoklonális ellenanyag (mAb), ami a CD4 receptor 2. doménjéhez kötődve megakadályozza a HIV konformációváltozását.',
+      en: 'Latest guideline-recommended salvage therapies for heavily treatment-experienced patients with multidrug-resistant HIV! Fostemsavir (Rukobia) is a first-in-class gp120 attachment inhibitor. Ibalizumab (Trogarzo) is a humanized monoclonal antibody targeting CD4 domain 2.',
+      de: 'Neueste Leitlinien-Empfehlung zur Salvage-Therapie bei multiresistentem HIV! Fostemsavir (Rukobia) als gp120-Attachment-Hemmer und Ibalizumab (Trogarzo) als monoklonaler Anti-CD4-Antikörper.'
+    },
+    mechanismOfAction: {
+      hu: 'Fostemsavir: Temsavirrá alakulva közvetlenül a vírusi gp120 glikoproteinhez kötődik, megakadályozva a vírusi kapcsolódást a CD4 receptorhoz. Ibalizumab: a CD4 receptor 2. doménjéhez kötődve sterikus gátlással megakadályozza a gp120/CD4 komplex konformációs változását, így blokkolja a co-receptor (CCR5/CXCR4) kötődést és a membránfúziót.',
+      en: 'Fostemsavir binds directly to viral gp120, preventing interaction with host CD4 receptors. Ibalizumab binds CD4 extracellular domain 2, sterically preventing HIV entry without causing immunosuppressive CD4 depletion or interfering with MHC II binding.',
+      de: 'Fostemsavir bindet an virales gp120 und blockiert die CD4-Anheftung. Ibalizumab bindet an Domäne 2 des CD4-Receptors und verhindert sterisch den viralen Eintritt.'
+    },
+    dosage: {
+      adult: {
+        hu: 'Fostemsavir (Rukobia): 2x 600 mg/nap p.o. nyújtott hatóanyagleadású tabletta étkezéstől függetlenül. Ibalizumab (Trogarzo): telítő adag 2000 mg i.v. infúzió, majd 2 hetente 800 mg i.v. fenntartó infúzió.',
+        en: 'Fostemsavir (Rukobia): 600 mg b.i.d. p.o. extended-release tablets with or without food. Ibalizumab (Trogarzo): loading dose 2000 mg IV infusion, followed by 800 mg IV every 2 weeks.',
+        de: 'Fostemsavir (Rukobia): 2x 600 mg/Tag p.o. Retardtabletten. Ibalizumab (Trogarzo): Sättigungsdosis 2000 mg i.v., danach 800 mg i.v. alle 2 Wochen.'
+      },
+      pediatric: {
+        hu: 'Jelenleg felnőttekben (≥18 év) javalltak multirezisztens HIV-1 fertőzésben.',
+        en: 'Currently approved for adults (≥18 years) with multidrug-resistant HIV-1.',
+        de: 'Derzeit für Erwachsene (≥18 Jahre) mit MDR-HIV-1 zugelassen.'
+      },
+      prophylaxis: {
+        hu: 'Profilaxisra nem alkalmazhatók; kizárólag multirezisztens HIV törzsekkel fertőzött, egyéb kezelésre nem reagáló betegek mentőterápiájára szolgálnak.',
+        en: 'Not indicated for prophylaxis; strictly reserved for salvage therapy in multidrug-resistant HIV.',
+        de: 'Nicht zur Prophylaxe; ausschließlich zur Salvage-Therapie bei multiresistentem HIV.'
+      },
+      renal: {
+        hu: 'Vesekárosodásban (beleértve a hemodialízist is) nem igényelnek adagmódosítást.',
+        en: 'No dose adjustment required for renal impairment or hemodialysis.',
+        de: 'Keine Dosisanpassung bei Niereninsuffizienz oder Hämodialyse.'
+      },
+      hepatic: {
+        hu: 'Enyhe és középsúlyos májelégtelenségben nem igényelnek módosítást.',
+        en: 'No dose adjustment needed for mild or moderate hepatic impairment.',
+        de: 'Keine Dosisanpassung bei leichter bis mäßiger Leberfunktionsstörung.'
+      }
+    },
+    indications: {
+      hu: [
+        'Többszörösen kezelt (heavily treatment-experienced), multirezisztens (MDR) HIV-1 fertőzött felnőttek kezelése, akiknél a jelenlegi ART séma virológiai elégtelensége miatt nem állítható össze hatékony kezelés',
+        'Optimális háttérterápiával (optimised background regimen - OBR) kombinálva adandó'
+      ],
+      en: [
+        'Treatment of heavily treatment-experienced adults with multidrug-resistant HIV-1 infection failing their current antiretroviral regimen',
+        'Must be combined with an optimized background regimen (OBR)'
+      ],
+      de: [
+        'Behandlung von stark vorbehandelten Erwachsenen mit multiresistenter HIV-1-Infektion bei Therapieversagen',
+        'Kombination mit einem optimierten Hintergrundregimen (OBR) erforderlich'
+      ]
+    },
+    sideEffects: {
+      hu: [
+        'Gastrointestinalis panaszok (háborult gyomor, hányinger, diaré)',
+        'Immunrekonstrukciós Gyulladásos Szindróma (IRIS) súlyos immunszupprimáltakban',
+        'QTo-megnyúlás supra-therapeutiás Fostemsavir dózisoknál',
+        'Infúziós reakciók és kiütések (Ibalizumab esetén)'
+      ],
+      en: [
+        'Gastrointestinal distress (nausea, diarrhea, dyspepsia)',
+        'Immune Reconstitution Inflammatory Syndrome (IRIS) in severely immunocompromised patients',
+        'QTc interval prolongation with supratherapeutic Fostemsavir doses',
+        'Infusion-related reactions and rash (Ibalizumab)'
+      ],
+      de: [
+        'Gastrointestinale Störungen (Übelkeit, Durchfall)',
+        'Immunrekonstitutionssyndrom (IRIS) bei schwerer Immunsuppression',
+        'QTc-Verlängerung unter Fostemsavir',
+        'Infusionsreaktionen und Exanthem (Ibalizumab)'
+      ]
+    },
+    practicalTips: {
+      hu: [
+        'Ezek a legújabb guideline-ok szerinti utolsó mentőöv (salvage) szerek olyan betegeknek, akiknél szinte az összes standard gyógyszercsoportra (NRTI, NNRTI, PI, INSTI) rezisztencia alakult ki.',
+        'A Fostemsavir erős CYP3A induktorokkal (pl. Rifampicin, Orbáncfű, Carbamazepin) EGYÜTT NEM ADHATÓ, mert hatása megszűnik!',
+        'Az Ibalizumab nem okoz CD4 sejtdeplekciót és nem gátolja az MHC II funkciót, így biztonságosan adható más immunszuppresszív állapotokban is.'
+      ],
+      en: [
+        'These serve as the last-line salvage options in latest guidelines for patients with broad resistance across classical classes (NRTI, NNRTI, PI, INSTI).',
+        'Fostemsavir is CONTRAINDICATED with strong CYP3A inducers (e.g. rifampin, St. John\'s wort, carbamazepine) as temsavir levels plummet.',
+        'Ibalizumab does not deplete CD4 cells or block MHC-II interaction, maintaining safety in immunocompromised hosts.'
+      ],
+      de: [
+        'Letzte Salvage-Optionen laut aktuellen Leitlinien bei breiter Resistenz gegen klassische Substanzklassen.',
+        'Fostemsavir mit starken CYP3A-Induktoren (Rifampicin, Johanniskraut) KONTRAINDIZIERT!',
+        'Ibalizumab führt nicht zur CD4-Zelldepletion und beeinträchtigt MHC-II nicht.'
+      ]
+    }
   }
 ];
