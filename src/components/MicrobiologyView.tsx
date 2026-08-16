@@ -72,6 +72,8 @@ export default function MicrobiologyView() {
       { id: 'clindamycin', shortName: 'CLI' },
       { id: 'metronidazole', shortName: 'MTZ' },
       { id: 'ciprofloxacin', shortName: 'CIP' },
+      { id: 'levofloxacin', shortName: 'LEV' },
+      { id: 'moxifloxacin', shortName: 'MOX' },
       { id: 'azithromycin', shortName: 'AZM' },
       { id: 'doxycycline', shortName: 'DOX' },
       { id: 'linezolid', shortName: 'LNZ' }
@@ -267,6 +269,31 @@ export default function MicrobiologyView() {
           : language === 'de'
           ? 'Mäßige anaerobe Aktivität, bei schweren Infektionen allein nicht zuverlässig.'
           : 'Moderate anaerobic activity, unreliable as monotherapy in severe infections.';
+      }
+    }
+    else if (abId === 'levofloxacin') {
+      const cipRes = microbe.resistances.find(r => r.antibioticId === 'ciprofloxacin');
+      if (cipRes) {
+        susceptibility = cipRes.susceptibility;
+        mechanismNotes = cipRes.mechanismNotes || (language === 'hu' ? 'Hasonló rezisztencia-profil a ciprofloxacinhoz.' : language === 'de' ? 'Ähnliches Resistenzprofil wie Ciprofloxacin.' : 'Similar resistance profile to ciprofloxacin.');
+      } else if (microbe.type === 'gram-positive' || microbe.type === 'atypical') {
+        susceptibility = 'S';
+        mechanismNotes = language === 'hu' ? 'Légúti fluorokinolon, kiváló aktivitás Gram-pozitívok és atípusosok ellen.' : language === 'de' ? 'Atemwegs-Fluorchinolon, hervorragende Aktivität gegen Grampositive und Atypische.' : 'Respiratory fluoroquinolone, excellent activity against Gram-positives and atypicals.';
+      } else {
+        susceptibility = 'R';
+      }
+    }
+    else if (abId === 'moxifloxacin') {
+      if (microbe.id === 'p_aeruginosa') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu' ? 'A moxifloxacinnak nincs aktivitása Pseudomonas aeruginosa ellen.' : language === 'de' ? 'Moxifloxacin hat keine Aktivität gegen Pseudomonas aeruginosa.' : 'Moxifloxacin has no activity against Pseudomonas aeruginosa.';
+      } else if (microbe.type === 'gram-positive' || microbe.type === 'atypical' || microbe.type === 'anaerobe') {
+        susceptibility = microbe.id === 's_pneumoniae_r' ? 'I' : 'S';
+        mechanismNotes = language === 'hu' ? 'Kiváló légúti fluorokinolon anaerob és Gram-pozitív aktivitással.' : language === 'de' ? 'Hervorragendes Atemwegs-Fluorchinolon mit anaerober und grampositiver Aktivität.' : 'Excellent respiratory fluoroquinolone with anaerobic and Gram-positive activity.';
+      } else {
+        const cipRes = microbe.resistances.find(r => r.antibioticId === 'ciprofloxacin');
+        susceptibility = cipRes ? cipRes.susceptibility : 'R';
+        mechanismNotes = language === 'hu' ? 'Nem antipseudomonalis légúti kinolon.' : language === 'de' ? 'Kein antipseudomodales Atemwegs-Chinolon.' : 'Non-antipseudomonal respiratory quinolone.';
       }
     }
     else if (abId === 'ceftazidime') {
@@ -506,6 +533,14 @@ export default function MicrobiologyView() {
             </div>
             <div className="text-xs text-slate-500 font-medium">
               💡 <em>{t('CLICK_CELL_PROMPT')}</em>
+            </div>
+          </div>
+
+          <div className="bg-blue-50/80 border border-blue-200/80 text-blue-900 px-4 py-3 rounded-xl text-xs flex items-start gap-2.5 shadow-sm">
+            <Info className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+            <div>
+              <span className="font-semibold">{language === 'hu' ? 'Fontos megjegyzés a mátrixhoz:' : language === 'de' ? 'Wichtiger Hinweis zur Matrix:' : 'Important Matrix Note:'}</span>{' '}
+              {t('WILD_TYPE_NOTE')}
             </div>
           </div>
 

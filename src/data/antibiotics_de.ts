@@ -468,7 +468,7 @@ export const antibioticsData_DE: any[] = [
       "Schwere ambulant erworbene intraabdominelle Infektionen",
       "Akute Beckeninfektionen"
     ],
-    "notes": "Hervorragendes „Carbapenem-einsparendes“ Carbapenem: hilft, Meropenem für Pseudomonas-Infektionen aufzusparen."
+    "notes": "Gelegenheit, anti-Pseudomonas Carbapeneme zu schonen."
   },
   {
     "id": "gentamicin",
@@ -757,6 +757,7 @@ export const antibioticsData_DE: any[] = [
     indications: [
       "Frühes Stadium der Lyme-Borreliose (Erythema migrans) - 2x 100 mg p.o. für 10-14 Tage",
       "Atypische Formen der ambulanten Pneumonie",
+      "Psittakose (Papageienkrankheit)",
       "Chlamydia trachomatis-Urethritis (7 Tage 2x 100 mg)",
       "Systemische Behandlung von Acne vulgaris (niedrige Dosis)",
       "Malariaprophylaxe"
@@ -795,9 +796,11 @@ export const antibioticsData_DE: any[] = [
     indications: [
       "Schwere systemische MRSA-Infektionen (Sepsis, Endokarditis, Osteomyelitis, Pneumonie)",
       "Schwere Clostridioides difficile-Kolitis (NUR ORAL! Oral gegebenes Vancomycin wird nicht absorbiert, wirkt also direkt im Darm. i.v. Vancomycin ist bei C. difficile-Kolitis unwirksam!)",
-      "Schwere Gram-positive Infektionen bei Beta-Laktam-Allergie"
+      "Schwere Gram-positive Infektionen bei Beta-Laktam-Allergie",
+      "Enterokokken-Endokarditis (empfindliche Stämme, synergetisch)",
+      "Endokarditis durch seltene grampositive Erreger (z.B. Corynebacterium spp.)"
     ],
-    notes: "i.v. und p.o. Vancomycin dienen aufgrund der fehlenden oralen Absorption zwei völlig unterschiedlichen Indikationen."
+    notes: "i.v. und p.o. Vancomycin dienen aufgrund der fehlenden oralen Absorption zwei völlig unterschiedlichen Indikationen. Geringe ZNS-Penetration."
   },
   {
     id: "clindamycin",
@@ -1014,7 +1017,7 @@ export const antibioticsData_DE: any[] = [
       "Akute unkomplizierte Zystitis bei Frauen (Einmaldosis von 3 g ist extrem praktisch, fast 100% Compliance!)",
       "Prophylaxe bei diagnostischen urologischen Eingriffen"
     ],
-    notes: "Muss nüchtern eingenommen werden, da Nahrung die Aufnahme deutlich verringert. Intravenöse Form (Fosfomycin-Natrium) existiert ebenfalls für schwere systemische multiresistente Infektionen als Kombinationspartner."
+    notes: "Muss nüchtern eingenommen werden, da Nahrung die Aufnahme deutlich verringert. Auch eine intravenöse Form (Fosfomycin-Natrium) existiert für schwere systemische Infektionen als Kombinationspartner. Neue Leitlinien unterstützen die Anwendung auch bei Männern bei unkomplizierter Zystitis."
   },
   {
     id: "ampicillin",
@@ -1529,7 +1532,7 @@ export const antibioticsData_DE: any[] = [
     pediatric: "Die Sicherheit bei Kindern ist bisher nur begrenzt belegt",
     renalAdjustment: "Bei GFR < 60 ml/min ist eine strenge Dosisanpassung erforderlich"
   },
-  mechanismOfAction: "Bakterizid. Enmetazobactam ist ein neuer Beta-Laktamase-Inhibitor, der speziell ESBL-(Klasse A)-Enzyme hemmt und Cefepim schützt, das selbst gegen AmpC-Enzyme resistent ist.",
+  mechanismOfAction: "Bakterizid. Speziell gegen ESBL-bildende und AmpC-überproduzierende Enterobacterales-Stämme sowie gegen Pseudomonas aeruginosa entwickelt.",
   sideEffects: [
     "Kopfschmerzen",
     "Nierenfunktionsstörung/Transaminasenerhöhung",
@@ -1548,7 +1551,7 @@ export const antibioticsData_DE: any[] = [
     "Komplizierte Harnwegsinfektionen einschließlich Pyelonephritis",
     "HAP/VAP und komplizierte intraabdominelle Infektionen (in Kombination)"
   ],
-  notes: "Ein besonders wichtiges carbapenemsparendes Mittel in der Behandlung von ESBL-positiven Infektionen."
+  notes: "Neue Generation von Waffen gegen MDR-Gram-negative Resistenz."
 },
 {
   id: "ceftaroline_avibactam",
@@ -1727,7 +1730,8 @@ export const antibioticsData_DE: any[] = [
     "Behandlung und Postexpositionsprophylaxe von Bordetella pertussis (Keuchhusten)",
     "Eradikation der Diphtherie-Besiedlung",
     "Alternative bei Penicillin-allergischen Patienten mit Streptokokkeninfektionen",
-    "Gastroparese (wegen der prokinetischen Wirkung, in einer nicht-infektiösen Indikation)"
+    "Gastroparese (wegen der prokinetischen Wirkung, in einer nicht-infektiösen Indikation)",
+    "Erythromycin-haltige Cremes (lokale Behandlung)"
   ],
   notes: "Das Prototyp-Makrolid. Heute wird es wegen der ausgeprägten gastrointestinalen Nebenwirkungen und der viermal täglichen Gabe seltener für systemische Infektionen verwendet, ist aber als Prokinetikum nützlich."
 },
@@ -1907,7 +1911,7 @@ export const antibioticsData_DE: any[] = [
       "Empirische Behandlung von Sepsis und febriler Neutropenie",
       "Multiresistente gramnegative Infektionen (z. B. ESBL)"
     ],
-    notes: "Unter den Carbapenemen hat Imipenem das größte krampfauslösende Potenzial (Neurotoxizität), daher sollte es bei epileptischen oder niereninsuffizienten Patienten mit Vorsicht eingesetzt werden; Meropenem ist dann vorzuziehen."
+    notes: "Unter den Carbapenemen hat Imipenem das größte krampfauslösende Potenzial (Neurotoxizität), daher sollte es bei Patienten mit Epilepsie oder Nierenfunktionsstörungen mit Vorsicht angewendet werden; Meropenem ist vorzuziehen. Durchdringt das ZNS nicht, daher ist Meropenem das Mittel der Wahl bei Meningitis. Carbapenemase-produzierende (KPC, MBL, OXA-48) Stämme sind resistent!"
   },
   {
     id: "imipenem_cilastatin_relebactam",
@@ -2054,7 +2058,7 @@ export const antibioticsData_DE: any[] = [
       "Komplizierte intraabdominelle Infektionen",
       "Als Kombinationstherapie bei Infektionen mit multiresistentem Acinetobacter baumannii"
     ],
-    notes: "Tigecyclin deckt fast alles ab außer Pseudomonas, Proteus und Providencia, verbleibt aber wegen seiner sehr großen Gewebeverteilung nicht im Blutkreislauf und ist daher zur Monotherapie der Sepsis nicht geeignet."
+    notes: "Tigecyclin ist gegen fast alles wirksam, außer Pseudomonas, Proteus, Providencia und Morganella morganii, aber aufgrund seiner sehr großen Gewebeverteilung verbleibt es nicht in der Blutbahn, daher ist es nicht für die Monotherapie von Sepsis oder Harnwegsinfektionen (HWI) geeignet."
   },
   {
     id: "eravacycline",

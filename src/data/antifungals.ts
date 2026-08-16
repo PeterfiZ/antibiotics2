@@ -53,7 +53,7 @@ export const antifungalsData: AntifungalData[] = [
       de: 'Ausgeprägt und langanhaltend (insbesondere bei Candida-Spezies)'
     },
     spectrum: {
-      hu: 'Candida albicans, Candida parapsilosis, Candida tropicalis, Cryptococcus neoformans, Dermatophyták. (Megjegyzés: C. krusei eleve rezisztens, C. glabrata dózisfüggően érzékeny/rezisztens).',
+      hu: 'Candida albicans, Candida parapsilosis, Candida tropicalis, Cryptococcus neoformans, Dermatophyták. (Megjegyzés: C. krusei természetesen rezisztens, C. glabrata dózisfüggően érzékeny/rezisztens).',
       en: 'Candida albicans, Candida parapsilosis, Candida tropicalis, Cryptococcus neoformans, Dermatophytes. (Note: C. krusei is intrinsically resistant, C. glabrata is dose-dependent susceptible/resistant).',
       de: 'Candida albicans, Candida parapsilosis, Candida tropicalis, Cryptococcus neoformans, Dermatophyten. (Hinweis: C. krusei ist intrinsisch resistent, C. glabrata ist dosisabhängig empfindlich/resistent).'
     },
@@ -454,19 +454,22 @@ export const antifungalsData: AntifungalData[] = [
         'Súlyos, életveszélyes szisztémás gombás fertőzések (disszeminált candidiasis, invazív aspergillosis, cryptococcus meningitis)',
         'Mucormycosis és más zygomycosisok kezelése (elsővonalbeli szer, gyakran műtéti debridementtel kombinálva)',
         'Empirikus terápia súlyos neutropéniás lázban, ha bakteriális fertőzés nem igazolódik',
-        'Visceralis leishmaniasis (parazita fertőzés) és súlyos endémiás mycosisok'
+        'Visceralis leishmaniasis (parazita fertőzés) és súlyos endémiás mycosisok',
+        'Naegleria fowleri-kombinációban'
       ],
       en: [
         'Severe, life-threatening systemic fungal infections (disseminated candidiasis, invasive aspergillosis, cryptococcal meningitis)',
         'Treatment of mucormycosis and other zygomycoses (first-line agent, often combined with surgical debridement)',
         'Empirical therapy in severe febrile neutropenia when bacterial infection is ruled out',
-        'Visceral leishmaniasis (protozoal infection) and severe endemic mycoses'
+        'Visceral leishmaniasis (protozoal infection) and severe endemic mycoses',
+        'Naegleria fowleri-in combination'
       ],
       de: [
         'Schwere, lebensbedrohliche systemische Pilzinfektionen (disseminierte Candidose, invasive Aspergillose, Kryptokokken-Meningitis)',
         'Behandlung der Mukormykose und anderer Zygomykosen (First-Line, oft kombiniert mit chirurgischem Debridement)',
         'Empirische Therapie bei schwerem febrilem neutropenischem Fieber nach Ausschluss bakterieller Infektionen',
-        'Viszeralleishmaniose (Protozoeninfektion) und schwere endemische Mykosen'
+        'Viszeralleishmaniose (Protozoeninfektion) und schwere endemische Mykosen',
+        'Naegleria fowleri'
       ]
     },
     sideEffects: {

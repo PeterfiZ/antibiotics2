@@ -746,6 +746,11 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "Antibiotic susceptibility patterns, resistance mechanisms, and clinical significance of key human pathogens.",
     de: "Antibiotika-Resistenzmuster, Resistenzmechanismen und klinische Bedeutung wichtiger menschlicher Erreger."
   },
+  "WILD_TYPE_NOTE": {
+    hu: "A táblázatban a vad típusú (szerzett rezisztencia-mechanizmussal nem rendelkező) fajok elvárt rezisztencia-fenotípusai szerepelnek (az EUCAST irányelvek alapján).",
+    en: "The table displays the expected resistance phenotypes of wild-type species (without acquired resistance mechanisms) based on EUCAST guidelines.",
+    de: "Die Tabelle zeigt die erwarteten Resistenzphänotypen von Wildtyp-Arten (ohne erworbene Resistenzmechanismen) basierend auf den EUCAST-Richtlinien."
+  },
   "MATRIX_VIEW": {
     hu: "Érzékenységi Mátrix",
     en: "Susceptibility Matrix",

@@ -94,19 +94,22 @@ export const antiviralsData: AntiviralData[] = [
         'Herpes Simplex vírus (HSV-1, HSV-2) primer és recidiváló mukokután fertőzései, beleértve a genitalis herpest',
         'Herpes zoster (övömbor) és varicella (bárányhimlő) kezelése felnőttekben és immunhiányosakban',
         'HSV Encephalitis és súlyos, disszeminált újszülöttkori HSV fertőzés (kizárólag i.v. Aciclovir!)',
-        'Súlyos felnőttkori VZV pneumonia és ocularis herpes zoster ophthalmicus'
+        'Súlyos felnőttkori VZV pneumonia és ocularis herpes zoster ophthalmicus',
+        'valaciclovir használható acyclovir rezisztens esetekben'
       ],
       en: [
         'Primary and recurrent mucocutaneous Herpes Simplex (HSV-1, HSV-2) infections, including genital herpes',
         'Herpes zoster (shingles) and varicella (chickenpox) in adults and immunocompromised hosts',
         'HSV Encephalitis and severe neonatal HSV infections (strictly i.v. Aciclovir!)',
-        'Severe VZV pneumonia in adults and herpes zoster ophthalmicus'
+        'Severe VZV pneumonia in adults and herpes zoster ophthalmicus',
+        'valaciclovir is used in acyclovir rezistant cases'
       ],
       de: [
         'Primäre und rezidivierende mukokutane HSV-1/HSV-2-Infektionen inkl. Genitalherpes',
         'Herpes Zoster (Gürtelrose) und Varizellen (Windpocken) bei Erwachsenen und Immungeschwächten',
         'HSV-Enzephalitis und schwere neonatale HSV-Infektionen (ausschließlich i.v. Aciclovir!)',
-        'Schwere VZV-Pneumonie bei Erwachsenen und Herpes Zoster ophthalmicus'
+        'Schwere VZV-Pneumonie bei Erwachsenen und Herpes Zoster ophthalmicus',
+        'Valaciclovir kann bei Acyclovir-resistenten Fällen angewendet werden.'
       ]
     },
     sideEffects: {
@@ -173,7 +176,7 @@ export const antiviralsData: AntiviralData[] = [
       de: 'Virostatisch (Starker CMV-DNA-Synthese-Hemmer)'
     },
     specialFeature: {
-      hu: 'A CMV fertőzés arany standard kezelése. A Valganciclovir a Ganciclovir L-valil észtere (prodrug), aminek orális biohasznosulása tízszerese (60%), így szisztémás terápiás plazmaszintet biztosít tablettás formában.',
+      hu: 'A CMV fertőzés gold standard kezelése. A Valganciclovir a Ganciclovir L-valil észtere (prodrug), aminek orális biohasznosulása tízszerese (60%), így szisztémás terápiás plazmaszintet biztosít tablettás formában.',
       en: 'Gold standard for CMV disease. Valganciclovir is an L-valyl ester prodrug with 10x higher oral bioavailability (60%), delivering i.v.-equivalent systemic exposure in oral form.',
       de: 'Goldstandard zur Behandlung von CMV-Infektionen. Valganciclovir ist ein L-Valylester-Prodrug mit 10-fach höherer oraler Bioverfügbarkeit (60%).'
     },

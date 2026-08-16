@@ -348,7 +348,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "100-150 mg/ttkg/nap i.v., 2-3 részre osztva",
       renalAdjustment: "GFR < 50 ml/perc: szigorú dóziscsökkentés (neurotoxicitás veszélye!)"
     },
-    mechanismOfAction: "Baktericid. Zwitterion szerkezetű, emiatt rendkívül gyorsan penetrál a Gram-negatív baktériumok porin csatornáin. Képes ellenállni a kromoszómális és plazmid mediált AmpC enzimeknek, azonban az ESBL enzimek lebontják.",
+    mechanismOfAction: "Baktericid. Zwitterion szerkezetű, emiatt rendkívül gyorsan penetrál a Gram-negatív baktériumok porin csatornáin. Képes ellenállni a kromoszómális és plazmid mediált AmpC enzimeknek (AmpC-túltermelő törzsek ellen is!), azonban az ESBL enzimek lebontják.",
     sideEffects: [
       "Neurotoxicitás: non-konvulzív status epilepticus, zavartság, myoclonus (különösen veseelégtelenségben nem csökkentett dózisnál!)",
       "Allergiás reakciók, hasmenés"
@@ -359,7 +359,7 @@ export const antibioticsData_HU: any[] = [
       anaerobe: 0, // Anaerobok ellen nem hat
       atypical: 0,
       pseudomonas: 2, // Kiváló Pseudomonas aeruginosa hatás!
-      other: "A Ceftazidimnél sokkal jobb Gram-pozitív hatással rendelkezik."
+      other: "A Ceftazidimnél sokkal jobb Gram-pozitív hatással rendelkezik. MDR Gram-negatívok ellen."
     },
     indications: [
       "Súlyos nosocomialis pneumonia",
@@ -471,7 +471,7 @@ export const antibioticsData_HU: any[] = [
       "Közösségben szerzett súlyos intraabdominalis fertőzések",
       "Akut kismedencei fertőzések"
     ],
-    notes: "Kiváló 'carbapenem-spóroló' carbapenem: segít megőrizni a Meropenemet a Pseudomonas fertőzésekre."
+    notes: "Lehetőség az anti-Pseudomonas karbepenemekkel való spórolásra."
   },
   {
     id: "gentamicin",
@@ -498,7 +498,7 @@ export const antibioticsData_HU: any[] = [
       gramNegative: 2, // Kiváló aerob Gram-negatív hatás (Enterobacterales)
       anaerobe: 0, // Abszolút hatástalan anaerobok ellen!
       atypical: 0,
-      pseudomonas: 2, // Jó Pseudomonas aeruginosa hatás (de Tobramycin/Amikacin jobb nálánál)
+      pseudomonas: 0, // Pseudomonas ellen nem használható biztonságosan (EUCAST nem határoz meg breakpointot)
       other: "Koncentráció-függő baktericid hatás (minél nagyobb a csúcskoncentráció, annál gyorsabb a baktériumölés)."
     },
     indications: [
@@ -506,7 +506,7 @@ export const antibioticsData_HU: any[] = [
       "Szinergisztikus kombináció béta-laktámmal/Vancomycinnel Enterococcus, Streptococcus vagy Staphylococcus endocarditisben",
       "Plague (pestis) és tularémia kezelése"
     ],
-    notes: "A szérumszint monitorozás (TDM) elengedhetetlen: a mélyponti (trough) szintet a következő adag előtt kell mérni, hogy elkerüljük az akkumulációt és toxicitást."
+    notes: "A szérumszint monitorozás (TDM) elengedhetetlen. Pseudomonas ellen nem használható biztonságosan."
   },
   {
     id: "amikacin",
@@ -522,7 +522,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "15-20 mg/ttkg/nap i.v. egyszerre",
       renalAdjustment: "Szigorú TDM és adagmódosítás szükséges"
     },
-    mechanismOfAction: "A kanamycin félszintetikus származéka. Gátolja a bakteriális fehérjeszintézist a 30S riboszómához kötődve. Szerkezete miatt ellenáll a legtöbb aminoglikozid-módosító enzimnek, így megőrzi aktivitását a Gentamicin-rezisztens törzsek többségével szemben is.",
+    mechanismOfAction: "Koncentrációfüggő hatású. A kanamycin félszintetikus származéka. Anaerob környezetben hatástalan. Enterococcusok esetén képes gátolni a fehérjeszintézist, de a sejtfalon nem jut át, így csak sejtfalszintézis-gátlóval kombinációban hatásos.",
     sideEffects: [
       "Nephrotoxicitás (vesekárosodás)",
       "Ototoxicitás (főleg cochlearis: hallásvesztés)",
@@ -541,7 +541,7 @@ export const antibioticsData_HU: any[] = [
       "Multirezisztens Pseudomonas aeruginosa fertőzések kombinációs kezelése",
       "MDR-TB (multirezisztens tuberkulózis) kombinációs terápiája"
     ],
-    notes: "Az aminoglikozidok közül a legellenállóbb a bakteriális rezisztencia-mechanizmusokkal szemben."
+    notes: "Az aminoglikozidok közül a legellenállóbb a bakteriális rezisztencia-mechanizmusokkal szemben. Kizárólag kombinációban alkalmazandó egyéb hatásos szerrel együtt (kivéve UTI esetén, ahol monoterápiában is adható)."
   },
   {
     id: "clarithromycin",
@@ -652,7 +652,11 @@ export const antibioticsData_HU: any[] = [
       "Gram-negatív urosepsis",
       "Pseudomonas aeruginosa fertőzések (különösen ha per os kezelés szükséges)",
       "Prostatitis (krónikus bakteriális - kiváló prosztata penetráció!)",
-      "Utazók hasmenése ( Shigella, Salmonella, toxikus E. coli)"
+      "Utazók hasmenése ( Shigella, Salmonella, toxikus E. coli)",
+      "Tularaemia",
+      "Pestis",
+      "Anthrax",
+      "Hastífusz"
     ],
     notes: "Kationok (kalcium, magnézium, vas, alumínium - antacidok, tejtermékek) gátolják a felszívódását a bélben a kelátképződés miatt!"
   },
@@ -760,6 +764,7 @@ export const antibioticsData_HU: any[] = [
     indications: [
       "Lyme-kór korai stádiuma (erythema migrans) - 2x 100 mg p.o. 10-14 napig",
       "Közösségben szerzett pneumonia atípusos formái",
+      "Psittacosis",
       "Chlamydia trachomatis okozta urethritis (7 napig 2x 100 mg)",
       "Acne vulgaris szisztémás kezelése (alacsony dózisban)",
       "Malária profilaxis"
@@ -798,9 +803,11 @@ export const antibioticsData_HU: any[] = [
     indications: [
       "MRSA okozta súlyos szisztémás fertőzések (szepszis, endocarditis, osteomyelitis, pneumonia)",
       "Súlyos Clostridioides difficile okozta colitis (KIZÁRÓLAG SZÁJON ÁT! Szájon át szedve nem szívódik fel, így közvetlenül a bélben fejti ki hatását. Az i.v. vancomycin hatástalan C. difficile colitisben!)",
-      "Béta-laktám allergiás betegek súlyos Gram-pozitív fertőzései"
+      "Béta-laktám allergiás betegek súlyos Gram-pozitív fertőzései",
+      "Enterococcus endocarditis (érzékeny törzsek, szinergizmusban)",
+      "Ritka Gram-pozitívok okozta endocarditis (pl. Corynebacterium spp.)"
     ],
-    notes: "Az i.v. és p.o. Vancomycin két teljesen különböző indikációt szolgál a felszívódás hiánya miatt."
+    notes: "Az i.v. és p.o. Vancomycin két teljesen különböző indikációt szolgál a felszívódás hiánya miatt. Vér-agy gáton gyengén penetrál (meningitisben csak gyulladt agyhártyák esetén jut át mérsékelten, de hatékonysága kérdéses, ezért gyakran kiegészítő intratekális adagolás szükséges)."
   },
   {
     id: "clindamycin",
@@ -908,7 +915,8 @@ export const antibioticsData_HU: any[] = [
     indications: [
       "Bizonyítottan Vancomycin-rezisztens Enterococcus (VRE) fertőzések",
       "MRSA okozta nosocomialis pneumonia (gyakran jobb tüdőpenetrációt mutat, mint a Vancomycin)",
-      "Szövődményes lágyrészfertőzések MRSA gyanúval (ha a Vancomycin nem alkalmazható)"
+      "Szövődményes lágyrészfertőzések MRSA gyanúval (ha a Vancomycin nem alkalmazható)",
+      "TSS (Toxic Shock Syndrome) esetén, ha a törzs clindamycin-rezisztens, akkor a penicillin/cephalosporin mellé linezolid adható kiegészítésként."
     ],
     notes: "100%-os orális biohasznosulás. A tabletta és az infúzió adagja teljesen azonos, így könnyű az i.v.-ről p.o.-ra váltás (step-down terápia)."
   },
@@ -1017,7 +1025,7 @@ export const antibioticsData_HU: any[] = [
       "Akut, szövődménymentes cystitis nőknél (egyszeri 3g adag rendkívül kényelmes, szinte 100%-os compliance!)",
       "Húgyúti diagnosztikus beavatkozások profilaxisa"
     ],
-    notes: "Éhgyomorra kell bevenni, mert az étel jelentősen csökkenti a felszívódását. Intravénás formája (Fosfomycin nátrium) súlyos szisztémás multirezisztens fertőzésekben kombinációs partnerként szintén létezik."
+    notes: "Éhgyomorra kell bevenni, mert az étel jelentősen csökkenti a felszívódását. Elsővonalbeli szer az uncomplicalt cystitis kezelésében (nők és férfiak számára is az újabb irányelvek szerint!). Intravénás formája (Fosfomycin nátrium) súlyos szisztémás multirezisztens fertőzésekben kombinációs partnerként szintén létezik."
   },
   {
     id: "ampicillin",
@@ -1517,7 +1525,7 @@ export const antibioticsData_HU: any[] = [
       "Szövődményes intraabdominalis fertőzések",
       "Neutropéniás láz empirikus kezelése"
     ],
-    notes: "Új generációs fegyver a Gram-negatív rezisztencia ellen."
+    notes: "Új generációs fegyver az MDR Gram-negatívok ellen."
   },
   {
     id: "cefepime_enmetazobactam",
@@ -1731,7 +1739,8 @@ export const antibioticsData_HU: any[] = [
       "Bordetella pertussis (szamárköhögés) kezelése és expozíció utáni profilaxisa",
       "Diphtheria hordozó állapot felszámolása",
       "Penicillin-allergiás betegek alternatív szere Streptococcus fertőzésekben",
-      "Gasztroparezis (prokinetikus hatás miatt, nem-infektív indikációban)"
+      "Gasztroparezis (prokinetikus hatás miatt, nem-infektív indikációban)",
+      "Erythromycin tartalmú krémek (lokális kezelés)"
     ],
     notes: "A makrolidok prototípusa. Ma már ritkábban használják szisztémás fertőzésekre a kifejezett gastrointestinalis mellékhatások és a napi négyszeri adagolás miatt, de prokinetikumként hasznos."
   },
@@ -1785,7 +1794,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "150.000 - 300.000 NE/ttkg/nap p.o. 2-3 részre osztva",
       renalAdjustment: "Nem igényel adagmódosítást veseelégtelenségben"
     },
-    mechanismOfAction: "Bakteriosztatikus makrolid antibiotikum. Gátolja a bakteriális fehérjeszintézist az 50S riboszóma alegységhez kötődve.",
+    mechanismOfAction: "Bakteriosztatikus makrolid antibiotikum. Gátolja a fehérjeszintézist az 50S riboszóma alegységhez kötődve.",
     sideEffects: [
       "Hányinger, hányás, hasmenés",
       "Paresthesia (zsibbadás - átmeneti)",
@@ -1911,7 +1920,7 @@ export const antibioticsData_HU: any[] = [
       "Sepsis és neutropéniás láz empirikus kezelése",
       "Multirezisztens Gram-negatív fertőzések (pl. ESBL)"
     ],
-    notes: "A carbapenemek közül az imipenem rendelkezik a legnagyobb görcskeltő potenciállal (neurotoxicitás), ezért epilepsziás vagy veseelégtelen betegeknél óvatosan alkalmazandó, meropenem preferálható helyette."
+    notes: "A carbapenemek közül az imipenem rendelkezik a legnagyobb görcskeltő potenciállal (neurotoxicitás), ezért epilepsziás vagy veseelégtelen betegeknél óvatosan alkalmazandó, meropenem preferálható helyette. A KIR-be nem penetrál, ezért meningitis kezelésében meropenem választandó. Karbapenemáz (KPC, MBL, OXA-48) termelő törzsek rezisztensek!"
   },
   {
     id: "imipenem_cilastatin_relebactam",
@@ -2058,7 +2067,7 @@ export const antibioticsData_HU: any[] = [
       "Szövődményes intraabdominalis fertőzések",
       "Multirezisztens Acinetobacter baumannii fertőzések kombinációs tagjaként"
     ],
-    notes: "A tigeciklin 'mindent visz' a Pseudomonas, a Proteus és a Providencia kivételével, de rendkívül nagy szöveti eloszlása miatt nem marad a véráramban, így szepszis kezelésére monoterápiában nem alkalmas."
+    notes: "A tigeciklin 'mindent visz' a Pseudomonas, a Proteus, a Providencia és a Morganella morganii kivételével, de rendkívül nagy szöveti eloszlása miatt nem marad a véráramban, így szepszis kezelésére monoterápiában nem alkalmas. Szintén nem alkalmas UTI kezelésére."
   },
   {
     id: "eravacycline",
@@ -2478,13 +2487,13 @@ export const antibioticsData_HU: any[] = [
       anaerobe: 0,
       atypical: 0,
       pseudomonas: 2,
-      other: "Csak Gram-negatív baktériumok ellen hatásos. Nem hatékony a Proteus, Providencia, Serratia, és Burkholderia fajok ellen (belső rezisztencia!)."
+      other: "Csak Gram-negatív baktériumok ellen hatásos. Nem hatékony a Proteus, Providencia, Serratia, és Burkholderia fajok ellen (természetes rezisztencia!)."
     },
     indications: [
       "Súlyos multirezisztens és pánrezisztens Gram-negatív (CRE, MDR Pseudomonas, MDR Acinetobacter) fertőzések végső alternatívája kombinációban",
       "Cisztás fibrózisban szenvedő betegek krónikus Pseudomonas tüdőfertőzése inhalációs úton"
     ],
-    notes: "A colistint pro-drug formájában, colistimethat-nátriumként (CMS) adagolják. Súlyos toxicitása miatt korábban elhagyták, de a multirezisztens Gram-negatív kórokozók elterjedése miatt reneszánszát éli mint végső mentőöv."
+    notes: "Természetesen rezisztensek: Hafnia alvei, Morganella morgani, Proteus spp., Providencia spp., Serratia marcescens, Yersinia pseudotuberculosis, Elizabethkingia meningoseptica."
   }
 ];
 

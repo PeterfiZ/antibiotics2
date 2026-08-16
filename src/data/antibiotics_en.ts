@@ -468,7 +468,7 @@ export const antibioticsData_EN: any[] = [
       "Severe community-acquired intra-abdominal infections",
       "Acute pelvic infections"
     ],
-    "notes": "Excellent 'carbapenem-sparing' carbapenem: helps preserve Meropenem for Pseudomonas infections."
+    "notes": "Opportunity to spare anti-Pseudomonas carbapenems."
   },
   {
     "id": "gentamicin",
@@ -519,7 +519,7 @@ export const antibioticsData_EN: any[] = [
       "pediatric": "15-20 mg/kg/day i.v. once daily",
       "renalAdjustment": "Strict TDM and dose adjustment required"
     },
-    "mechanismOfAction": "A semisynthetic derivative of kanamycin. It inhibits bacterial protein synthesis by binding to the 30S ribosome. Due to its structure, it is resistant to most aminoglycoside-modifying enzymes, thereby retaining its activity against the majority of gentamicin-resistant strains.",
+    "mechanismOfAction": "Concentration-dependent. Semisynthetic derivative of kanamycin. Ineffective in anaerobic environments. Inhibits protein synthesis in Enterococci, but cannot cross the cell wall, so only effective in combination with cell wall synthesis inhibitors.",
     "sideEffects": [
       "Nephrotoxicity (kidney damage)",
       "Ototoxicity (mainly cochlear: hearing loss)",
@@ -538,7 +538,7 @@ export const antibioticsData_EN: any[] = [
       "Combination therapy for multidrug-resistant Pseudomonas aeruginosa infections",
       "Combination therapy for MDR-TB (multidrug-resistant tuberculosis)"
     ],
-    "notes": "The most resistant of the aminoglycosides to bacterial resistance mechanisms."
+    "notes": "Most resistant to bacterial resistance mechanisms among aminoglycosides. Should be used only in combination with other effective agents, except in UTI, where it can be used in monotherapy."
   },
   {
     "id": "clarithromycin",
@@ -649,7 +649,11 @@ export const antibioticsData_EN: any[] = [
       "Gram-negative urosepsis",
       "Pseudomonas aeruginosa infections (especially if oral treatment is required)",
       "Prostatitis (chronic bacterial - excellent prostate penetration!)",
-      "Traveler's diarrhea (Shigella, Salmonella, toxic E. coli)"
+      "Traveler's diarrhea (Shigella, Salmonella, toxic E. coli)",
+      "Tularemia",
+      "Plague",
+      "Anthrax",
+      "Typhoid fever"
     ],
     "notes": "Cations (calcium, magnesium, iron, aluminum - antacids, dairy products) inhibit its absorption in the gut due to chelation!"
   },
@@ -1529,7 +1533,7 @@ export const antibioticsData_EN: any[] = [
       pediatric: "Safety in children has only been limitedly demonstrated",
       renalAdjustment: "Strict dose adjustment is required when GFR < 60 ml/min"
     },
-    mechanismOfAction: "Bactericidal. Enmetazobactam is a new beta-lactamase inhibitor that specifically inhibits ESBL (Class A) enzymes, protecting cefepime, which itself is resistant to AmpC enzymes.",
+    mechanismOfAction: "Bactericidal. Developed specifically against ESBL-producing and AmpC-overproducing Enterobacterales törzsek, as well as Pseudomonas aeruginosa.",
     sideEffects: [
       "Headache",
       "Renal impairment/transaminase elevation",
@@ -1548,7 +1552,7 @@ export const antibioticsData_EN: any[] = [
       "Complicated urinary tract infections, including pyelonephritis",
       "HAP/VAP and complicated intra-abdominal infections (in combination)"
     ],
-    notes: "A particularly important carbapenem-sparing tool in the treatment of ESBL-positive infections."
+    notes: "New generation weapon against MDR Gram-negative resistance."
   },
   {
     id: "ceftaroline_avibactam",
@@ -1727,7 +1731,8 @@ export const antibioticsData_EN: any[] = [
       "Treatment and post-exposure prophylaxis of Bordetella pertussis (whooping cough)",
       "Eradication of diphtheria carriage",
       "Alternative agent in penicillin-allergic patients with Streptococcus infections",
-      "Gastroparesis (for its prokinetic effect, in a non-infectious indication)"
+      "Gastroparesis (for its prokinetic effect, in a non-infectious indication)",
+      "Erythromycin-containing creams (local treatment)"
     ],
     notes: "The prototype macrolide. It is now used less often for systemic infections because of pronounced gastrointestinal side effects and four-times-daily dosing, but it is useful as a prokinetic."
   },
@@ -1907,7 +1912,7 @@ export const antibioticsData_EN: any[] = [
       "Empiric treatment of sepsis and febrile neutropenia",
       "Multidrug-resistant Gram-negative infections (e.g. ESBL)"
     ],
-    notes: "Among carbapenems, imipenem has the highest seizure-inducing potential (neurotoxicity), so it should be used with caution in epileptic patients or those with renal impairment; meropenem is preferred instead."
+    notes: "Among carbapenems, imipenem has the highest seizure-inducing potential (neurotoxicity), so it should be used with caution in epileptic patients or those with renal impairment; meropenem is preferred instead. Poor CNS penetration; therefore, meropenem is the choice for meningitis. Carbapenemase-producing (KPC, MBL, OXA-48) strains are resistant!"
   },
   {
     id: "imipenem_cilastatin_relebactam",
@@ -2054,7 +2059,7 @@ export const antibioticsData_EN: any[] = [
       "Complicated intra-abdominal infections",
       "As part of combination therapy for multidrug-resistant Acinetobacter baumannii infections"
     ],
-    notes: "Tigecycline covers almost everything except Pseudomonas, Proteus, and Providencia, but because of its very large tissue distribution it does not remain in the bloodstream, so it is not suitable as monotherapy for sepsis."
+    notes: "Tigecycline 'takes all' except for Pseudomonas, Proteus, Providencia, and Morganella morganii, but due to its extremely large tissue distribution it does not remain in the bloodstream, so it is not suitable as monotherapy for sepsis, nor for UTI treatment."
   },
   {
     id: "eravacycline",

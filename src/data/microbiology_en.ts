@@ -21,6 +21,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "S" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "S", mechanismNotes: "100% susceptible to beta-lactams (including cefuroxime) inferred from penicillin susceptibility." },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "Ceftazidime has very poor activity against streptococci and Gram-positives (EUCAST expected phenotypes: R)." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Excellent activity against all beta-lactam-susceptible Gram-positives." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S", mechanismNotes: "In Hungary, resistance may occur in about 10-15% of cases." },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Mandatory in necrotizing fasciitis to suppress toxin production." },
@@ -40,6 +41,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "S" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "Ceftazidime is not active against Pneumococcus (EUCAST expected phenotype R)." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Penicillin-susceptible strains are highly susceptible to meropenem as well." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S" },
@@ -60,6 +62,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "I", mechanismNotes: "The beta-lactamase inhibitor does not help, because the resistance is not beta-lactamase-mediated!" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "R" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "Still effective at high doses (2x2g IV) in meningitis." },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "Ceftazidime is not active against Pneumococcus (EUCAST expected phenotype R)." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "R", mechanismNotes: "Cross-resistance is common." },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Respiratory quinolones remain effective." },
       { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "I" },
@@ -153,6 +156,7 @@ export const microbesData: Microbe[] = [
     resistances: [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Many strains are already resistant due to plasmid-mediated beta-lactamase." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "S" },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "According to EUCAST, E. coli and Klebsiella can be reported as I (intermediate) for cefazolin in UTI if cefadroxil or cefalexin are susceptible." },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
@@ -482,7 +486,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "In meningitis, provides synergistic bactericidal activity when combined with ampicillin." },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "S" },
-      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "I" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Clindamycin is ineffective against Listeria monocytogenes." },
       { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R", mechanismNotes: "Only effective against anaerobes." },
       { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I" }
     ]
@@ -713,7 +717,9 @@ export const microbesData: Microbe[] = [
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
-      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R" }
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R" },
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "R", mechanismNotes: "Ineffective against fungi." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "R", mechanismNotes: "Ineffective against fungi." }
     ]
   },
   {

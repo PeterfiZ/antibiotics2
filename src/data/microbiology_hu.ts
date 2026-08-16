@@ -21,6 +21,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "S" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S", mechanismNotes: "A béta-laktámokra (köztük a cefuroximra) 100%-ban érzékeny, a penicillin-érzékenység alapján." },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "A ceftazidimnek nagyon gyenge aktivitása van a streptococcusok és ált. a Gram-pozitívok ellen (EUCAST expected phenotypes: R)." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Kiváló aktivitás az összes béta-laktám-érzékeny Gram-pozitív ellen." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S", mechanismNotes: "Magyarországon kb. 10-15%-ban rezisztens lehet." },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "S", mechanismNotes: "Necrotizáló fasciitisben kötelező adni a toxin-termelés gátlása miatt." },
@@ -40,6 +41,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "A ceftazidim nem aktív Pneumococcus ellen (EUCAST expected phenotype R)." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "A penicillin-érzékeny törzsek rendkívül érzékenyek meropenemre is." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "S" },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S" },
@@ -60,6 +62,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "I", mechanismNotes: "A béta-laktamáz gátló nem segít, mert nem béta-laktamázzal rezisztens!" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Meningitisben magas dózisban (2x 2g i.v.) még hatásos." },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "A ceftazidim nem aktív Pneumococcus ellen (EUCAST expected phenotype R)." },
       { antibioticId: "clarithromycin", antibioticName: "Clarithromycin", susceptibility: "R", mechanismNotes: "Gyakori a keresztrezisztencia." },
       { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "A légúti kinolonok hatékonyak maradnak." },
       { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "I" },
@@ -153,6 +156,7 @@ export const microbesData: Microbe[] = [
     resistances: [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Sok törzs már plazmid béta-laktamázzal rezisztens." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S" },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "EUCAST szerint E. colit és Klebsiellát ki lehet adni I-nek (mérsékelt) cefazolinra UTI esetén, ha a cefadroxil vagy cefalexin érzékenyek." },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
@@ -482,7 +486,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Meningitis esetén ampicillinnel kombinálva szinergista baktericid hatást nyújt." },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "S" },
-      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "I" },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "A clindamycin hatástalan Listeria monocytogenes ellen." },
       { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R", mechanismNotes: "Csak anaerobokra hatékony." },
       { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "I" }
     ]
@@ -713,7 +717,9 @@ export const microbesData: Microbe[] = [
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
-      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R" }
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R" },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "R", mechanismNotes: "Gomba ellen hatástalan." },
+      { antibioticId: "azithromycin", antibioticName: "Azithromycin", susceptibility: "R", mechanismNotes: "Gomba ellen hatástalan." }
     ]
   },
   {
