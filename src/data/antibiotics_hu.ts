@@ -33,13 +33,14 @@ export const antibioticsData_HU: any[] = [
       anaerobe: 1, // Szájüregi anaerobok (Peptostreptococcus, Actinomyces), de B. fragilis rezisztens!
       atypical: 0,
       pseudomonas: 0,
-      other: "A Treponema pallidum (szifilisz) és a Borrelia burgdorferi (Lyme-kór) elsővonalbeli szere. Streptococcusok (A, B, C, G csoportok) ellen kiváló."
+      other: "A Treponema pallidum (szifilisz) és a Borrelia burgdorferi (Lyme-kór). Streptococcusok (A, B, C, G csoportok) ellen kiváló."
     },
     indications: [
       "Infectív endocarditis (Streptococcus, Enterococcus érzékeny törzsek)",
       "Meningitis (Neisseria meningitidis, Streptococcus pneumoniae érzékeny törzsei)",
       "Szifilisz (Neurosyphilis)",
-      "Gázgangréna (Clostridium perfringens)"
+      "Gázgangréna (Clostridium perfringens)",
+      "S. pyogenes okozta sepsis, Toxicus shock syndroma, fasciictis necrotisans (kombinációban clindamycinnel/ linezoliddal)"
     ],
     notes: "Kizárólag parenterálisan adható. Savas közegben instabil, így szájon át nem hatékony."
   },
@@ -128,7 +129,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "40-90 mg/ttkg/nap p.o. (amoxicillinre számolva), 2-3 részben",
       renalAdjustment: "GFR < 30 ml/perc: Kerülendő a 875/125 mg-os forma, helyette kisebb dózis vagy 500/125 mg 12-24 óránként"
     },
-    mechanismOfAction: "Baktericid. Az amoxicillin gátolja a sejtfalszintézist. A klavulánsav egy 'öngyilkos' béta-laktamáz inhibitor, amely irreverzibilisen kötődik a baktériumok béta-laktamáz enzimjeihez (Ambler Class A, beleértve a penicillinázokat, ESBL-eket bizonyos mértékig, de nem a carbapenemázokat), megvédve az amoxicillint a lebontástól.",
+    mechanismOfAction: "Baktericid. Az amoxicillin gátolja a sejtfalszintézist. A klavulánsav egy 'öngyilkos' béta-laktamáz inhibitor, amely irreverzibilisen kötődik a baktériumok béta-laktamáz enzimjeihez (Ambler Class A, beleértve a penicillinázokat, ESBL-eket bizonyos mértékig (in vitro az ESBL enzim gátolható, de in vivo nem ér el megfelelő koncentrációt), de nem a carbapenemázokat), megvédve az amoxicillint a lebontástól.",
     sideEffects: [
       "Hasmenés (nagyon gyakori, a klavulánsav bélmotilitást fokozó hatása miatt)",
       "Hepatotoxicitás (kolesztatikus hepatitis, különösen idősebb férfiaknál, elhúzódó kezelésnél)",
@@ -140,7 +141,7 @@ export const antibioticsData_HU: any[] = [
       anaerobe: 2, // Kiváló anaerob hatás (Bacteroides fragilis ellen is!)
       atypical: 0,
       pseudomonas: 0,
-      other: "Az egyik legsokoldalúbb széles spektrumú empirikus szer, de Pseudomonas, MRSA és atypusos kórokozók ellen nem hat."
+      other: "Az egyik legsokoldalúbb széles spektrumú empirikus szer, de Pseudomonas, MRSA és atípusos kórokozók ellen nem hat."
     },
     indications: [
       "Közösségben szerzett pneumonia (empirikus, társbetegségek esetén)",
@@ -165,7 +166,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "90-112.5 mg/ttkg i.v. 6-8 óránként",
       renalAdjustment: "GFR < 40 ml/perc: adagcsökkentés szükséges (pl. 3x 2.25 g vagy 3x 4.5 g)"
     },
-    mechanismOfAction: "Baktericid. A piperacillin egy ureidopenicillin, amely kiválóan penetrál a Gram-negatív sejtfalon és gátolja a PBP-3 fehérjét. A tazobaktam egy béta-laktamáz gátló, amely kiterjeszti a spektrumot a legtöbb béta-laktamáz termelő törzsre (kivéve AmpC derepresszált és carbapenemáz termelők).",
+    mechanismOfAction: "Baktericid. A piperacillin egy ureidopenicillin, amely kiválóan penetrál a Gram-negatív sejtfalon és gátolja a PBP-3 fehérjét. A tazobaktam egy béta-laktamáz gátló, amely kiterjeszti a spektrumot a legtöbb béta-laktamáz termelő törzsre (kivéve AmpC derepresszált, D csoportú beta-laktamázok és carbapenemáz termelők).",
     sideEffects: [
       "Allergiás reakciók, bőrkiütések",
       "Veseelégtelenség (különösen Vancomycinnel kombinálva fokozott nephrotoxicitást mutat!)",
@@ -173,7 +174,7 @@ export const antibioticsData_HU: any[] = [
       "Hasmenés (C. difficile kockázat)"
     ],
     spectrum: {
-      gramPositive: 2, // Streptococcusok, Enterococcus faecalis (érzékeny), MSSA
+      gramPositive: 2, // Streptococcusok, Enterococcus faecalis (érzékeny), MSSA, E. faecium természetesen rezisztens
       gramNegative: 2, // Enterobacterales (többségében ESBL termelők ellen is, ha a MIC alacsony)
       anaerobe: 2, // Kiváló (Bacteroides fragilis és más anaerobok ellen is)
       atypical: 0,
@@ -249,12 +250,13 @@ export const antibioticsData_HU: any[] = [
       anaerobe: 0, // Nincs érdemi anaerob hatása
       atypical: 0,
       pseudomonas: 0,
-      other: "A szájon át szedhető forma (axetil) egy prodrug, észszerűen szívódik fel."
+      other: "A szájon át szedhető forma (axetil) egy prodrug"
     },
     indications: [
       "Közösségben szerzett légúti fertőzések (CAP enyhe formái, exacerbált COPD)",
       "Otitis media, sinusitis, tonsillitis",
-      "Nem szövődményes húgyúti fertőzések"
+      "Nem szövődményes húgyúti fertőzések",
+      "metronidazollal kombinálva hasűri, kismedencei fertőzések sebészi profilaxisa"
     ],
     notes: "Átjut a vér-agy gáton, de meningitis kezelésében a 3. generációs cephalosporinok sokkal hatékonyabbak és preferáltak."
   },
@@ -327,7 +329,8 @@ export const antibioticsData_HU: any[] = [
     indications: [
       "Bizonyított vagy gyanított Pseudomonas aeruginosa fertőzések",
       "Neutropéniás láz empirikus kezelése",
-      "Nosocomialis fertőzések szisztémás kezelése"
+      "Nosocomialis fertőzések szisztémás kezelése",
+      "jól penetrál a központi idegrendszerbe"
     ],
     notes: "Gram-pozitív lefedettsége nem kielégítő, ezért empirikus szepszis kezelésben önmagában ritkán alkalmazzák, inkább Gram-pozitív elleni szerrel kombinálva."
   },
@@ -345,7 +348,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "100-150 mg/ttkg/nap i.v., 2-3 részre osztva",
       renalAdjustment: "GFR < 50 ml/perc: szigorú dóziscsökkentés (neurotoxicitás veszélye!)"
     },
-    mechanismOfAction: "Baktericid. Zwitterion szerkezetű, emiatt rendkívül gyorsan penetrál a Gram-negatív baktériumok porin csatornáin. Nagyon stabil a kromoszómális AmpC béta-laktamázokkal szemben és ellenáll sok plazmid-mediált béta-laktamáznak.",
+    mechanismOfAction: "Baktericid. Zwitterion szerkezetű, emiatt rendkívül gyorsan penetrál a Gram-negatív baktériumok porin csatornáin. Képes ellenállni a kromoszómális és plazmid mediált AmpC enzimeknek, azonban az ESBL enzimek lebontják.",
     sideEffects: [
       "Neurotoxicitás: non-konvulzív status epilepticus, zavartság, myoclonus (különösen veseelégtelenségben nem csökkentett dózisnál!)",
       "Allergiás reakciók, hasmenés"
@@ -1120,9 +1123,10 @@ export const antibioticsData_HU: any[] = [
     indications: [
       "Bőr- és lágyrészfertőzések (cellulitis, impetigo, folliculitis)",
       "Osteomyelitis és arthritis (Staphylococcus okozta)",
-      "Staphylococcus endocarditis és sepsis"
+      "Staphylococcus endocarditis és sepsis",
+      "Staphylococcus pneumonia, tüdőtályog"
     ],
-    notes: "Magyarországon egyedi importtal érhető el, de Nyugat-Európában (pl. Egyesült Királyság) a Staphylococcus fertőzések elsővonalbeli alapgyógyszere."
+    notes: "A Staphylococcus fertőzések elsővonalbeli alapgyógyszere."
   },
   {
     id: "piperacillin",
@@ -1203,7 +1207,7 @@ export const antibioticsData_HU: any[] = [
     brandNames: "Negaban",
     group: "Béta-laktamáz-stabil penicillinek (Gram-negatív spektrum)",
     halfLife: "4.5 - 5 óra (veseelégtelenségben jelentősen megnyúlik)",
-    pae: "Gram-negatívaknál (pl. Enterobacteriaceae) mérsékelt (kb. 1-2 óra)",
+    pae: "Gram-negatívaknál (pl. Enterobacteriales) mérsékelt (kb. 1-2 óra)",
     effectType: "bactericid",
     dosage: {
       adult: "Napi 4 g i.v. (pl. 2x 2 g vagy folyamatos infúzióban), súlyos fertőzésekben napi 6 g (3x 2 g)",
@@ -1232,7 +1236,7 @@ export const antibioticsData_HU: any[] = [
       "Alsó légúti fertőzések (ha igazoltan Gram-negatív kórokozó okozza)",
       "Bőr- és lágyrészfertőzések, sebfertőzések (Gram-negatív kórokozók esetén)"
     ],
-    notes: "Kiváló 'carbapenem-spóroló' alternatíva ESBL- és AmpC-termelő Enterobacteriaceae okozta súlyos szisztémás fertőzésekben, ha a Pseudomonas aeruginosa kizárható."
+    notes: "Kiváló 'carbapenem-spóroló' alternatíva ESBL- és AmpC-termelő Enterobacteriaceae okozta súlyos szisztémás fertőzésekben, ha a Pseudomonas aeruginosa kizárható.Hatásos még Haemophilus, Moraxella catarrhalis, Brucella abortus, Burkholderia cepacia és Pasteurella ellen is."
   },
   {
     id: "pivmecillinam",
@@ -1423,7 +1427,7 @@ export const antibioticsData_HU: any[] = [
       pediatric: "8 mg/ttkg/nap p.o. szuszpenzióban, 1 vagy 2 részre osztva",
       renalAdjustment: "GFR < 20 ml/perc: csökkentett adag (pl. 200 mg naponta)"
     },
-    mechanismOfAction: "Baktericid. Gátolja a sejtfalszintézist a PBP-khez kötődve. Stabil a leggyakoribb Gram-negatív béta-laktamázokkal szemben.",
+    mechanismOfAction: "Baktericid. Gátolja a sejtfalszintézist a PBP-khez kötődve. Stabil a leggyakoribb Gram-negatív szűk spektrumú béta-laktamázokkal szemben.",
     sideEffects: [
       "Hasmenés (nagyon gyakori)",
       "Hányinger, hasi fájdalom",
