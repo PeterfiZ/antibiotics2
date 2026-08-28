@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PharmacologyView from './components/PharmacologyView';
 import ClinicalView from './components/ClinicalView';
 import MicrobiologyView from './components/MicrobiologyView';
@@ -31,6 +31,8 @@ import {
   BookOpen, 
   Heart,
   ChevronRight,
+  ChevronDown,
+  UserCheck,
   Info,
   Calculator,
   TrendingDown,
@@ -47,6 +49,8 @@ export default function App() {
   const { language, setLanguage, t, tg, antibioticsData, clinicalInfectionsData } = useLanguage();
   const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'mdr' | 'quiz' | 'ai' | 'tdm' | 'renal' | 'antifungal' | 'antiviral'>('pharma');
   const [utcTime, setUtcTime] = useState('');
+  const [isReviewersOpen, setIsReviewersOpen] = useState(false);
+  const reviewersRef = useRef<HTMLDivElement>(null);
 
   // PWA Install Prompt State
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
@@ -90,6 +94,26 @@ export default function App() {
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  // Reviewers dropdown click-outside and escape key listener
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (reviewersRef.current && !reviewersRef.current.contains(event.target as Node)) {
+        setIsReviewersOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsReviewersOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -330,9 +354,62 @@ ${feedbackMessage}`;
               <p className="text-xs text-slate-400 mt-0.5 font-medium">
                 {t('SUBTITLE')}
               </p>
-              <p className="text-[11px] text-blue-300 mt-1 font-semibold opacity-90">
-                {t('CREATED_BY')}
-              </p>
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 mt-1">
+                <span className="text-[11px] text-blue-300 font-semibold opacity-90">
+                  {t('CREATED_BY')}
+                </span>
+                <span className="text-slate-600 hidden sm:inline">•</span>
+
+                {/* Discrete Lektorálja dropdown */}
+                <div className="relative inline-block" ref={reviewersRef}>
+                  <button
+                    id="header-reviewers-dropdown"
+                    type="button"
+                    onClick={() => setIsReviewersOpen(prev => !prev)}
+                    className="inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-300 hover:text-white bg-slate-800/90 hover:bg-slate-750 border border-slate-700/80 hover:border-slate-600 px-2 py-0.5 rounded-md transition-all shadow-sm cursor-pointer group"
+                    aria-expanded={isReviewersOpen}
+                    aria-haspopup="true"
+                    title={t('REVIEWED_BY')}
+                  >
+                    <UserCheck className="w-3 h-3 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                    <span className="tracking-wide font-medium">{t('REVIEWED_BY')}</span>
+                    <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${isReviewersOpen ? 'rotate-180 text-blue-400' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {isReviewersOpen && (
+                      <motion.div
+                        id="header-reviewers-popover"
+                        initial={{ opacity: 0, y: -4, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 mt-1.5 w-64 bg-slate-900/95 backdrop-blur-md border border-slate-750 rounded-xl shadow-2xl p-3 z-50 text-xs"
+                      >
+                        <div className="flex items-center gap-1.5 pb-2 mb-2 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                          <UserCheck className="w-3.5 h-3.5 text-blue-400" />
+                          <span>{t('REVIEWERS_TITLE')}</span>
+                        </div>
+                        <ul className="space-y-1.5">
+                          {[
+                            'Dr. Lakatos Botond',
+                            'Dr. Horváth Bence',
+                            'Dr. Timmer Bálint'
+                          ].map((reviewer, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-center gap-2 text-slate-200 font-semibold py-1.5 px-2.5 rounded-lg bg-slate-800/80 border border-slate-700/50 hover:border-slate-600 transition-colors"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                              <span className="text-[12px]">{reviewer}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
           </div>
           

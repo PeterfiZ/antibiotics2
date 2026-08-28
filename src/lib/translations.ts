@@ -20,6 +20,16 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "Antibiotic Educational Program",
     de: "Antibiotika-Lernprogramm"
   },
+  "REVIEWED_BY": {
+    hu: "Lektorálja",
+    en: "Reviewed by",
+    de: "Lektorat"
+  },
+  "REVIEWERS_TITLE": {
+    hu: "Szakmai lektorok",
+    en: "Medical Reviewers",
+    de: "Fachlektoren"
+  },
   "CREATED_BY": {
     hu: "Készítette: Dr. Péterfi Zoltán, Pécsi Tudományegyetem",
     en: "Created by: Dr. Zoltán Péterfi, University of Pécs",
