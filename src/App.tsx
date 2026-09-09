@@ -482,7 +482,18 @@ ${feedbackMessage}`;
                 >
                   <IconComp className={`w-5 h-5 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   <div>
-                    <span className="text-xs font-bold block leading-none">{t(tab.labelKey)}</span>
+                    {(() => {
+                      const label = t(tab.labelKey);
+                      if (label.endsWith('*')) {
+                        const mainText = label.slice(0, -1).trim();
+                        return (
+                          <span className="text-xs font-bold block leading-none">
+                            {mainText} <span className={isActive ? 'text-red-300 font-extrabold' : 'text-red-600 font-extrabold'}>*</span>
+                          </span>
+                        );
+                      }
+                      return <span className="text-xs font-bold block leading-none">{label}</span>;
+                    })()}
                     <span className={`text-[9px] mt-0.5 hidden xl:block font-medium ${isActive ? 'text-blue-100' : 'text-slate-400'}`}>
                       {t(tab.descKey)}
                     </span>

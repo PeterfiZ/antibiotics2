@@ -74,7 +74,19 @@ export default function ClinicalView() {
           {t('CLINICAL_TITLE')}
         </h2>
         <p className="text-slate-500 text-sm mt-0.5">
-          {t('CLINICAL_SUBTITLE')}
+          {(() => {
+            const subtitle = t('CLINICAL_SUBTITLE');
+            const parts = subtitle.split('*');
+            if (parts.length > 1) {
+              return (
+                <>
+                  {parts[0]}
+                  <span className="text-red-600 font-semibold">*{parts[1]}</span>
+                </>
+              );
+            }
+            return subtitle;
+          })()}
         </p>
       </div>
 

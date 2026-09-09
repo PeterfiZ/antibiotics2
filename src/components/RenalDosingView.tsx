@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../lib/LanguageContext';
-import { getGroupOrderWeight } from './PharmacologyView';
+import { getGroupOrderWeight, isStarredGroup, isStarredAntibiotic } from './PharmacologyView';
 import { antibioticsData_HU } from '../data/antibiotics_hu';
 import { antibioticsData_EN } from '../data/antibiotics_en';
 import { antibioticsData_DE } from '../data/antibiotics_de';
@@ -968,9 +968,14 @@ export default function RenalDosingView() {
                       <div className="hidden lg:grid lg:grid-cols-12 items-center p-4 gap-2 text-xs">
                         {/* Name & Class */}
                         <div className="col-span-3 space-y-1">
-                          <h4 className="font-extrabold text-slate-800 text-[13px]">{ab.name}</h4>
+                          <h4 className="font-extrabold text-slate-800 text-[13px] flex items-center gap-1">
+                            {isStarredAntibiotic(ab.id) && (
+                              <span className="text-red-600 font-extrabold text-[15px] leading-none shrink-0" title="Expected of students">*</span>
+                            )}
+                            {ab.name}
+                          </h4>
                           <p className="text-[10px] text-slate-400 font-medium italic">{ab.brandNames}</p>
-                          <span className="inline-block px-2 py-0.5 bg-slate-100 text-[9px] font-bold text-slate-500 rounded-full">
+                          <span className="inline-flex items-center gap-0.5 px-2 py-0.5 bg-slate-100 text-[9px] font-bold text-slate-500 rounded-full">
                             {ab.group[currentLang]}
                           </span>
                         </div>
@@ -1020,9 +1025,14 @@ export default function RenalDosingView() {
                       <div className="block lg:hidden p-4 space-y-3">
                         <div className="flex justify-between items-start">
                           <div className="space-y-0.5">
-                            <h4 className="font-extrabold text-slate-800 text-sm">{ab.name}</h4>
+                            <h4 className="font-extrabold text-slate-800 text-sm flex items-center gap-1">
+                              {isStarredAntibiotic(ab.id) && (
+                                <span className="text-red-600 font-extrabold text-[15px] leading-none shrink-0" title="Expected of students">*</span>
+                              )}
+                              {ab.name}
+                            </h4>
                             <p className="text-[10px] text-slate-400 font-medium italic">{ab.brandNames}</p>
-                            <span className="inline-block px-2 py-0.5 bg-slate-100 text-[9px] font-bold text-slate-500 rounded-full mt-1">
+                            <span className="inline-flex items-center gap-0.5 px-2 py-0.5 bg-slate-100 text-[9px] font-bold text-slate-500 rounded-full mt-1">
                               {ab.group[currentLang]}
                             </span>
                           </div>

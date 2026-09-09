@@ -17,6 +17,60 @@ const removeAccents = (str: string) => {
     .toLowerCase();
 };
 
+export const isStarredGroup = (group: string): boolean => {
+  return false;
+};
+
+export const isStarredAntibiotic = (id: string | undefined): boolean => {
+  if (!id) return false;
+  const baseId = id.toLowerCase().replace(/_\d+$/, '').trim();
+  return (
+    baseId === "penicillin_g" ||
+    baseId === "flucloxacillin" ||
+    baseId === "oxacillin" ||
+    baseId === "amoxicillin" ||
+    baseId === "ampicillin" ||
+    baseId === "amoxicillin_clavulanate" ||
+    baseId === "ampicillin_sulbactam" ||
+    baseId === "piperacillin_tazobactam" ||
+    baseId === "cefazolin" ||
+    baseId === "cefuroxime" ||
+    baseId === "ceftazidime" ||
+    baseId === "ceftriaxone" ||
+    baseId === "ceftazidime_avibactam" ||
+    baseId === "cefepime" ||
+    baseId === "cefiderocol" ||
+    baseId === "ceftaroline" ||
+    baseId === "ceftolozane_tazobactam" ||
+    baseId === "cefepime_tazobactam" ||
+    baseId === "ertapenem" ||
+    baseId === "imipenem_cilastatin" ||
+    baseId === "meropenem" ||
+    baseId === "dalbavancin" ||
+    baseId === "oritavancin" ||
+    baseId === "telavancin" ||
+    baseId === "vancomycin" ||
+    baseId === "fosfomycin" ||
+    baseId === "doxycycline" ||
+    baseId === "tigecycline" ||
+    baseId === "amikacin" ||
+    baseId === "gentamicin" ||
+    baseId === "erythromycin" ||
+    baseId === "spiramycin" ||
+    baseId === "azithromycin" ||
+    baseId === "clindamycin" ||
+    baseId === "linezolid" ||
+    baseId === "fidaxomicin" ||
+    baseId === "ciprofloxacin" ||
+    baseId === "levofloxacin" ||
+    baseId === "moxifloxacin" ||
+    baseId === "metronidazole" ||
+    baseId === "cotrimoxazole" ||
+    baseId === "nitrofurantoin" ||
+    baseId === "colistin"
+  );
+};
+
 export function getGroupOrderWeight(group: string): number {
   if (!group) return 999;
   const g = group.toLowerCase().trim();
@@ -281,7 +335,19 @@ export default function PharmacologyView() {
             {t('PHARMA_TITLE')}
           </h2>
           <p className="text-slate-500 text-sm mt-0.5">
-            {t('PHARMA_SUBTITLE')}
+            {(() => {
+              const subtitle = t('PHARMA_SUBTITLE');
+              const parts = subtitle.split('*');
+              if (parts.length > 1) {
+                return (
+                  <>
+                    {parts[0]}
+                    <span className="text-red-600 font-semibold">*{parts[1]}</span>
+                  </>
+                );
+              }
+              return subtitle;
+            })()}
           </p>
         </div>
         <button
@@ -313,7 +379,9 @@ export default function PharmacologyView() {
               >
                 <option value="">{t('SELECT_AB_OPTION')}</option>
                 {sortedAntibiotics.map(ab => (
-                  <option key={ab.id} value={ab.id} disabled={ab.id === compareIdB}>{tg(ab.name)} ({tg(ab.group)})</option>
+                  <option key={ab.id} value={ab.id} disabled={ab.id === compareIdB}>
+                    {isStarredAntibiotic(ab.id) ? '* ' : ''}{tg(ab.name)} ({tg(ab.group)})
+                  </option>
                 ))}
               </select>
             </div>
@@ -326,7 +394,9 @@ export default function PharmacologyView() {
               >
                 <option value="">{t('SELECT_AB_OPTION')}</option>
                 {sortedAntibiotics.map(ab => (
-                  <option key={ab.id} value={ab.id} disabled={ab.id === compareIdA}>{tg(ab.name)} ({tg(ab.group)})</option>
+                  <option key={ab.id} value={ab.id} disabled={ab.id === compareIdA}>
+                    {isStarredAntibiotic(ab.id) ? '* ' : ''}{tg(ab.name)} ({tg(ab.group)})
+                  </option>
                 ))}
               </select>
             </div>
@@ -338,15 +408,37 @@ export default function PharmacologyView() {
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200">
                     <th className="p-4 font-semibold text-slate-700 w-1/4">{t('PROPERTY_HEADER')}</th>
-                    <th className="p-4 font-bold text-blue-700 w-3/8 border-r border-slate-200 bg-blue-50/30">{tg(antibioticA.name)}</th>
-                    <th className="p-4 font-bold text-blue-700 w-3/8">{tg(antibioticB.name)}</th>
+                    <th className="p-4 font-bold text-blue-700 w-3/8 border-r border-slate-200 bg-blue-50/30">
+                      <span className="inline-flex items-center gap-0.5">
+                        {isStarredAntibiotic(antibioticA.id) && (
+                          <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
+                        )}
+                        {tg(antibioticA.name)}
+                      </span>
+                    </th>
+                    <th className="p-4 font-bold text-blue-700 w-3/8">
+                      <span className="inline-flex items-center gap-0.5">
+                        {isStarredAntibiotic(antibioticB.id) && (
+                          <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
+                        )}
+                        {tg(antibioticB.name)}
+                      </span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   <tr>
                     <td className="p-4 font-semibold text-slate-500 bg-slate-50/50">{t('DRUG_GROUP')}</td>
-                    <td className="p-4 text-slate-800 border-r border-slate-200 bg-blue-50/10 font-medium">{tg(antibioticA.group)}</td>
-                    <td className="p-4 text-slate-800 font-medium">{tg(antibioticB.group)}</td>
+                    <td className="p-4 text-slate-800 border-r border-slate-200 bg-blue-50/10 font-medium">
+                      <span className="inline-flex items-center gap-0.5">
+                        {tg(antibioticA.group)}
+                      </span>
+                    </td>
+                    <td className="p-4 text-slate-800 font-medium">
+                      <span className="inline-flex items-center gap-0.5">
+                        {tg(antibioticB.group)}
+                      </span>
+                    </td>
                   </tr>
                   <tr>
                     <td className="p-4 font-semibold text-slate-500 bg-slate-50/50">{t('BRAND_NAMES')}</td>
@@ -520,6 +612,9 @@ export default function PharmacologyView() {
                   >
                     <div className="flex justify-between items-start gap-2">
                       <h4 className="font-bold text-slate-800 text-sm flex flex-wrap items-center gap-1.5">
+                        {isStarredAntibiotic(ab.id) && (
+                          <span className="text-red-600 font-extrabold text-[15px] leading-none shrink-0" title="Expected of students">*</span>
+                        )}
                         {tg(ab.name)}
                         {ab.abbreviation && (
                           <span className="inline-block bg-blue-50 text-blue-600 font-mono text-[10px] px-1.5 py-0.5 rounded border border-blue-100 uppercase font-semibold">
@@ -527,7 +622,7 @@ export default function PharmacologyView() {
                           </span>
                         )}
                       </h4>
-                      <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium shrink-0">
+                      <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium shrink-0 inline-flex items-center gap-0.5">
                         {tg(ab.group)}
                       </span>
                     </div>
@@ -580,10 +675,13 @@ export default function PharmacologyView() {
                   <div className="bg-slate-900 border-b border-slate-800 p-6 text-white">
                     <div className="flex flex-wrap justify-between items-start gap-4">
                       <div>
-                        <span className="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full font-bold border border-blue-500/30">
+                        <span className="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full font-bold border border-blue-500/30 inline-flex items-center gap-0.5">
                           {tg(selectedAntibiotic.group)}
                         </span>
                         <h3 className="text-2xl font-bold mt-2 tracking-tight flex items-center gap-2.5 flex-wrap">
+                          {isStarredAntibiotic(selectedAntibiotic.id) && (
+                            <span className="text-red-400 font-extrabold text-[24px] leading-none shrink-0" title="Expected of students">*</span>
+                          )}
                           {tg(selectedAntibiotic.name)}
                           {selectedAntibiotic.abbreviation && (
                             <span className="bg-blue-500/10 text-blue-300 font-mono text-base px-2.5 py-0.5 rounded border border-blue-500/25 uppercase font-semibold">

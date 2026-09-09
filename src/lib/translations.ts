@@ -199,9 +199,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Therapieoptionen & Gene"
   },
   "tab_pharma_label": {
-    hu: "Farmakológia",
-    en: "Pharmacology",
-    de: "Pharmakologie"
+    hu: "Farmakológia *",
+    en: "Pharmacology *",
+    de: "Pharmakologie *"
   },
   "tab_pharma_desc": {
     hu: "Hatóanyagok & Spektrum",
@@ -229,9 +229,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Antivirotika"
   },
   "tab_clinical_label": {
-    hu: "Klinikum",
-    en: "Clinical Practice",
-    de: "Klinik"
+    hu: "Klinikum *",
+    en: "Clinical Practice *",
+    de: "Klinik *"
   },
   "tab_clinical_desc": {
     hu: "Empirikus & Célzott",
@@ -328,9 +328,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Pharmakologischer Ansatz"
   },
   "PHARMA_SUBTITLE": {
-    hu: "Antibiotikum csoportok, hatóanyagok, farmakokinetikai adatok (felezési idő, PAE), adagolások és hatásspektrumok részletes klinikai adatbázisa.",
-    en: "Detailed clinical database of antibiotic groups, active ingredients, pharmacokinetic data (half-life, PAE), dosages, and spectrums of action.",
-    de: "Detaillierte klinische Datenbank zu Antibiotikagruppen, Wirkstoffen, pharmakokinetischen Daten (Halbwertszeit, PAE), Dosierungen und Wirkungsspektren."
+    hu: "Antibiotikum csoportok, hatóanyagok, farmakokinetikai adatok (felezési idő, PAE), adagolások és hatásspektrumok részletes klinikai adatbázisa. * Hallgatóktól elvárt ismeretek",
+    en: "Detailed clinical database of antibiotic groups, active ingredients, pharmacokinetic data (half-life, PAE), dosages, and spectrums of action. * Knowledge expected of students",
+    de: "Detaillierte klinische Datenbank zu Antibiotikagruppen, Wirkstoffen, pharmakokinetischen Daten (Halbwertszeit, PAE), Dosierungen und Wirkungsspektren. * Von Studierenden erwartete Kenntnisse"
   },
   "MECHANISM_OF_ACTION": {
     hu: "Hatásmechanizmus",
@@ -655,9 +655,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Klinischer Ansatz (Empirisch & Gezielt)"
   },
   "CLINICAL_SUBTITLE": {
-    hu: "Legfontosabb klinikai kórképek legújabb nemzetközi és hazai irányelveknek megfelelő empirikus terápiája, diagnosztikai sarokkövei és tenyésztés utáni célzott kezelése.",
-    en: "Empirical therapy, diagnostic cornerstones, and targeted post-culture treatment of key clinical conditions in accordance with latest guidelines.",
-    de: "Empirische Therapie, diagnostische Eckpfeiler und gezielte Behandlung nach Erregerbestimmung für wichtige klinische Krankheitsbilder nach Leitlinien."
+    hu: "Legfontosabb klinikai kórképek legújabb nemzetközi és hazai irányelveknek megfelelő empirikus terápiája, diagnosztikai sarokkövei és tenyésztés utáni célzott kezelése. * Hallgatóktól elvárt ismeretek",
+    en: "Empirical therapy, diagnostic cornerstones, and targeted post-culture treatment of key clinical conditions in accordance with latest guidelines. * Knowledge expected of students",
+    de: "Empirische Therapie, diagnostische Eckpfeiler und gezielte Behandlung nach Erregerbestimmung für wichtige klinische Krankheitsbilder nach Leitlinien. * Von Studierenden erwartete Kenntnisse"
   },
   "SEARCH_CLINICAL": {
     hu: "Keresés kórképekre...",
