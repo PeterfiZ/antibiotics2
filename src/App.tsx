@@ -557,7 +557,10 @@ ${feedbackMessage}`;
                         }}
                         className="w-full flex justify-between items-center text-xs p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 transition-colors border border-slate-200/40 font-semibold"
                       >
-                        <span className="truncate">{tg(inf.name)}</span>
+                        <span className="truncate flex items-center gap-1">
+                          <span className="text-red-600 font-extrabold">*</span>
+                          {tg(inf.name)}
+                        </span>
                         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                       </button>
                     );

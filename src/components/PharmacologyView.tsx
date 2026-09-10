@@ -349,6 +349,9 @@ export default function PharmacologyView() {
               return subtitle;
             })()}
           </p>
+          <p className="text-slate-950 font-medium text-sm mt-2 max-w-4xl">
+            {t('PHARMA_DIDACTIC_NOTE')}
+          </p>
         </div>
         <button
           onClick={() => {

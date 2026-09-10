@@ -139,7 +139,10 @@ export default function ClinicalView() {
                   <span className="text-[10px] uppercase font-bold text-blue-600 tracking-wider">
                     {getCategoryLabel(inf.category)}
                   </span>
-                  <h4 className="font-bold text-slate-800 text-sm mt-0.5">{tg(inf.name)}</h4>
+                  <h4 className="font-bold text-slate-800 text-sm mt-0.5 flex items-center gap-1">
+                    <span className="text-red-600 font-extrabold text-[15px] leading-none shrink-0" title="Expected of students">*</span>
+                    {tg(inf.name)}
+                  </h4>
                   <p className="text-xs text-slate-400 line-clamp-1 mt-1">
                     <TransText text={inf.guidelines} />
                   </p>
@@ -172,7 +175,10 @@ export default function ClinicalView() {
                       <span className="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full font-bold border border-blue-500/30 uppercase tracking-wide">
                         {getCategoryLabel(selectedInfection.category)} {t('INFECTIONS')}
                       </span>
-                      <h3 className="text-2xl font-bold mt-2 tracking-tight">{tg(selectedInfection.name)}</h3>
+                      <h3 className="text-2xl font-bold mt-2 tracking-tight flex items-center gap-1.5 flex-wrap">
+                        <span className="text-red-400 font-extrabold text-[24px] leading-none shrink-0" title="Expected of students">*</span>
+                        {tg(selectedInfection.name)}
+                      </h3>
                       <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5">
                         <FileText className="w-4 h-4 text-slate-400" />
                         <strong>{t('GUIDELINE_LABEL')}:</strong> <TransText text={selectedInfection.guidelines} />

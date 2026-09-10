@@ -209,9 +209,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Wirkstoffe & Spektrum"
   },
   "tab_antifungal_label": {
-    hu: "Gombaellenes kezelés",
-    en: "Antifungal therapy",
-    de: "Antimykotische Therapie"
+    hu: "Gombaellenes kezelés *",
+    en: "Antifungal therapy *",
+    de: "Antimykotische Therapie *"
   },
   "tab_antifungal_desc": {
     hu: "Antifungális szerek",
@@ -331,6 +331,11 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     hu: "Antibiotikum csoportok, hatóanyagok, farmakokinetikai adatok (felezési idő, PAE), adagolások és hatásspektrumok részletes klinikai adatbázisa. * Hallgatóktól elvárt ismeretek",
     en: "Detailed clinical database of antibiotic groups, active ingredients, pharmacokinetic data (half-life, PAE), dosages, and spectrums of action. * Knowledge expected of students",
     de: "Detaillierte klinische Datenbank zu Antibiotikagruppen, Wirkstoffen, pharmakokinetischen Daten (Halbwertszeit, PAE), Dosierungen und Wirkungsspektren. * Von Studierenden erwartete Kenntnisse"
+  },
+  "PHARMA_DIDACTIC_NOTE": {
+    hu: "A baktericid és bakterioszatitikus hatás csak didaktikai célt szolgál. Az antibiotikumok ezen hatása nagyban függ a dózistól, a célhelyen elérhető szérum vagy szöveti szinttől.",
+    en: "The bactericidal and bacteriostatic effects serve only didactic purposes. This effect of antibiotics highly depends on the dose and the serum or tissue concentration achieved at the target site.",
+    de: "Die bakterizide und bakteriostatische Wirkung dient nur didaktischen Zwecken. Diese Wirkung von Antibiotika hängt stark von der Dosis und der am Zielort erreichten Serum- oder Gewebekonzentration ab."
   },
   "MECHANISM_OF_ACTION": {
     hu: "Hatásmechanizmus",

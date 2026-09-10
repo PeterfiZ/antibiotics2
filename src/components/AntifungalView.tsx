@@ -94,12 +94,12 @@ const labels = {
     isaShort: 'ISA',
     echShort: 'ECH',
     ambShort: 'L-AmB',
-    fluFull: 'Fluconazol',
-    vorFull: 'Voriconazol',
-    posFull: 'Posaconazol',
-    isaFull: 'Isavuconazol',
-    echFull: 'Echinokandinok',
-    ambFull: 'Liposomalis Amphotericin B'
+    fluFull: '* Fluconazol',
+    vorFull: '* Voriconazol',
+    posFull: '* Posaconazol',
+    isaFull: '* Isavuconazol',
+    echFull: '* Echinokandinok',
+    ambFull: '* Liposomalis Amphotericin B'
   },
   en: {
     title: 'Antifungal Treatment',
@@ -166,12 +166,12 @@ const labels = {
     isaShort: 'ISA',
     echShort: 'ECH',
     ambShort: 'L-AmB',
-    fluFull: 'Fluconazole',
-    vorFull: 'Voriconazole',
-    posFull: 'Posaconazole',
-    isaFull: 'Isavuconazole',
-    echFull: 'Echinocandins',
-    ambFull: 'Liposomal Amphotericin B'
+    fluFull: '* Fluconazole',
+    vorFull: '* Voriconazole',
+    posFull: '* Posaconazole',
+    isaFull: '* Isavuconazole',
+    echFull: '* Echinocandins',
+    ambFull: '* Liposomal Amphotericin B'
   },
   de: {
     title: 'Antimykotische Behandlung',
@@ -238,12 +238,12 @@ const labels = {
     isaShort: 'ISA',
     echShort: 'ECH',
     ambShort: 'L-AmB',
-    fluFull: 'Fluconazol',
-    vorFull: 'Voriconazol',
-    posFull: 'Posaconazol',
-    isaFull: 'Isavuconazol',
-    echFull: 'Echinocandine',
-    ambFull: 'Liposomales Amphotericin B'
+    fluFull: '* Fluconazol',
+    vorFull: '* Voriconazol',
+    posFull: '* Posaconazol',
+    isaFull: '* Isavuconazol',
+    echFull: '* Echinocandine',
+    ambFull: '* Liposomales Amphotericin B'
   }
 };
 
@@ -683,6 +683,7 @@ export default function AntifungalView() {
                             <Pill className="w-4.5 h-4.5" />
                           </span>
                           <h3 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2 flex-wrap">
+                            <span className="text-red-600 font-extrabold mr-0.5 animate-pulse">*</span>
                             {drug.name}
                             {drug.abbreviation && (
                               <span className="bg-blue-100 text-blue-700 font-mono text-xs px-2 py-0.5 rounded border border-blue-200 uppercase font-extrabold">
