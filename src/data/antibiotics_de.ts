@@ -2129,7 +2129,7 @@ export const antibioticsData_DE: any[] = [
       "Nosokomiale und beatmungsassoziierte Pneumonie (HAP/VAP)",
       "Komplizierte Harnwegsinfektionen und Urosepsis durch multiresistente gramnegative Erreger (z. B. NDM-bildende Klebsiella oder Pseudomonas)"
     ],
-    notes: "Einer der größten Durchbrüche der modernen klinischen Medizin in der Behandlung multiresistenter gramnegativer Infektionen; das einzige Beta-Laktam, das zuverlässig gegen 'Superbakterien' mit Metallo-Beta-Laktamasen (z. B. NDM-1) wirkt."
+    notes: "Einer der größten Durchbrüche der modernen klinischen Medizin in der Behandlung multiresistenter gramnegativer Infektionen; Beta-Laktam, das zuverlässig gegen 'Superbakterien' mit Metallo-Beta-Laktamasen (z. B. NDM-1) wirkt."
   },
   {
     id: "plazomicin",

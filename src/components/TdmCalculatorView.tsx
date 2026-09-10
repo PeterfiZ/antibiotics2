@@ -75,7 +75,9 @@ export default function TdmCalculatorView() {
       status_therapeutic: "Terápiás tartományban (Optimális)",
       status_toxic: "Toxikus tartományban (Magas veszély!)",
       recommendation: "Klinikai javaslat és módosítás",
-      tips_vancomycin: "Vancomycin esetében a völgykoncentrációt közvetlenül a 4. vagy 5. dózis előtt (steady state) kell levenni. Súlyos fertőzéseknél (szepszis, endocarditis, osteomyelitis) a céltartomány 15-20 mg/L, enyhébb esetekben 10-15 mg/L.",
+      model_note_title: "Alkalmazott farmakokinetikai modell (PK/PD)",
+      model_note_desc: "A TDM kalkulátor 1-kompartmentes lineáris farmakokinetikai modellt alkalmaz (Sawchuk-Zaske módszer / Matzke-féle elsőrendű eliminációs kinetika), a vesefunkció és elimináció becslésére a Cockcroft-Gault kreatinin-clearance (CrCl) képletet használva. Vancomycin esetében a hatásosság és biztonságosság klinikai aranystandardja az AUC/MIC meghatározása és megfelelő terápiás tartományban tartása (nemzetközi konszenzus guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezve, hogy a MIC = 1 mg/L).",
+      tips_vancomycin: "Vancomycin esetében a figyelmeztetésekhez és a terápiavezérléshez az AUC/MIC meghatározása és a megfelelő tartomány a cél (a nemzetközi guideline-ok [ASHP/IDSA/PIDS/SIDP 2020] alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezve, hogy a MIC = 1 mg/L). A korábbi kizárólagos völgykoncentráció-cél (15–20 mg/L súlyos, vagy 10–15 mg/L enyhe fertőzésben) szurrogátumként szolgálhat, de az AUC-vezérelt monitorozás igazoltan minimalizálja az akut vesekárosodás (AKI) és nefrotoxicitás kockázatát. 600 mg·h/L feletti AUC (vagy > 20 mg/L völgy) esetén a nefrotoxicitás rizikója drasztikusan megnő, míg < 400 mg·h/L esetén kezelési kudarc léphet fel. Mintavétel: közvetlenül a 4. vagy 5. dózis előtt (steady state).",
       tips_gentamicin: "Gentamicin egyszeri napi adagolásánál (ODD) a völgykoncentráció < 1 mg/L (ideálisan < 0.5 mg/L), a csúcsszint 15-20 mg/L legyen. Hagyományos napi többszöri adagolásnál a völgy < 2 mg/L, a csúcs 5-10 mg/L.",
       tips_amikacin: "Amikacin egyszeri napi adagolásánál a völgykoncentráció < 5 mg/L (ideálisan < 2 mg/L), míg a csúcsszintnek 50-60 mg/L-nek kell lennie. Hagyományos adagolásnál a völgy < 8 mg/L, a csúcs 20-30 mg/L.",
       tips_voriconazole: "Voriconazolnál a TDM rendkívül fontos a nem-lineáris farmakokinetika és az egyéni különbségek miatt. A céltartomány szigorúan 1.5 - 5.0 mg/L. 5.5 - 6.0 mg/L felett kifejezett neurotoxicitás, látászavar és májkárosodás léphet fel.",
@@ -130,7 +132,9 @@ export default function TdmCalculatorView() {
       status_therapeutic: "Therapeutic Range (Optimal)",
       status_toxic: "Toxic Range (High Danger!)",
       recommendation: "Clinical Recommendation",
-      tips_vancomycin: "For Vancomycin, draw trough levels immediately before the 4th or 5th dose (steady state). For severe infections (sepsis, endocarditis, osteomyelitis), target 15-20 mg/L; for milder infections, 10-15 mg/L.",
+      model_note_title: "Pharmacokinetic Model Used (PK/PD)",
+      model_note_desc: "The TDM calculator applies a 1-compartment linear pharmacokinetic model (Sawchuk-Zaske method / Matzke first-order elimination kinetics), estimating renal function and clearance with the Cockcroft-Gault formula. For vancomycin, clinical efficacy and safety rely on AUC/MIC determination and maintaining it in the therapeutic window (guideline-recommended target range [ASHP/IDSA/PIDS/SIDP]: AUC24/MIC 400–600 mg·h/L, assuming broth microdilution MIC = 1 mg/L).",
+      tips_vancomycin: "For Vancomycin, clinical warnings and monitoring emphasize that determining the AUC/MIC ratio and achieving the appropriate target range is the primary goal (guideline-recommended target range [ASHP/IDSA/PIDS/SIDP 2020]: AUC24/MIC 400–600 mg·h/L, assuming MIC = 1 mg/L). Surrogate trough levels (15–20 mg/L for severe infections, 10–15 mg/L for mild infections) can serve if AUC tools are unavailable, but AUC-guided dosing significantly minimizes acute kidney injury (AKI) and nephrotoxicity. Levels of AUC > 600 mg·h/L (or trough > 20 mg/L) sharply increase nephrotoxicity, whereas AUC < 400 mg·h/L risks microbiological failure. Draw trough levels immediately prior to the 4th or 5th dose (steady state).",
       tips_gentamicin: "For Gentamicin once-daily dosing (ODD), target trough is < 1 mg/L (ideally < 0.5 mg/L) and peak is 15-20 mg/L. For conventional multiple daily dosing, target trough is < 2 mg/L and peak is 5-10 mg/L.",
       tips_amikacin: "For Amikacin once-daily dosing, target trough is < 5 mg/L (ideally < 2 mg/L) and peak is 50-60 mg/L. For conventional dosing, target trough is < 8 mg/L and peak is 20-30 mg/L.",
       tips_voriconazole: "For Voriconazole, TDM is highly recommended due to non-linear pharmacokinetics. Target trough is strictly 1.5 - 5.0 mg/L. Levels above 5.5 - 6.0 mg/L are associated with neurotoxicity, visual disturbances, and hepatotoxicity.",
@@ -185,7 +189,9 @@ export default function TdmCalculatorView() {
       status_therapeutic: "Im therapeutischen Bereich (Optimal)",
       status_toxic: "Toxischer Bereich (Hohe Gefahr!)",
       recommendation: "Klinische Empfehlung",
-      tips_vancomycin: "Bei Vancomycin sollte der Talspiegel unmittelbar vor der 4. oder 5. Dosis (Steady State) bestimmt werden. Bei schweren Infektionen (Sepsis, Endokarditis, Osteomyelitis) liegt der Zielbereich bei 15-20 mg/L, bei milderen Verläufen bei 10-15 mg/L.",
+      model_note_title: "Verwendetes pharmakokinetisches Modell (PK/PD)",
+      model_note_desc: "Der TDM-Rechner verwendet ein 1-Kompartiment-lineares pharmakokinetisches Modell (Sawchuk-Zaske-Methode / Matzke-Eliminationskinetik erster Ordnung) unter Verwendung der Cockcroft-Gault-Formel für die Nierenfunktion. Bei Vancomycin ist der Goldstandard zur Wirksamkeit und Toxizitätsvermeidung die Bestimmung von AUC/MHK und die Einstellung im adäquaten Zielbereich (leitliniengerechter Zielbereich [ASHP/IDSA/PIDS/SIDP]: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L).",
+      tips_vancomycin: "Bei Vancomycin ist für die Warnhinweise und Dosissteuerung die Bestimmung von AUC/MHK und das Halten im adäquaten Zielbereich das primäre Ziel (leitlinienkonformer Zielbereich [ASHP/IDSA/PIDS/SIDP 2020]: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L). Die frühere alleinige Talspiegelsteuerung (15–20 mg/L bei schweren bzw. 10–15 mg/L bei leichten Infektionen) dient als Surrogat; AUC-gesteuertes TDM senkt nachweislich das Risiko einer akuten Nierenschädigung (AKI) und Nephrotoxizität. AUC > 600 mg·h/L (oder Talspiegel > 20 mg/L) steigert das Nephrotoxizitätsrisiko drastisch. Talspiegelentnahme unmittelbar vor der 4. oder 5. Dosis (Steady State).",
       tips_gentamicin: "Bei einmal täglicher Gabe (ODD) von Gentamicin sollte der Talspiegel < 1 mg/L (ideal < 0,5 mg/L) und der Spitzenspiegel 15-20 mg/L betragen. Bei konventioneller Gabe: Talspiegel < 2 mg/L, Spitzenspiegel 5-10 mg/L.",
       tips_amikacin: "Bei einmal täglicher Gabe von Amikacin sollte der Talspiegel < 5 mg/L (ideal < 2 mg/L) und der Spitzenspiegel 50-60 mg/L betragen. Bei konventioneller Gabe: Talspiegel < 8 mg/L, Spitzenspiegel 20-30 mg/L.",
       tips_voriconazole: "Bei Voriconazol ist ein TDM aufgrund der nichtlinearen Pharmakokinetik dringend erforderlich. Der Ziel-Talspiegel liegt streng bei 1,5 - 5,0 mg/L. Werte über 5,5 - 6,0 mg/L sind mit Neurotoxizität, Sehstörungen und Leberschäden assoziiert.",
@@ -240,6 +246,7 @@ export default function TdmCalculatorView() {
     newDose: string;
     newInterval: string;
     boosterDose?: string;
+    estimatedAuc24?: number;
   } | null>(null);
 
   // Calculate Creatinine Clearance (Cockcroft-Gault)
@@ -344,10 +351,10 @@ export default function TdmCalculatorView() {
               ? "Nach jeder HD-Sitzung (Post-Dialyse)"
               : "After each HD session (post-dialysis)",
             notes: currentLang === 'hu'
-              ? "Hemodialízis esetén a Vancomycin csak kismértékben eliminálódik a hagyományos membránokon keresztül. A javasolt adagolás: telítő dózis után 500-1000 mg minden HD kezelés után (post-dialízis). Szigorú pre-dialízis TDM javasolt, a céltartomány: 15-20 mg/L."
+              ? "Hemodialízis esetén a Vancomycin csak kismértékben eliminálódik hagyományos membránokon keresztül. A figyelmeztetések alapján az AUC/MIC meghatározása és a megfelelő tartomány a cél (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; hemodialízisnél a pre-HD szurrogátum völgykoncentráció 15–20 mg/L). Javasolt adagolás: telítő dózis után 500-1000 mg minden HD kezelés végén (post-dialízis)."
               : currentLang === 'de'
-              ? "Vancomycin wird durch Standard-Dialysemembranen nur minimal eliminiert. Empfohlenes Schema: Nach Ladedosis 500-1000 mg nach jeder HD-Sitzung (Post-Dialyse) verabreichen. Strenges Prä-Dialyse-TDM empfohlen, Zielspiegel: 15-20 mg/L."
-              : "Vancomycin is only minimally cleared by standard dialysis membranes. Suggested regimen: after loading, administer 500-1000 mg after each HD session (post-dialysis). Strict pre-dialysis TDM is recommended, target trough: 15-20 mg/L."
+              ? "Vancomycin wird durch Standard-Dialysemembranen nur minimal eliminiert. Ziel der Warnhinweise ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Prä-HD-Surrogat 15–20 mg/L). Empfohlen: Nach Ladedosis 500-1000 mg nach jeder HD-Sitzung (Post-Dialyse)."
+              : "Vancomycin is only minimally cleared by standard dialysis membranes. Clinical warnings emphasize that determining AUC/MIC and achieving the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; pre-HD surrogate trough 15–20 mg/L). Suggested regimen: after loading, administer 500-1000 mg after each HD session (post-dialysis)."
           };
         case 'gentamicin':
           return {
@@ -424,10 +431,10 @@ export default function TdmCalculatorView() {
             maintenance: currentLang === 'hu' ? "1000 mg q24h VAGY 750 mg q12h-q24h" : currentLang === 'de' ? "1000 mg q24h ODER 750 mg q12h-q24h" : "1000 mg q24h OR 750 mg q12h-q24h",
             interval: "12h - 24h",
             notes: currentLang === 'hu'
-              ? "Folyamatos vesehelyettesítő kezelés (CRRT) során a Vancomycin clearance-e jelentős. Kezdő telítő dózis (15-20 mg/kg) után fenntartó adagként napi 1000 mg (vagy 500-750 mg q12h) javasolt. Szigorú napi TDM javasolt a steady-state eléréséig, cél völgykoncentráció: 15-20 mg/L."
+              ? "Folyamatos vesehelyettesítő kezelés (CRRT) során a Vancomycin clearance-e jelentős. A figyelmeztetések alapján az AUC/MIC meghatározása és a megfelelő tartomány a cél (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; folyamatos hemofiltráció mellett szurrogátumként 15–20 mg/L szint javasolt). Kezdő telítő dózis (15-20 mg/kg) után fenntartó adagként napi 1000 mg (vagy 500-750 mg q12h) javasolt, szigorú TDM követéssel."
               : currentLang === 'de'
-              ? "Die Vancomycin-Clearance ist während einer kontinuierlichen Nierenersatztherapie (CRRT) signifikant. Nach einer Ladedosis von 15-20 mg/kg wird eine Erhaltungsdosis von 1000 mg täglich (oder 500-750 mg q12h) empfohlen. Tägliches TDM ist bis zum Erreichen des Steady-State unerlässlich, Zielspiegel: 15-20 mg/L."
-              : "Vancomycin clearance is significant during Continuous Renal Replacement Therapy (CRRT). After a loading dose of 15-20 mg/kg, a maintenance dose of 1000 mg daily (or 500-750 mg q12h) is suggested. Daily TDM is essential until steady state is reached, target trough: 15-20 mg/L."
+              ? "Die Vancomycin-Clearance ist unter CRRT signifikant. Ziel der Warnhinweise ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Surrogat-Talspiegel: 15–20 mg/L). Nach Ladedosis von 15-20 mg/kg wird 1000 mg täglich (oder 500-750 mg q12h) empfohlen, begleitet von engmaschigem TDM."
+              : "Vancomycin clearance is significant during CRRT. Clinical warnings emphasize that determining the AUC/MIC ratio and achieving the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; surrogate trough: 15–20 mg/L). After loading (15-20 mg/kg), maintenance of 1000 mg daily (or 500-750 mg q12h) is suggested, guided by strict TDM."
           };
         case 'gentamicin':
           return {
@@ -492,42 +499,42 @@ export default function TdmCalculatorView() {
           maintDose = `${Math.round((wt * 15) / 250) * 250} mg`;
           interval = "12h";
           comment = currentLang === 'hu'
-            ? "Normál elimináció. Cél völgykoncentráció: 15-20 mg/L súlyos, vagy 10-15 mg/L enyhe fertőzésekben."
+            ? "Normál elimináció. A terápiás cél az AUC/MIC meghatározása és a megfelelő tartomány elérése (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezett MIC = 1 mg/L; szurrogátum völgykoncentráció: 15–20 mg/L súlyos, vagy 10–15 mg/L enyhe fertőzésekben)."
             : currentLang === 'de'
-            ? "Normale Elimination. Ziel-Talspiegel: 15-20 mg/L bei schweren oder 10-15 mg/L bei milden Infektionen."
-            : "Normal elimination. Target trough: 15-20 mg/L for severe, or 10-15 mg/L for mild infections.";
+            ? "Normale Elimination. Primäres Ziel ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L; Surrogat-Talspiegel: 15–20 mg/L bei schweren oder 10–15 mg/L bei milden Infektionen)."
+            : "Normal elimination. The clinical goal is determining the AUC/MIC ratio and maintaining the target range (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L, assuming MIC = 1 mg/L; surrogate trough: 15–20 mg/L for severe, or 10–15 mg/L for mild infections).";
         } else if (crcl >= 60) {
           maintDose = "1000 mg";
           interval = "12h";
           comment = currentLang === 'hu'
-            ? "Enyhén csökkent vesefunkció. Fokozott figyelem a 3-4. napon végzett TDM esetében."
+            ? "Enyhén csökkent vesefunkció. Cél az AUC/MIC meghatározása és a megfelelő tartományban tartása (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L). Fokozott figyelem a 3-4. napon végzett TDM esetében az AKI megelőzésére."
             : currentLang === 'de'
-            ? "Leicht eingeschränkte Nierenfunktion. Erhöhte Aufmerksamkeit für TDM am 3.-4. Tag."
-            : "Mildly impaired renal function. Increased attention for TDM on day 3-4.";
+            ? "Leicht eingeschränkte Nierenfunktion. Ziel ist die Bestimmung von AUC/MHK und die Einstellung im Zielbereich (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L). Erhöhte Aufmerksamkeit für TDM am 3.-4. Tag."
+            : "Mildly impaired renal function. The target is determining the AUC/MIC ratio and keeping it in range (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L). Close monitoring on day 3-4.";
         } else if (crcl >= 30) {
           maintDose = "1000 mg";
           interval = "24h";
           comment = currentLang === 'hu'
-            ? "Középsúlyos veseelégtelenség. Jelentősen megnyúlt felezési idő. Szoros TDM javasolt."
+            ? "Középsúlyos veseelégtelenség. Megnyúlt felezési idő. Cél az AUC/MIC meghatározása és megfelelő tartomány elérése (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L). Szoros TDM szükséges az akkumuláció és nefrotoxicitás kivédésére."
             : currentLang === 'de'
-            ? "Mittelschwere Niereninsuffizienz. Deutlich verlängerte Halbwertszeit. Engmaschiges TDM empfohlen."
-            : "Moderate renal impairment. Significantly prolonged half-life. Close TDM recommended.";
+            ? "Mittelschwere Niereninsuffizienz. Deutlich verlängerte Halbwertszeit. Ziel ist die Bestimmung von AUC/MHK und die Einstellung im Zielbereich (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L). Engmaschiges TDM erforderlich."
+            : "Moderate renal impairment. Prolonged half-life. The goal is AUC/MIC determination and staying in range (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L). Strict TDM required to avoid accumulation.";
         } else if (crcl >= 15) {
           maintDose = "500 - 750 mg";
           interval = "24h - 48h";
           comment = currentLang === 'hu'
-            ? "Súlyos veseelégtelenség. Megfontolandó az egyszeri telítő dózis után kizárólag TDM-vezérelt (pulse-dosing) adagolás: újabb adag csak ha a szint < 15 mg/L."
+            ? "Súlyos veseelégtelenség. Cél az AUC/MIC meghatározása és megfelelő tartomány biztosítása (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L). Megfontolandó telítő dózis után kizárólag TDM-vezérelt (pulse-dosing) adagolás: újabb adag csak ha a völgy < 15 mg/L."
             : currentLang === 'de'
-            ? "Schwere Niereninsuffizienz. Nach Einmaldosis sollte die weitere Gabe ausschließlich TDM-gesteuert (Pulse-Dosing) erfolgen: Neue Dosis erst, wenn Spiegel < 15 mg/L."
-            : "Severe renal impairment. Consider pulse-dosing based strictly on TDM after loading: next dose only when trough level drops below 15 mg/L.";
+            ? "Schwere Niereninsuffizienz. Ziel ist die Bestimmung von AUC/MHK und die Einstellung im Zielbereich (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L). Nach Ladedosis wird pulsweises TDM-gesteuertes Dosieren empfohlen (neue Dosis erst bei Spiegel < 15 mg/L)."
+            : "Severe renal impairment. The goal is determining AUC/MIC and achieving the target range (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L). Consider pulse-dosing based strictly on TDM after loading: next dose only when trough < 15 mg/L.";
         } else {
           maintDose = "500 mg";
           interval = "TDM vezérelt (pulse-dosing)";
           comment = currentLang === 'hu'
-            ? "Végstádiumú veseelégtelenség vagy dialízis. Adagolás kizárólag a mért völgykoncentrációk alapján."
+            ? "Végstádiumú veseelégtelenség vagy dialízis. Cél az AUC/MIC meghatározása és megfelelő tartomány fenntartása (guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; szurrogátum völgy: 15–20 mg/L). Adagolás kizárólag a mért szintek alapján."
             : currentLang === 'de'
-            ? "Terminale Niereninsuffizienz oder Dialyse. Dosierung ausschließlich basierend auf gemessenen Talkonzentrationen."
-            : "End-stage renal disease or dialysis. Dosing strictly guided by measured trough levels.";
+            ? "Terminale Niereninsuffizienz oder Dialyse. Ziel ist die Bestimmung von AUC/MHK und die Einstellung im Zielbereich (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Surrogat: 15–20 mg/L). Dosierung ausschließlich basierend auf gemessenen Spiegeln."
+            : "End-stage renal disease or dialysis. The goal is determining AUC/MIC and maintaining the target window (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; surrogate trough: 15–20 mg/L). Dosing strictly guided by measured levels.";
         }
 
         return {
@@ -659,19 +666,32 @@ export default function TdmCalculatorView() {
     let newDose = "";
     let newInterval = "";
     let boosterDose: string | undefined = undefined;
+    let estimatedAuc24: number | undefined = undefined;
 
     const rrt = tdm.rrt;
 
     switch (tdm.drugId) {
-      case 'vancomycin':
+      case 'vancomycin': {
+        const doseNum = parseFloat(tdm.currentDose) || 1000;
+        const intNum = parseFloat(tdm.currentInterval) || 12;
+        if (val > 0 && doseNum > 0 && intNum > 0) {
+          const vdEst = 50;
+          const peakEst = val + (doseNum / vdEst);
+          const tInf = 1.5;
+          const keEst = Math.log(Math.max(peakEst, val + 0.5) / Math.max(0.1, val)) / Math.max(1, intNum - tInf);
+          const clEst = Math.max(0.5, keEst * vdEst);
+          const dailyDose = doseNum * (24 / intNum);
+          estimatedAuc24 = Math.round(dailyDose / clEst);
+        }
+
         if (rrt === 'none') {
           if (val < 10.0) {
             status = 'sub';
             interp = currentLang === 'hu'
-              ? `A mért völgykoncentráció (${val} mg/L) elmarad a terápiás céltól (10-20 mg/L). Fokozott a kezelési kudarc és a rezisztencia kialakulásának veszélye.`
+              ? `A mért völgykoncentráció (${val} mg/L) szubterápiás (< 10 mg/L). FIGYELMEZTETÉS: Vancomycin esetében az AUC/MIC meghatározása és megfelelő tartomány a cél (a nemzetközi guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezett MIC = 1 mg/L esetén; szurrogátumként a 15–20 mg/L völgykoncentráció súlyos fertőzésben). Jelenlegi alacsony expozíció mellett fokozott a terápiás kudarc és rezisztencia kialakulásának kockázata.`
               : currentLang === 'de'
-              ? `Der gemessene Talspiegel (${val} mg/L) liegt unter dem therapeutischen Zielbereich (10-20 mg/L). Risiko für Therapieversagen und Resistenzentwicklung.`
-              : `The measured trough level (${val} mg/L) is below the therapeutic target (10-20 mg/L). Risk of treatment failure and resistance development.`;
+              ? `Der gemessene Talspiegel (${val} mg/L) ist subtherapeutisch (< 10 mg/L). WARNUNG: Bei Vancomycin ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L; Surrogat-Talspiegel 15–20 mg/L bei schweren Infektionen). Erhöhtes Risiko für Therapieversagen und Resistenzentwicklung.`
+              : `The measured trough level (${val} mg/L) is subtherapeutic (< 10 mg/L). WARNING: For vancomycin, determining the AUC/MIC ratio and achieving the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L, assuming MIC = 1 mg/L; surrogate trough 15–20 mg/L in severe infections). Current low exposure elevates risk of treatment failure.`;
             
             skipDoses = 0;
             const currentDoseNum = parseFloat(tdm.currentDose) || 1000;
@@ -689,10 +709,10 @@ export default function TdmCalculatorView() {
           } else if (val <= 20.0) {
             status = 'therapeutic';
             interp = currentLang === 'hu'
-              ? `Kiváló terápiás szint (${val} mg/L). Súlyos szepszis/endocarditis/pneumonia esetén a 15-20 mg/L optimális, enyhébb szöveti fertőzésekben a 10-15 mg/L is elegendő.`
+              ? `Megfelelő terápiás szint (${val} mg/L). Vancomycin esetében az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezett MIC = 1 mg/L esetén; szurrogátumként a 15–20 mg/L völgykoncentráció javasolt súlyos MRSA fertőzésben, enyhébb fertőzésben 10–15 mg/L is elegendő).`
               : currentLang === 'de'
-              ? `Hervorragender therapeutischer Spiegel (${val} mg/L). Bei schweren Infektionen sind 15-20 mg/L optimal, bei milderen Gewebeinfektionen reichen 10-15 mg/L aus.`
-              : `Excellent therapeutic level (${val} mg/L). For severe infections, 15-20 mg/L is optimal; for milder infections, 10-15 mg/L is sufficient.`;
+              ? `Guter therapeutischer Spiegel (${val} mg/L). Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L; Surrogat-Talspiegel 15–20 mg/L bei schweren Infektionen, 10–15 mg/L bei milden).`
+              : `Therapeutic level (${val} mg/L). For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L, assuming MIC = 1 mg/L; surrogate trough 15–20 mg/L for severe MRSA, 10–15 mg/L for mild infections).`;
 
             skipDoses = 0;
             newDose = `${tdm.currentDose} mg`;
@@ -705,10 +725,10 @@ export default function TdmCalculatorView() {
           } else {
             status = 'toxic';
             interp = currentLang === 'hu'
-              ? `A mért szint (${val} mg/L) a toxikus tartományban van (> 20 mg/L). Kifejezett vesekárosító (nephrotoxikus) hatás várható, különösen más nefrotoxikus szerekkel (pl. aminoglikozidok, loop-diuretikumok) kombinálva.`
+              ? `FIGYELMEZTETÉS: A mért szint (${val} mg/L) a toxikus tartományban van (> 20 mg/L). Vancomycin esetében az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; az AUC > 600 mg·h/L vagy völgy > 20 mg/L esetén a nefrotoxicitás és az akut vesekárosodás [AKI] kockázata szignifikánsan megugrik).`
               : currentLang === 'de'
-              ? `Der gemessene Spiegel (${val} mg/L) liegt im toxischen Bereich (> 20 mg/L). Ein ausgeprägtes nephrotaxisches Risiko besteht, insbesondere bei Kombination mit anderen nephrotoxischen Substanzen.`
-              : `The measured level (${val} mg/L) is in the toxic range (> 20 mg/L). Significant risk of nephrotoxicity, especially when combined with other nephrotoxic agents.`;
+              ? `WARNUNG: Der gemessene Spiegel (${val} mg/L) liegt im toxischen Bereich (> 20 mg/L). Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; bei AUC > 600 mg·h/L oder Talspiegel > 20 mg/L steigt das Risiko für Nephrotoxizität und akutes Nierenversagen [AKI] drastisch).`
+              : `WARNING: The measured level (${val} mg/L) is in the toxic range (> 20 mg/L). For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; AUC > 600 mg·h/L or trough > 20 mg/L sharply increases the risk of nephrotoxicity and acute kidney injury [AKI]).`;
 
             skipDoses = val > 25.0 ? 2 : 1;
             const currentDoseNum = parseFloat(tdm.currentDose) || 1000;
@@ -726,10 +746,10 @@ export default function TdmCalculatorView() {
           if (val < 10.0) {
             status = 'sub';
             interp = currentLang === 'hu'
-              ? `Hemodialízis mellett a völgykoncentráció (${val} mg/L) nem elegendő. Céltartomány dialízis előtt: 15-20 mg/L.`
+              ? `Hemodialízis mellett a völgykoncentráció (${val} mg/L) nem elegendő. FIGYELMEZTETÉS: Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; hemodialízisnél a pre-HD szurrogátum céltartomány: 15–20 mg/L).`
               : currentLang === 'de'
-              ? `Unter Hämodialyse ist die Talkonzentration (${val} mg/L) unzureichend. Zielbereich vor Dialyse: 15-20 mg/L.`
-              : `Under hemodialysis, the trough level (${val} mg/L) is subtherapeutic. Target range pre-dialysis: 15-20 mg/L.`;
+              ? `Unter Hämodialyse ist die Talkonzentration (${val} mg/L) unzureichend. WARNUNG: Bei Vancomycin ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Prä-HD-Surrogat-Zielbereich: 15–20 mg/L).`
+              : `Under hemodialysis, the trough level (${val} mg/L) is subtherapeutic. WARNING: For vancomycin, determining the AUC/MIC ratio and achieving the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; pre-dialysis surrogate target: 15–20 mg/L).`;
 
             skipDoses = 0;
             boosterDose = "500 - 1000 mg IV a következő HD végén (booster)";
@@ -743,10 +763,10 @@ export default function TdmCalculatorView() {
           } else if (val <= 20.0) {
             status = 'therapeutic';
             interp = currentLang === 'hu'
-              ? `Megfelelő pre-dialízis terápiás szint (${val} mg/L) hemodializált betegnél.`
+              ? `Megfelelő pre-dialízis terápiás szint (${val} mg/L) hemodializált betegnél. Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; pre-dialízis szurrogátum céltartomány: 15–20 mg/L).`
               : currentLang === 'de'
-              ? `Optimaler Prä-Dialyse-Spiegel (${val} mg/L) bei Hämodialyse-Patienten.`
-              : `Appropriate pre-dialysis therapeutic level (${val} mg/L) in HD patient.`;
+              ? `Optimaler Prä-Dialyse-Spiegel (${val} mg/L) bei Hämodialyse-Patienten. Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Prä-Dialyse-Surrogat: 15–20 mg/L).`
+              : `Appropriate pre-dialysis therapeutic level (${val} mg/L) in HD patient. For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; pre-dialysis surrogate target: 15–20 mg/L).`;
 
             skipDoses = 0;
             newDose = "500 mg";
@@ -759,10 +779,10 @@ export default function TdmCalculatorView() {
           } else {
             status = 'toxic';
             interp = currentLang === 'hu'
-              ? `Magas, toxikus pre-dialízis szint (${val} mg/L) HD mellett. Akkumulációs veszély áll fenn.`
+              ? `FIGYELMEZTETÉS: Magas, toxikus pre-dialízis szint (${val} mg/L) HD mellett. Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; 20 mg/L feletti szinteknél súlyos akkumulációs és ototoxicitási veszély áll fenn).`
               : currentLang === 'de'
-              ? `Toxischer Prä-Dialyse-Spiegel (${val} mg/L) unter HD. Kumulationsgefahr.`
-              : `Toxic pre-dialysis level (${val} mg/L) in HD patient. High risk of drug accumulation.`;
+              ? `WARNUNG: Toxischer Prä-Dialyse-Spiegel (${val} mg/L) unter HD. Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Kumulations- und Toxizitätsgefahr).`
+              : `WARNING: Toxic pre-dialysis level (${val} mg/L) in HD patient. For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; high risk of accumulation).`;
 
             skipDoses = "Következő 1-2 dialízis ciklus alatt ne adjon Vancomycint";
             newDose = "250 - 500 mg";
@@ -778,10 +798,10 @@ export default function TdmCalculatorView() {
           if (val < 15.0) {
             status = 'sub';
             interp = currentLang === 'hu'
-              ? `CRRT mellett a ${val} mg/L szint alacsony. CRRT során a clearance jelentős lehet. Cél: 15-20 mg/L.`
+              ? `CRRT mellett a ${val} mg/L szint alacsony. FIGYELMEZTETÉS: Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; CRRT alatt folyamatos 15–20 mg/L szint javasolt).`
               : currentLang === 'de'
-              ? `Unter CRRT ist der Spiegel von ${val} mg/L zu niedrig. CRRT-Clearance kann hoch sein. Ziel: 15-20 mg/L.`
-              : `In CRRT, a level of ${val} mg/L is low. CRRT clearance can be substantial. Target: 15-20 mg/L.`;
+              ? `Unter CRRT ist der Spiegel von ${val} mg/L zu niedrig. WARNUNG: Bei Vancomycin ist die Bestimmung von AUC/MHK und das Erreichen des Zielbereichs das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Zielspiegel: 15-20 mg/L).`
+              : `In CRRT, the level of ${val} mg/L is low. WARNING: For vancomycin, determining the AUC/MIC ratio and achieving the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; CRRT target: 15-20 mg/L).`;
 
             skipDoses = 0;
             boosterDose = "500 - 750 mg IV egyszeri alkalommal";
@@ -795,10 +815,10 @@ export default function TdmCalculatorView() {
           } else if (val <= 25.0) {
             status = 'therapeutic';
             interp = currentLang === 'hu'
-              ? `Terápiás és stabil szint CRRT mellett (${val} mg/L).`
+              ? `Terápiás és stabil szint CRRT mellett (${val} mg/L). Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L).`
               : currentLang === 'de'
-              ? `Therapeutischer und stabiler Spiegel unter CRRT (${val} mg/L).`
-              : `Therapeutic and stable level in CRRT patient (${val} mg/L).`;
+              ? `Therapeutischer und stabiler Spiegel unter CRRT (${val} mg/L). Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L).`
+              : `Therapeutic and stable level in CRRT patient (${val} mg/L). For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L).`;
 
             skipDoses = 0;
             newDose = "1000 mg";
@@ -811,10 +831,10 @@ export default function TdmCalculatorView() {
           } else {
             status = 'toxic';
             interp = currentLang === 'hu'
-              ? `Magas, toxikus szint CRRT mellett (${val} mg/L). Akkumuláció és vesekárosító hatás veszélye.`
+              ? `FIGYELMEZTETÉS: Magas, toxikus szint CRRT mellett (${val} mg/L). Vancomycin esetén az AUC/MIC meghatározása és megfelelő tartomány a cél (a guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L; > 600 felett súlyos nefrotoxicitás és akkumuláció veszélye áll fenn).`
               : currentLang === 'de'
-              ? `Hoher, toxischer Spiegel unter CRRT (${val} mg/L). Kumulations- und Toxizitätsgefahr.`
-              : `High, toxic level in CRRT patient (${val} mg/L). Risk of toxicity and accumulation.`;
+              ? `WARNUNG: Hoher, toxischer Spiegel unter CRRT (${val} mg/L). Bei Vancomycin ist die Bestimmung von AUC/MHK und das Halten im Zielbereich das Ziel (leitliniengerechter Zielbereich: AUC24/MHK 400–600 mg·h/L; Kumulations- und Toxizitätsgefahr).`
+              : `WARNING: High, toxic level in CRRT patient (${val} mg/L). For vancomycin, determining the AUC/MIC ratio and maintaining the target range is the primary goal (guideline-recommended target range: AUC24/MIC 400–600 mg·h/L; elevated accumulation risk).`;
 
             skipDoses = 1;
             newDose = "500 - 750 mg";
@@ -827,6 +847,7 @@ export default function TdmCalculatorView() {
           }
         }
         break;
+      }
 
       case 'gentamicin':
         {
@@ -1336,7 +1357,8 @@ export default function TdmCalculatorView() {
       skipDoses,
       newDose,
       newInterval,
-      boosterDose
+      boosterDose,
+      estimatedAuc24
     });
   };
 
@@ -1349,6 +1371,26 @@ export default function TdmCalculatorView() {
           <h2 className="text-lg font-extrabold tracking-tight">{lt.title}</h2>
         </div>
         <p className="text-xs text-slate-500 mt-1">{lt.subtitle}</p>
+      </div>
+
+      {/* Model Information Banner */}
+      <div className="bg-gradient-to-r from-blue-50/90 to-indigo-50/70 border border-blue-200/80 rounded-xl p-3.5 flex items-start gap-3 shadow-xs">
+        <div className="p-1.5 bg-blue-100/90 text-blue-700 rounded-lg shrink-0 mt-0.5">
+          <Info className="w-4 h-4" />
+        </div>
+        <div className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold text-blue-950 uppercase tracking-wider">
+              {lt.model_note_title}
+            </span>
+            <span className="text-[10px] bg-blue-200/70 text-blue-800 font-semibold px-2 py-0.5 rounded-full border border-blue-300/60">
+              {currentLang === 'hu' ? '1-kompartmentes PK modell + Cockcroft-Gault' : currentLang === 'de' ? '1-Kompartiment-PK + Cockcroft-Gault' : '1-Compartment PK + Cockcroft-Gault'}
+            </span>
+          </div>
+          <p className="text-xs text-blue-900/90 leading-relaxed">
+            {lt.model_note_desc}
+          </p>
+        </div>
       </div>
 
       {/* Internal Subtabs */}
@@ -1730,7 +1772,13 @@ export default function TdmCalculatorView() {
                   <div className="flex justify-between items-center">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{lt.target_range}</span>
                     <span className="text-xs font-extrabold text-blue-600">
-                      {tdm.drugId === 'vancomycin' && '10.0 - 20.0 mg/L'}
+                      {tdm.drugId === 'vancomycin' && (
+                        currentLang === 'hu'
+                          ? '10.0 - 20.0 mg/L (Cél: AUC/MIC; guideline tartomány: AUC24/MIC 400–600 mg·h/L)'
+                          : currentLang === 'de'
+                          ? '10.0 - 20.0 mg/L (Ziel: AUC/MHK; Leitlinie: AUC24/MHK 400–600 mg·h/L)'
+                          : '10.0 - 20.0 mg/L (Target: AUC/MIC; guideline: AUC24/MIC 400–600 mg·h/L)'
+                      )}
                       {tdm.drugId === 'gentamicin' && '< 1.0 mg/L'}
                       {tdm.drugId === 'amikacin' && '< 4.0 mg/L'}
                       {tdm.drugId === 'voriconazole' && '1.5 - 5.0 mg/L'}
@@ -1776,6 +1824,54 @@ export default function TdmCalculatorView() {
                     </div>
                   </div>
                 </div>
+
+                {/* Vancomycin AUC/MIC Target Indicator Card */}
+                {tdm.drugId === 'vancomycin' && tdmResult.estimatedAuc24 !== undefined && (
+                  <div className="bg-indigo-50/70 border border-indigo-200/80 p-4 rounded-xl shadow-xs space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Activity className="w-4 h-4 text-indigo-600" />
+                        <span className="text-xs font-bold text-indigo-950 uppercase tracking-wider">
+                          {currentLang === 'hu' ? 'Becsült 24 órás AUC expozíció (AUC24/MIC)' : currentLang === 'de' ? 'Geschätzte 24h-AUC-Exposition (AUC24/MHK)' : 'Estimated 24h AUC Exposure (AUC24/MIC)'}
+                        </span>
+                      </div>
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold border ${
+                        tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                          : tdmResult.estimatedAuc24 < 400
+                          ? 'bg-amber-100 text-amber-800 border-amber-300'
+                          : 'bg-red-100 text-red-800 border-red-300'
+                      }`}>
+                        ~{tdmResult.estimatedAuc24} mg·h/L
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-indigo-900/90 leading-relaxed">
+                      {currentLang === 'hu'
+                        ? `A nemzetközi guideline-ok (ASHP/IDSA) alapján megfelelőnek tartott terápiás tartomány: AUC24/MIC 400–600 mg·h/L (feltételezve, hogy a MIC = 1 mg/L). ${
+                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                              ? 'A becsült expozíció az optimális terápiás ablakban van.'
+                              : tdmResult.estimatedAuc24 < 400
+                              ? 'A becsült expozíció a céltartomány alatt van (fokozott terápiás kudarc rizikó).'
+                              : 'A becsült expozíció meghaladja a 600 mg·h/L-t (szignifikánsan emelkedett nefrotoxicitás és AKI rizikó)!'
+                          }`
+                        : currentLang === 'de'
+                        ? `Leitliniengerechter Zielbereich (ASHP/IDSA): AUC24/MHK 400–600 mg·h/L (bei MHK = 1 mg/L). ${
+                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                              ? 'Die geschätzte Exposition liegt im optimalen Zielbereich.'
+                              : tdmResult.estimatedAuc24 < 400
+                              ? 'Die geschätzte Exposition liegt unter dem Zielbereich.'
+                              : 'Die geschätzte Exposition übersteigt 600 mg·h/L (erhöhtes Nephrotoxizitätsrisiko)!'
+                          }`
+                        : `Guideline-recommended target range (ASHP/IDSA): AUC24/MIC 400–600 mg·h/L (assuming MIC = 1 mg/L). ${
+                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                              ? 'Estimated exposure is within the optimal guideline target range.'
+                              : tdmResult.estimatedAuc24 < 400
+                              ? 'Estimated exposure is below target (increased risk of clinical failure).'
+                              : 'Estimated exposure exceeds 600 mg·h/L (substantially elevated AKI/nephrotoxicity risk)!'
+                          }`}
+                    </p>
+                  </div>
+                )}
 
                 {/* Detailed comments / advice card */}
                 <div className="bg-white border border-slate-200 p-5 rounded-xl shadow-sm space-y-4">

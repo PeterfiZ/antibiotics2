@@ -2130,7 +2130,7 @@ export const antibioticsData_EN: any[] = [
       "Hospital-acquired and ventilator-associated pneumonia (HAP/VAP)",
       "Complicated urinary tract infections and urosepsis caused by multidrug-resistant Gram-negative pathogens (e.g. NDM-producing Klebsiella or Pseudomonas)"
     ],
-    notes: "One of the greatest breakthroughs in modern clinical medicine for the treatment of multidrug-resistant Gram-negative infections; the only beta-lactam that reliably works against 'superbugs' carrying metallo-beta-lactamases (e.g. NDM-1)."
+    notes: "One of the greatest breakthroughs in modern clinical medicine for the treatment of multidrug-resistant Gram-negative infections; beta-lactam that reliably works against 'superbugs' carrying metallo-beta-lactamases (e.g. NDM-1)."
   },
   {
     id: "plazomicin",

@@ -156,7 +156,7 @@ export const microbesData: Microbe[] = [
     resistances: [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Many strains are already resistant due to plasmid-mediated beta-lactamase." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "S" },
-      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "According to EUCAST, E. coli and Klebsiella can be reported as I (intermediate) for cefazolin in UTI if cefadroxil or cefalexin are susceptible." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "According to EUCAST, E. coli and Klebsiella can be reported as I (susceptible at maximum dose) for cefazolin in UTI if cefadroxil or cefalexin are susceptible." },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
@@ -360,6 +360,36 @@ export const microbesData: Microbe[] = [
     ]
   },
   {
+    id: "a_baumannii_wild",
+    name: "Acinetobacter baumannii (non-MDR / wild-type)",
+    type: "gram-negative",
+    clinicalImportance: "An opportunistic Gram-negative bacillus causing nosocomial infections (hospital-acquired pneumonia, surgical site infections, catheter-related bloodstream infections). Wild-type (non-multidrug resistant) strains remain susceptible to carbapenems, quinolones, aminoglycosides, and TMP/SMX.",
+    resistanceMechanisms: "Exhibits intrinsic resistance to ampicillin, 1st to 3rd generation standard cephalosporins (Cefazolin, Cefuroxime, Ceftriaxone), and ertapenem. Lacks acquired carbapenemases (such as OXA-23), allowing effective therapy with meropenem, cefepime, aminoglycosides, ciprofloxacin, and TMP/SMX.",
+    firstLineDrugs: ["meropenem", "cotrimoxazole", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Intrinsic resistance." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsic resistance." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "R", mechanismNotes: "Clavulanic acid does not protect; in ampicillin/sulbactam, the sulbactam component possesses direct antibacterial activity." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsic resistance to 1st-generation cephalosporins." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "R", mechanismNotes: "Intrinsic resistance to 2nd-generation cephalosporins." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R", mechanismNotes: "Chromosomal beta-lactamases cause intrinsic resistance to standard 3rd-generation cephalosporins." },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidime", susceptibility: "S", mechanismNotes: "Non-MDR strains can be susceptible, but rapid resistance selection may occur in monotherapy." },
+      { antibioticId: "cefepime", antibioticName: "Cefepime", susceptibility: "S", mechanismNotes: "4th-generation cephalosporin with good activity against wild-type strains." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozane/tazobactam", susceptibility: "R", mechanismNotes: "Ceftolozane/tazobactam is antipseudomonal and lacks reliable activity against Acinetobacter." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Wild-type, non-MDR strains are susceptible to carbapenems." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilastatin", susceptibility: "S", mechanismNotes: "Excellent carbapenem susceptibility in wild-type Acinetobacter." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Non-MDR strains are susceptible to aminoglycosides." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Due to its large molecular size, vancomycin cannot cross the Gram-negative outer membrane." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Ineffective against Gram-negative bacilli." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R", mechanismNotes: "Obligate aerobe; metronidazole is completely inactive." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Non-MDR strains are susceptible to fluoroquinolones." },
+      { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Good fluoroquinolone activity against wild-type strains." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycycline", susceptibility: "S", mechanismNotes: "Tetracyclines demonstrate good in vitro activity against wild-type Acinetobacter." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole (TMP/SMX)", susceptibility: "S", mechanismNotes: "TMP/SMX is a primary or major alternative therapeutic option in susceptible Acinetobacter infections." },
+      { antibioticId: "linezolid", antibioticName: "Linezolid", susceptibility: "R", mechanismNotes: "Exclusively active against Gram-positive organisms." }
+    ]
+  },
+  {
     id: "a_baumannii_mdr",
     name: "Acinetobacter baumannii (MDR - Multidrug-resistant)",
     type: "gram-negative",
@@ -373,12 +403,17 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "R" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "R" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidime", susceptibility: "R", mechanismNotes: "MDR strains are resistant to 3rd-generation antipseudomonal cephalosporins." },
+      { antibioticId: "cefepime", antibioticName: "Cefepime", susceptibility: "R", mechanismNotes: "4th-generation cephalosporins are hydrolyzed by acquired beta-lactamases." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozane/tazobactam", susceptibility: "R", mechanismNotes: "Inactive against Acinetobacter." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R", mechanismNotes: "Most hospital strains today are already carbapenem-resistant (CRAB)." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilastatin", susceptibility: "R", mechanismNotes: "Resistant due to OXA carbapenemases." },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R" },
       { antibioticId: "metronidazole", antibioticName: "Metronidazole", susceptibility: "R" },
-      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" }
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazole (TMP/SMX)", susceptibility: "R", mechanismNotes: "MDR hospital strains are typically resistant to TMP/SMX via acquired plasmid-borne dfr and sul genes." }
     ]
   },
   {
@@ -787,7 +822,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsic resistance." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/clavulanic acid", susceptibility: "R", mechanismNotes: "Inactive due to AmpC production and intrinsic insusceptibility." },
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsic resistance to 1st generation cephalosporins." },
-      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "I", mechanismNotes: "Frequently resistant or intermediate due to AmpC expression." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxime", susceptibility: "I", mechanismNotes: "Frequently resistant or susceptible at maximum dose due to AmpC expression." },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxone", susceptibility: "S", mechanismNotes: "Susceptible unless AmpC derepressed or ESBL producing." },
       { antibioticId: "cefepime", antibioticName: "Cefepime", susceptibility: "S", mechanismNotes: "4th generation cephalosporin, stable against AmpC beta-lactamases." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Carbapenems are highly effective even against AmpC/ESBL producers." },

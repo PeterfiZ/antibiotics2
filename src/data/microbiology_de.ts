@@ -156,7 +156,7 @@ export const microbesData: Microbe[] = [
     resistances: [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Viele Stämme sind bereits durch plasmidvermittelte Betalaktamase resistent." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "S" },
-      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "Laut EUCAST können E. coli und Klebsiella bei HWI für Cefazolin als I (intermediär) angegeben werden, wenn Cefadroxil oder Cefalexin empfindlich sind." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "Laut EUCAST können E. coli und Klebsiella bei HWI für Cefazolin als I (sensibel bei maximaler Dosis) angegeben werden, wenn Cefadroxil oder Cefalexin empfindlich sind." },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
@@ -360,6 +360,36 @@ export const microbesData: Microbe[] = [
     ]
   },
   {
+    id: "a_baumannii_wild",
+    name: "Acinetobacter baumannii (Nicht-MDR / Wildtyp)",
+    type: "gram-negative",
+    clinicalImportance: "Ein opportunistisches gramnegatives Stäbchen, das nosokomiale Infektionen (Krankenhauspneumonie, Wundinfektionen, katheterassoziierte Sepsis) verursacht. Wildtyp-Stämme (nicht multiresistent) sind noch empfindlich gegenüber Carbapenemen, Chinolonen, Aminoglykosiden und TMP/SMX.",
+    resistanceMechanisms: "Zeigt intrinsische Resistenz gegen Ampicillin, Standard-Cephalosporine der 1. bis 3. Generation (Cefazolin, Cefuroxim, Ceftriaxon) und Ertapenem. Besitzt keine erworbenen Carbapenemasen (wie OXA-23), wodurch Meropenem, Cefepim, Aminoglykoside, Ciprofloxacin und TMP/SMX wirksam bleiben.",
+    firstLineDrugs: ["meropenem", "cotrimoxazole", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "R", mechanismNotes: "Clavulansäure schützt nicht; bei Ampicillin/Sulbactam besitzt die Sulbactam-Komponente eine direkte antibakterielle Eigenwirkung." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz gegen Cephalosporine der 1. Generation." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz gegen Cephalosporine der 2. Generation." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R", mechanismNotes: "Chromosomale Betalaktamasen bedingen eine intrinsische Resistenz gegen Cephalosporine der 3. Generation." },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "S", mechanismNotes: "Nicht-MDR-Stämme können empfindlich sein, jedoch besteht bei Monotherapie die Gefahr einer schnellen Resistenzselektion." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "Cephalosporin der 4. Generation mit guter Aktivität gegen Wildtyp-Stämme." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozan/Tazobactam", susceptibility: "R", mechanismNotes: "Ceftolozan/Tazobactam ist antipseudomonal ausgerichtet und gegen Acinetobacter nicht zuverlässig." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Wildtyp-Stämme (Nicht-MDR) sind sensibel gegenüber Carbapenemen." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/Cilastatin", susceptibility: "S", mechanismNotes: "Hervorragende Carbapenem-Empfindlichkeit bei Wildtyp-Acinetobacter." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Nicht-MDR-Stämme sind empfindlich gegenüber Aminoglykosiden." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "Aufgrund seiner Molekülgröße kann Vancomycin die äußere Membran gramnegativer Bakterien nicht durchdringen." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Unwirksam gegen gramnegative Stäbchen." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R", mechanismNotes: "Obligat aerobe Bakterien; Metronidazol ist völlig unwirksam." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "Nicht-MDR-Stämme sind empfindlich gegenüber Fluorchinolonen." },
+      { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Gute Fluorchinolon-Aktivität gegen Wildtyp-Stämme." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "S", mechanismNotes: "Tetracycline zeigen eine gute In-vitro-Aktivität gegen Wildtyp-Acinetobacter." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol (TMP/SMX)", susceptibility: "S", mechanismNotes: "TMP/SMX ist eine erstklassige primäre oder alternative Therapieoption bei sensiblen Acinetobacter-Infektionen." },
+      { antibioticId: "linezolid", antibioticName: "Linezolid", susceptibility: "R", mechanismNotes: "Ausschließlich gegen grampositive Erreger wirksam." }
+    ]
+  },
+  {
     id: "a_baumannii_mdr",
     name: "Acinetobacter baumannii (MDR - Multiresistent)",
     type: "gram-negative",
@@ -373,12 +403,17 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "MDR-Stämme sind resistent gegen antipseudomonale Cephalosporine der 3. Generation." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "R", mechanismNotes: "Cephalosporine der 4. Generation werden durch erworbene Betalaktamasen hydrolysiert." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozan/Tazobactam", susceptibility: "R", mechanismNotes: "Unwirksam gegen Acinetobacter." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R", mechanismNotes: "Die Mehrzahl der Krankenhausstämme ist heute bereits carbapenemresistent (CRAB)." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/Cilastatin", susceptibility: "R", mechanismNotes: "Resistent durch OXA-Carbapenemasen." },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R" },
       { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R" },
-      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" }
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol (TMP/SMX)", susceptibility: "R", mechanismNotes: "Multiresistente Krankenhausstämme sind durch plasmidvermittelte dfr- und sul-Gene typischerweise auch gegen TMP/SMX resistent." }
     ]
   },
   {
@@ -787,7 +822,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/Clavulansäure", susceptibility: "R", mechanismNotes: "Unwirksam aufgrund von AmpC-Produktion und intrinsischer Unempfindlichkeit." },
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Intrinsische Resistenz gegen Cephalosporine der 1. Generation." },
-      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Häufig resistent oder intermediär durch AmpC-Expression." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Häufig resistent oder sensibel bei maximaler Dosis durch AmpC-Expression." },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Empfindlich, außer bei AmpC-dereprimierten oder ESBL-bildenden Stämmen." },
       { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "4. Generation, stabil gegenüber AmpC-Beta-Laktamasen." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "Carbapeneme sind auch gegen AmpC- und ESBL-Bildner zuverlässig wirksam." },

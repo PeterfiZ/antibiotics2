@@ -766,6 +766,11 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "The table displays the expected resistance phenotypes of wild-type species (without acquired resistance mechanisms) based on EUCAST guidelines.",
     de: "Die Tabelle zeigt die erwarteten Resistenzphänotypen von Wildtyp-Arten (ohne erworbene Resistenzmechanismen) basierend auf den EUCAST-Richtlinien."
   },
+  "EUCAST_NOTE": {
+    hu: "Az érzékenység az EUCAST alapján lett meghatározva.",
+    en: "Susceptibility was determined based on EUCAST.",
+    de: "Die Empfindlichkeit wurde basierend auf EUCAST bestimmt."
+  },
   "MATRIX_VIEW": {
     hu: "Érzékenységi Mátrix",
     en: "Susceptibility Matrix",
@@ -782,9 +787,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "S: Sensibel - Erstlinien-Therapie"
   },
   "LEGEND_I": {
-    hu: "I: Mérsékelten érzékeny (Intermediate) - Dózisnöveléssel hatásos",
-    en: "I: Intermediate - Effective with increased dosage",
-    de: "I: Intermediär - Wirksam bei erhöhter Dosierung"
+    hu: "M: Maximális dózis mellett érzékeny - Dózisnöveléssel hatásos",
+    en: "I: Susceptible at maximum dose - Effective with increased exposure",
+    de: "I: Sensibel bei maximaler Dosis - Wirksam bei erhöhter Dosierung"
   },
   "LEGEND_R": {
     hu: "R: Rezisztens (Resistant) - Terápiásan hatástalan",
@@ -1436,9 +1441,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Sensibel (S)"
   },
   "INTERMEDIATE_I": {
-    hu: "Mérsékelt (I)",
-    en: "Intermediate (I)",
-    de: "Intermediär (I)"
+    hu: "Maximális dózis mellett érzékeny (M)",
+    en: "Susceptible at maximum dose (I)",
+    de: "Sensibel bei maximaler Dosis (I)"
   },
   "RESISTANT_R": {
     hu: "Rezisztens (R)",

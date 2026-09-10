@@ -156,7 +156,7 @@ export const microbesData: Microbe[] = [
     resistances: [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "I", mechanismNotes: "Sok törzs már plazmid béta-laktamázzal rezisztens." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "S" },
-      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "EUCAST szerint E. colit és Klebsiellát ki lehet adni I-nek (mérsékelt) cefazolinra UTI esetén, ha a cefadroxil vagy cefalexin érzékenyek." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "I", mechanismNotes: "EUCAST szerint E. colit és Klebsiellát ki lehet adni M-nek (maximális dózis mellett érzékeny) cefazolinra UTI esetén, ha a cefadroxil vagy cefalexin érzékenyek." },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
@@ -307,7 +307,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "S" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S" },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S" },
-      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilasztatin", susceptibility: "I", mechanismNotes: "Az EUCAST irányelvek alapján a Proteae tribus tagjai (Morganella, Proteus, Providencia) csökkent érzékenységet mutatnak imipenemre (alapértelmezetten I kategória: mérsékelt érzékenység / fokozott expozíció szükséges)." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilasztatin", susceptibility: "I", mechanismNotes: "Az EUCAST irányelvek alapján a Proteae tribus tagjai (Morganella, Proteus, Providencia) csökkent érzékenységet mutatnak imipenemre (alapértelmezetten I/M kategória: maximális dózis mellett érzékeny / fokozott expozíció szükséges)." },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R" },
@@ -360,6 +360,36 @@ export const microbesData: Microbe[] = [
     ]
   },
   {
+    id: "a_baumannii_wild",
+    name: "Acinetobacter baumannii (nem-MDR / vad típus)",
+    type: "gram-negative",
+    clinicalImportance: "Opportunista Gram-negatív pálca, amely nozokomiális fertőzéseket (kórházi pneumonia, sebfertőzés, katéter-asszociált szepszis) okozhat. A vad típusú (nem multirezisztens) törzsek még érzékenyek a carbapenemekre, kinolonokra, aminoglikozidokra és TMP/SMX-re.",
+    resistanceMechanisms: "Természetes (intrinsic) rezisztenciát mutat az ampicillinre, 1-3. generációs standard cephalosporinokra (Cefazolin, Cefuroxim, Ceftriaxon) és ertapenemre. Nem rendelkezik szerzett karbapenemázzal (pl. OXA-23), ezért meropenemmel, cefepimmel, aminoglikozidokkal, ciprofloxacinnal és TMP/SMX-szel hatékonyan kezelhető.",
+    firstLineDrugs: ["meropenem", "cotrimoxazole", "ciprofloxacin"],
+    resistances: [
+      { antibioticId: "penicillin_g", antibioticName: "Benzylpenicillin", susceptibility: "R", mechanismNotes: "Természetes rezisztencia." },
+      { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Természetes rezisztencia." },
+      { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "R", mechanismNotes: "A klavulánsav nem védi; ampicillin/sulbactam esetén a sulbactam komponens fejt ki önálló antibakteriális hatást." },
+      { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Természetes rezisztencia az 1. generációs cephalosporinokra." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R", mechanismNotes: "Természetes rezisztencia a 2. generációs cephalosporinokra." },
+      { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R", mechanismNotes: "Kromoszómális béta-laktamázok miatt természetes rezisztencia a 3. generációs szűk spektrumú szerekre." },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "S", mechanismNotes: "Nem-MDR törzsek érzékenyek lehetnek, de monoterápiában gyors rezisztencia-szelekció alakulhat ki." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "4. generációs cephalosporin, vad típusú törzsek ellen jó hatású." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozán/tazobaktám", susceptibility: "R", mechanismNotes: "A ceftolozán/tazobaktám kifejezetten Pseudomonasra fókuszál, Acinetobacter ellen nem megbízható." },
+      { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "A vad típusú, nem-MDR törzsek érzékenyek a carbapenemekre." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilasztatin", susceptibility: "S", mechanismNotes: "Kiváló carbapenem érzékenység vad típusú Acinetobacterben." },
+      { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "S", mechanismNotes: "Nem-MDR törzsek érzékenyek az aminoglikozidokra." },
+      { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R", mechanismNotes: "A vancomycin nagy molekulamérete miatt képtelen áthatolni a külső membránon." },
+      { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R", mechanismNotes: "Gram-negatív pálcák ellen hatástalan." },
+      { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R", mechanismNotes: "Obligát aerob baktérium, a metronidazol hatástalan." },
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "S", mechanismNotes: "A nem-MDR törzsek érzékenyek a fluorokinolonokra." },
+      { antibioticId: "levofloxacin", antibioticName: "Levofloxacin", susceptibility: "S", mechanismNotes: "Jó aktivitás vad típusú törzsek ellen." },
+      { antibioticId: "doxycycline", antibioticName: "Doxycyclin", susceptibility: "S", mechanismNotes: "A tetraciklinek in vitro hatékonyak vad típusú Acinetobacter ellen." },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol (TMP/SMX)", susceptibility: "S", mechanismNotes: "A TMP/SMX kiemelt elsővonalbeli vagy alternatív terápiás lehetőség érzékeny Acinetobacter fertőzésekben." },
+      { antibioticId: "linezolid", antibioticName: "Linezolid", susceptibility: "R", mechanismNotes: "Kizárólag Gram-pozitív hatásspektrumú szer." }
+    ]
+  },
+  {
     id: "a_baumannii_mdr",
     name: "Acinetobacter baumannii (MDR - Multirezisztens)",
     type: "gram-negative",
@@ -373,12 +403,17 @@ export const microbesData: Microbe[] = [
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R" },
       { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "R" },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "R" },
+      { antibioticId: "ceftazidime", antibioticName: "Ceftazidim", susceptibility: "R", mechanismNotes: "Az MDR törzsek a 3. generációs antipseudomonalis cephalosporinokra is ellenállnak." },
+      { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "R", mechanismNotes: "A 4. generációs cephalosporinokat lebontják a szerzett béta-laktamázok." },
+      { antibioticId: "ceftolozane_tazobactam", antibioticName: "Ceftolozán/tazobaktám", susceptibility: "R", mechanismNotes: "Acinetobacter ellen hatástalan." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "R", mechanismNotes: "A kórházi törzsek többsége ma már carbapenem-rezisztens (CRAB)." },
+      { antibioticId: "imipenem_cilastatin", antibioticName: "Imipenem/cilasztatin", susceptibility: "R", mechanismNotes: "OXA carbapenemázok miatt rezisztens." },
       { antibioticId: "gentamicin", antibioticName: "Gentamicin", susceptibility: "R" },
       { antibioticId: "vancomycin", antibioticName: "Vancomycin", susceptibility: "R" },
       { antibioticId: "clindamycin", antibioticName: "Clindamycin", susceptibility: "R" },
       { antibioticId: "metronidazole", antibioticName: "Metronidazol", susceptibility: "R" },
-      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" }
+      { antibioticId: "ciprofloxacin", antibioticName: "Ciprofloxacin", susceptibility: "R" },
+      { antibioticId: "cotrimoxazole", antibioticName: "Co-trimoxazol (TMP/SMX)", susceptibility: "R", mechanismNotes: "A multirezisztens kórházi törzsek plazmid-közvetített dfr és sul gének révén a TMP/SMX-re is ellenállnak." }
     ]
   },
   {
@@ -787,7 +822,7 @@ export const microbesData: Microbe[] = [
       { antibioticId: "amoxicillin", antibioticName: "Amoxicillin", susceptibility: "R", mechanismNotes: "Belső (intrinsic) rezisztencia." },
       { antibioticId: "amoxicillin_clavulanate", antibioticName: "Amoxicillin/klavulánsav", susceptibility: "R", mechanismNotes: "AmpC béta-laktamáz és belső insusceptibilitás miatt hatástalan." },
       { antibioticId: "cefazolin", antibioticName: "Cefazolin", susceptibility: "R", mechanismNotes: "Belső rezisztencia az 1. generációs cephalosporinokra." },
-      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Gyakran rezisztens vagy mérsékelten érzékeny AmpC kifejeződés miatt." },
+      { antibioticId: "cefuroxime", antibioticName: "Cefuroxim", susceptibility: "I", mechanismNotes: "Gyakran rezisztens vagy maximális dózis mellett érzékeny AmpC kifejeződés miatt." },
       { antibioticId: "ceftriaxone", antibioticName: "Ceftriaxon", susceptibility: "S", mechanismNotes: "Érzékeny lehet, kivéve ha AmpC-derepresszált vagy ESBL-termelő törzsről van szó." },
       { antibioticId: "cefepime", antibioticName: "Cefepim", susceptibility: "S", mechanismNotes: "4. generációs cephalosporin, stabil az AmpC béta-laktamázokkal szemben." },
       { antibioticId: "meropenem", antibioticName: "Meropenem", susceptibility: "S", mechanismNotes: "A carbapenemek megbízhatóan hatékonyak AmpC és ESBL törzsek ellen is." },

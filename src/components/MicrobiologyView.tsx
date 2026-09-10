@@ -76,6 +76,7 @@ export default function MicrobiologyView() {
       { id: 'moxifloxacin', shortName: 'MOX' },
       { id: 'azithromycin', shortName: 'AZM' },
       { id: 'doxycycline', shortName: 'DOX' },
+      { id: 'cotrimoxazole', shortName: 'TMP/SMX' },
       { id: 'linezolid', shortName: 'LNZ' }
     ];
   }, []);
@@ -243,10 +244,10 @@ export default function MicrobiologyView() {
         if (microbe.id === 'e_coli_wild') {
           susceptibility = 'I';
           mechanismNotes = language === 'hu'
-            ? 'A vad típusú törzsek mérsékelten érzékenyek lehetnek, de a szerzett rezisztencia aránya magas.'
+            ? 'A vad típusú törzsek maximális dózis mellett érzékenyek lehetnek, de a szerzett rezisztencia aránya magas.'
             : language === 'de'
-            ? 'Wildtyp-Stämme können mäßig empfindlich sein, aber die Rate der erworbenen Resistenz ist hoch.'
-            : 'Wild-type strains may be moderately susceptible, but acquired resistance rates are high.';
+            ? 'Wildtyp-Stämme können bei maximaler Dosis sensibel sein, aber die Rate der erworbenen Resistenz ist hoch.'
+            : 'Wild-type strains may be susceptible at maximum dose, but acquired resistance rates are high.';
         } else if (['p_mirabilis', 'm_morganii'].includes(microbe.id)) {
           susceptibility = 'R';
           mechanismNotes = language === 'hu'
@@ -265,10 +266,10 @@ export default function MicrobiologyView() {
       } else if (microbe.type === 'anaerobe') {
         susceptibility = 'I';
         mechanismNotes = language === 'hu'
-          ? 'Mérsékelt anaerob aktivitás, súlyos fertőzésekben nem megbízható önmagában.'
+          ? 'Maximális dózis mellett érzékeny anaerob aktivitás, súlyos fertőzésekben nem megbízható önmagában.'
           : language === 'de'
-          ? 'Mäßige anaerobe Aktivität, bei schweren Infektionen allein nicht zuverlässig.'
-          : 'Moderate anaerobic activity, unreliable as monotherapy in severe infections.';
+          ? 'Sensibel bei maximaler Dosis; bei schweren Infektionen allein nicht zuverlässig.'
+          : 'Susceptible at maximum dose; unreliable as monotherapy in severe infections.';
       }
     }
     else if (abId === 'levofloxacin') {
@@ -305,7 +306,7 @@ export default function MicrobiologyView() {
             : language === 'de'
             ? 'Cephalosporin der 3. Generation mit ausgeprägter antipseudomonaler Wirkung.'
             : 'Third-generation cephalosporin with pronounced antipseudomonal activity.';
-        } else if (['e_coli_wild', 'k_pneumoniae_wild', 'p_mirabilis'].includes(microbe.id)) {
+        } else if (['e_coli_wild', 'k_pneumoniae_wild', 'p_mirabilis', 'a_baumannii_wild'].includes(microbe.id)) {
           susceptibility = 'S';
           mechanismNotes = language === 'hu'
             ? 'Kiváló Gram-negatív aktivitás az érzékeny, vad típusú törzsek ellen.'
@@ -354,7 +355,7 @@ export default function MicrobiologyView() {
     }
     else if (abId === 'cefepime') {
       if (microbe.type === 'gram-negative') {
-        if (['p_aeruginosa', 'e_coli_wild', 'k_pneumoniae_wild', 'p_mirabilis'].includes(microbe.id)) {
+        if (['p_aeruginosa', 'e_coli_wild', 'k_pneumoniae_wild', 'p_mirabilis', 'a_baumannii_wild'].includes(microbe.id)) {
           susceptibility = 'S';
           mechanismNotes = language === 'hu'
             ? 'Negyedik generációs zwitterion szerkezetű cephalosporin, kiváló Pseudomonas és Gram-negatív aktivitással.'
@@ -408,6 +409,79 @@ export default function MicrobiologyView() {
           : 'Anaerobes and atypicals are resistant.';
       }
     }
+    else if (abId === 'cotrimoxazole') {
+      if (microbe.id === 'p_aeruginosa') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'A Pseudomonas aeruginosa természetes (intrinsic) rezisztenciát mutat a TMP/SMX-re aktív efflux pumpák és membrán impermeabilitás révén.'
+          : language === 'de'
+          ? 'Pseudomonas aeruginosa ist von Natur aus resistent gegen TMP/SMX durch Effluxpumpen und Membranimpermeabilität.'
+          : 'Pseudomonas aeruginosa is intrinsically resistant to TMP/SMX via active efflux pumps and outer membrane impermeability.';
+      } else if (microbe.type === 'anaerobe') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Az anaerob kórokozók természetes módon rezisztensek a TMP/SMX-re.'
+          : language === 'de'
+          ? 'Anaerobe Erreger sind von Natur aus resistent gegen TMP/SMX.'
+          : 'Anaerobic bacteria are intrinsically resistant to TMP/SMX.';
+      } else if (microbe.type === 'atypical') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Az atípusos intracelluláris kórokozók ellen a TMP/SMX nem hatékony.'
+          : language === 'de'
+          ? 'Gegen atypische intrazelluläre Erreger ist TMP/SMX unwirksam.'
+          : 'TMP/SMX is ineffective against atypical intracellular bacteria.';
+      } else if (microbe.id.startsWith('e_fae')) {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Az Enterococcusok in vivo rezisztensek: in vitro érzékenynek tűnhetnek, de a szervezetben a szöveti timidint felvéve megkerülik a folsav-gátlást.'
+          : language === 'de'
+          ? 'Enterokokken sind in vivo resistent: Sie können in vitro sensibel erscheinen, umgehen die Hemmung im Gewebe jedoch durch Thymidinaufnahme.'
+          : 'Enterococci are intrinsically resistant in vivo: they can take up exogenous thymidine from host tissues, bypassing folate inhibition.';
+      } else if (microbe.id === 's_pyogenes') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Streptococcus pyogenes fertőzésekben a TMP/SMX klinikai kudarccal jár, EUCAST szerint nem alkalmazható.'
+          : language === 'de'
+          ? 'Bei Streptococcus pyogenes führt TMP/SMX zum Therapieversagen und wird laut EUCAST nicht empfohlen.'
+          : 'TMP/SMX leads to clinical failure in Streptococcus pyogenes infections and is not recommended by EUCAST.';
+      } else if (microbe.id === 'a_baumannii_mdr') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'A multirezisztens Acinetobacter törzsek szerzett dfr és sul gének miatt TMP/SMX-re is ellenállnak.'
+          : language === 'de'
+          ? 'Multiresistente Acinetobacter-Stämme sind durch erworbene dfr- und sul-Gene auch gegen TMP/SMX resistent.'
+          : 'MDR Acinetobacter strains are resistant to TMP/SMX due to acquired dfr and sul resistance genes.';
+      } else if (microbe.id === 'a_baumannii_wild') {
+        susceptibility = 'S';
+        mechanismNotes = language === 'hu'
+          ? 'A nem-MDR vad típusú Acinetobacter baumannii érzékeny a TMP/SMX-re; kiemelt orális és parenterális alternatíva.'
+          : language === 'de'
+          ? 'Wildtyp-Stämme (Nicht-MDR) von Acinetobacter baumannii sind sensibel gegenüber TMP/SMX; wichtige orale und parenterale Alternative.'
+          : 'Non-MDR wild-type Acinetobacter baumannii strains are susceptible to TMP/SMX; an important oral and IV alternative.';
+      } else if (['k_pneumoniae_kpc', 'e_coli_esbl'].includes(microbe.id)) {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Plazmid-közvetített multirezisztencia miatt ezek a törzsek gyakran a TMP/SMX-re is rezisztensek.'
+          : language === 'de'
+          ? 'Aufgrund plasmidvermittelter Multiresistenz sind diese Stämme häufig auch gegen TMP/SMX resistent.'
+          : 'Due to plasmid-mediated multidrug resistance, these strains are frequently co-resistant to TMP/SMX.';
+      } else if (microbe.id === 's_pneumoniae_r') {
+        susceptibility = 'R';
+        mechanismNotes = language === 'hu'
+          ? 'Penicillin-rezisztens törzseknél gyakori a TMP/SMX ko-rezisztencia.'
+          : language === 'de'
+          ? 'Bei Penicillin-resistenten Stämmen ist eine TMP/SMX-Co-Resistenz häufig.'
+          : 'Co-resistance to TMP/SMX is frequent among penicillin-resistant pneumococci.';
+      } else {
+        susceptibility = 'S';
+        mechanismNotes = language === 'hu'
+          ? 'Kiváló antibakteriális hatás érzékeny Gram-negatív (Enterobacterales) és Gram-pozitív (pl. MSSA, CA-MRSA) kórokozók ellen.'
+          : language === 'de'
+          ? 'Hervorragende antibakterielle Wirkung gegen sensible gramnegative (Enterobacterales) und grampositive (z. B. MSSA, CA-MRSA) Erreger.'
+          : 'Excellent antibacterial activity against susceptible Gram-negative (Enterobacterales) and Gram-positive (e.g., MSSA, CA-MRSA) pathogens.';
+      }
+    }
     else if (abId === 'ceftolozane_tazobactam') {
       if (microbe.type === 'gram-negative') {
         if (['p_aeruginosa', 'e_coli_wild', 'k_pneumoniae_wild', 'p_mirabilis', 'e_cloacae', 's_marcescens', 'e_coli_esbl'].includes(microbe.id)) {
@@ -444,10 +518,10 @@ export default function MicrobiologyView() {
       } else if (microbe.type === 'anaerobe') {
         susceptibility = 'I';
         mechanismNotes = language === 'hu'
-          ? 'Mérsékelt anaerob hatás a tazobaktam komponens révén, de súlyos kevert hasi fertőzésekben metronidazol hozzáadása javasolt.'
+          ? 'Maximális dózis mellett érzékeny a tazobaktam komponens révén, de súlyos kevert hasi fertőzésekben metronidazol hozzáadása javasolt.'
           : language === 'de'
-          ? 'Mäßige anaerobe Wirkung durch die Tazobactam-Komponente; bei schweren gemischten abdominellen Infektionen wird die Zugabe von Metronidazol empfohlen.'
-          : 'Moderate anaerobic coverage via the tazobactam component; adding metronidazole is recommended in severe mixed abdominal infections.';
+          ? 'Sensibel bei maximaler Dosis durch die Tazobactam-Komponente; bei schweren gemischten abdominellen Infektionen wird die Zugabe von Metronidazol empfohlen.'
+          : 'Susceptible at maximum dose via the tazobactam component; adding metronidazole is recommended in severe mixed abdominal infections.';
       } else {
         susceptibility = 'R';
         mechanismNotes = language === 'hu'
@@ -523,7 +597,9 @@ export default function MicrobiologyView() {
                 <span>{t('LEGEND_S')}</span>
               </div>
               <div className="flex items-center gap-1.5 font-semibold text-slate-600">
-                <div className="w-4 h-4 rounded bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 text-[10px] font-bold">I</div>
+                <div className="w-4 h-4 rounded bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 text-[10px] font-bold">
+                  {language === 'hu' ? 'M' : 'I'}
+                </div>
                 <span>{t('LEGEND_I')}</span>
               </div>
               <div className="flex items-center gap-1.5 font-semibold text-slate-600">
@@ -536,24 +612,30 @@ export default function MicrobiologyView() {
             </div>
           </div>
 
-          <div className="bg-blue-50/80 border border-blue-200/80 text-blue-900 px-4 py-3 rounded-xl text-xs flex items-start gap-2.5 shadow-sm">
-            <Info className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
-            <div>
-              <span className="font-semibold">{language === 'hu' ? 'Fontos megjegyzés a mátrixhoz:' : language === 'de' ? 'Wichtiger Hinweis zur Matrix:' : 'Important Matrix Note:'}</span>{' '}
-              {t('WILD_TYPE_NOTE')}
+          <div className="bg-blue-50/80 border border-blue-200/80 text-blue-900 px-4 py-3 rounded-xl text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+            <div className="flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+              <div>
+                <span className="font-semibold">{language === 'hu' ? 'Megjegyzés:' : language === 'de' ? 'Hinweis:' : 'Note:'}</span>{' '}
+                <strong className="text-blue-950 font-bold">{t('EUCAST_NOTE')}</strong>{' '}
+                {t('WILD_TYPE_NOTE')}
+              </div>
             </div>
+            <span className="shrink-0 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-100/90 text-blue-800 border border-blue-300">
+              EUCAST
+            </span>
           </div>
 
           {/* Scrollable Grid Table */}
           <div className="overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-sm">
-            <table className="w-full border-collapse text-left text-xs min-w-[800px]">
+            <table className="w-full border-collapse text-left text-xs min-w-[900px]">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="p-3 font-semibold text-slate-700 sticky left-0 bg-slate-50 border-r border-slate-200 w-[200px] z-10">
                     {t('PATHOGEN_BACTERIUM')}
                   </th>
                   {matrixAntibiotics.map(ab => (
-                    <th key={ab.id} className="p-3 font-bold text-slate-600 text-center uppercase tracking-wider" title={tg(antibioticsData.find(a => a.id === ab.id)?.name)}>
+                    <th key={ab.id} className="p-3 font-bold text-slate-600 text-center uppercase tracking-wider whitespace-nowrap min-w-[52px]" title={tg(antibioticsData.find(a => a.id === ab.id)?.name)}>
                       {ab.shortName}
                     </th>
                   ))}
@@ -589,7 +671,7 @@ export default function MicrobiologyView() {
                             isSelected ? 'ring-4 ring-blue-500/30 scale-95 z-20 shadow-inner' : ''
                           }`}
                         >
-                          {cell.susceptibility}
+                          {cell.susceptibility === 'I' && language === 'hu' ? 'M' : cell.susceptibility}
                         </td>
                       );
                     })}
@@ -599,14 +681,22 @@ export default function MicrobiologyView() {
             </table>
           </div>
 
+          {/* EUCAST Note below table */}
+          <div className="text-xs text-slate-600 font-medium italic flex items-center gap-1.5 px-1">
+            <Info className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+            <span>{t('EUCAST_NOTE')}</span>
+          </div>
+
           {/* Abbreviation legend */}
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
             <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">{t('MATRIX_ABBREVIATIONS')}:</h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-x-4 gap-y-1.5 text-xs text-slate-600">
               {matrixAntibiotics.map(ab => (
-                <div key={ab.id} className="flex gap-1.5">
-                  <span className="font-bold text-blue-700 w-8 shrink-0">{ab.shortName}:</span>
-                  <span className="truncate">{tg(antibioticsData.find(a => a.id === ab.id)?.name.split(' (')[0])}</span>
+                <div key={ab.id} className="flex gap-1.5 items-baseline">
+                  <span className="font-bold text-blue-700 min-w-[4.4rem] shrink-0">{ab.shortName}:</span>
+                  <span className="truncate" title={tg(antibioticsData.find(a => a.id === ab.id)?.name)}>
+                    {ab.id === 'cotrimoxazole' ? 'Co-trimoxazol (TMP/SMX)' : tg(antibioticsData.find(a => a.id === ab.id)?.name.split(' (')[0])}
+                  </span>
                 </div>
               ))}
             </div>

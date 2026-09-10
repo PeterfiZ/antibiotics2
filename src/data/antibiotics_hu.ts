@@ -2138,7 +2138,7 @@ export const antibioticsData_HU: any[] = [
       "Kórházi és lélegeztetőgéppel összefüggő tüdőgyulladás (HAP/VAP)",
       "Szövődményes húgyúti fertőzések és uroszepszis multirezisztens Gram-negatív kórokozókkal (pl. NDM-termelő Klebsiella vagy Pseudomonas)"
     ],
-    notes: "A jelenlegi klinikai orvoslás egyik legnagyobb áttörése a multirezisztens Gram-negatív fertőzések kezelésében, az egyetlen béta-laktám, amely megbízhatóan hat a metallo-béta-laktamázokat (pl. NDM-1) hordozó 'szuperbaktériumok' ellen is."
+    notes: "A jelenlegi klinikai orvoslás egyik legnagyobb áttörése a multirezisztens Gram-negatív fertőzések kezelésében, olyan béta-laktám, amely megbízhatóan hat a metallo-béta-laktamázokat (pl. NDM-1) hordozó 'szuperbaktériumok' ellen is."
   },
   {
     id: "plazomicin",

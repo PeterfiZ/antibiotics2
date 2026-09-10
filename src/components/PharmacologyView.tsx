@@ -5,9 +5,11 @@
 
 import React, { useState, useMemo } from 'react';
 import { Antibiotic } from '../types';
-import { Search, Info, CheckCircle2, AlertTriangle, XCircle, Layers, ArrowLeftRight, Activity } from 'lucide-react';
+import { Search, Info, CheckCircle2, AlertTriangle, XCircle, Layers, ArrowLeftRight, Activity, Baby, Milk } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage, TransText } from '../lib/LanguageContext';
+import { PregnancyLactationBadges, PregnancyLactationDetailCard } from './PregnancyLactationBadge';
+import { getPregnancyLactationInfo } from '../data/pregnancyLactationData';
 
 const removeAccents = (str: string) => {
   if (!str) return '';
@@ -250,6 +252,7 @@ export default function PharmacologyView() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGroup, setSelectedGroup] = useState<string>('all');
   const [selectedAntibiotic, setSelectedAntibiotic] = useState<Antibiotic | null>(null);
+  const [safetyFilter, setSafetyFilter] = useState<'all' | 'pregnancy' | 'lactation'>('all');
   
   // Comparison state
   const [isCompareMode, setIsCompareMode] = useState(false);
@@ -289,9 +292,17 @@ export default function PharmacologyView() {
         return nameMatch || abbrMatch || brandMatch || moaMatch;
       });
       const matchesGroup = selectedGroup === 'all' || ab.group === selectedGroup;
-      return matchesSearch && matchesGroup;
+      const pregInfo = getPregnancyLactationInfo(ab.id);
+      const matchesSafety =
+        safetyFilter === 'all'
+          ? true
+          : safetyFilter === 'pregnancy'
+          ? !!pregInfo?.pregnancySafe
+          : !!pregInfo?.lactationSafe;
+
+      return matchesSearch && matchesGroup && matchesSafety;
     });
-  }, [sortedAntibiotics, searchTerm, selectedGroup]);
+  }, [sortedAntibiotics, searchTerm, selectedGroup, safetyFilter]);
 
   const antibioticA = useMemo(() => sortedAntibiotics.find(ab => ab.id === compareIdA), [sortedAntibiotics, compareIdA]);
   const antibioticB = useMemo(() => sortedAntibiotics.find(ab => ab.id === compareIdB), [sortedAntibiotics, compareIdB]);
@@ -412,20 +423,26 @@ export default function PharmacologyView() {
                   <tr className="bg-slate-50 border-b border-slate-200">
                     <th className="p-4 font-semibold text-slate-700 w-1/4">{t('PROPERTY_HEADER')}</th>
                     <th className="p-4 font-bold text-blue-700 w-3/8 border-r border-slate-200 bg-blue-50/30">
-                      <span className="inline-flex items-center gap-0.5">
-                        {isStarredAntibiotic(antibioticA.id) && (
-                          <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
-                        )}
-                        {tg(antibioticA.name)}
-                      </span>
+                      <div className="flex flex-col gap-1.5 items-start">
+                        <span className="inline-flex items-center gap-0.5">
+                          {isStarredAntibiotic(antibioticA.id) && (
+                            <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
+                          )}
+                          {tg(antibioticA.name)}
+                        </span>
+                        <PregnancyLactationBadges drugId={antibioticA.id} compact language={language} />
+                      </div>
                     </th>
                     <th className="p-4 font-bold text-blue-700 w-3/8">
-                      <span className="inline-flex items-center gap-0.5">
-                        {isStarredAntibiotic(antibioticB.id) && (
-                          <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
-                        )}
-                        {tg(antibioticB.name)}
-                      </span>
+                      <div className="flex flex-col gap-1.5 items-start">
+                        <span className="inline-flex items-center gap-0.5">
+                          {isStarredAntibiotic(antibioticB.id) && (
+                            <span className="text-red-600 font-extrabold text-[14px] mr-1">*</span>
+                          )}
+                          {tg(antibioticB.name)}
+                        </span>
+                        <PregnancyLactationBadges drugId={antibioticB.id} compact language={language} />
+                      </div>
                     </th>
                   </tr>
                 </thead>
@@ -558,6 +575,20 @@ export default function PharmacologyView() {
                       </ul>
                     </td>
                   </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-slate-500 bg-slate-50/50">
+                      <div className="flex items-center gap-1.5 font-bold text-slate-700">
+                        <Baby className="w-4 h-4 text-emerald-600" />
+                        <span>{language === 'hu' ? 'Terhesség & szoptatás (FDA / EMA)' : language === 'de' ? 'Schwangerschaft & Stillzeit (FDA / EMA)' : 'Pregnancy & Lactation (FDA / EMA)'}</span>
+                      </div>
+                    </td>
+                    <td className="p-4 border-r border-slate-200 bg-blue-50/10">
+                      <PregnancyLactationDetailCard drugId={antibioticA.id} language={language} />
+                    </td>
+                    <td className="p-4">
+                      <PregnancyLactationDetailCard drugId={antibioticB.id} language={language} />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -600,6 +631,50 @@ export default function PharmacologyView() {
                   ))}
                 </select>
               </div>
+
+              {/* Safety Quick Filter (FDA/EMA Pregnancy & Lactation) */}
+              <div className="pt-2 border-t border-slate-100">
+                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                  {language === 'hu' ? 'Alkalmazhatóság (FDA / EMA):' : language === 'de' ? 'Anwendbarkeit (FDA / EMA):' : 'Applicability (FDA / EMA):'}
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setSafetyFilter('all')}
+                    className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                      safetyFilter === 'all'
+                        ? 'bg-slate-800 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {language === 'hu' ? 'Mind' : language === 'de' ? 'Alle' : 'All'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSafetyFilter('pregnancy')}
+                    className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                      safetyFilter === 'pregnancy'
+                        ? 'bg-emerald-600 text-white shadow-xs'
+                        : 'bg-emerald-50 text-emerald-700 border border-emerald-200/80 hover:bg-emerald-100'
+                    }`}
+                  >
+                    <Baby className="w-3.5 h-3.5" />
+                    <span>{language === 'hu' ? 'Terhességben (FDA B)' : language === 'de' ? 'In Schwangerschaft' : 'Pregnancy safe'}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSafetyFilter('lactation')}
+                    className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                      safetyFilter === 'lactation'
+                        ? 'bg-sky-600 text-white shadow-xs'
+                        : 'bg-sky-50 text-sky-700 border border-sky-200/80 hover:bg-sky-100'
+                    }`}
+                  >
+                    <Milk className="w-3.5 h-3.5" />
+                    <span>{language === 'hu' ? 'Szoptatás alatt' : language === 'de' ? 'In Stillzeit' : 'Lactation safe'}</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Antibiotics List */}
@@ -618,12 +693,13 @@ export default function PharmacologyView() {
                         {isStarredAntibiotic(ab.id) && (
                           <span className="text-red-600 font-extrabold text-[15px] leading-none shrink-0" title="Expected of students">*</span>
                         )}
-                        {tg(ab.name)}
+                        <span>{tg(ab.name)}</span>
                         {ab.abbreviation && (
                           <span className="inline-block bg-blue-50 text-blue-600 font-mono text-[10px] px-1.5 py-0.5 rounded border border-blue-100 uppercase font-semibold">
                             {ab.abbreviation}
                           </span>
                         )}
+                        <PregnancyLactationBadges drugId={ab.id} compact language={language} />
                       </h4>
                       <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium shrink-0 inline-flex items-center gap-0.5">
                         {tg(ab.group)}
@@ -685,12 +761,13 @@ export default function PharmacologyView() {
                           {isStarredAntibiotic(selectedAntibiotic.id) && (
                             <span className="text-red-400 font-extrabold text-[24px] leading-none shrink-0" title="Expected of students">*</span>
                           )}
-                          {tg(selectedAntibiotic.name)}
+                          <span>{tg(selectedAntibiotic.name)}</span>
                           {selectedAntibiotic.abbreviation && (
                             <span className="bg-blue-500/10 text-blue-300 font-mono text-base px-2.5 py-0.5 rounded border border-blue-500/25 uppercase font-semibold">
                               {selectedAntibiotic.abbreviation}
                             </span>
                           )}
+                          <PregnancyLactationBadges drugId={selectedAntibiotic.id} language={language} />
                         </h3>
                         {selectedAntibiotic.brandNames && (
                           <p className="text-xs text-slate-400 italic mt-1">{t('BRAND_NAMES')}: <TransText text={selectedAntibiotic.brandNames} /></p>
@@ -701,6 +778,9 @@ export default function PharmacologyView() {
 
                   {/* Panel Body */}
                   <div className="p-6 space-y-6">
+                    {/* FDA / EMA Pregnancy & Lactation Card */}
+                    <PregnancyLactationDetailCard drugId={selectedAntibiotic.id} language={language} />
+
                     {/* Pharmacokinetics block */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
                       <div>
