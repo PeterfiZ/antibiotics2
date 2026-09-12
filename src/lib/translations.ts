@@ -652,6 +652,41 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     en: "Select an active ingredient from the left list to view detailed clinical and pharmacological profiles.",
     de: "Wählen Sie einen Wirkstoff aus der linken Liste aus, um detaillierte klinische und pharmakologische Profile anzuzeigen."
   },
+  "PHARMA_CHOOSE_PROMPT": {
+    hu: "Válasszon egy antibiotikumot a listából a részletek megtekintéséhez",
+    en: "Select an antibiotic from the list to view details",
+    de: "Wählen Sie ein Antibiotikum aus der Liste, um Details anzuzeigen"
+  },
+  "PHARMA_CHOOSE_PROMPT_DESC": {
+    hu: "Kattintson bármelyik hatóanyagra a részletes farmakokinetikai adatok, adagolás, spektrum, valamint terhességi és szoptatási információk megjelenítéséhez.",
+    en: "Click on any active agent to view detailed pharmacokinetic data, dosing, spectrum, and pregnancy and lactation guidance.",
+    de: "Klicken Sie auf einen Wirkstoff, um detaillierte pharmakokinetische Daten, Dosierung, Spektrum sowie Angaben zu Schwangerschaft und Stillzeit anzuzeigen."
+  },
+  "COMPARE_CHOOSE_PROMPT": {
+    hu: "Válasszon ki két hatóanyagot a fenti legördülő menükből a tulajdonságaik, spektrumuk és adagolásuk összehasonlításához.",
+    en: "Select two agents from the dropdowns above to compare their properties, spectrum, and dosage.",
+    de: "Wählen Sie zwei Wirkstoffe aus den Dropdowns oben aus, um deren Eigenschaften, Spektrum und Dosierung zu vergleichen."
+  },
+  "NO_ANTIBIOTICS_FOUND": {
+    hu: "Nem található a keresési és szűrési feltételeknek megfelelő antibiotikum.",
+    en: "No antibiotics match the current search and filter criteria.",
+    de: "Keine Antibiotika entsprechen den aktuellen Such- und Filterkriterien."
+  },
+  "NO_RENAL_ADJUSTMENT_EXPLAIN": {
+    hu: "Nem szükséges dózismódosítás enyhe vagy közepes vesekárosodás esetén, vagy nincs specifikus korlátozás.",
+    en: "No dose adjustment required in mild to moderate renal impairment, or no specific restrictions.",
+    de: "Keine Dosisanpassung bei leichter bis mittelschwerer Niereninsuffizienz erforderlich bzw. keine spezifischen Einschränkungen."
+  },
+  "NO_ADJUSTMENT_REQUIRED": {
+    hu: "Nem szükséges dózismódosítás",
+    en: "No dose adjustment required",
+    de: "Keine Dosisanpassung erforderlich"
+  },
+  "NO_DATA": {
+    hu: "Nincs adat",
+    en: "No data",
+    de: "Keine Daten"
+  },
 
   // Clinical View
   "CLINICAL_TITLE": {
