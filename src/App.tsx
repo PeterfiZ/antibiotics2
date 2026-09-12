@@ -16,7 +16,6 @@ import AntifungalView from './components/AntifungalView';
 import AntiviralView from './components/AntiviralView';
 import { motion, AnimatePresence } from 'motion/react';
 
-import { Antibiotic, ClinicalInfection } from './types';
 import { useLanguage } from './lib/LanguageContext';
 
 import { 
@@ -26,14 +25,11 @@ import {
   ShieldAlert,
   GraduationCap, 
   Brain, 
-  Bookmark, 
   Clock, 
   BookOpen, 
   Heart,
-  ChevronRight,
   ChevronDown,
   UserCheck,
-  Info,
   Calculator,
   TrendingDown,
   Download,
@@ -46,7 +42,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const { language, setLanguage, t, tg, antibioticsData, clinicalInfectionsData } = useLanguage();
+  const { language, setLanguage, t, tg } = useLanguage();
   const [activeTab, setActiveTab] = useState<'pharma' | 'clinical' | 'micro' | 'mdr' | 'quiz' | 'ai' | 'tdm' | 'renal' | 'antifungal' | 'antiviral'>('pharma');
   const [utcTime, setUtcTime] = useState('');
   const [isReviewersOpen, setIsReviewersOpen] = useState(false);
@@ -261,17 +257,6 @@ ${feedbackMessage}`;
     setFeedbackStatus('idle');
   };
   
-  // Bookmarks state (persisted via localStorage)
-  const [bookmarkedAntibiotics, setBookmarkedAntibiotics] = useState<string[]>(() => {
-    const saved = localStorage.getItem('ab_bookmarks');
-    return saved ? JSON.parse(saved) : ['amoxicillin_clavulanate', 'ceftriaxone'];
-  });
-
-  const [bookmarkedInfections, setBookmarkedInfections] = useState<string[]>(() => {
-    const saved = localStorage.getItem('inf_bookmarks');
-    return saved ? JSON.parse(saved) : ['cap_severe'];
-  });
-
   // Update live UTC time
   useEffect(() => {
     const updateTime = () => {
@@ -283,31 +268,6 @@ ${feedbackMessage}`;
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  // Sync bookmarks to localStorage
-  useEffect(() => {
-    localStorage.setItem('ab_bookmarks', JSON.stringify(bookmarkedAntibiotics));
-  }, [bookmarkedAntibiotics]);
-
-  useEffect(() => {
-    localStorage.setItem('inf_bookmarks', JSON.stringify(bookmarkedInfections));
-  }, [bookmarkedInfections]);
-
-  const toggleAbBookmark = (id: string) => {
-    setBookmarkedAntibiotics(prev => 
-      prev.includes(id) ? prev.filter(bId => bId !== id) : [...prev, id]
-    );
-  };
-
-  const toggleInfBookmark = (id: string) => {
-    setBookmarkedInfections(prev => 
-      prev.includes(id) ? prev.filter(bId => bId !== id) : [...prev, id]
-    );
-  };
-
-  // Quick navigation to bookmarks
-  const [quickDetailAb, setQuickDetailAb] = useState<Antibiotic | null>(null);
-  const [quickDetailInf, setQuickDetailInf] = useState<ClinicalInfection | null>(null);
 
   const tabs = [
     { id: 'pharma', labelKey: 'tab_pharma_label', icon: Layers, descKey: 'tab_pharma_desc' },
@@ -458,7 +418,7 @@ ${feedbackMessage}`;
 
       {/* Primary Dashboard Container */}
       <div className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 xl:grid-cols-12 gap-6">
-        {/* Navigation Tabs and Left Bookmarks (3 cols on XL) */}
+        {/* Navigation Tabs (3 cols on XL) */}
         <div className="xl:col-span-3 space-y-6">
           {/* Tab buttons card */}
           <nav className="bg-white rounded-2xl border border-slate-200/75 shadow-sm p-2 flex flex-row xl:flex-col gap-1 overflow-x-auto xl:overflow-visible sticky xl:top-24">
@@ -468,11 +428,7 @@ ${feedbackMessage}`;
               return (
                 <button
                   key={tab.id}
-                  onClick={() => {
-                    setActiveTab(tab.id);
-                    setQuickDetailAb(null);
-                    setQuickDetailInf(null);
-                  }}
+                  onClick={() => setActiveTab(tab.id)}
                   className={`flex flex-col xl:flex-row items-center xl:items-start gap-2 px-3 py-2.5 xl:py-3 rounded-xl text-center xl:text-left transition-all duration-200 shrink-0 select-none ${
                     isActive 
                       ? 'bg-blue-600 text-white shadow-md shadow-blue-600/10' 
@@ -502,95 +458,10 @@ ${feedbackMessage}`;
               );
             })}
           </nav>
-
-
-
-          {/* Bookmarks Quick Drawer */}
-          <div className="bg-white rounded-2xl border border-slate-200/75 p-4 shadow-sm space-y-4 hidden xl:block">
-            <div className="flex items-center gap-1.5 border-b border-slate-100 pb-2.5 text-slate-800">
-              <Bookmark className="w-4 h-4 text-blue-600" />
-              <h3 className="font-extrabold text-xs uppercase tracking-wider">{t('BOOKMARKS_TITLE')}</h3>
-            </div>
-
-            {/* Antibiotics bookmarks */}
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t('BOOKMARKS_ANTIBIOTICS')}</span>
-              {bookmarkedAntibiotics.length > 0 ? (
-                <div className="space-y-1">
-                  {bookmarkedAntibiotics.map(abId => {
-                    const ab = antibioticsData.find(a => a.id === abId);
-                    if (!ab) return null;
-                    return (
-                      <button
-                        key={abId}
-                        onClick={() => {
-                          setActiveTab('pharma');
-                          setQuickDetailAb(ab);
-                        }}
-                        className="w-full flex justify-between items-center text-xs p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 transition-colors border border-slate-200/40 font-semibold"
-                      >
-                        <span className="truncate">{tg(ab.name)}</span>
-                        <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="text-[10px] text-slate-400 italic">{t('NO_BOOKMARKS_ANTIBIOTICS')}</p>
-              )}
-            </div>
-
-            {/* Infections bookmarks */}
-            <div className="space-y-2 border-t border-slate-100 pt-3">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t('BOOKMARKS_INFECTIONS')}</span>
-              {bookmarkedInfections.length > 0 ? (
-                <div className="space-y-1">
-                  {bookmarkedInfections.map(infId => {
-                    const inf = clinicalInfectionsData.find(i => i.id === infId);
-                    if (!inf) return null;
-                    return (
-                      <button
-                        key={infId}
-                        onClick={() => {
-                          setActiveTab('clinical');
-                          setQuickDetailInf(inf);
-                        }}
-                        className="w-full flex justify-between items-center text-xs p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 transition-colors border border-slate-200/40 font-semibold"
-                      >
-                        <span className="truncate flex items-center gap-1">
-                          <span className="text-red-600 font-extrabold">*</span>
-                          {tg(inf.name)}
-                        </span>
-                        <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="text-[10px] text-slate-400 italic">{t('NO_BOOKMARKS_INFECTIONS')}</p>
-              )}
-            </div>
-          </div>
         </div>
 
         {/* Primary Content View Area (9 cols on XL) */}
         <main className="xl:col-span-9 bg-white rounded-2xl border border-slate-200/75 shadow-sm p-4 md:p-6 min-h-[500px]">
-          {/* Temporary Detail Sheet overlay for Bookmarks */}
-          {quickDetailAb && (
-            <div className="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-200 text-xs flex justify-between items-center">
-              <div className="flex gap-2 items-center">
-                <Info className="w-4 h-4 text-blue-600" />
-                <span>{t('DETAILS_OPENED_AB')}: <strong>{tg(quickDetailAb.name)}</strong></span>
-              </div>
-              <button 
-                onClick={() => setQuickDetailAb(null)} 
-                className="font-bold text-blue-700 bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded"
-              >
-                {t('CLOSE')}
-              </button>
-            </div>
-          )}
-
           {activeTab === 'pharma' && <PharmacologyView />}
           {activeTab === 'antifungal' && <AntifungalView />}
           {activeTab === 'antiviral' && <AntiviralView />}
