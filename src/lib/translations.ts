@@ -36,9 +36,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Erstellt von: Dr. Zoltán Péterfi, Universität Pécs"
   },
   "FOOTER_COPYRIGHT": {
-    hu: "Copyright. Dr Péterfi Zoltán | v5.0.0",
-    en: "Copyright. Dr. Zoltán Péterfi | v5.0.0",
-    de: "Copyright. Dr. Zoltán Péterfi | v5.0.0"
+    hu: "Copyright. Dr Péterfi Zoltán | v5.1.0",
+    en: "Copyright. Dr. Zoltán Péterfi | v5.1.0",
+    de: "Copyright. Dr. Zoltán Péterfi | v5.1.0"
   },
   "SUBTITLE": {
     hu: "Farmakológiai és mikrobiológiai perspektívák integrált oktatási platformja",
@@ -46,9 +46,9 @@ export const uiTranslations: Record<string, Record<string, string>> = {
     de: "Integrierte Bildungsplattform für pharmakologische und mikrobiologische Perspektiven"
   },
   "VERSION_GUIDELINES": {
-    hu: "v5.0.0 (2026 GUIDELINES)",
-    en: "v5.0.0 (2026 GUIDELINES)",
-    de: "v5.0.0 (2026 GUIDELINES)"
+    hu: "v5.1.0 (2026 GUIDELINES)",
+    en: "v5.1.0 (2026 GUIDELINES)",
+    de: "v5.1.0 (2026 GUIDELINES)"
   },
   "LOADING": {
     hu: "Betöltés...",
