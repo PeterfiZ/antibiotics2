@@ -2494,6 +2494,77 @@ export const antibioticsData_HU: any[] = [
       "Cisztás fibrózisban szenvedő betegek krónikus Pseudomonas tüdőfertőzése inhalációs úton"
     ],
     notes: "Természetesen rezisztensek: Hafnia alvei, Morganella morgani, Proteus spp., Providencia spp., Serratia marcescens, Yersinia pseudotuberculosis, Elizabethkingia meningoseptica."
+  },
+  {
+    id: "rifaximin",
+    name: "Rifaximin",
+    abbreviation: "RFX",
+    brandNames: "Normix",
+    group: "Rifamycinek",
+    halfLife: "Nem szívódik fel (helyi bélhatás)",
+    pae: "Nem szisztémás",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Utazók hasmenése: 3x 200 mg/nap p.o. 3 napig. Hepatikus encephalopathia recidíva gátlása: 2x 550 mg/nap p.o.",
+      pediatric: "12 év felett: megegyezik a felnőtt adaggal",
+      renalAdjustment: "Nem igényel dózismódosítást (minimális szisztémás felszívódás)"
+    },
+    mechanismOfAction: "Baktericid. Gátolja a bakteriális RNS-szintézist azáltal, hogy irreverzibilisen kötődik a DNS-függő RNS-polimeráz enzim béta-alegységéhez. Mivel p.o. alkalmazáskor szinte egyáltalán nem szívódik fel a tápcsatornából, terápiás koncentrációját kizárólag a bélben fejti ki, anélkül, hogy szisztémás mellékhatásokat vagy jelentős rezisztenciát okozna más szerveknél.",
+    sideEffects: [
+      "Haspuffadás, hasi fájdalom, székrekedés",
+      "Hányinger, hányás",
+      "Fejfájás (ritka, szisztémás felszívódási spurok miatt)"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Rendkívül széles lokális spektrum a bélben: Gram-pozitív és Gram-negatív aerob és anaerob bélbaktériumok (pl. E. coli, Salmonella, Shigella, Campylobacter, Clostridioides difficile) ellen aktív."
+    },
+    indications: [
+      "Utazók hasmenése (nem invazív, lázmentes formák)",
+      "Hepatikus encephalopathia (HE) recidíva megelőzése és kezelése (Lactuloséval kombinálva)",
+      "Szövődménymentes diverticulosis és irritábilis bél szindróma (IBS-D, hasmenéses forma) bélbaktérium-túlnövekedés esetén"
+    ],
+    notes: "Gyakorlatilag nincs szisztémás gyógyszerinterakciója a minimális felszívódás miatt. Nem alkalmas szisztémás fertőzések vagy invazív bélfertőzések (pl. Campylobacter jejuni vagy Salmonella enterica szisztémás formái) kezelésére."
+  },
+  {
+    id: "rifampicin",
+    name: "Rifampicin",
+    abbreviation: "RIF",
+    brandNames: "Rifacin, Rifampicin Sandoz",
+    group: "Rifamycinek",
+    halfLife: "1.5 - 5 óra (krónikus adagolásnál csökken az autoindukció miatt)",
+    pae: "Kifejezett (több óra, különösen Gram-pozitívak és M. tuberculosis esetén)",
+    effectType: "bactericid",
+    dosage: {
+      adult: "Tuberkulózis (kombinációban): 10 mg/ttkg/nap (általában 1x 600 mg/nap p.o. vagy i.v.). Staph. műbillentyű endocarditis vagy ortopédiai implantátum fertőzés: 2x 300-450 mg/nap p.o. vagy i.v. Meningococcus hordozás profilaxis: 2x 600 mg/nap p.o. 2 napig.",
+      pediatric: "MDR vagy TB: 10-20 mg/ttkg/nap p.o. vagy i.v. (max. 600 mg)",
+      renalAdjustment: "Nem igényel dózismódosítást veseelégtelenségben (főleg a májban metabolizálódik és epével ürül)"
+    },
+    mechanismOfAction: "Baktericid. Gátolja a bakteriális RNS-szintézist azáltal, hogy szorosan kötődik a DNS-függő RNS-polimeráz enzim béta-alegységéhez, megakadályozva a transzkripció elindítását. Kiválóan penetrál a biofilmekbe és az intracelluláris térbe (makrofágokba). Monoterápiában adva rendkívül gyorsan rezisztencia alakul ki ellene (egyetlen pontmutáció az rpoB génben), ezért szinte KIZÁRÓLAG kombinációban szabad alkalmazni!",
+    sideEffects: [
+      "A testnedvek (vizelet, könny, nyál, verejték) narancsvörösre színeződése (ártalmatlan, de a beteget figyelmeztetni kell, kontaktlencsét megfoghatja!)",
+      "Hepatotoxicitás (transzamináz-emelkedés, kolesztatikus icterus - rendszeres májfunkció-kontroll szükséges!)",
+      "Rendkívül erős CYP450 enziminduktor (fokozza a cyclosporin, tacrolimus, warfarin, oralis fogamzásgátlók, HIV gyógyszerek lebontását, hatástalanná téve azokat!)",
+      "Flu-like (influenzaszerű) szindróma, ritkán thrombocytopenia és akut veseelégtelenség szakaszos adagolás esetén"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Kiváló staphylococcus-ellenes aktivitás (beleértve az MRSA-t is biofilmekben). Aktív a Mycobacterium tuberculosis és egyéb atípusos mikobaktériumok ellen."
+    },
+    indications: [
+      "Tuberkulózis (elsődleges kombinációs szer)",
+      "Staphylococcus idegentest-fertőzések (műbillentyű endocarditis, ortopédiai implantátumok, shunt fertőzések) biofilmet penetráló hatása miatt, kombinációban (pl. Vancomycinnel vagy Oxacillinnel)",
+      "Meningococcus hordozás felszámolása (kontaktusok profilaxisa) és súlyos Legionella pneumonia kombinációs kezelése"
+    ],
+    notes: "SOHASEM ADHATÓ MONOTERÁPIÁBAN szisztémás fertőzésekre (kivéve kontakt profilaxisra), mert napok alatt kialakul a rezisztencia! A fogamzásgátló tabletták hatását felfüggesztheti az enzimindukció miatt."
   }
 ];
 

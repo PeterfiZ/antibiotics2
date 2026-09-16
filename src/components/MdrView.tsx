@@ -98,13 +98,6 @@ export default function MdrView() {
                 : 'Resistance genes (blaKPC, blaNDM, blaOXA, mecA, vanA), beta-lactamase inhibitor combinations, siderophores (Cefiderocol) and clinical treatment algorithms.'}
             </p>
           </div>
-
-          <div className="flex items-center gap-2 shrink-0 self-start md:self-center">
-            <div className="bg-amber-50 border border-amber-200/60 p-3 rounded-xl text-center shadow-xs">
-              <span className="text-[10px] text-amber-800 font-extrabold uppercase block tracking-wider">{language === 'hu' ? 'FDA Újdonság' : 'FDA Breakthrough'}</span>
-              <span className="text-xs font-black text-amber-950 block mt-0.5">XACDURO® (SUL-DUR)</span>
-            </div>
-          </div>
         </div>
       </div>
 

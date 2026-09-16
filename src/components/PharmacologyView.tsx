@@ -5,7 +5,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Antibiotic } from '../types';
-import { Search, Info, CheckCircle2, AlertTriangle, XCircle, Layers, ArrowLeftRight, Activity, Baby, Milk } from 'lucide-react';
+import { Search, Info, CheckCircle2, AlertTriangle, XCircle, Layers, ArrowLeftRight, Activity, Baby, Milk, ExternalLink, Pill } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage, TransText } from '../lib/LanguageContext';
 import { PregnancyLactationBadges, PregnancyLactationDetailCard } from './PregnancyLactationBadge';
@@ -69,7 +69,9 @@ export const isStarredAntibiotic = (id: string | undefined): boolean => {
     baseId === "metronidazole" ||
     baseId === "cotrimoxazole" ||
     baseId === "nitrofurantoin" ||
-    baseId === "colistin"
+    baseId === "colistin" ||
+    baseId === "rifaximin" ||
+    baseId === "rifampicin"
   );
 };
 
@@ -364,20 +366,46 @@ export default function PharmacologyView() {
             {t('PHARMA_DIDACTIC_NOTE')}
           </p>
         </div>
-        <button
-          onClick={() => {
-            setIsCompareMode(!isCompareMode);
-            setSelectedAntibiotic(null);
-          }}
-          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center gap-2 border ${
-            isCompareMode 
-              ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' 
-              : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
-          }`}
-        >
-          <ArrowLeftRight className="w-4 h-4" />
-          {isCompareMode ? t('BACK_TO_BROWSE') : t('COMPARE_AB')}
-        </button>
+        <div className="flex flex-col sm:flex-row md:flex-col items-stretch md:items-end gap-2 shrink-0 self-stretch md:self-auto">
+          <button
+            onClick={() => {
+              setIsCompareMode(!isCompareMode);
+              setSelectedAntibiotic(null);
+            }}
+            className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 border cursor-pointer ${
+              isCompareMode 
+                ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' 
+                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+            }`}
+          >
+            <ArrowLeftRight className="w-4 h-4" />
+            {isCompareMode ? t('BACK_TO_BROWSE') : t('COMPARE_AB')}
+          </button>
+
+          <a
+            id="drug-interactions-card"
+            href="https://www.drugs.com/drug_interactions.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-3 px-3.5 py-2 bg-gradient-to-r from-amber-50 to-orange-50/70 hover:from-amber-100/90 hover:to-orange-100/80 border border-amber-200/90 hover:border-amber-300 rounded-lg shadow-2xs hover:shadow-xs transition-all duration-150 cursor-pointer"
+            title="Drugs.com Drug Interactions Checker"
+          >
+            <div className="flex items-center gap-2">
+              <span className="p-1.5 bg-amber-100 text-amber-800 rounded-md group-hover:bg-amber-200 transition-colors">
+                <Pill className="w-3.5 h-3.5" />
+              </span>
+              <div className="text-left">
+                <span className="text-xs font-bold text-amber-950 block leading-tight">
+                  {language === 'hu' ? 'Gyógyszerinterakciók' : language === 'de' ? 'Interaktions-Prüfung' : 'Drug Interactions'}
+                </span>
+                <span className="text-[10px] text-amber-700 font-medium block leading-tight">
+                  Drugs.com Checker
+                </span>
+              </div>
+            </div>
+            <ExternalLink className="w-3.5 h-3.5 text-amber-600 group-hover:text-amber-800 transition-colors shrink-0" />
+          </a>
+        </div>
       </div>
 
       {isCompareMode ? (

@@ -2485,5 +2485,76 @@ export const antibioticsData_DE: any[] = [
       "Chronische Pseudomonas-Lungeninfektion bei Mukoviszidose-Patienten via Inhalation"
     ],
     notes: "Colistin wird als Prodrug, Colistimethat-Natrium (CMS), verabreicht. Es wurde früher wegen schwerer Toxizität aufgegeben, erlebt aber wegen der Verbreitung von MDR-Gram-negativen Erregern eine Renaissance als Lebensretter der letzten Instanz."
+  },
+  {
+    id: "rifaximin",
+    name: "Rifaximin",
+    abbreviation: "RFX",
+    brandNames: "Xifaxan, Normix",
+    group: "Rifamycine",
+    halfLife: "Minimal absorbiert (<0.4% orale Bioverfügbarkeit), wirkt lokal im GI-Trakt",
+    pae: "Systemisch nicht zutreffend",
+    effectType: "bacterizid",
+    dosage: {
+      adult: "Reisedurchfall: 3x 200 mg/Tag p.o. für 3 Tage. Hepatische Enzephalopathie: 2x 550 mg/Tag p.o.",
+      pediatric: ">12 Jahre: Wie Erwachsene",
+      renalAdjustment: "Keine Dosisanpassung erforderlich aufgrund minimaler systemischer Resorption"
+    },
+    mechanismOfAction: "Bakterizid. Hemmt die bakterielle RNA-Synthese durch irreversible Bindung an die Beta-Untereinheit der DNA-abhängigen RNA-Polymerase. Da es oral verabreicht praktisch nicht resorbiert wird, erzielt es lokal im Darm extrem hohe Konzentrationen, wodurch systemische Nebenwirkungen und Interaktionen minimiert werden.",
+    sideEffects: [
+      "Blähungen, Bauchschmerzen, Verstopfung",
+      "Übelkeit, Erbrechen",
+      "Kopfschmerzen (selten)"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Breites lokales Spektrum im Darm: aktiv gegen grampositive und gramnegative, aerobe und anaerobe Darmbakterien (z. B. E. coli, Salmonella, Shigella, Campylobacter, Clostridioides difficile)."
+    },
+    indications: [
+      "Reisedurchfall (nicht-invasive, fieberfreie Formen)",
+      "Prophylaxe rezidivierender hepatischer Enzephalopathie (meist kombiniert mit Lactulose)",
+      "Bakterielle Fehlbesiedlung des Dünndarms (SIBO) und Reizdarmsyndrom (RDS-D) mit Durchfall"
+    ],
+    notes: "Praktisch keine systemischen Wechselwirkungen wegen minimaler Resorption. Unwirksam bei systemischen oder invasiven Darminfektionen mit Fieber oder blutigen Stühlen (z. B. invasive Campylobacter- oder Salmonella-Infektionen)."
+  },
+  {
+    id: "rifampicin",
+    name: "Rifampicin",
+    abbreviation: "RIF",
+    brandNames: "Rifadin, Rimactan",
+    group: "Rifamycine",
+    halfLife: "1.5 - 5 Stunden (sinkt bei wiederholter Gabe durch Autoinduktion des Stoffwechsels)",
+    pae: "Ausgeprägt (mehrere Stunden, insbesondere bei grampositiven Erregern und M. tuberculosis)",
+    effectType: "bacterizid",
+    dosage: {
+      adult: "Tuberkulose (in Kombination): 10 mg/kg/Tag (normalerweise 600 mg p.o. oder i.v. einmal täglich). Kunstklappen-Endokarditis oder Implantat-Infektionen: 300-450 mg p.o. oder i.v. zweimal täglich. Meningokokken-Chemoprophylaxe: 600 mg p.o. zweimal täglich für 2 Tage.",
+      pediatric: "Tuberkulose oder Staph-Infektionen: 10-20 mg/kg/Tag p.o./i.v. (max. 600 mg)",
+      renalAdjustment: "Keine Dosisanpassung bei Niereninsuffizienz erforderlich (hauptsächlich hepatobiliäre Elimination)"
+    },
+    mechanismOfAction: "Bakterizid. Hemmt die bakterielle RNA-Synthese durch Bindung an die Beta-Untereinheit der DNA-abhängigen RNA-Polymerase und blockiert die Transkriptionsinitiation. Exzellente Penetration in Biofilme und intrazelluläre Räume (Makrophagen). Bei Monotherapie entwickelt sich extrem schnell eine Resistenz (Punktmutation im rpoB-Gen), daher darf es fast IMMER nur in Kombination eingesetzt werden!",
+    sideEffects: [
+      "Orange-rote Verfärbung von Körperflüssigkeiten (Urin, Tränen, Schweiß, Speichel - harmlos, kann aber Kontaktlinsen dauerhaft verfärben)",
+      "Hepatotoxizität (Anstieg der Transaminasen, cholestatischer Ikterus - Leberwerte überwachen)",
+      "Extrem starker CYP450-Enzyminduktor (beschleunigt den Abbau von Cyclosporin, Tacrolimus, Warfarin, oralen Kontrazeptiva, HIV-Virostatika drastisch, sodass diese wirkungslos werden!)",
+      "Flu-like (grippeähnliches) Syndrom, selten Thrombozytopenie und akutes Nierenversagen bei intermittierender Gabe"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Hervorragende Aktivität gegen Staphylokokken (einschließlich MRSA in Biofilmen). Hochaktiv gegen Mycobacterium tuberculosis und atypische Mykobakterien."
+    },
+    indications: [
+      "Tuberkulose (Erstlinien-Kombinationspartner)",
+      "Staphylokokken-Fremdkörperinfektionen (Kunstklappen-Endokarditis, Gelenkendoprothesen- und Shunt-Infektionen) wegen exzellenter Biofilmpenetration, immer in Kombination (z. B. mit Vancomycin oder Oxacillin)",
+      "Chemoprophylaxe bei engem Kontakt zu Meningokokken-Erkrankten, und schwere Legionellen-Pneumonie (in Kombination)"
+    ],
+    notes: "NIEMALS ALS MONOTHERAPIE bei systemischen Infektionen einsetzen (außer Kontaktprophylaxe), da sich Resistenzen rasant entwickeln. Kann die Wirksamkeit der Antibabypille durch Enzyminduktion vollständig aufheben."
   }
 ];

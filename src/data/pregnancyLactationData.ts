@@ -1215,6 +1215,40 @@ export const PREGNANCY_LACTATION_DATA: Record<string, PregnancyLactationInfo> = 
       en: 'Use with extreme caution during lactation.',
       de: 'In der Stillzeit mit äußerster Vorsicht.'
     }
+  },
+  rifaximin: {
+    pregnancySafe: false,
+    lactationSafe: true,
+    fdaCategory: 'C',
+    pregnancyStatus: 'caution',
+    lactationStatus: 'safe',
+    pregnancySummary: {
+      hu: 'FDA C. Terhességben kerülendő. Állatkísérletekben teratogén hatást mutattak ki. Minimális szisztémás felszívódása ellenére humán adatok hiányában csak szigorú indikációval adható.',
+      en: 'FDA C. Avoid in pregnancy. Teratogenic in animal studies. Despite minimal absorption, human data are lacking; use only if benefits justify risks.',
+      de: 'FDA C. In der Schwangerschaft zu vermeiden. Teratogen in Tierstudien. Trotz minimaler Absorption fehlen humane Daten; nur bei strenger Indikationsstellung.'
+    },
+    lactationSummary: {
+      hu: 'Szoptatás alatt alkalmazható. Minimális szisztémás felszívódás miatt elhanyagolható mennyiség jut az anyatejbe.',
+      en: 'Compatible with breastfeeding. Minimal absorption ensures negligible excretion in breast milk.',
+      de: 'Mit dem Stillen vereinbar. Aufgrund minimaler Absorption ist die Ausscheidung in die Muttermilch vernachlässigbar.'
+    }
+  },
+  rifampicin: {
+    pregnancySafe: false,
+    lactationSafe: true,
+    fdaCategory: 'C',
+    pregnancyStatus: 'caution',
+    lactationStatus: 'safe',
+    pregnancySummary: {
+      hu: 'FDA C. Terhességben óvatosan adható (pl. TB kezelésben nélkülözhetetlen). A harmadik trimeszterben alkalmazva újszülöttkori vérzékenységet okozhat, ezért K1-vitamin profilaxis javasolt az újszülöttnek és az anyának.',
+      en: 'FDA C. Use with caution (essential in TB treatment). Risk of neonatal hemorrhage if used in the 3rd trimester; vitamin K1 prophylaxis is recommended for both mother and newborn.',
+      de: 'FDA C. Mit Vorsicht anwenden (essenziell bei Tuberkulose). Risiko von Neugeborenenblutungen im 3. Trimester; Vitamin-K1-Prophylaxe für Mutter und Neugeborenes empfohlen.'
+    },
+    lactationSummary: {
+      hu: 'Szoptatás alatt alkalmazható. Kis mennyiségben választódik ki az anyatejbe, kompatibilis a szoptatással.',
+      en: 'Compatible with breastfeeding. Excreted in breast milk in small amounts; safe according to AAP/WHO.',
+      de: 'Mit dem Stillen vereinbar. Wird in geringen Mengen in die Muttermilch ausgeschieden; sicher laut AAP/WHO.'
+    }
   }
 };
 

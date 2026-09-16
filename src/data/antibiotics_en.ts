@@ -2486,5 +2486,76 @@ export const antibioticsData_EN: any[] = [
       "Chronic Pseudomonas pulmonary infection in cystic fibrosis patients via inhalation"
     ],
     notes: "Colistin is administered as a prodrug, colistimethate sodium (CMS). It was previously abandoned due to severe toxicity but has seen a renaissance as a last-resort lifesaver due to the spread of MDR Gram-negative pathogens."
+  },
+  {
+    id: "rifaximin",
+    name: "Rifaximin",
+    abbreviation: "RFX",
+    brandNames: "Xifaxan, Normix",
+    group: "Rifamycins",
+    halfLife: "Minimally absorbed (<0.4% oral bioavailability), acts locally in the GI tract",
+    pae: "Not applicable systemically",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Traveler's diarrhea: 200 mg p.o. 3 times daily for 3 days. Hepatic encephalopathy recurrence: 550 mg p.o. twice daily.",
+      pediatric: ">12 years: Same as adult",
+      renalAdjustment: "No dose adjustment required due to minimal systemic absorption"
+    },
+    mechanismOfAction: "Bactericidal. Inhibits bacterial RNA synthesis by binding irreversibly to the beta-subunit of the DNA-dependent RNA polymerase enzyme. Since it is virtually unabsorbed from the gastrointestinal tract, it exerts high therapeutic concentrations locally in the gut, minimizing systemic adverse effects and drug interactions.",
+    sideEffects: [
+      "Flatulence, abdominal pain, constipation",
+      "Nausea, vomiting",
+      "Headache (rare)"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 2,
+      anaerobe: 2,
+      atypical: 0,
+      pseudomonas: 0,
+      other: "Broad local spectrum in the gut: active against Gram-positive and Gram-negative, aerobic and anaerobic intestinal bacteria (e.g., E. coli, Salmonella, Shigella, Campylobacter, Clostridioides difficile)."
+    },
+    indications: [
+      "Traveler's diarrhea (non-invasive, non-febrile forms)",
+      "Prevention of hepatic encephalopathy (HE) recurrence (often combined with lactulose)",
+      "Small intestinal bacterial overgrowth (SIBO) and irritable bowel syndrome (IBS-D) with diarrhea"
+    ],
+    notes: "Virtually no systemic drug interactions due to minimal absorption. Ineffective for systemic infections or invasive intestinal infections with fever or bloody stools (e.g., invasive Campylobacter or Salmonella)."
+  },
+  {
+    id: "rifampicin",
+    name: "Rifampicin",
+    abbreviation: "RIF",
+    brandNames: "Rifadin, Rimactane",
+    group: "Rifamycins",
+    halfLife: "1.5 - 5 hours (decreases with repeated dosing due to autoinduction of metabolism)",
+    pae: "Pronounced (several hours, especially for Gram-positives and M. tuberculosis)",
+    effectType: "bactericidal",
+    dosage: {
+      adult: "Tuberculosis (in combination): 10 mg/kg/day (typically 600 mg p.o. or i.v. once daily). Prosthetic valve endocarditis or orthopedic implant infection: 300-450 mg p.o. or i.v. twice daily. Meningococcal chemoprophylaxis: 600 mg p.o. twice daily for 2 days.",
+      pediatric: "TB or staph infections: 10-20 mg/kg/day p.o./i.v. once daily or in 2 divided doses (max 600 mg).",
+      renalAdjustment: "No dose adjustment required in renal impairment (primarily hepatobiliary elimination)"
+    },
+    mechanismOfAction: "Bactericidal. Inhibits bacterial RNA synthesis by binding to the beta-subunit of the DNA-dependent RNA polymerase, blocking transcription initiation. Highly effective at penetrating biofilms and intracellular spaces (macrophages). Resistance develops extremely rapidly if used as monotherapy (single point mutation in the rpoB gene), hence it must almost ALWAYS be used in combination!",
+    sideEffects: [
+      "Orange-red discoloration of body fluids (urine, tears, sweat, saliva - harmless but stains contact lenses)",
+      "Hepatotoxicity (elevated transaminases, cholestatic jaundice - monitor LFTs)",
+      "Extremely potent CYP450 enzyme inducer (drastically reduces levels of cyclosporine, tacrolimus, warfarin, oral contraceptives, HIV antivirals, making them ineffective!)",
+      "Flu-like syndrome, rarely thrombocytopenia and acute interstitial nephritis with intermittent dosing"
+    ],
+    spectrum: {
+      gramPositive: 2,
+      gramNegative: 1,
+      anaerobe: 1,
+      atypical: 2,
+      pseudomonas: 0,
+      other: "Excellent anti-staphylococcal activity (including MRSA in biofilms). Highly active against Mycobacterium tuberculosis and atypical mycobacteria."
+    },
+    indications: [
+      "Tuberculosis (first-line combination agent)",
+      "Staphylococcal foreign-body infections (prosthetic valve endocarditis, prosthetic joint infections, shunt infections) due to excellent biofilm penetration, in combination (e.g., with Vancomycin or Oxacillin)",
+      "Chemoprophylaxis of Neisseria meningitidis close contacts, and severe Legionella pneumonia (in combination)"
+    ],
+    notes: "NEVER USE AS MONOTHERAPY for systemic infections (except contact prophylaxis) as resistance develops rapidly. Drastically reduces the efficacy of oral contraceptive pills due to enzyme induction."
   }
 ];
