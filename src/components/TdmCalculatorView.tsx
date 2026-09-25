@@ -24,6 +24,7 @@ interface PatientParams {
 
 interface TdmParams {
   drugId: 'gentamicin' | 'amikacin' | 'vancomycin' | 'voriconazole';
+  weight: string;
   currentDose: string;
   currentInterval: string; // hours
   measuredTrough: string;
@@ -41,7 +42,7 @@ export default function TdmCalculatorView() {
       title: "TDM & Dózis Tervező",
       subtitle: "Terápiás gyógyszerszint-monitorozás (TDM) és kezdődózis kalkulátor",
       tab_initial: "Kezdődózis Tervező",
-      tab_tdm: "TDM Értékelés (Völgy/Csúcs)",
+      tab_tdm: "TDM Értékelés (Völgy/Csúcs & AUC)",
       patient_params: "Beteg paraméterei",
       age: "Életkor (év)",
       weight: "Testtömeg (kg)",
@@ -63,6 +64,7 @@ export default function TdmCalculatorView() {
       dosing_interval: "Adagolási időköz (Interval)",
       clinical_tips: "Klinikai tanácsok & Figyelmeztetések",
       tdm_title: "Aktuális terápia és mért szintek",
+      patient_weight_label: "Beteg testtömege (kg)",
       current_dose: "Aktuális dózis (mg)",
       interval_hrs: "Aktuális időköz (óra)",
       measured_trough: "Mért völgykoncentráció (Trough) [mg/L vagy µg/mL]",
@@ -76,10 +78,10 @@ export default function TdmCalculatorView() {
       status_toxic: "Toxikus tartományban (Magas veszély!)",
       recommendation: "Klinikai javaslat és módosítás",
       model_note_title: "Alkalmazott farmakokinetikai modell (PK/PD)",
-      model_note_desc: "A TDM kalkulátor 1-kompartmentes lineáris farmakokinetikai modellt alkalmaz (Sawchuk-Zaske módszer / Matzke-féle elsőrendű eliminációs kinetika), a vesefunkció és elimináció becslésére a Cockcroft-Gault kreatinin-clearance (CrCl) képletet használva. Vancomycin esetében a hatásosság és biztonságosság klinikai aranystandardja az AUC/MIC meghatározása és megfelelő terápiás tartományban tartása (nemzetközi konszenzus guideline-ok alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezve, hogy a MIC = 1 mg/L).",
+      model_note_desc: "A TDM kalkulátor 1-kompartmentes lineáris farmakokinetikai modellt alkalmaz (Sawchuk-Zaske módszer / Matzke-féle elsőrendű eliminációs kinetika), a vesefunkció és elimináció becslésére a Cockcroft-Gault kreatinin-clearance (CrCl) képletet használva. Vancomycin (AUC24/MIC 400–600 mg·h/L) és Aminoglikozidok (IDSA 2026 konszenzus: Gentamicin AUC24 80–120 mg·h/L, Amikacin AUC24 200–300 mg·h/L) esetén a terápiavezérlés aranystandardja az AUC-vezérelt monitorozás az optimális hatékonyság elérése és a nefro/ototoxicitás (AKI) minimalizálása érdekében.",
       tips_vancomycin: "Vancomycin esetében a figyelmeztetésekhez és a terápiavezérléshez az AUC/MIC meghatározása és a megfelelő tartomány a cél (a nemzetközi guideline-ok [ASHP/IDSA/PIDS/SIDP 2020] alapján megfelelőnek tartott tartomány: AUC24/MIC 400–600 mg·h/L, feltételezve, hogy a MIC = 1 mg/L). A korábbi kizárólagos völgykoncentráció-cél (15–20 mg/L súlyos, vagy 10–15 mg/L enyhe fertőzésben) szurrogátumként szolgálhat, de az AUC-vezérelt monitorozás igazoltan minimalizálja az akut vesekárosodás (AKI) és nefrotoxicitás kockázatát. 600 mg·h/L feletti AUC (vagy > 20 mg/L völgy) esetén a nefrotoxicitás rizikója drasztikusan megnő, míg < 400 mg·h/L esetén kezelési kudarc léphet fel. Mintavétel: közvetlenül a 4. vagy 5. dózis előtt (steady state).",
-      tips_gentamicin: "Gentamicin egyszeri napi adagolásánál (ODD) a völgykoncentráció < 1 mg/L (ideálisan < 0.5 mg/L), a csúcsszint 15-20 mg/L legyen. Hagyományos napi többszöri adagolásnál a völgy < 2 mg/L, a csúcs 5-10 mg/L.",
-      tips_amikacin: "Amikacin egyszeri napi adagolásánál a völgykoncentráció < 5 mg/L (ideálisan < 2 mg/L), míg a csúcsszintnek 50-60 mg/L-nek kell lennie. Hagyományos adagolásnál a völgy < 8 mg/L, a csúcs 20-30 mg/L.",
+      tips_gentamicin: "Gentamicin esetén az IDSA 2026-os konszenzus irányelv alapján az elsődleges terápiás cél az AUC24 80–120 mg·h/L céltartomány elérése (völgykoncentráció < 1.0 mg/L, ideálisan < 0.5 mg/L mellett). 120 mg·h/L feletti AUC24 expozíció vagy magas völgykoncentráció esetén szignifikánsan nő az akut vesekárosodás (AKI) és a belsőfül-károsodás (ototoxicitás) kockázata, míg < 80 mg·h/L expozíció esetén mikrobiológiai és terápiás kudarc léphet fel. Egyszeri napi adagolásnál (ODD, 5-7 mg/kg) a csúcskoncentráció ideálisan 16-20 mg/L.",
+      tips_amikacin: "Amikacin esetén az IDSA 2026-os irányelv szerint a terápiás cél az AUC24 200–300 mg·h/L tartomány biztosítása (völgykoncentráció < 5.0 mg/L, ideálisan < 2.5–4.0 mg/L mellett). 300 mg·h/L feletti AUC24 expozíció esetén a cochleáris/vesztibuláris ototoxicitás és nefrotoxicitás veszélye kifejezetten magas, míg < 200 mg·h/L expozíció mellett elégtelen a baktericid hatás. ODD adagolásnál (15-20 mg/kg) a csúcsszint 50-60 mg/L.",
       tips_voriconazole: "Voriconazolnál a TDM rendkívül fontos a nem-lineáris farmakokinetika és az egyéni különbségek miatt. A céltartomány szigorúan 1.5 - 5.0 mg/L. 5.5 - 6.0 mg/L felett kifejezett neurotoxicitás, látászavar és májkárosodás léphet fel.",
       rrt_label: "Vesehelyettesítő kezelés",
       rrt_none: "Nincs dialízis",
@@ -98,7 +100,7 @@ export default function TdmCalculatorView() {
       title: "TDM & Dose Planner",
       subtitle: "Therapeutic Drug Monitoring (TDM) and initial dosing calculator",
       tab_initial: "Initial Dose Planner",
-      tab_tdm: "TDM Evaluation (Trough/Peak)",
+      tab_tdm: "TDM Evaluation (Trough/Peak & AUC)",
       patient_params: "Patient Parameters",
       age: "Age (years)",
       weight: "Weight (kg)",
@@ -120,6 +122,7 @@ export default function TdmCalculatorView() {
       dosing_interval: "Dosing Interval",
       clinical_tips: "Clinical Tips & Warnings",
       tdm_title: "Current Regimen & Measured Levels",
+      patient_weight_label: "Patient Weight (kg)",
       current_dose: "Current Dose (mg)",
       interval_hrs: "Current Interval (hours)",
       measured_trough: "Measured Trough Concentration [mg/L or µg/mL]",
@@ -133,10 +136,10 @@ export default function TdmCalculatorView() {
       status_toxic: "Toxic Range (High Danger!)",
       recommendation: "Clinical Recommendation",
       model_note_title: "Pharmacokinetic Model Used (PK/PD)",
-      model_note_desc: "The TDM calculator applies a 1-compartment linear pharmacokinetic model (Sawchuk-Zaske method / Matzke first-order elimination kinetics), estimating renal function and clearance with the Cockcroft-Gault formula. For vancomycin, clinical efficacy and safety rely on AUC/MIC determination and maintaining it in the therapeutic window (guideline-recommended target range [ASHP/IDSA/PIDS/SIDP]: AUC24/MIC 400–600 mg·h/L, assuming broth microdilution MIC = 1 mg/L).",
+      model_note_desc: "The TDM calculator applies a 1-compartment linear pharmacokinetic model (Sawchuk-Zaske method / Matzke first-order elimination kinetics), estimating renal function and clearance with the Cockcroft-Gault formula. For Vancomycin (AUC24/MIC 400–600 mg·h/L) and Aminoglycosides (IDSA 2026 guidelines: Gentamicin AUC24 80–120 mg·h/L, Amikacin AUC24 200–300 mg·h/L), AUC-guided monitoring is the clinical gold standard to balance efficacy and minimize nephrotoxicity (AKI) and ototoxicity.",
       tips_vancomycin: "For Vancomycin, clinical warnings and monitoring emphasize that determining the AUC/MIC ratio and achieving the appropriate target range is the primary goal (guideline-recommended target range [ASHP/IDSA/PIDS/SIDP 2020]: AUC24/MIC 400–600 mg·h/L, assuming MIC = 1 mg/L). Surrogate trough levels (15–20 mg/L for severe infections, 10–15 mg/L for mild infections) can serve if AUC tools are unavailable, but AUC-guided dosing significantly minimizes acute kidney injury (AKI) and nephrotoxicity. Levels of AUC > 600 mg·h/L (or trough > 20 mg/L) sharply increase nephrotoxicity, whereas AUC < 400 mg·h/L risks microbiological failure. Draw trough levels immediately prior to the 4th or 5th dose (steady state).",
-      tips_gentamicin: "For Gentamicin once-daily dosing (ODD), target trough is < 1 mg/L (ideally < 0.5 mg/L) and peak is 15-20 mg/L. For conventional multiple daily dosing, target trough is < 2 mg/L and peak is 5-10 mg/L.",
-      tips_amikacin: "For Amikacin once-daily dosing, target trough is < 5 mg/L (ideally < 2 mg/L) and peak is 50-60 mg/L. For conventional dosing, target trough is < 8 mg/L and peak is 20-30 mg/L.",
+      tips_gentamicin: "For Gentamicin, per the IDSA 2026 consensus guidelines, the primary therapeutic target is an AUC24 of 80–120 mg·h/L (with trough < 1.0 mg/L, ideally < 0.5 mg/L). AUC24 exposures exceeding 120 mg·h/L or elevated trough levels significantly increase nephrotoxicity (AKI) and irreversible ototoxicity risks, while AUC24 < 80 mg·h/L carries a risk of clinical failure. In once-daily dosing (ODD, 5-7 mg/kg), target peak is 16-20 mg/L.",
+      tips_amikacin: "For Amikacin, according to the IDSA 2026 guidelines, the target AUC24 range is 200–300 mg·h/L (with trough < 5.0 mg/L, ideally < 2.5–4.0 mg/L). AUC24 exposures above 300 mg·h/L significantly increase cochlear/vestibular ototoxicity and nephrotoxicity, whereas AUC24 < 200 mg·h/L risks microbiological underdosing and treatment failure. For once-daily dosing (15-20 mg/kg), target peak is 50-60 mg/L.",
       tips_voriconazole: "For Voriconazole, TDM is highly recommended due to non-linear pharmacokinetics. Target trough is strictly 1.5 - 5.0 mg/L. Levels above 5.5 - 6.0 mg/L are associated with neurotoxicity, visual disturbances, and hepatotoxicity.",
       rrt_label: "Renal Replacement Therapy",
       rrt_none: "No dialysis",
@@ -155,7 +158,7 @@ export default function TdmCalculatorView() {
       title: "TDM & Dosisplaner",
       subtitle: "Therapeutisches Drug Monitoring (TDM) und Initialdosis-Rechner",
       tab_initial: "Initialdosis-Planer",
-      tab_tdm: "TDM-Auswertung (Tal/Spitze)",
+      tab_tdm: "TDM-Auswertung (Tal/Spitze & AUC)",
       patient_params: "Patientenparameter",
       age: "Alter (Jahre)",
       weight: "Gewicht (kg)",
@@ -177,6 +180,7 @@ export default function TdmCalculatorView() {
       dosing_interval: "Dosierungsintervall (Interval)",
       clinical_tips: "Klinische Tipps & Warnungen",
       tdm_title: "Aktuelle Therapie & gemessene Spiegel",
+      patient_weight_label: "Patientengewicht (kg)",
       current_dose: "Aktuelle Dosis (mg)",
       interval_hrs: "Aktuelles Intervall (Stunden)",
       measured_trough: "Gemessene Talkonzentration (Trough) [mg/L oder µg/mL]",
@@ -190,10 +194,10 @@ export default function TdmCalculatorView() {
       status_toxic: "Toxischer Bereich (Hohe Gefahr!)",
       recommendation: "Klinische Empfehlung",
       model_note_title: "Verwendetes pharmakokinetisches Modell (PK/PD)",
-      model_note_desc: "Der TDM-Rechner verwendet ein 1-Kompartiment-lineares pharmakokinetisches Modell (Sawchuk-Zaske-Methode / Matzke-Eliminationskinetik erster Ordnung) unter Verwendung der Cockcroft-Gault-Formel für die Nierenfunktion. Bei Vancomycin ist der Goldstandard zur Wirksamkeit und Toxizitätsvermeidung die Bestimmung von AUC/MHK und die Einstellung im adäquaten Zielbereich (leitliniengerechter Zielbereich [ASHP/IDSA/PIDS/SIDP]: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L).",
+      model_note_desc: "Der TDM-Rechner verwendet ein 1-Kompartiment-lineares pharmakokinetisches Modell (Sawchuk-Zaske-Methode / Matzke-Eliminationskinetik erster Ordnung) unter Verwendung der Cockcroft-Gault-Formel für die Nierenfunktion. Bei Vancomycin (AUC24/MHK 400–600 mg·h/L) und Aminoglykosiden (IDSA 2026-Leitlinie: Gentamicin AUC24 80–120 mg·h/L, Amikacin AUC24 200–300 mg·h/L) ist das AUC-gesteuerte TDM der klinische Goldstandard zur Optimierung der Wirksamkeit und Vermeidung von Nephro- und Ototoxizität.",
       tips_vancomycin: "Bei Vancomycin ist für die Warnhinweise und Dosissteuerung die Bestimmung von AUC/MHK und das Halten im adäquaten Zielbereich das primäre Ziel (leitlinienkonformer Zielbereich [ASHP/IDSA/PIDS/SIDP 2020]: AUC24/MHK 400–600 mg·h/L bei MHK = 1 mg/L). Die frühere alleinige Talspiegelsteuerung (15–20 mg/L bei schweren bzw. 10–15 mg/L bei leichten Infektionen) dient als Surrogat; AUC-gesteuertes TDM senkt nachweislich das Risiko einer akuten Nierenschädigung (AKI) und Nephrotoxizität. AUC > 600 mg·h/L (oder Talspiegel > 20 mg/L) steigert das Nephrotoxizitätsrisiko drastisch. Talspiegelentnahme unmittelbar vor der 4. oder 5. Dosis (Steady State).",
-      tips_gentamicin: "Bei einmal täglicher Gabe (ODD) von Gentamicin sollte der Talspiegel < 1 mg/L (ideal < 0,5 mg/L) und der Spitzenspiegel 15-20 mg/L betragen. Bei konventioneller Gabe: Talspiegel < 2 mg/L, Spitzenspiegel 5-10 mg/L.",
-      tips_amikacin: "Bei einmal täglicher Gabe von Amikacin sollte der Talspiegel < 5 mg/L (ideal < 2 mg/L) und der Spitzenspiegel 50-60 mg/L betragen. Bei konventioneller Gabe: Talspiegel < 8 mg/L, Spitzenspiegel 20-30 mg/L.",
+      tips_gentamicin: "Für Gentamicin gilt gemäß der IDSA 2026-Konsensusleitlinie ein primärer 24h-AUC-Zielbereich (AUC24) von 80–120 mg·h/L (bei einem Talspiegel < 1,0 mg/L, ideal < 0,5 mg/L). Eine AUC24 > 120 mg·h/L oder erhöhte Talspiegel steigern das Risiko für akute Nierenschädigung (AKI) und Ototoxizität drastisch, während < 80 mg·h/L das Therapieversagen begünstigt. Bei Einmaldosierung (ODD, 5-7 mg/kg) beträgt die Ziel-Spitze 16-20 mg/L.",
+      tips_amikacin: "Für Amikacin liegt der Zielbereich gemäß der IDSA 2026-Leitlinie bei einer AUC24 von 200–300 mg·h/L (bei einem Talspiegel < 5,0 mg/L, ideal < 2,5–4,0 mg/L). Eine AUC24 > 300 mg·h/L steigert das Risiko für cochleäre/vestibuläre Ototoxizität und Nephrotoxizität erheblich, während < 200 mg·h/L unzureichende bakterizide Wirkung bedeutet. Bei Einmaldosierung (15-20 mg/kg) liegt die Ziel-Spitze bei 50-60 mg/L.",
       tips_voriconazole: "Bei Voriconazol ist ein TDM aufgrund der nichtlinearen Pharmakokinetik dringend erforderlich. Der Ziel-Talspiegel liegt streng bei 1,5 - 5,0 mg/L. Werte über 5,5 - 6,0 mg/L sind mit Neurotoxizität, Sehstörungen und Leberschäden assoziiert.",
       rrt_label: "Nierenersatztherapie",
       rrt_none: "Keine Dialyse",
@@ -231,6 +235,7 @@ export default function TdmCalculatorView() {
   // State for TDM evaluation
   const [tdm, setTdm] = useState<TdmParams>({
     drugId: 'vancomycin',
+    weight: '75',
     currentDose: '1000',
     currentInterval: '12',
     measuredTrough: '8.5',
@@ -853,103 +858,139 @@ export default function TdmCalculatorView() {
         {
           const isOdd = parseInt(tdm.currentInterval) >= 24;
           const targetTrough = isOdd ? 1.0 : 2.0;
+          const currentDoseNum = parseFloat(tdm.currentDose) || 350;
+          const currentIntervalNum = parseFloat(tdm.currentInterval) || 24;
+          const ptWeight = parseFloat(tdm.weight) || parseFloat(patient.weight) || 75;
+
+          // IDSA 2026 AUC calculation (Sawchuk-Zaske 2-point or 1-compartment clearance model)
+          if (val > 0 && currentDoseNum > 0 && currentIntervalNum > 0) {
+            const vdPop = 0.26 * ptWeight;
+            if (!isNaN(peakVal) && peakVal > val && peakVal > 0) {
+              const deltaT = Math.max(1.0, currentIntervalNum - 1.0);
+              const ke = Math.log(peakVal / Math.max(0.05, val)) / deltaT;
+              const cMaxEst = peakVal * Math.exp(ke * 0.5);
+              let vdEst = (currentDoseNum * (1 - Math.exp(-ke * 0.5))) / (0.5 * ke * Math.max(1, cMaxEst - val * Math.exp(-ke * 0.5)));
+              if (isNaN(vdEst) || vdEst < 0.15 * ptWeight || vdEst > 0.6 * ptWeight) {
+                vdEst = vdPop;
+              }
+              const cl = Math.max(0.3, ke * vdEst);
+              const dailyDose = currentDoseNum * (24 / currentIntervalNum);
+              estimatedAuc24 = Math.round(dailyDose / cl);
+            } else {
+              const peakEst = val + (currentDoseNum / vdPop);
+              const deltaT = Math.max(1.0, currentIntervalNum - 1.0);
+              const ke = Math.log(peakEst / Math.max(0.05, val)) / deltaT;
+              const cl = Math.max(0.3, ke * vdPop);
+              const dailyDose = currentDoseNum * (24 / currentIntervalNum);
+              estimatedAuc24 = Math.round(dailyDose / cl);
+            }
+          }
 
           if (rrt === 'none') {
-            if (val > targetTrough) {
+            const isAucToxic = estimatedAuc24 !== undefined && estimatedAuc24 > 120;
+            const isTroughToxic = val > targetTrough;
+            const isAucSub = estimatedAuc24 !== undefined && estimatedAuc24 < 80;
+            const isPeakSub = !isNaN(peakVal) && peakVal > 0 && peakVal < (isOdd ? 15.0 : 5.0);
+
+            if (isAucToxic || isTroughToxic) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Magas völgykoncentráció (${val} mg/L, cél: < ${targetTrough} mg/L). Ez akkumulációra utal, ami súlyos vese- és fülkárosodást (nephro/ototoxicitás) okozhat.`
+                ? `FIGYELMEZTETÉS: A mért Gentamicin expozíció meghaladja az IDSA 2026-os biztonsági határértéket (Becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 irányelv célértéke: 80–120 mg·h/L], mért völgykoncentráció: ${val} mg/L [cél: < ${targetTrough} mg/L]). A 120 mg·h/L feletti expozíció szignifikánsan növeli az akut vesekárosodás (AKI / nefrotoxicitás) és a belső fül irreverzibilis károsodásának (ototoxicitás) kockázatát!`
                 : currentLang === 'de'
-                ? `Hoher Talspiegel (${val} mg/L, Zielwert: < ${targetTrough} mg/L). Dies deutet auf Akkumulation hin, was schwere Nieren- und Gehörschäden verursachen kann.`
-                : `High trough level (${val} mg/L, target: < ${targetTrough} mg/L). Indicates accumulation, which can cause severe nephro- and ototoxicity.`;
+                ? `WARNUNG: Die gemessene Gentamicin-Exposition überschreitet die IDSA 2026-Sicherheitsgrenze (Geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026-Ziel: 80–120 mg·h/L], Talspiegel: ${val} mg/L [Ziel: < ${targetTrough} mg/L]). Deutlich erhöhtes Risiko für akute Nierenschädigung (AKI/Nephrotoxizität) und irreversible Ototoxizität!`
+                : `WARNING: Measured Gentamicin exposure exceeds the IDSA 2026 safety limit (Estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 target: 80–120 mg·h/L], trough: ${val} mg/L [target: < ${targetTrough} mg/L]). Exposure exceeding 120 mg·h/L sharply increases nephrotoxicity (AKI) and irreversible ototoxicity risks!`;
 
-              skipDoses = 1;
-              const currentDoseNum = parseFloat(tdm.currentDose) || 240;
-              const suggestedDose = Math.round(currentDoseNum * 0.75 / 20) * 20;
+              skipDoses = (val > 2.0 || (estimatedAuc24 && estimatedAuc24 > 160)) ? 2 : 1;
+              const aucVal = estimatedAuc24 || 150;
+              const targetRatio = 100 / Math.max(120, aucVal);
+              const suggestedDose = Math.max(80, Math.round((currentDoseNum * targetRatio) / 20) * 20);
               newDose = `${suggestedDose} mg`;
               newInterval = isOdd ? "q36h - q48h" : "q24h";
               act = currentLang === 'hu'
-                ? `Hagyjon ki 1 dózist! Ezután folytassa csökkentett dózissal (pl. ${tdm.currentDose} mg helyett ${newDose}-mal) vagy hosszabb időközökkel (pl. q24h helyett q36h/q48h).`
+                ? `Az IDSA 2026-os irányelv alapján azonnali dóziskihagyás szükséges: hagyjon ki ${skipDoses} dózist! Mérje vissza a szérumszintet, és csak akkor adja be a következő fenntartó adagot, ha a völgykoncentráció < 0.5–1.0 mg/L alá csökkent. Az új javasolt fenntartó adag a céltartomány (AUC24 80–120 mg·h/L) eléréséhez: ${newDose} (szükség esetén q36h vagy q48h megnyújtott időközzel).`
                 : currentLang === 'de'
-                ? `1 Dosis auslassen! Danach mit reduzierter Dosis fortfahren (z. B. ${newDose} statt ${tdm.currentDose} mg) oder das Intervall verlängern.`
-                : `Skip 1 dose! Resume at a reduced dose (e.g., ${newDose} instead of ${tdm.currentDose} mg) or extend the interval (e.g., q36h/q48h).`;
-            } else if ((isOdd && val < 0.3) || (!isOdd && val < 1.0) || (tdm.measuredPeak && parseFloat(tdm.measuredPeak) < (isOdd ? 15.0 : 5.0))) {
+                ? `Gemäß IDSA 2026-Leitlinie ${skipDoses} Dosis(en) auslassen! Serumspiegel nachmessen und erst fortfahren, wenn Talspiegel < 0,5–1,0 mg/L liegt. Empfohlene neue Erhaltungsdosis zur Erreichung des AUC24-Ziels von 80–120 mg·h/L: ${newDose} (bei verlängerter Clearance q36h/q48h Intervall).`
+                : `Per IDSA 2026 guidelines, withhold ${skipDoses} dose(s)! Monitor serum levels and resume only once the trough drops below 0.5–1.0 mg/L. Recommended new maintenance dose to achieve target AUC24 80–120 mg·h/L: ${newDose} (extend interval to q36h/q48h if elimination is delayed).`;
+            } else if (isAucSub || isPeakSub || (isOdd && val < 0.2)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Szubterápiás Gentamicin szint (völgy: ${val} mg/L). Ez aluladagolásra utal, ami csökkenti a baktériumölő hatást és terápiás kudarchoz vezethet.`
+                ? `Szubterápiás Gentamicin expozíció az IDSA 2026-os irányelv szerint (Becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 célérték: 80–120 mg·h/L], mért völgy: ${val} mg/L). Az alacsony expozíció elégtelen baktericid hatást, terápiás kudarcot és baktérium-rezisztenciát eredményezhet.`
                 : currentLang === 'de'
-                ? `Subtherapeutischer Gentamicin-Spiegel (Tal: ${val} mg/L). Dies deutet auf eine Unterdosierung hin, was die bakterizide Wirkung mindert.`
-                : `Subtherapeutic Gentamicin level (trough: ${val} mg/L). This indicates underdosing, which reduces bactericidal efficacy and may lead to treatment failure.`;
+                ? `Subtherapeutische Gentamicin-Exposition gemäß IDSA 2026-Leitlinie (Geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026-Ziel: 80–120 mg·h/L], Talspiegel: ${val} mg/L). Erhöhtes Risiko für Therapieversagen und Resistenzentwicklung.`
+                : `Subtherapeutic Gentamicin exposure per IDSA 2026 guidelines (Estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 target: 80–120 mg·h/L], trough: ${val} mg/L). Subtherapeutic exposure risks clinical failure and resistance selection.`;
 
               skipDoses = 0;
-              const currentDoseNum = parseFloat(tdm.currentDose) || 240;
-              const suggestedDose = Math.round(currentDoseNum * 1.25 / 20) * 20;
+              const aucVal = estimatedAuc24 || 60;
+              const targetRatio = 100 / Math.min(80, Math.max(30, aucVal));
+              const suggestedDose = Math.round((currentDoseNum * targetRatio) / 20) * 20;
               newDose = `${suggestedDose} mg`;
               newInterval = `q${tdm.currentInterval}h`;
-              boosterDose = isOdd ? `${Math.round(currentDoseNum * 0.5 / 20) * 20} mg IV egyszeri booster` : undefined;
+              if (isOdd && (aucVal < 60 || val < 0.15)) {
+                boosterDose = `${Math.round(currentDoseNum * 0.4 / 20) * 20} mg IV egyszeri booster`;
+              }
               act = currentLang === 'hu'
-                ? `Dózis kihagyása NEM javasolt. Emelje a fenntartó adagot kb. 25%-kal (${tdm.currentDose} mg-ról ${newDose}-ra) az optimális csúcsszint eléréséhez. Súlyos fertőzésben egyszeri booster adása megfontolandó.`
+                ? `Dózis kihagyása NEM indokolt. Az IDSA 2026-os cél (AUC24: 80–120 mg·h/L) eléréséhez emelje a fenntartó adagot ${currentDoseNum} mg-ról ${newDose}-ra. Súlyos szepszisben vagy bakterémiában egyszeri booster dózis adása javasolt. Kontroll TDM a 2-3. új dózis előtt.`
                 : currentLang === 'de'
-                ? `Dosisauslassung NICHT empfohlen. Erhöhen Sie die Erhaltungsdosis um ca. 25% (von ${tdm.currentDose} mg auf ${newDose}). Ein einmaliger Booster kann erwogen werden.`
-                : `Dose skipping NOT recommended. Increase maintenance dose by ~25% (from ${tdm.currentDose} mg to ${newDose}). Consider an extra booster dose in severe infections.`;
+                ? `Kein Auslassen indiziert. Um das IDSA 2026-Ziel (AUC24: 80–120 mg·h/L) zu erreichen, Erhaltungsdosis von ${currentDoseNum} mg auf ${newDose} erhöhen. Bei schwerer Sepsis Booster erwägen. TDM-Kontrolle vor der 2.-3. Dosis.`
+                : `Do not skip doses. To achieve the IDSA 2026 target (AUC24: 80–120 mg·h/L), increase maintenance dose from ${currentDoseNum} mg to ${newDose}. Consider a single booster in severe sepsis. Recheck TDM before 2nd-3rd new dose.`;
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Megfelelő, biztonságos völgykoncentráció (${val} mg/L). A gyógyszer akkumulációja nem áll fenn.`
+                ? `Optimális terápiás expozíció az IDSA 2026-os irányelv szerint (Becsült AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026 cél: 80–120 mg·h/L], mért völgykoncentráció: ${val} mg/L [cél: < 1.0 mg/L]). Maximális baktericid hatékonyság minimális toxicitási rizikó mellett.`
                 : currentLang === 'de'
-                ? `Angemessener, sicherer Talspiegel (${val} mg/L). Keine Wirkstoffakkumulation nachweisbar.`
-                : `Safe, optimal trough level (${val} mg/L). No drug accumulation detected.`;
+                ? `Optimaler therapeutischer Bereich nach IDSA 2026-Leitlinie (Geschätzte AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026-Ziel: 80–120 mg·h/L], Talspiegel: ${val} mg/L [< 1,0 mg/L]). Hervorragende bakterizide Wirksamkeit bei minimalem Toxizitätsrisiko.`
+                : `Optimal therapeutic exposure per IDSA 2026 guidelines (Estimated AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026 target: 80–120 mg·h/L], trough: ${val} mg/L [target: < 1.0 mg/L]). Excellent bactericidal efficacy with minimal toxicity risk.`;
 
               skipDoses = 0;
               newDose = `${tdm.currentDose} mg`;
               newInterval = `q${tdm.currentInterval}h`;
               act = currentLang === 'hu'
-                ? "Az adagolás folytatható változatlanul. Stabil vesefunkció mellett heti 1x kontroll TDM elegendő."
+                ? "Az adagolás folytatható változatlan dózissal és időközzel az IDSA 2026-os célértékeknek megfelelően. Stabil vesefunkció mellett heti 1-2 alkalommal TDM és kreatinin ellenőrzés szükséges."
                 : currentLang === 'de'
-                ? "Die Therapie kann unverändert fortgesetzt werden. Bei stabiler Nierenfunktion reicht eine wöchentliche Kontrolle."
-                : "Continue current regimen unchanged. Weekly TDM is sufficient if renal function remains stable.";
+                ? "Therapie mit unveränderter Dosis und Intervall gemäß IDSA 2026 fortsetzen. Wöchentlich 1-2x TDM- und Nierenfunktionskontrolle bei stabilen Parametern."
+                : "Continue current regimen unchanged in accordance with IDSA 2026 targets. Perform TDM and creatinine monitoring 1-2 times weekly if renal function remains stable.";
             }
           } else if (rrt === 'hd') {
-            if (val > 1.5) {
+            if (val > 1.5 || (estimatedAuc24 && estimatedAuc24 > 120)) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Magas dialízis előtti Gentamicin szint (${val} mg/L, cél: < 1.5 mg/L). Akkumulációs és nefro/ototoxicitási veszély áll fenn.`
+                ? `Magas dialízis előtti Gentamicin szint (${val} mg/L, cél: < 1.5 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L). Akkumulációs és nefro/ototoxicitási veszély áll fenn.`
                 : currentLang === 'de'
-                ? `Hoher Prä-Dialyse-Spiegel (${val} mg/L, Ziel: < 1,5 mg/L) unter HD. Kumulationsgefahr.`
-                : `High pre-dialysis Gentamicin level (${val} mg/L, target: < 1.5 mg/L) in HD patient. Accumulation and toxicity risk.`;
+                ? `Hoher Prä-Dialyse-Spiegel (${val} mg/L, Ziel: < 1,5 mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026-Ziel: 80–120 mg·h/L) unter HD. Kumulationsgefahr.`
+                : `High pre-dialysis Gentamicin level (${val} mg/L, target: < 1.5 mg/L; estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 80–120 mg·h/L) in HD patient. Accumulation and toxicity risk.`;
 
               skipDoses = "Következő HD utáni dózist hagyja ki";
               newDose = "1.0 - 1.2 mg/kg (pl. 70-80 mg)";
               newInterval = "Minden dialízis után (HD végén)";
               act = currentLang === 'hu'
-                ? "A magas szint miatt hagyja ki a következő HD utáni dózist. Indítsa újra csökkentett adaggal, ha a szint < 1 mg/L alá csökken."
+                ? "A magas expozíció miatt hagyja ki a következő HD utáni dózist. Indítsa újra csökkentett adaggal, ha a szint < 1 mg/L alá csökken (cél AUC24: 80–120 mg·h/L)."
                 : currentLang === 'de'
-                ? "Nächste Dosis nach HD auslassen. Mit reduzierter Dosis fortfahren, wenn Spiegel < 1 mg/L."
-                : "Skip the next post-dialysis dose. Resume at a reduced dose only once the pre-dialysis level drops below 1 mg/L.";
-            } else if (val < 1.0) {
+                ? "Nächste Dosis nach HD auslassen. Mit reduzierter Dosis fortfahren, wenn Spiegel < 1 mg/L (Ziel-AUC24: 80–120 mg·h/L)."
+                : "Skip the next post-dialysis dose. Resume at a reduced dose only once the pre-dialysis level drops below 1 mg/L (target AUC24: 80–120 mg·h/L).";
+            } else if (val < 1.0 || (estimatedAuc24 && estimatedAuc24 < 80)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Alacsony dialízis előtti Gentamicin szint (${val} mg/L, cél: 1.0 - 1.5 mg/L). Nem biztosít kellő terápiás hatást.`
+                ? `Alacsony dialízis előtti Gentamicin szint (${val} mg/L, cél: 1.0 - 1.5 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L). Nem biztosít kellő terápiás hatást.`
                 : currentLang === 'de'
-                ? `Niedriger Prä-Dialyse-Spiegel (${val} mg/L, Ziel: 1,0 - 1,5 mg/L). Unzureichende therapeutische Wirkung.`
-                : `Low pre-dialysis Gentamicin level (${val} mg/L, target: 1.0 - 1.5 mg/L). May fail to achieve clinical cure.`;
+                ? `Niedriger Prä-Dialyse-Spiegel (${val} mg/L, Ziel: 1,0 - 1,5 mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026-Ziel: 80–120 mg·h/L). Unzureichende therapeutische Wirkung.`
+                : `Low pre-dialysis Gentamicin level (${val} mg/L, target: 1.0 - 1.5 mg/L; estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 80–120 mg·h/L). May fail to achieve clinical cure.`;
 
               skipDoses = 0;
               boosterDose = "1.0 - 1.5 mg/kg IV booster a következő HD végén";
               newDose = "2.0 - 2.5 mg/kg (pl. 140-160 mg)";
               newInterval = "Minden dialízis után (HD végén)";
               act = currentLang === 'hu'
-                ? "Dózis kihagyása nem javasolt. Adjon be egy booster dózist a következő HD végén, majd emelje a fenntartó adagokat."
+                ? "Dózis kihagyása nem javasolt. Adjon be egy booster dózist a következő HD végén, majd emelje a fenntartó adagokat az IDSA 2026 célértékek eléréséhez."
                 : currentLang === 'de'
                 ? "Kein Auslassen empfohlen. Verabreichen Sie eine Booster-Dosis nach der nächsten HD und erhöhen Sie die Folgedosen."
                 : "Dose skipping not recommended. Administer a booster dose at the end of the next HD session, then increase subsequent maintenance doses.";
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Megfelelő dialízis előtti terápiás szint (${val} mg/L) HD mellett.`
+                ? `Megfelelő dialízis előtti terápiás szint (${val} mg/L, becsült AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L) HD mellett.`
                 : currentLang === 'de'
-                ? `Angemessener Prä-Dialyse-Spiegel (${val} mg/L) unter HD.`
-                : `Appropriate pre-dialysis level (${val} mg/L) in HD patient.`;
+                ? `Angemessener Prä-Dialyse-Spiegel (${val} mg/L, geschätzte AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026-Ziel: 80–120 mg·h/L) unter HD.`
+                : `Appropriate pre-dialysis level (${val} mg/L, estimated AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026 target: 80–120 mg·h/L) in HD patient.`;
 
               skipDoses = 0;
               newDose = "1.5 - 2.0 mg/kg (pl. 100-120 mg)";
@@ -962,46 +1003,46 @@ export default function TdmCalculatorView() {
             }
           } else {
             // CRRT
-            if (val > 1.5) {
+            if (val > 1.5 || (estimatedAuc24 && estimatedAuc24 > 120)) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Emelkedett völgykoncentráció CRRT mellett (${val} mg/L). Toxicitás veszélye.`
+                ? `Emelkedett Gentamicin expozíció CRRT mellett (${val} mg/L, becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L). Toxicitás veszélye.`
                 : currentLang === 'de'
-                ? `Erhöhter Talspiegel unter CRRT (${val} mg/L). Toxizitätsrisiko.`
-                : `Elevated trough level in CRRT patient (${val} mg/L). Risk of ototoxicity and nephrotoxicity.`;
+                ? `Erhöhter Spiegel unter CRRT (${val} mg/L, geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026: 80–120 mg·h/L). Toxizitätsrisiko.`
+                : `Elevated Gentamicin exposure in CRRT patient (${val} mg/L, estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026: 80–120 mg·h/L). Risk of ototoxicity and nephrotoxicity.`;
 
               skipDoses = 1;
               newDose = "1.0 - 1.5 mg/kg (pl. 70-100 mg)";
               newInterval = "q48h";
               act = currentLang === 'hu'
-                ? "Hagyjon ki egy dózist (24-48 óra szünet). Csökkentse a fenntartó adagot és hosszabbítsa meg az időközt 48 órára."
+                ? "Hagyjon ki egy dózist (24-48 óra szünet). Csökkentse a fenntartó adagot és hosszabbítsa meg az időközt 48 órára az IDSA 2026 célértékek védelmében."
                 : currentLang === 'de'
                 ? "Eine Dosis auslassen (24-48 Stunden Pause). Erhaltungsdosis reduzieren und Intervall auf 48 Stunden verlängern."
                 : "Skip 1 dose (withhold 24-48h). Reduce maintenance dose and extend interval to q48h.";
-            } else if (val < 1.0) {
+            } else if (val < 1.0 || (estimatedAuc24 && estimatedAuc24 < 80)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Alacsony Gentamicin szint CRRT mellett (${val} mg/L, cél: 1.0 - 1.5 mg/L). A CRRT jelentősen eliminálja az aminoglikozidokat.`
+                ? `Alacsony Gentamicin szint CRRT mellett (${val} mg/L, cél: 1.0 - 1.5 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L). A CRRT jelentősen eliminálja az aminoglikozidokat.`
                 : currentLang === 'de'
-                ? `Niedriger Spiegel unter CRRT (${val} mg/L, Ziel: 1,0 - 1,5 mg/L). Aminoglykoside werden durch CRRT stark eliminiert.`
-                : `Low trough level in CRRT patient (${val} mg/L, target: 1.0 - 1.5 mg/L). CRRT clears aminoglycosides substantially.`;
+                ? `Niedriger Spiegel unter CRRT (${val} mg/L, Ziel: 1,0 - 1,5 mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026: 80–120 mg·h/L). Aminoglykoside werden durch CRRT stark eliminiert.`
+                : `Low trough level in CRRT patient (${val} mg/L, target: 1.0 - 1.5 mg/L; estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 80–120 mg·h/L). CRRT clears aminoglycosides substantially.`;
 
               skipDoses = 0;
               boosterDose = "1.5 - 2.0 mg/kg IV booster egyszer";
               newDose = "2.5 - 3.0 mg/kg (pl. 180-200 mg)";
               newInterval = "q24h";
               act = currentLang === 'hu'
-                ? "Dózis kihagyása nem javasolt. Adjon egy booster dózist azonnal, majd emelje a fenntartó dózist és adja q24h időközönként."
+                ? "Dózis kihagyása nem javasolt. Adjon egy booster dózist azonnal, majd emelje a fenntartó dózist és adja q24h időközönként az IDSA 2026 AUC céltartomány eléréséhez."
                 : currentLang === 'de'
                 ? "Kein Auslassen. Geben Sie sofort einen Booster und erhöhen Sie die Erhaltungsdosis auf q24h."
                 : "Do not skip doses. Administer an immediate booster dose, then increase the maintenance dose and adjust the interval to q24h.";
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Megfelelő szint CRRT mellett (${val} mg/L).`
+                ? `Megfelelő és stabil szint CRRT mellett (${val} mg/L, becsült AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026 cél: 80–120 mg·h/L).`
                 : currentLang === 'de'
-                ? `Sicherer Spiegel unter CRRT (${val} mg/L).`
-                : `Safe trough level in CRRT patient (${val} mg/L).`;
+                ? `Sicherer Spiegel unter CRRT (${val} mg/L, geschätzte AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026: 80–120 mg·h/L).`
+                : `Safe trough level in CRRT patient (${val} mg/L, estimated AUC24: ~${estimatedAuc24 ?? '100'} mg·h/L, IDSA 2026: 80–120 mg·h/L).`;
 
               skipDoses = 0;
               newDose = "2.0 - 2.5 mg/kg (pl. 140-160 mg)";
@@ -1020,70 +1061,106 @@ export default function TdmCalculatorView() {
         {
           const isOdd = parseInt(tdm.currentInterval) >= 24;
           const targetTrough = isOdd ? 5.0 : 8.0;
+          const currentDoseNum = parseFloat(tdm.currentDose) || 1000;
+          const currentIntervalNum = parseFloat(tdm.currentInterval) || 24;
+          const ptWeight = parseFloat(tdm.weight) || parseFloat(patient.weight) || 75;
+
+          // IDSA 2026 AUC calculation (Sawchuk-Zaske 2-point or 1-compartment clearance model)
+          if (val > 0 && currentDoseNum > 0 && currentIntervalNum > 0) {
+            const vdPop = 0.26 * ptWeight;
+            if (!isNaN(peakVal) && peakVal > val && peakVal > 0) {
+              const deltaT = Math.max(1.0, currentIntervalNum - 1.0);
+              const ke = Math.log(peakVal / Math.max(0.05, val)) / deltaT;
+              const cMaxEst = peakVal * Math.exp(ke * 0.5);
+              let vdEst = (currentDoseNum * (1 - Math.exp(-ke * 0.5))) / (0.5 * ke * Math.max(1, cMaxEst - val * Math.exp(-ke * 0.5)));
+              if (isNaN(vdEst) || vdEst < 0.15 * ptWeight || vdEst > 0.6 * ptWeight) {
+                vdEst = vdPop;
+              }
+              const cl = Math.max(0.5, ke * vdEst);
+              const dailyDose = currentDoseNum * (24 / currentIntervalNum);
+              estimatedAuc24 = Math.round(dailyDose / cl);
+            } else {
+              const peakEst = val + (currentDoseNum / vdPop);
+              const deltaT = Math.max(1.0, currentIntervalNum - 1.0);
+              const ke = Math.log(peakEst / Math.max(0.05, val)) / deltaT;
+              const cl = Math.max(0.5, ke * vdPop);
+              const dailyDose = currentDoseNum * (24 / currentIntervalNum);
+              estimatedAuc24 = Math.round(dailyDose / cl);
+            }
+          }
 
           if (rrt === 'none') {
-            if (val > targetTrough) {
+            const isAucToxic = estimatedAuc24 !== undefined && estimatedAuc24 > 300;
+            const isTroughToxic = val > targetTrough;
+            const isAucSub = estimatedAuc24 !== undefined && estimatedAuc24 < 200;
+            const isPeakSub = !isNaN(peakVal) && peakVal > 0 && peakVal < (isOdd ? 45.0 : 20.0);
+
+            if (isAucToxic || isTroughToxic) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Emelkedett völgykoncentráció (${val} mg/L, cél: < ${targetTrough} mg/L). Súlyos fül- és vesekárosodási kockázat.`
+                ? `FIGYELMEZTETÉS: A mért Amikacin expozíció meghaladja az IDSA 2026-os biztonsági határértéket (Becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 cél: 200–300 mg·h/L], mért völgykoncentráció: ${val} mg/L [cél: < ${targetTrough} mg/L]). A 300 mg·h/L feletti expozíció kifejezetten magas cochlearis/vestibularis ototoxicitási és nefrotoxicitási (AKI) rizikóval jár!`
                 : currentLang === 'de'
-                ? `Erhöhter Talspiegel (${val} mg/L, Zielwert: < ${targetTrough} mg/L). Erhöhtes Risiko für Oto- und Nephrotoxizität.`
-                : `Elevated trough level (${val} mg/L, target: < ${targetTrough} mg/L). High risk of ototoxicity and nephrotoxicity.`;
+                ? `WARNUNG: Die gemessene Amikacin-Exposition überschreitet die IDSA 2026-Sicherheitsgrenze (Geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026-Ziel: 200–300 mg·h/L], Talspiegel: ${val} mg/L [Ziel: < ${targetTrough} mg/L]). Hohes Risiko für cochleäre/vestibuläre Ototoxizität und Nephrotoxizität (AKI)!`
+                : `WARNING: Measured Amikacin exposure exceeds the IDSA 2026 safety limit (Estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 target: 200–300 mg·h/L], trough: ${val} mg/L [target: < ${targetTrough} mg/L]). Exposure exceeding 300 mg·h/L carries severe ototoxicity and nephrotoxicity (AKI) risks!`;
 
-              skipDoses = 1;
-              const currentDoseNum = parseFloat(tdm.currentDose) || 1000;
-              const suggestedDose = Math.round(currentDoseNum * 0.75 / 100) * 100;
+              skipDoses = (val > 8.0 || (estimatedAuc24 && estimatedAuc24 > 380)) ? 2 : 1;
+              const aucVal = estimatedAuc24 || 350;
+              const targetRatio = 250 / Math.max(300, aucVal);
+              const suggestedDose = Math.max(300, Math.round((currentDoseNum * targetRatio) / 100) * 100);
               newDose = `${suggestedDose} mg`;
               newInterval = isOdd ? "q36h - q48h" : "q24h";
               act = currentLang === 'hu'
-                ? `Hagyjon ki 1 dózist! Ezután folytassa csökkentett dózissal (pl. ${tdm.currentDose} mg helyett ${newDose}-mal) vagy nyújtsa meg az időközt.`
+                ? `Az IDSA 2026-os irányelv alapján azonnali dóziskihagyás szükséges: hagyjon ki ${skipDoses} dózist! Csak akkor adja be a következő fenntartó adagot, ha a szérum völgykoncentráció < 2.5–5.0 mg/L alá csökkent. Az új javasolt fenntartó adag az AUC24 200–300 mg·h/L cél eléréséhez: ${newDose} (megnyújtott elimináció esetén q36h vagy q48h időköz javasolt).`
                 : currentLang === 'de'
-                ? `Eine Dosis auslassen! Danach mit reduzierter Dosis fortfahren (z. B. ${newDose} statt ${tdm.currentDose} mg) oder das Intervall verlängern.`
-                : `Skip 1 dose! Resume at a reduced dose (e.g., ${newDose} instead of ${tdm.currentDose} mg) or extend the interval.`;
-            } else if ((isOdd && val < 1.0) || (!isOdd && val < 4.0) || (tdm.measuredPeak && parseFloat(tdm.measuredPeak) < (isOdd ? 45.0 : 20.0))) {
+                ? `Gemäß IDSA 2026 ${skipDoses} Dosis(en) auslassen! Therapie erst fortsetzen, sobald der Talspiegel < 2,5–5,0 mg/L liegt. Neue Zieldosis für AUC24 200–300 mg·h/L: ${newDose} (bei verlängerter Elimination q36h/q48h).`
+                : `Per IDSA 2026 guidelines, withhold ${skipDoses} dose(s)! Resume only when the trough drops below 2.5–5.0 mg/L. Suggested new dose for AUC24 200–300 mg·h/L target: ${newDose} (use q36h/q48h if elimination is prolonged).`;
+            } else if (isAucSub || isPeakSub || (isOdd && val < 1.0)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Szubterápiás Amikacin szint (völgy: ${val} mg/L). Az alacsony koncentráció veszélyezteti a klinikai sikert.`
+                ? `Szubterápiás Amikacin expozíció az IDSA 2026-os irányelv alapján (Becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 célérték: 200–300 mg·h/L], mért völgy: ${val} mg/L). Az alacsony expozíció veszélyezteti a mikrobiológiai eradicatiót és terápiás kudarcot okozhat súlyos fertőzésekben.`
                 : currentLang === 'de'
-                ? `Subtherapeutischer Amikacin-Spiegel (Tal: ${val} mg/L). Unzureichende Konzentration gefährdet den Therapieerfolg.`
-                : `Subtherapeutic Amikacin level (trough: ${val} mg/L). Low levels may lead to clinical failure.`;
+                ? `Subtherapeutische Amikacin-Exposition gemäß IDSA 2026 (Geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026-Ziel: 200–300 mg·h/L], Talspiegel: ${val} mg/L). Gefährdet den Therapieerfolg bei schweren Infektionen.`
+                : `Subtherapeutic Amikacin exposure per IDSA 2026 guidelines (Estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L [IDSA 2026 target: 200–300 mg·h/L], trough: ${val} mg/L). Subtherapeutic levels risk microbiological failure in severe Gram-negative infections.`;
 
               skipDoses = 0;
-              const currentDoseNum = parseFloat(tdm.currentDose) || 1000;
-              const suggestedDose = Math.round(currentDoseNum * 1.25 / 100) * 100;
+              const aucVal = estimatedAuc24 || 150;
+              const targetRatio = 250 / Math.min(200, Math.max(80, aucVal));
+              const suggestedDose = Math.round((currentDoseNum * targetRatio) / 100) * 100;
               newDose = `${suggestedDose} mg`;
               newInterval = `q${tdm.currentInterval}h`;
-              boosterDose = isOdd ? `${Math.round(currentDoseNum * 0.5 / 100) * 100} mg IV egyszeri booster` : undefined;
+              if (isOdd && (aucVal < 160 || val < 0.8)) {
+                boosterDose = `${Math.round(currentDoseNum * 0.4 / 100) * 100} mg IV egyszeri booster`;
+              }
               act = currentLang === 'hu'
-                ? `Dózis kihagyása NEM javasolt. Emelje a fenntartó adagot kb. 25%-kal (${tdm.currentDose} mg-ról ${newDose}-ra) az optimális csúcskoncentráció eléréséhez.`
+                ? `Dózis kihagyása NEM indokolt. Az IDSA 2026-os cél (AUC24: 200–300 mg·h/L) eléréséhez emelje a fenntartó adagot ${currentDoseNum} mg-ról ${newDose}-ra. Szeptikus sokkban egyszeri booster adása megfontolandó. Kontroll TDM a 2-3. új dózis előtt.`
                 : currentLang === 'de'
-                ? `Kein Auslassen empfohlen. Erhöhen Sie die Erhaltungsdosis um ca. 25% (von ${tdm.currentDose} mg auf ${newDose}).`
-                : `Dose skipping NOT recommended. Increase maintenance dose by ~25% (from ${tdm.currentDose} mg to ${newDose}) to reach optimal peak levels.`;
+                ? `Kein Auslassen indiziert. Zur Erreichung des IDSA 2026-Ziels (AUC24: 200–300 mg·h/L) Erhaltungsdosis auf ${newDose} anheben. Bei septischem Schock Booster erwägen.`
+                : `Do not skip doses. To reach the IDSA 2026 target (AUC24: 200–300 mg·h/L), increase maintenance dose to ${newDose}. Consider a booster in septic shock. Recheck TDM before next dose.`;
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Biztonságos völgykoncentráció (${val} mg/L). Kiváló biztonsági profil.`
+                ? `Optimális terápiás expozíció az IDSA 2026-os irányelv szerint (Becsült AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026 cél: 200–300 mg·h/L], mért völgykoncentráció: ${val} mg/L [cél: < 5.0 mg/L]). Maximális baktericid hatékonyság biztonságos toxicitási profil mellett.`
                 : currentLang === 'de'
-                ? `Sicherer Talspiegel (${val} mg/L). Hervorragendes Sicherheitsprofil.`
-                : `Safe trough level (${val} mg/L). Excellent safety profile.`;
+                ? `Optimaler therapeutischer Bereich nach IDSA 2026 (Geschätzte AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026-Ziel: 200–300 mg·h/L], Talspiegel: ${val} mg/L [< 5,0 mg/L]). Hohe bakterizide Wirksamkeit bei sicherem Toxizitätsprofil.`
+                : `Optimal therapeutic exposure per IDSA 2026 guidelines (Estimated AUC24: ~${estimatedAuc24} mg·h/L [IDSA 2026 target: 200–300 mg·h/L], trough: ${val} mg/L [target: < 5.0 mg/L]). Maximum bactericidal efficacy with a safe toxicity profile.`;
 
               skipDoses = 0;
               newDose = `${tdm.currentDose} mg`;
               newInterval = `q${tdm.currentInterval}h`;
               act = currentLang === 'hu'
-                ? "Folytassa az adagolást változatlan formában. Hidratálja jól a beteget."
+                ? "Az adagolás folytatható változatlan dózissal és időközzel az IDSA 2026 célértékek fenntartásával. Gondoskodjon bőséges hidrálásról, és rendszeresen ellenőrizze a szérum kreatinint."
                 : currentLang === 'de'
-                ? "Therapie unverändert fortsetzen. Auf gute Hydratation des Patienten achten."
-                : "Continue current regimen. Ensure proper patient hydration.";
+                ? "Therapie mit unveränderter Dosis und Intervall gemäß IDSA 2026 fortsetzen. Für gute Hydratation sorgen und Nierenfunktion überwachen."
+                : "Continue current regimen unchanged in compliance with IDSA 2026 targets. Maintain proper hydration and monitor serum creatinine regularly.";
             }
           } else if (rrt === 'hd') {
-            if (val > 8.0) {
+            if (val > 8.0 || (estimatedAuc24 && estimatedAuc24 > 300)) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Magas dialízis előtti Amikacin szint (${val} mg/L, cél: < 8.0 mg/L). Toxikus felhalmozódás.`
+                ? `Magas dialízis előtti Amikacin szint (${val} mg/L, cél: < 8.0 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L). Toxikus felhalmozódás.`
                 : currentLang === 'de'
-                ? `Hoher Prä-Dialyse-Spiegel (${val} mg/L) unter HD. Kumulationsgefahr.`
-                : `High pre-dialysis Amikacin level (${val} mg/L) in HD patient. Accumulation danger.`;
+                ? `Hoher Prä-Dialyse-Spiegel (${val} mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026: 200–300 mg·h/L) unter HD. Kumulationsgefahr.`
+                : `High pre-dialysis Amikacin level (${val} mg/L, estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 200–300 mg·h/L) in HD patient. Accumulation danger.`;
 
               skipDoses = "Következő HD utáni dózist hagyja ki";
               newDose = "3.0 - 5.0 mg/kg (pl. 200-300 mg)";
@@ -1093,30 +1170,30 @@ export default function TdmCalculatorView() {
                 : currentLang === 'de'
                 ? "Aufgrund des hohen Spiegels die Gabe nach der nächsten HD auslassen. Erst wieder geben, wenn Spiegel < 5 mg/L."
                 : "Withhold dosing after the next HD session due to toxic levels. Resume at a reduced post-dialysis dose once the pre-dialysis level is < 5 mg/L.";
-            } else if (val < 5.0) {
+            } else if (val < 5.0 || (estimatedAuc24 && estimatedAuc24 < 200)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Alacsony dialízis előtti Amikacin szint (${val} mg/L, cél: 5.0 - 8.0 mg/L). Nem biztosít elégséges terápiás hatást.`
+                ? `Alacsony dialízis előtti Amikacin szint (${val} mg/L, cél: 5.0 - 8.0 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L). Nem biztosít elégséges terápiás hatást.`
                 : currentLang === 'de'
-                ? `Niedriger Prä-Dialyse-Spiegel (${val} mg/L, Ziel: 5,0 - 8,0 mg/L). Unzureichende therapeutische Wirkung.`
-                : `Low pre-dialysis Amikacin level (${val} mg/L, target: 5.0 - 8.0 mg/L). Insufficient therapeutic effect.`;
+                ? `Niedriger Prä-Dialyse-Spiegel (${val} mg/L, Ziel: 5,0 - 8,0 mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L). Unzureichende therapeutische Wirkung.`
+                : `Low pre-dialysis Amikacin level (${val} mg/L, target: 5.0 - 8.0 mg/L; estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L). Insufficient therapeutic effect.`;
 
               skipDoses = 0;
               boosterDose = "5.0 - 7.5 mg/kg IV booster a következő HD végén";
               newDose = "7.5 - 10.0 mg/kg (pl. 500-600 mg)";
               newInterval = "Minden dialízis után (HD végén)";
               act = currentLang === 'hu'
-                ? "Dózis kihagyása nem javasolt. Adjon booster dózist a következő HD végén, majd emelje a fenntartó adagokat."
+                ? "Dózis kihagyása nem javasolt. Adjon booster dózist a következő HD végén, majd emelje a fenntartó adagokat az IDSA 2026 expozíciós célok biztosításához."
                 : currentLang === 'de'
                 ? "Kein Auslassen empfohlen. Booster-Dosis nach der nächsten HD verabreichen und Folgedosen anheben."
                 : "Dose skipping not recommended. Administer a booster dose after the next HD, then increase subsequent maintenance doses.";
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Megfelelő dialízis előtti szint (${val} mg/L) HD mellett.`
+                ? `Megfelelő dialízis előtti szint (${val} mg/L, becsült AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L) HD mellett.`
                 : currentLang === 'de'
-                ? `Angemessener Prä-Dialyse-Spiegel (${val} mg/L) unter HD.`
-                : `Appropriate pre-dialysis level (${val} mg/L) in HD patient.`;
+                ? `Angemessener Prä-Dialyse-Spiegel (${val} mg/L, geschätzte AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026: 200–300 mg·h/L) unter HD.`
+                : `Appropriate pre-dialysis level (${val} mg/L, estimated AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026: 200–300 mg·h/L) in HD patient.`;
 
               skipDoses = 0;
               newDose = "5.0 - 7.5 mg/kg (pl. 350-500 mg)";
@@ -1129,46 +1206,46 @@ export default function TdmCalculatorView() {
             }
           } else {
             // CRRT
-            if (val > 8.0) {
+            if (val > 8.0 || (estimatedAuc24 && estimatedAuc24 > 300)) {
               status = 'toxic';
               interp = currentLang === 'hu'
-                ? `Magas völgykoncentráció CRRT mellett (${val} mg/L, cél: < 8.0 mg/L).`
+                ? `Magas Amikacin expozíció CRRT mellett (${val} mg/L, cél: < 8.0 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L).`
                 : currentLang === 'de'
-                ? `Hoher Talspiegel unter CRRT (${val} mg/L).`
-                : `High trough level in CRRT patient (${val} mg/L).`;
+                ? `Hoher Spiegel unter CRRT (${val} mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026: 200–300 mg·h/L).`
+                : `High Amikacin exposure in CRRT patient (${val} mg/L, estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 200–300 mg·h/L).`;
 
               skipDoses = 1;
               newDose = "5.0 mg/kg (pl. 350 mg)";
               newInterval = "q48h";
               act = currentLang === 'hu'
-                ? "Hagyjon ki egy dózist (24 órás withhold). Indítsa újra csökkentett dózissal és megnyújtott (48 órás) adagolási időközzel."
+                ? "Hagyjon ki egy dózist (24 órás withhold). Indítsa újra csökkentett dózissal és megnyújtott (48 órás) adagolási időközzel az IDSA 2026 célértékek védelmében."
                 : currentLang === 'de'
                 ? "Eine Dosis auslassen. Mit reduzierter Dosis und verlängertem Intervall (48h) fortsetzen."
                 : "Skip 1 dose. Restart with reduced dose and extended interval (48h).";
-            } else if (val < 5.0) {
+            } else if (val < 5.0 || (estimatedAuc24 && estimatedAuc24 < 200)) {
               status = 'sub';
               interp = currentLang === 'hu'
-                ? `Alacsony Amikacin szint CRRT mellett (${val} mg/L, cél: 5.0 - 8.0 mg/L). Jelentős mértékű a gyógyszer eliminációja.`
+                ? `Alacsony Amikacin szint CRRT mellett (${val} mg/L, cél: 5.0 - 8.0 mg/L; becsült AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L). Jelentős mértékű a gyógyszer hemofiltrációs eliminációja.`
                 : currentLang === 'de'
-                ? `Niedriger Spiegel unter CRRT (${val} mg/L, Ziel: 5,0 - 8,0 mg/L). Hohe Filtrations-Clearance.`
-                : `Low trough level in CRRT patient (${val} mg/L, target: 5.0 - 8.0 mg/L). High filtration clearance.`;
+                ? `Niedriger Spiegel unter CRRT (${val} mg/L, Ziel: 5,0 - 8,0 mg/L; geschätzte AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L). Hohe Filtrations-Clearance.`
+                : `Low trough level in CRRT patient (${val} mg/L, target: 5.0 - 8.0 mg/L; estimated AUC24: ${estimatedAuc24 ?? 'N/A'} mg·h/L, IDSA 2026 target: 200–300 mg·h/L). High filtration clearance.`;
 
               skipDoses = 0;
               boosterDose = "7.5 - 10.0 mg/kg IV booster egyszer";
               newDose = "10.0 - 12.5 mg/kg (pl. 750-900 mg)";
               newInterval = "q24h";
               act = currentLang === 'hu'
-                ? "Dózis kihagyása nem javasolt. Adjon egy booster dózist azonnal, majd emelje a fenntartó dózist és adja q24h időközönként."
+                ? "Dózis kihagyása nem javasolt. Adjon egy booster dózist azonnal, majd emelje a fenntartó dózist és adja q24h időközönként az IDSA 2026 AUC célérték eléréséhez."
                 : currentLang === 'de'
                 ? "Kein Auslassen. Booster sofort geben, dann Erhaltungsdosis anheben und q24h verabreichen."
                 : "Do not skip doses. Administer booster dose immediately, then increase the maintenance dose and adjust the interval to q24h.";
             } else {
               status = 'therapeutic';
               interp = currentLang === 'hu'
-                ? `Terápiás szint CRRT mellett (${val} mg/L).`
+                ? `Terápiás szint CRRT mellett (${val} mg/L, becsült AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026 cél: 200–300 mg·h/L).`
                 : currentLang === 'de'
-                ? `Therapeutischer Spiegel unter CRRT (${val} mg/L).`
-                : `Therapeutic level in CRRT patient (${val} mg/L).`;
+                ? `Therapeutischer Spiegel unter CRRT (${val} mg/L, geschätzte AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026: 200–300 mg·h/L).`
+                : `Therapeutic level in CRRT patient (${val} mg/L, estimated AUC24: ~${estimatedAuc24 ?? '250'} mg·h/L, IDSA 2026 target: 200–300 mg·h/L).`;
 
               skipDoses = 0;
               newDose = "7.5 - 10.0 mg/kg (pl. 500-750 mg)";
@@ -1673,7 +1750,37 @@ export default function TdmCalculatorView() {
               <label className="text-[11px] font-semibold text-slate-500 block mb-1">{lt.select_drug}</label>
               <select
                 value={tdm.drugId}
-                onChange={(e) => setTdm({ ...tdm, drugId: e.target.value as any, measuredPeak: '' })}
+                onChange={(e) => {
+                  const newDrug = e.target.value as any;
+                  let newDose = tdm.currentDose;
+                  let newInt = tdm.currentInterval;
+                  let newTrough = tdm.measuredTrough;
+                  if (newDrug === 'gentamicin' && tdm.drugId !== 'gentamicin') {
+                    newDose = '350';
+                    newInt = '24';
+                    newTrough = '0.6';
+                  } else if (newDrug === 'amikacin' && tdm.drugId !== 'amikacin') {
+                    newDose = '1000';
+                    newInt = '24';
+                    newTrough = '2.5';
+                  } else if (newDrug === 'vancomycin' && tdm.drugId !== 'vancomycin') {
+                    newDose = '1000';
+                    newInt = '12';
+                    newTrough = '12.0';
+                  } else if (newDrug === 'voriconazole' && tdm.drugId !== 'voriconazole') {
+                    newDose = '200';
+                    newInt = '12';
+                    newTrough = '2.5';
+                  }
+                  setTdm({
+                    ...tdm,
+                    drugId: newDrug,
+                    currentDose: newDose,
+                    currentInterval: newInt,
+                    measuredTrough: newTrough,
+                    measuredPeak: ''
+                  });
+                }}
                 className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white font-bold text-slate-700"
               >
                 <option value="vancomycin">Vancomycin</option>
@@ -1697,6 +1804,18 @@ export default function TdmCalculatorView() {
               </select>
             </div>
 
+            {/* Patient Weight */}
+            <div>
+              <label className="text-[11px] font-semibold text-slate-500 block mb-1">{lt.patient_weight_label}</label>
+              <input
+                type="number"
+                value={tdm.weight}
+                onChange={(e) => setTdm({ ...tdm, weight: e.target.value })}
+                className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white font-semibold"
+                placeholder="e.g. 75"
+              />
+            </div>
+
             {/* Current Dose */}
             <div>
               <label className="text-[11px] font-semibold text-slate-500 block mb-1">{lt.current_dose}</label>
@@ -1704,7 +1823,7 @@ export default function TdmCalculatorView() {
                 type="number"
                 value={tdm.currentDose}
                 onChange={(e) => setTdm({ ...tdm, currentDose: e.target.value })}
-                className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white"
+                className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white font-semibold"
                 placeholder="e.g. 1000"
               />
             </div>
@@ -1727,28 +1846,40 @@ export default function TdmCalculatorView() {
 
             {/* Measured Trough */}
             <div>
-              <label className="text-[11px] font-semibold text-slate-500 block mb-1">{lt.measured_trough}</label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="text-[11px] font-semibold text-slate-500">{lt.measured_trough}</label>
+                {(tdm.drugId === 'gentamicin' || tdm.drugId === 'amikacin') && (
+                  <span className="text-[10px] text-blue-600 font-bold">
+                    {tdm.drugId === 'gentamicin' ? 'IDSA 2026: < 1.0 mg/L' : 'IDSA 2026: < 5.0 mg/L'}
+                  </span>
+                )}
+              </div>
               <input
                 type="number"
                 step="any"
                 value={tdm.measuredTrough}
                 onChange={(e) => setTdm({ ...tdm, measuredTrough: e.target.value })}
                 className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white font-bold"
-                placeholder="e.g. 12.5"
+                placeholder="e.g. 0.6"
               />
             </div>
 
             {/* Measured Peak (only for aminoglycosides) */}
             {(tdm.drugId === 'gentamicin' || tdm.drugId === 'amikacin') && (
               <div>
-                <label className="text-[11px] font-semibold text-slate-500 block mb-1">{lt.measured_peak}</label>
+                <div className="flex justify-between items-center mb-1">
+                  <label className="text-[11px] font-semibold text-slate-500">{lt.measured_peak}</label>
+                  <span className="text-[10px] text-slate-400 font-medium">
+                    {currentLang === 'hu' ? '30-60 perccel az infúzió után' : '30-60 min post-infusion'}
+                  </span>
+                </div>
                 <input
                   type="number"
                   step="any"
                   value={tdm.measuredPeak}
                   onChange={(e) => setTdm({ ...tdm, measuredPeak: e.target.value })}
-                  className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white"
-                  placeholder="e.g. 18"
+                  className="w-full border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-blue-500 outline-none bg-white font-semibold"
+                  placeholder={tdm.drugId === 'gentamicin' ? 'e.g. 18' : 'e.g. 55'}
                 />
               </div>
             )}
@@ -1769,7 +1900,7 @@ export default function TdmCalculatorView() {
               <div className="space-y-4">
                 {/* Visual Level indicator / Gauge card */}
                 <div className="bg-white border border-slate-200 p-5 rounded-xl shadow-sm space-y-4">
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center flex-wrap gap-2">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{lt.target_range}</span>
                     <span className="text-xs font-extrabold text-blue-600">
                       {tdm.drugId === 'vancomycin' && (
@@ -1779,8 +1910,20 @@ export default function TdmCalculatorView() {
                           ? '10.0 - 20.0 mg/L (Ziel: AUC/MHK; Leitlinie: AUC24/MHK 400–600 mg·h/L)'
                           : '10.0 - 20.0 mg/L (Target: AUC/MIC; guideline: AUC24/MIC 400–600 mg·h/L)'
                       )}
-                      {tdm.drugId === 'gentamicin' && '< 1.0 mg/L'}
-                      {tdm.drugId === 'amikacin' && '< 4.0 mg/L'}
+                      {tdm.drugId === 'gentamicin' && (
+                        currentLang === 'hu'
+                          ? 'Völgy < 1.0 mg/L (IDSA 2026 cél: AUC24 80–120 mg·h/L)'
+                          : currentLang === 'de'
+                          ? 'Tal < 1,0 mg/L (IDSA 2026 Ziel: AUC24 80–120 mg·h/L)'
+                          : 'Trough < 1.0 mg/L (IDSA 2026 target: AUC24 80–120 mg·h/L)'
+                      )}
+                      {tdm.drugId === 'amikacin' && (
+                        currentLang === 'hu'
+                          ? 'Völgy < 5.0 mg/L (IDSA 2026 cél: AUC24 200–300 mg·h/L)'
+                          : currentLang === 'de'
+                          ? 'Tal < 5,0 mg/L (IDSA 2026 Ziel: AUC24 200–300 mg·h/L)'
+                          : 'Trough < 5.0 mg/L (IDSA 2026 target: AUC24 200–300 mg·h/L)'
+                      )}
                       {tdm.drugId === 'voriconazole' && '1.5 - 5.0 mg/L'}
                     </span>
                   </div>
@@ -1789,18 +1932,18 @@ export default function TdmCalculatorView() {
                   <div className="relative pt-4 pb-2">
                     <div className="h-2 w-full bg-slate-100 rounded-full flex overflow-hidden">
                       {/* Subtherapeutic part */}
-                      <div className="h-full bg-amber-200" style={{ width: tdm.drugId === 'voriconazole' ? '30%' : '30%' }} />
+                      <div className="h-full bg-amber-200" style={{ width: '30%' }} />
                       {/* Therapeutic part */}
-                      <div className="h-full bg-emerald-500" style={{ width: tdm.drugId === 'voriconazole' ? '40%' : '40%' }} />
+                      <div className="h-full bg-emerald-500" style={{ width: '40%' }} />
                       {/* Toxic part */}
                       <div className="h-full bg-red-400" style={{ width: '30%' }} />
                     </div>
 
                     {/* Numeric indicator marker */}
                     <div className="flex justify-between text-[10px] text-slate-400 font-bold mt-1.5">
-                      <span>{currentLang === 'hu' ? 'Alacsony' : 'Low'}</span>
-                      <span>{currentLang === 'hu' ? 'Terápiás (Cél)' : 'Therapeutic'}</span>
-                      <span>{currentLang === 'hu' ? 'Magas' : 'High'}</span>
+                      <span>{currentLang === 'hu' ? 'Alacsony (Szubterápiás)' : currentLang === 'de' ? 'Niedrig (Subtherapeutisch)' : 'Low (Subtherapeutic)'}</span>
+                      <span>{currentLang === 'hu' ? 'Terápiás ablak (Cél)' : currentLang === 'de' ? 'Therapeutischer Bereich' : 'Therapeutic (Target)'}</span>
+                      <span>{currentLang === 'hu' ? 'Magas (Toxikus)' : currentLang === 'de' ? 'Hoch (Toxisch)' : 'High (Toxic)'}</span>
                     </div>
                   </div>
 
@@ -1825,50 +1968,119 @@ export default function TdmCalculatorView() {
                   </div>
                 </div>
 
-                {/* Vancomycin AUC/MIC Target Indicator Card */}
-                {tdm.drugId === 'vancomycin' && tdmResult.estimatedAuc24 !== undefined && (
+                {/* AUC Target Indicator Card for Vancomycin & Aminoglycosides (Gentamicin & Amikacin per IDSA 2026) */}
+                {(tdm.drugId === 'vancomycin' || tdm.drugId === 'gentamicin' || tdm.drugId === 'amikacin') && tdmResult.estimatedAuc24 !== undefined && (
                   <div className="bg-indigo-50/70 border border-indigo-200/80 p-4 rounded-xl shadow-xs space-y-2.5">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
                       <div className="flex items-center gap-2">
                         <Activity className="w-4 h-4 text-indigo-600" />
                         <span className="text-xs font-bold text-indigo-950 uppercase tracking-wider">
-                          {currentLang === 'hu' ? 'Becsült 24 órás AUC expozíció (AUC24/MIC)' : currentLang === 'de' ? 'Geschätzte 24h-AUC-Exposition (AUC24/MHK)' : 'Estimated 24h AUC Exposure (AUC24/MIC)'}
+                          {tdm.drugId === 'vancomycin'
+                            ? (currentLang === 'hu' ? 'Becsült 24 órás AUC expozíció (AUC24/MIC)' : currentLang === 'de' ? 'Geschätzte 24h-AUC-Exposition (AUC24/MHK)' : 'Estimated 24h AUC Exposure (AUC24/MIC)')
+                            : (currentLang === 'hu' ? `Becsült 24 órás AUC expozíció (IDSA 2026 AUC24 - ${tdm.drugId === 'gentamicin' ? 'Gentamicin' : 'Amikacin'})` : currentLang === 'de' ? `Geschätzte 24h-AUC-Exposition (IDSA 2026 AUC24 - ${tdm.drugId === 'gentamicin' ? 'Gentamicin' : 'Amikacin'})` : `Estimated 24h AUC Exposure (IDSA 2026 AUC24 - ${tdm.drugId === 'gentamicin' ? 'Gentamicin' : 'Amikacin'})`)}
                         </span>
                       </div>
                       <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold border ${
-                        tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
-                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                          : tdmResult.estimatedAuc24 < 400
-                          ? 'bg-amber-100 text-amber-800 border-amber-300'
-                          : 'bg-red-100 text-red-800 border-red-300'
+                        tdm.drugId === 'vancomycin'
+                          ? (tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                              : tdmResult.estimatedAuc24 < 400
+                              ? 'bg-amber-100 text-amber-800 border-amber-300'
+                              : 'bg-red-100 text-red-800 border-red-300')
+                          : tdm.drugId === 'gentamicin'
+                          ? (tdmResult.estimatedAuc24 >= 80 && tdmResult.estimatedAuc24 <= 120
+                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                              : tdmResult.estimatedAuc24 < 80
+                              ? 'bg-amber-100 text-amber-800 border-amber-300'
+                              : 'bg-red-100 text-red-800 border-red-300')
+                          : (tdmResult.estimatedAuc24 >= 200 && tdmResult.estimatedAuc24 <= 300
+                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                              : tdmResult.estimatedAuc24 < 200
+                              ? 'bg-amber-100 text-amber-800 border-amber-300'
+                              : 'bg-red-100 text-red-800 border-red-300')
                       }`}>
                         ~{tdmResult.estimatedAuc24} mg·h/L
+                        {tdm.drugId === 'gentamicin' && ' (IDSA 2026 cél: 80–120)'}
+                        {tdm.drugId === 'amikacin' && ' (IDSA 2026 cél: 200–300)'}
+                        {tdm.drugId === 'vancomycin' && ' (Cél: 400–600)'}
                       </span>
                     </div>
                     <p className="text-[11px] text-indigo-900/90 leading-relaxed">
-                      {currentLang === 'hu'
-                        ? `A nemzetközi guideline-ok (ASHP/IDSA) alapján megfelelőnek tartott terápiás tartomány: AUC24/MIC 400–600 mg·h/L (feltételezve, hogy a MIC = 1 mg/L). ${
-                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
-                              ? 'A becsült expozíció az optimális terápiás ablakban van.'
-                              : tdmResult.estimatedAuc24 < 400
-                              ? 'A becsült expozíció a céltartomány alatt van (fokozott terápiás kudarc rizikó).'
-                              : 'A becsült expozíció meghaladja a 600 mg·h/L-t (szignifikánsan emelkedett nefrotoxicitás és AKI rizikó)!'
-                          }`
-                        : currentLang === 'de'
-                        ? `Leitliniengerechter Zielbereich (ASHP/IDSA): AUC24/MHK 400–600 mg·h/L (bei MHK = 1 mg/L). ${
-                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
-                              ? 'Die geschätzte Exposition liegt im optimalen Zielbereich.'
-                              : tdmResult.estimatedAuc24 < 400
-                              ? 'Die geschätzte Exposition liegt unter dem Zielbereich.'
-                              : 'Die geschätzte Exposition übersteigt 600 mg·h/L (erhöhtes Nephrotoxizitätsrisiko)!'
-                          }`
-                        : `Guideline-recommended target range (ASHP/IDSA): AUC24/MIC 400–600 mg·h/L (assuming MIC = 1 mg/L). ${
-                            tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
-                              ? 'Estimated exposure is within the optimal guideline target range.'
-                              : tdmResult.estimatedAuc24 < 400
-                              ? 'Estimated exposure is below target (increased risk of clinical failure).'
-                              : 'Estimated exposure exceeds 600 mg·h/L (substantially elevated AKI/nephrotoxicity risk)!'
-                          }`}
+                      {tdm.drugId === 'vancomycin' && (
+                        currentLang === 'hu'
+                          ? `A nemzetközi guideline-ok (ASHP/IDSA) alapján megfelelőnek tartott terápiás tartomány: AUC24/MIC 400–600 mg·h/L (feltételezve, hogy a MIC = 1 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                                ? 'A becsült expozíció az optimális terápiás ablakban van.'
+                                : tdmResult.estimatedAuc24 < 400
+                                ? 'A becsült expozíció a céltartomány alatt van (fokozott terápiás kudarc rizikó).'
+                                : 'A becsült expozíció meghaladja a 600 mg·h/L-t (szignifikánsan emelkedett nefrotoxicitás és AKI rizikó)!'
+                            }`
+                          : currentLang === 'de'
+                          ? `Leitliniengerechter Zielbereich (ASHP/IDSA): AUC24/MHK 400–600 mg·h/L (bei MHK = 1 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                                ? 'Die geschätzte Exposition liegt im optimalen Zielbereich.'
+                                : tdmResult.estimatedAuc24 < 400
+                                ? 'Die geschätzte Exposition liegt unter dem Zielbereich.'
+                                : 'Die geschätzte Exposition übersteigt 600 mg·h/L (erhöhtes Nephrotoxizitätsrisiko)!'
+                            }`
+                          : `Guideline-recommended target range (ASHP/IDSA): AUC24/MIC 400–600 mg·h/L (assuming MIC = 1 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 400 && tdmResult.estimatedAuc24 <= 600
+                                ? 'Estimated exposure is within the optimal guideline target range.'
+                                : tdmResult.estimatedAuc24 < 400
+                                ? 'Estimated exposure is below target (increased risk of clinical failure).'
+                                : 'Estimated exposure exceeds 600 mg·h/L (substantially elevated AKI/nephrotoxicity risk)!'
+                            }`
+                      )}
+                      {tdm.drugId === 'gentamicin' && (
+                        currentLang === 'hu'
+                          ? `Az IDSA 2026-os konszenzus irányelv alapján a terápiás cél: AUC24 80–120 mg·h/L (völgykoncentráció < 1.0 mg/L mellett). ${
+                              tdmResult.estimatedAuc24 >= 80 && tdmResult.estimatedAuc24 <= 120
+                                ? 'A becsült expozíció az optimális terápiás ablakban van az IDSA 2026 célértékeknek megfelelően (kiváló baktericid hatás, minimális ototoxicitás és AKI kockázat).'
+                                : tdmResult.estimatedAuc24 < 80
+                                ? 'A becsült expozíció az IDSA 2026 célérték alatt van (< 80 mg·h/L: aluldozírozás, elégtelen baktericid hatás és terápiás kudarc kockázata).'
+                                : 'A becsült expozíció meghaladja az IDSA 2026 biztonsági küszöböt (> 120 mg·h/L: szignifikánsan emelkedett nefrotoxicitás [AKI] és irreverzibilis ototoxicitás kockázata)!'
+                            }`
+                          : currentLang === 'de'
+                          ? `Gemäß IDSA 2026-Leitlinie liegt das Ziel bei AUC24 80–120 mg·h/L (bei Talspiegel < 1,0 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 80 && tdmResult.estimatedAuc24 <= 120
+                                ? 'Die geschätzte Exposition liegt im optimalen IDSA 2026-Zielbereich.'
+                                : tdmResult.estimatedAuc24 < 80
+                                ? 'Die geschätzte Exposition liegt unter dem IDSA 2026-Zielwert (Risiko für Therapieversagen).'
+                                : 'Die geschätzte Exposition übersteigt 120 mg·h/L (erhöhtes Risiko für AKI/Nephrotoxizität und Ototoxizität)!'
+                            }`
+                          : `According to the IDSA 2026 guidelines, the target is AUC24 80–120 mg·h/L (with trough < 1.0 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 80 && tdmResult.estimatedAuc24 <= 120
+                                ? 'Estimated exposure is within the optimal IDSA 2026 target range (maximal efficacy, minimal toxicity).'
+                                : tdmResult.estimatedAuc24 < 80
+                                ? 'Estimated exposure is below the IDSA 2026 target (risk of underdosing and clinical failure).'
+                                : 'Estimated exposure exceeds the IDSA 2026 safety threshold of 120 mg·h/L (significantly increased risk of AKI and ototoxicity)!'
+                            }`
+                      )}
+                      {tdm.drugId === 'amikacin' && (
+                        currentLang === 'hu'
+                          ? `Az IDSA 2026-os konszenzus irányelv alapján a terápiás cél: AUC24 200–300 mg·h/L (völgykoncentráció < 5.0 mg/L mellett). ${
+                              tdmResult.estimatedAuc24 >= 200 && tdmResult.estimatedAuc24 <= 300
+                                ? 'A becsült expozíció az optimális terápiás ablakban van az IDSA 2026 célértékeknek megfelelően.'
+                                : tdmResult.estimatedAuc24 < 200
+                                ? 'A becsült expozíció az IDSA 2026 célérték alatt van (< 200 mg·h/L: szubterápiás szint, mikrobiológiai kudarc rizikója).'
+                                : 'A becsült expozíció meghaladja az IDSA 2026 biztonsági küszöböt (> 300 mg·h/L: szignifikánsan emelkedett vestibularis/cochlearis és nefrotoxicitás kockázata)!'
+                            }`
+                          : currentLang === 'de'
+                          ? `Gemäß IDSA 2026-Leitlinie liegt das Ziel bei AUC24 200–300 mg·h/L (bei Talspiegel < 5,0 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 200 && tdmResult.estimatedAuc24 <= 300
+                                ? 'Die geschätzte Exposition liegt im optimalen IDSA 2026-Zielbereich.'
+                                : tdmResult.estimatedAuc24 < 200
+                                ? 'Die geschätzte Exposition liegt unter dem IDSA 2026-Zielwert (subtherapeutisch, Risiko für Therapieversagen).'
+                                : 'Die geschätzte Exposition übersteigt 300 mg·h/L (erhöhtes Risiko für Ototoxizität und Nephrotoxizität)!'
+                            }`
+                          : `According to the IDSA 2026 guidelines, the target is AUC24 200–300 mg·h/L (with trough < 5.0 mg/L). ${
+                              tdmResult.estimatedAuc24 >= 200 && tdmResult.estimatedAuc24 <= 300
+                                ? 'Estimated exposure is within the optimal IDSA 2026 target range.'
+                                : tdmResult.estimatedAuc24 < 200
+                                ? 'Estimated exposure is below the IDSA 2026 target (subtherapeutic level, risk of clinical failure).'
+                                : 'Estimated exposure exceeds the IDSA 2026 safety limit of 300 mg·h/L (significantly increased risk of ototoxicity and nephrotoxicity)!'
+                            }`
+                      )}
                     </p>
                   </div>
                 )}

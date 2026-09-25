@@ -1070,9 +1070,9 @@ export const mdrStewardshipPrinciples = {
         de: "Verlängerte (EI: 3-4 Std.) oder Kontinuierliche (CI) Infusion: Standardversorgung bei Beta-Lactamen zur Maximierung von fT > MIC."
       },
       {
-        hu: "Terapeutikus Drug Monitoring (TDM): Kötelező Vancomycin esetén (AUC/MIC 400-600 cél), Aminoglikozidoknál (Cmax/MIC gátlás) és Colistin technikai adagolásánál.",
-        en: "Therapeutic Drug Monitoring (TDM): Mandatory for Vancomycin (target AUC/MIC 400-600), Aminoglycosides (Cmax/MIC), and Colistin.",
-        de: "Therapeutisches Drug Monitoring (TDM): Obligatorisch für Vancomycin (AUC/MIC 400-600), Aminoglykoside und Colistin."
+        hu: "Terapeutikus Drug Monitoring (TDM): Kötelező Vancomycin esetén (AUC/MIC 400-600 cél), Aminoglikozidoknál (IDSA 2026 konszenzus: Gentamicin AUC 80-120 mg·h/L, Amikacin AUC 200-300 mg·h/L, völgy < 1/5 µg/mL) és Colistin technikai adagolásánál.",
+        en: "Therapeutic Drug Monitoring (TDM): Mandatory for Vancomycin (target AUC/MIC 400-600), Aminoglycosides (IDSA 2026 consensus: Gentamicin AUC 80-120 mg·h/L, Amikacin AUC 200-300 mg·h/L), and Colistin.",
+        de: "Therapeutisches Drug Monitoring (TDM): Obligatorisch für Vancomycin (AUC/MIC 400-600), Aminoglykoside (IDSA 2026: Gentamicin AUC 80-120 mg·h/L, Amikacin AUC 200-300 mg·h/L) und Colistin."
       },
       {
         hu: "Magas dózisú protokollok: Tigecyclin esetén a standard 50mg q12h elégtelen; MDR törzsekre 200mg telítő dózis, majd 100mg q12h szükséges! Daptomycin esetén VRE/sepsisben 8-10-12 mg/kg/nap.",
