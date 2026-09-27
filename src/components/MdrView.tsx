@@ -92,7 +92,7 @@ export default function MdrView() {
             </h2>
             <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-3xl">
               {language === 'hu' 
-                ? 'Rezisztencia gének (blaKPC, blaNDM, blaOXA, mecA, vanA), béta-laktamáz gátló kombinációk (SUL-DUR, CAZ-AVI, MEV, IMI-REL, ATM-AVI), sziderofórok (Cefiderokol) és klinikai algoritmusok.'
+                ? 'Rezisztencia gének (pl. blaKPC, blaNDM, blaOXA, mecA, vanA), béta-laktamáz gátló kombinációk (SUL-DUR, CAZ-AVI, MEV, IMI-REL, ATM-AVI), sziderofórok (Cefiderokol) és klinikai algoritmusok.'
                 : language === 'de'
                 ? 'Resistenzgene (blaKPC, blaNDM, blaOXA, mecA, vanA), Beta-Lactamase-Inhibitor-Kombinationen, Siderophore und klinische Algorithmen.'
                 : 'Resistance genes (blaKPC, blaNDM, blaOXA, mecA, vanA), beta-lactamase inhibitor combinations, siderophores (Cefiderocol) and clinical treatment algorithms.'}

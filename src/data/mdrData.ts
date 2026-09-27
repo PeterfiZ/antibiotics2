@@ -162,7 +162,7 @@ export const eskapePathogens: EskapePathogen[] = [
     code: "CRE / KPC",
     name: "Klebsiella pneumoniae",
     mdrDefinition: "Karbapenem-rezisztens Enterobacterales",
-    majorGenes: "blaKPC, blaNDM, blaOXA-48, blaVIM",
+    majorGenes: "blaKPC, blaNDM, blaOXA-48, blaVIM, blaIMP és blaOXA-48-like",
     firstLineTreatment: {
       hu: "Ceftazidim-Avibactam, Meropenem-Vaborbactam, Cefiderokol, Aztreonam-Avibactam",
       en: "Ceftazidime-Avibactam, Meropenem-Vaborbactam, Cefiderocol, Aztreonam-Avibactam",
@@ -190,7 +190,7 @@ export const eskapePathogens: EskapePathogen[] = [
     code: "CRPA",
     name: "Pseudomonas aeruginosa",
     mdrDefinition: "Karbapenem-rezisztens / MDR Pseudomonas",
-    majorGenes: "blaVIM, blaIMP, oprD veszteség, MexAB-OprM efflux, AmpC derepression",
+    majorGenes: "blaVIM, blaIMP, oprD veszteség, MexAB-OprM efflux, AmpC aktiválódás",
     firstLineTreatment: {
       hu: "Ceftolozán-Tazobactam, Imipenem-Relebactam, Cefiderokol",
       en: "Ceftolozane-Tazobactam, Imipenem-Relebactam, Cefiderocol",
@@ -262,7 +262,7 @@ export const amblerClasses: AmblerClass[] = [
       en: "AmpC cephalosporinase",
       de: "AmpC-Cephalosporinase"
     },
-    genes: "blaACC, blaFOX, kromoszomális ampC (Enterobacter, Citrobacter, Serratia, Morganella)",
+    genes: "blaACC, blaFOX, kromoszomális AmpC (Enterobacter, Citrobacter, Serratia, Morganella)",
     substrate: {
       hu: "Cephalosporinok (1-3. gen), részben monobaktámok",
       en: "Cephalosporins (1st-3rd gen), partially monobactams",
@@ -411,7 +411,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
         "A mecA vagy mecC gén az SCCmec (Staphylococcal Cassette Chromosome mec) mobil genetikai elemen öröklődik.",
         "A módosított penicillin-kötő fehérje (PBP2a) rendkívül alacsony affinitással bír valamennyi hagyományos béta-laktám iránt.",
         "Klonális típusok: CA-MRSA (USA300 - PVL-termelő, súlyos bőr-lágyrész és necrotisáló pneumonia), HA-MRSA (USA100/200 - kórházi törzsek), LA-MRSA (CC398 - állattartás), USA600 (tobramycin-rezisztens).",
-        "Heteroresistentia (hVISA), VISA (Vancomycin-Intermedier S. aureus) és VRSA (Vancomycin-Rezisztens S. aureus, vanA transzfer Enterococcusból) ritkán előfordulhat."
+        "Heteroresisztencia (hVISA), VISA (Vancomycin-Intermedier S. aureus) és VRSA (Vancomycin-Rezisztens S. aureus, vanA transzfer Enterococcusból) ritkán előfordulhat."
       ],
       en: [
         "mecA or mecC gene carried on SCCmec cassette encodes modified PBP2a with low binding affinity for all standard beta-lactams.",
@@ -617,7 +617,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
   esbl: {
     id: "esbl",
     title: "ESBL-termelő Enterobacterales (E. coli, K. pneumoniae, Proteus)",
-    subtitle: "Extended-Spectrum Beta-Lactamase termelés (blaCTX-M, blaSHV, blaTEM)",
+    subtitle: "Extended-Spectrum Beta-Lactamase termelés (pl. blaCTX-M, blaSHV, blaTEM)-Kiterjedt spektrumú beta-laktamáz termelés",
     badge: "Gram-negatív MDR",
     mechanisms: {
       hu: [
@@ -715,13 +715,13 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
 
   cre: {
     id: "cre",
-    title: "Karbapenem-Rezisztens Enterobacterales (CRE / KPC / MBL / OXA-48)",
+    title: "Karbapenem-Rezisztens Enterobacterales (CRE / MBL / OXA-48)",
     subtitle: "Karbapenemáz-termelés (Ambler A, B, D) vagy ESBL/AmpC + porinkiesés",
     badge: "Kritikus Prioritású MDR",
     mechanisms: {
       hu: [
         "Ambler A osztály (Szerin-karbapenemáz): blaKPC-2, blaKPC-3. Gátolható Avibactam, Vaborbactam, Relebactam által.",
-        "Ambler B osztály (Metallo-beta-laktamáz - MBL): blaNDM-1..5, blaVIM-1/2, blaIMP. Csak Aztreonam-Avibactam és Cefiderokol hatásos ellenük!",
+        "Ambler B osztály (Metallo-beta-laktamáz - MBL): blaNDM-1-5, blaVIM-1/2, blaIMP. Csak Aztreonam-Avibactam és Cefiderokol hatásos ellenük!",
         "Ambler D osztály (Oxacillinase): blaOXA-48, blaOXA-162. Avibactam gátolja, Vaborbactam/Relebactam nem.",
         "KULCSSZABÁLY: CRE kezelése előtt kötelező a karbapenemáz-típus meghatározása (PCR vagy fenotípusos teszt)!"
       ],
@@ -743,7 +743,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
         drug: "Ceftazidim-Avibactam",
         dose: "2.5 g q8h i.v. (3 órás elnyújtott infúzió)",
         indication: {
-          hu: "KPC és OXA-48 termelő CRE törzsek 1. VÁLASZTÁSA. MBL (NDM/VIM) ellen HATÁSTALAN!",
+          hu: "KPC és OXA-48 termelő CRE törzsek első VÁLASZTÁSA. MBL (NDM/VIM) ellen HATÁSTALAN!",
           en: "1st CHOICE for KPC and OXA-48 producing CRE. INEFFECTIVE against MBL (NDM/VIM)!",
           de: "1. WAHL für KPC und OXA-48 bildende CRE. UNWIRKSAM gegen MBL (NDM/VIM)!"
         },
@@ -822,10 +822,10 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
     badge: "WHO Priority 1 MDR",
     mechanisms: {
       hu: [
-        "D-osztályú karbapenemázok (OXA-23, OXA-24/40, OXA-58; a blaOXA-51 natív az A. baumannii-ban, IS Aba1 promóterrel felszabályozva).",
+        "Ambler D-osztályú karbapenemázok (OXA-23, OXA-24/40, OXA-58; a blaOXA-51 natívan is előfordul az A. baumannii-ban, gyakran IS Aba1 promóterrel felszabályozva).",
         "AdeABC RND-típusú efflux pumpák aktivációja (tetracyclinek, béta-laktámok, aminoglikozidok ellen).",
         "Porin veszteség (CarO, OmpA) és PBP1a/PBP2 módosítások.",
-        "Extrém erős biofilm-képzés (ventilátor-asszociált pneumonia, ICU invazív eszközök).",
+        "Extrém erős biofilm-képzés (ventilátor-asszociált pneumonia, ITO invazív eszközök).",
         "Lipid A módosítás (PmrA/PmrB mutáció) -> Colistin rezisztencia."
       ],
       en: [
@@ -963,9 +963,9 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
     badge: "Kritikus Prioritású MDR",
     mechanisms: {
       hu: [
-        "Metallo-beta-laktamázok (blaVIM, blaIMP, blaNDM): Európában a leggyakoribb szerzett karbapenemázok P. aeruginosa-ban; az aztreonam kivételével minden béta-laktámra rezisztenssé teszik a törzset.",
+        "Metallo-beta-laktamázok (blaVIM, blaIMP, blaNDM): Európában a leggyakoribb szerzett karbapenemázok (blaVIM, blaNDM) P. aeruginosa-ban; az aztreonam kivételével minden béta-laktámra rezisztenssé teszik a törzset.",
         "oprD porin veszteség: Az imipenem/meropenem behatolásához szükséges karbapenem-specifikus porin elvesztése -> izolált karbapenem-rezisztencia.",
-        "MexAB-OprM és MexXY-OprM RND efflux pumpák felszabályozása (karbapenemek, fluorochinolonok, aminoglikozidok, cephalosporinok ellen).",
+        "MexAB-OprM és MexXY-OprM RND efflux pumpák túlprodukciója (karbapenemek, fluorochinolonok, aminoglikozidok, cephalosporinok ellen).",
         "Kromoszomális ampC derepresszió: Cephalosporin rezisztencia; Ceftolozán-tazobactam rezisztencia is adódhat belőle."
       ],
       en: [
@@ -991,7 +991,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
           de: "1. WAHL bei CRPA HAP/VAP und cUTI (MBL-negative Stämme). ASPECT-NP-Studie."
         },
         sideEffectsOrWarnings: {
-          hu: "Kifejezetten Pseudomonas ellen optimalizált molekula. MBL (VIM/IMP) ellen HATÁSTALAN!",
+          hu: "Kifejezetten Pseudomonas ellen optimalizált molekula. MBL (VIM/IMP/NDM) termelő törzsek ellen HATÁSTALAN!",
           en: "Specifically optimized for Pseudomonas. INEFFECTIVE against MBL (VIM/IMP)!",
           de: "Speziell für Pseudomonas optimiert. UNWIRKSAM gegen MBL (VIM/IMP)!"
         }
@@ -1019,7 +1019,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
           de: "Serin-Carbapenemase positiver P. aeruginosa. Wirksam bei MBL-negativen Stämmen."
         },
         sideEffectsOrWarnings: {
-          hu: "MBL (VIM/IMP) ellen rezisztens.",
+          hu: "MBL (VIM/IMP) ellen hatástalan.",
           en: "Resistant to MBL (VIM/IMP).",
           de: "Resistent gegen MBL (VIM/IMP)."
         }
@@ -1028,12 +1028,12 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
         drug: "Cefiderokol",
         dose: "2 g q8h i.v. (3 órás infúzió)",
         indication: {
-          hu: "MBL-pozitív (VIM, IMP, NDM) CRPA fertőzések KIZÁRÓLAGOS BÉTA-LAKTÁM UTOLSÓ LEHETŐSÉGE!",
+          hu: "MBL-pozitív (VIM, IMP, NDM) CRPA fertőzések KIZÁRÓLAGOS BÉTA-LAKTÁM UTOLSÓ LEHETŐSÉGE- fertőzések esetén egyik tartalék szer!",
           en: "EXCLUSIVE BETA-LACTAM LAST RESORT for MBL-positive (VIM, IMP, NDM) CRPA infections!",
           de: "EXKLUSIVE BETA-LACTAM LETZTE OPTION für MBL-positive (VIM, IMP, NDM) CRPA Infektionen!"
         },
         sideEffectsOrWarnings: {
-          hu: "Sziderofór transzport révén MBL jelenlétében is bejut a Pseudomonas sejtbe.",
+          hu: "Sziderofórhoz kötött transzprot mechanizmussal jut a sejtbe, MBL enzimek se képesek lebontani.",
           en: "Enters Pseudomonas via siderophore transport even in the presence of MBL.",
           de: "Gelangt über Siderophor-Transport auch bei MBL-Anwesenheit in die Pseudomonas-Zelle."
         }
@@ -1041,7 +1041,7 @@ export const pathogenMdrModules: Record<string, PathogenMdrModule> = {
     ],
     clinicalAlerts: {
       hu: [
-        "MBL-státusz döntő! MBL-negatív: Ceftolozán-Tazobactam / Imipenem-Relebactam 1. választás.",
+        "MBL-státusz döntő! MBL-negatív: Ceftolozán-Tazobactam / Imipenem-Relebactam első választás.",
         "MBL-pozitív (VIM/IMP): Cefiderokol vagy Aztreonam-Avibactam az egyetlen hatásos opció."
       ],
       en: [
